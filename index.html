@@ -288,6 +288,27 @@
       font-size:26px;
       z-index:6;
     }
+    .easter-bubble{
+      position:absolute;
+      z-index:7;
+      background:#fff0f5;
+      color:#b34f77;
+      border:1px solid #f5bed2;
+      border-radius:18px;
+      padding:10px 12px;
+      font-weight:800;
+      font-size:13px;
+      line-height:1.4;
+      box-shadow:0 10px 22px rgba(201,99,139,.18);
+      opacity:0;
+      transform:translateY(5px);
+      pointer-events:none;
+      transition:.25s ease;
+      max-width:260px;
+    }
+    .easter-bubble.show{opacity:1;transform:translateY(0)}
+    .cat-bubble{right:18px;bottom:76px}
+    .shorts-bubble{left:18px;bottom:76px}
 
     .affirmation{
       position:fixed;
@@ -372,6 +393,8 @@
       .f5,.f6,.f9,.f10{display:none}
       .secret-teddy{right:14px;top:14px}
       .secret-bubble{right:8px;top:72px}
+      .cat-bubble{right:12px;bottom:72px;max-width:230px}
+      .shorts-bubble{left:12px;bottom:72px;max-width:230px}
     }
   </style>
 </head>
@@ -454,6 +477,7 @@
 
       <div class="question" data-q="3">
         <button class="cat-easter" type="button" onclick="showCatMessage()" aria-label="Cat easter egg">🐱</button>
+        <div class="easter-bubble cat-bubble" id="catBubble">CATS STAY AWAY. and women too, im reserved FOREVER 😂😂</div>
         <div class="tiny">question three</div>
         <div class="emoji-head">🌸✨</div>
         <h1>How pretty does Omar think Karmel is?</h1>
@@ -468,6 +492,7 @@
 
       <div class="question" data-q="4">
         <button class="shorts-easter" type="button" onclick="showShortsMessage()" aria-label="Shorts easter egg">🩳</button>
+        <div class="easter-bubble shorts-bubble" id="shortsBubble">no shorts allowed beyond this point 😂🚫</div>
         <div class="tiny">question four</div>
         <div class="emoji-head">💐🧸🧱</div>
         <h1>Would you let Omar spoil you with flowers and legos?</h1>
@@ -574,17 +599,15 @@
     }
 
     function showShortsMessage(){
-      const box = document.getElementById('affirmation');
-      box.textContent = 'no shorts allowed beyond this point 😂🚫';
-      box.classList.add('show');
-      setTimeout(() => box.classList.remove('show'), 1800);
+      const bubble = document.getElementById('shortsBubble');
+      bubble.classList.add('show');
+      setTimeout(() => bubble.classList.remove('show'), 2200);
     }
 
     function showCatMessage(){
-      const box = document.getElementById('affirmation');
-      box.textContent = 'CATS STAY AWAY. and women too, im reserved FOREVER 😂😂';
-      box.classList.add('show');
-      setTimeout(() => box.classList.remove('show'), 2200);
+      const bubble = document.getElementById('catBubble');
+      bubble.classList.add('show');
+      setTimeout(() => bubble.classList.remove('show'), 2600);
     }
 
     function nextQuestion(msg){
