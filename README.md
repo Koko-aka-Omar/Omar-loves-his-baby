@@ -1,6 +1,6 @@
 # Omar loves his baby 💗
 
-A tiny website made by Omar for Karmel.
+A tiny PRIVATE and SECRET website made by Omar for Karmel.
 
 🌷 🧸 🌸 💞
 
