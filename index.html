@@ -358,6 +358,30 @@
       z-index:5;
     }
     .hint{min-height:20px;text-align:center;color:#b86a87;font-size:13px;font-weight:700;margin-top:2px}
+    .sleep-easter{
+      position:absolute;
+      left:18px;
+      top:18px;
+      width:48px;
+      height:48px;
+      padding:0;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      background:#fff4f8;
+      border:1px solid #f5bed2;
+      box-shadow:0 8px 18px rgba(230,130,165,.18);
+      font-size:24px;
+      z-index:6;
+    }
+    .sleep-bubble{
+      left:18px;
+      top:76px;
+      bottom:auto;
+      max-width:320px;
+      text-align:left;
+    }
+
     .shorts-easter{
       position:absolute;
       left:18px;
@@ -497,6 +521,7 @@
       .secret-bubble{right:8px;top:72px}
       .cat-bubble{right:12px;bottom:72px;max-width:230px}
       .shorts-bubble{left:12px;bottom:72px;max-width:230px}
+      .sleep-bubble{left:12px;top:70px;max-width:280px}
     }
   </style>
 </head>
@@ -561,6 +586,8 @@
       <div class="secret-bubble" id="secretBubble">stop touching me karamellety 😭</div>
 
       <div class="question active" data-q="1">
+        <button class="sleep-easter" type="button" onclick="showSleepMessage()" aria-label="Sleep message">💤</button>
+        <div class="easter-bubble sleep-bubble" id="sleepBubble">its late now baby girl, go to sleep my love. sweet dreams honey and sleep well. I LOVE YOU SOSOSO MUCH</div>
         <div class="tiny">question one</div>
         <div class="emoji-head">🌷🧸</div>
         <h1>Do you know how much Omar respects you?</h1>
@@ -754,6 +781,12 @@
         box.classList.remove('show');
         setTimeout(callback, 180);
       }, 900);
+    }
+
+    function showSleepMessage(){
+      const bubble = document.getElementById('sleepBubble');
+      bubble.classList.add('show');
+      setTimeout(() => bubble.classList.remove('show'), 5200);
     }
 
     function showShortsMessage(){
