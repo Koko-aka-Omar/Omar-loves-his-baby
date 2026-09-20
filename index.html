@@ -138,6 +138,22 @@
       font-size:26px;
       z-index:6;
     }
+    .cat-easter{
+      position:absolute;
+      right:18px;
+      bottom:18px;
+      width:48px;
+      height:48px;
+      padding:0;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      background:#fff4f8;
+      border:1px solid #f5bed2;
+      box-shadow:0 8px 18px rgba(230,130,165,.18);
+      font-size:26px;
+      z-index:6;
+    }
 
     .affirmation{
       position:fixed;
@@ -276,6 +292,7 @@
       </div>
 
       <div class="question" data-q="3">
+        <button class="cat-easter" type="button" onclick="showCatMessage()" aria-label="Cat easter egg">🐱</button>
         <div class="tiny">question three</div>
         <div class="emoji-head">🌸✨</div>
         <h1>How pretty does Omar think Karmel is?</h1>
@@ -364,6 +381,13 @@
       box.textContent = 'no shorts allowed beyond this point 😂🚫';
       box.classList.add('show');
       setTimeout(() => box.classList.remove('show'), 1800);
+    }
+
+    function showCatMessage(){
+      const box = document.getElementById('affirmation');
+      box.textContent = 'CATS STAY AWAY. and women too, im reserved FOREVER 😂😂';
+      box.classList.add('show');
+      setTimeout(() => box.classList.remove('show'), 2200);
     }
 
     function nextQuestion(msg){
