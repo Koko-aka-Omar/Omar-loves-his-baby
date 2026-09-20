@@ -358,12 +358,12 @@
       z-index:5;
     }
     .hint{min-height:20px;text-align:center;color:#b86a87;font-size:13px;font-weight:700;margin-top:2px}
-    .sleep-easter{
+    .login-sleep-easter{
       position:absolute;
-      left:18px;
-      top:18px;
-      width:48px;
-      height:48px;
+      left:16px;
+      bottom:16px;
+      width:46px;
+      height:46px;
       padding:0;
       display:grid;
       place-items:center;
@@ -371,16 +371,31 @@
       background:#fff4f8;
       border:1px solid #f5bed2;
       box-shadow:0 8px 18px rgba(230,130,165,.18);
-      font-size:24px;
-      z-index:6;
+      font-size:23px;
+      z-index:3;
     }
-    .sleep-bubble{
-      left:18px;
-      top:76px;
-      bottom:auto;
-      max-width:320px;
+    .login-sleep-bubble{
+      position:absolute;
+      left:16px;
+      bottom:72px;
+      z-index:4;
+      background:#fff0f5;
+      color:#b34f77;
+      border:1px solid #f5bed2;
+      border-radius:18px;
+      padding:11px 13px;
+      font-weight:800;
+      font-size:13px;
+      line-height:1.45;
+      box-shadow:0 10px 22px rgba(201,99,139,.18);
+      opacity:0;
+      transform:translateY(5px);
+      pointer-events:none;
+      transition:.25s ease;
+      max-width:300px;
       text-align:left;
     }
+    .login-sleep-bubble.show{opacity:1;transform:translateY(0)}
 
     .shorts-easter{
       position:absolute;
@@ -521,7 +536,6 @@
       .secret-bubble{right:8px;top:72px}
       .cat-bubble{right:12px;bottom:72px;max-width:230px}
       .shorts-bubble{left:12px;bottom:72px;max-width:230px}
-      .sleep-bubble{left:12px;top:70px;max-width:280px}
     }
   </style>
 </head>
@@ -535,6 +549,8 @@
       </div>
       <button class="login-teddy-easter" id="loginTeddyEaster" type="button" aria-label="Secret teddy">🧸</button>
       <div class="login-secret-bubble" id="loginSecretBubble">la2 ya detective the password isnt hidden here 😂</div>
+      <button class="login-sleep-easter" id="loginSleepEaster" type="button" aria-label="Sleep message">💤</button>
+      <div class="login-sleep-bubble" id="loginSleepBubble">its late now baby girl, go to sleep my love. sweet dreams honey and sleep well. I LOVE YOU SOSOSO MUCH</div>
       <div class="login-kicker">private little place</div>
       <h1>for Karmel only.</h1>
       <p class="login-copy">fe 7agat meant for everyone. el website de me4 wa7da menohom. this little place is just ours. me and you sweetheart</p>
@@ -586,8 +602,6 @@
       <div class="secret-bubble" id="secretBubble">stop touching me karamellety 😭</div>
 
       <div class="question active" data-q="1">
-        <button class="sleep-easter" type="button" onclick="showSleepMessage()" aria-label="Sleep message">💤</button>
-        <div class="easter-bubble sleep-bubble" id="sleepBubble">its late now baby girl, go to sleep my love. sweet dreams honey and sleep well. I LOVE YOU SOSOSO MUCH</div>
         <div class="tiny">question one</div>
         <div class="emoji-head">🌷🧸</div>
         <h1>Do you know how much Omar respects you?</h1>
@@ -681,6 +695,8 @@
     const loginTeddyEaster = document.getElementById('loginTeddyEaster');
     const loginSecretBubble = document.getElementById('loginSecretBubble');
     const passwordToggle = document.getElementById('passwordToggle');
+    const loginSleepEaster = document.getElementById('loginSleepEaster');
+    const loginSleepBubble = document.getElementById('loginSleepBubble');
     let loginTeddyClicks = 0;
 
     function loginHeartBurst(){
@@ -734,6 +750,11 @@
       }
     });
 
+    loginSleepEaster.addEventListener('click', () => {
+      loginSleepBubble.classList.add('show');
+      setTimeout(() => loginSleepBubble.classList.remove('show'), 5200);
+    });
+
     loginForm.addEventListener('submit', e => {
       e.preventDefault();
       if(passwordInput.value.trim() === SITE_PASSWORD){
@@ -781,12 +802,6 @@
         box.classList.remove('show');
         setTimeout(callback, 180);
       }, 900);
-    }
-
-    function showSleepMessage(){
-      const bubble = document.getElementById('sleepBubble');
-      bubble.classList.add('show');
-      setTimeout(() => bubble.classList.remove('show'), 5200);
     }
 
     function showShortsMessage(){
