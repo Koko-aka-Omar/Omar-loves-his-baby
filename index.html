@@ -48,7 +48,6 @@
     .f8{right:24%;top:72%;font-size:33px;animation-delay:-3.8s}
     .f9{left:40%;top:6%;font-size:26px;animation-delay:-1.2s}
     .f10{right:38%;bottom:10%;font-size:28px;animation-delay:-4.5s}
-    .random-shorts{position:fixed;font-size:30px;z-index:1;opacity:.72;pointer-events:none;animation:float 6s ease-in-out infinite;filter:drop-shadow(0 5px 8px rgba(170,90,120,.12));}
     @keyframes float{50%{transform:translateY(-13px) rotate(5deg)}}
 
     .wrap{width:min(92vw,640px);position:relative;z-index:2}
@@ -123,6 +122,22 @@
       z-index:5;
     }
     .hint{min-height:20px;text-align:center;color:#b86a87;font-size:13px;font-weight:700;margin-top:2px}
+    .shorts-easter{
+      position:absolute;
+      left:18px;
+      bottom:18px;
+      width:48px;
+      height:48px;
+      padding:0;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      background:#fff4f8;
+      border:1px solid #f5bed2;
+      box-shadow:0 8px 18px rgba(230,130,165,.18);
+      font-size:26px;
+      z-index:6;
+    }
 
     .affirmation{
       position:fixed;
@@ -222,8 +237,6 @@
     <div class="floaty f10">🌷</div>
   </div>
 
-  <div class="random-shorts" id="randomShorts" aria-hidden="true">🩳</div>
-
   <div class="affirmation" id="affirmation"></div>
 
   <main class="wrap">
@@ -276,6 +289,7 @@
       </div>
 
       <div class="question" data-q="4">
+        <button class="shorts-easter" type="button" onclick="showShortsMessage()" aria-label="Shorts easter egg">🩳</button>
         <div class="tiny">question four</div>
         <div class="emoji-head">💐🧸🧱</div>
         <h1>Would you let Omar spoil you with flowers and legos?</h1>
@@ -343,6 +357,13 @@
         box.classList.remove('show');
         setTimeout(callback, 180);
       }, 900);
+    }
+
+    function showShortsMessage(){
+      const box = document.getElementById('affirmation');
+      box.textContent = 'no shorts allowed beyond this point 😂🚫';
+      box.classList.add('show');
+      setTimeout(() => box.classList.remove('show'), 1800);
     }
 
     function nextQuestion(msg){
@@ -468,16 +489,6 @@
       }
       type();
     }
-
-    function placeRandomShorts(){
-      const shorts = document.getElementById('randomShorts');
-      const x = 5 + Math.random() * 88;
-      const y = 5 + Math.random() * 84;
-      shorts.style.left = x + 'vw';
-      shorts.style.top = y + 'vh';
-    }
-
-    placeRandomShorts();
     setProgress();
   </script>
 </body>
