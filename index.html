@@ -64,7 +64,7 @@
         radial-gradient(circle at 20% 15%, rgba(255,170,201,.42), transparent 30%),
         radial-gradient(circle at 80% 85%, rgba(255,207,222,.55), transparent 32%),
         linear-gradient(145deg,#fff8fb,#fff2f7 55%,#fffaf4);
-      transition:opacity .5s ease, visibility .5s ease;
+      transition:opacity .85s ease, visibility .85s ease;
     }
     .login-gate.unlocked{
       opacity:0;
@@ -543,7 +543,7 @@
     function unlockSite(){
       sessionStorage.setItem('karmelUnlocked','yes');
       loginMessage.textContent = 'welcome home, karamellety 💗';
-      setTimeout(() => loginGate.classList.add('unlocked'), 420);
+      setTimeout(() => loginGate.classList.add('unlocked'), 900);
     }
 
     if(sessionStorage.getItem('karmelUnlocked') === 'yes'){
@@ -557,7 +557,7 @@
       if(passwordInput.value.trim() === SITE_PASSWORD){
         unlockSite();
       } else {
-        loginMessage.textContent = 'hmmm... that does not unlock our little place 🤨';
+        loginMessage.textContent = 'tsk tsk wrong password, what would be the password to our secret place? 😂';
         loginCard.classList.remove('shake');
         void loginCard.offsetWidth;
         loginCard.classList.add('shake');
