@@ -94,17 +94,63 @@
     .login-card:before{width:120px;height:120px;right:-55px;top:-50px}
     .login-card:after{width:90px;height:90px;left:-38px;bottom:-42px}
     .login-lock{
-      width:72px;
+      width:92px;
       height:72px;
       margin:0 auto 18px;
-      display:grid;
-      place-items:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:4px;
       border-radius:24px;
       background:#fff0f5;
       box-shadow:0 10px 28px rgba(230,130,165,.18);
-      font-size:36px;
+      font-size:34px;
       position:relative;
-      z-index:1;
+      z-index:2;
+    }
+    .login-lock.wrong{animation:lockShake .34s ease}
+    @keyframes lockShake{
+      25%{transform:rotate(-8deg)}
+      50%{transform:rotate(8deg)}
+      75%{transform:rotate(-5deg)}
+    }
+    .login-secret-heart{
+      border:0;
+      background:transparent;
+      padding:0;
+      margin:0;
+      font-size:28px;
+      line-height:1;
+      cursor:pointer;
+      box-shadow:none;
+      position:relative;
+      z-index:3;
+    }
+    .login-secret-heart:hover{transform:scale(1.08)}
+    .login-secret-bubble{
+      position:absolute;
+      top:102px;
+      left:50%;
+      transform:translate(-50%,-6px);
+      width:max-content;
+      max-width:280px;
+      background:#fff0f5;
+      color:#b34f77;
+      border:1px solid #f5bed2;
+      border-radius:18px;
+      padding:10px 12px;
+      font-size:13px;
+      font-weight:800;
+      line-height:1.4;
+      box-shadow:0 10px 22px rgba(201,99,139,.18);
+      opacity:0;
+      pointer-events:none;
+      transition:.25s ease;
+      z-index:4;
+    }
+    .login-secret-bubble.show{
+      opacity:1;
+      transform:translate(-50%,0);
     }
     .login-kicker{
       color:var(--pink-dark);
@@ -130,6 +176,14 @@
       position:relative;
       z-index:1;
     }
+    .login-before-password{
+      margin:0 0 9px;
+      color:#b86a87;
+      font-size:13px;
+      font-weight:850;
+      position:relative;
+      z-index:1;
+    }
     .password-wrap{
       position:relative;
       z-index:1;
@@ -140,7 +194,7 @@
       background:#fff;
       color:var(--text);
       border-radius:18px;
-      padding:15px 16px;
+      padding:15px 52px 15px 16px;
       outline:none;
       font:800 16px/1.2 ui-rounded,"SF Pro Rounded","Segoe UI",system-ui,sans-serif;
       text-align:center;
@@ -152,12 +206,40 @@
       border-color:#ff9abd;
       box-shadow:0 0 0 4px rgba(255,143,182,.13),0 8px 20px rgba(180,110,140,.10);
     }
+    .password-input.typing{
+      border-color:#ff8fb6;
+      box-shadow:0 0 0 5px rgba(255,143,182,.14),0 0 24px rgba(255,143,182,.22);
+    }
+    .password-toggle{
+      position:absolute;
+      right:9px;
+      top:8px;
+      width:38px;
+      height:38px;
+      padding:0;
+      display:grid;
+      place-items:center;
+      border:0;
+      border-radius:50%;
+      background:#fff0f5;
+      color:#b34f77;
+      font-size:19px;
+      box-shadow:none;
+      z-index:2;
+    }
+    .password-toggle:hover{transform:scale(1.05)}
     .login-hint{
       margin-top:10px;
       color:#a8798a;
       font-size:13px;
       line-height:1.45;
       font-weight:700;
+    }
+    .login-hint-extra{
+      margin-top:5px;
+      color:#c06d8d;
+      font-size:12px;
+      font-weight:800;
     }
     .login-button{
       width:100%;
@@ -176,6 +258,22 @@
       font-weight:800;
       position:relative;
       z-index:1;
+    }
+    .login-footer{
+      margin-top:4px;
+      color:#ad7a8e;
+      font-size:11px;
+      font-weight:850;
+      letter-spacing:.04em;
+      position:relative;
+      z-index:1;
+    }
+    .login-heart{
+      position:fixed;
+      z-index:120;
+      pointer-events:none;
+      font-size:22px;
+      animation:heartFly 1.9s ease-out forwards;
     }
     .login-card.shake{animation:loginShake .34s ease}
     @keyframes loginShake{
@@ -402,12 +500,17 @@
 
   <div class="login-gate" id="loginGate">
     <div class="login-card" id="loginCard">
-      <div class="login-lock">🔐💗</div>
+      <div class="login-lock" id="loginLock">
+        <span id="loginLockIcon">🔐</span>
+        <button class="login-secret-heart" id="loginSecretHeart" type="button" aria-label="Secret heart">💗</button>
+      </div>
+      <div class="login-secret-bubble" id="loginSecretBubble">la2 ya detective i dont know the password 😭</div>
       <div class="login-kicker">private little place</div>
       <h1>for Karmel only.</h1>
       <p class="login-copy">fe 7agat meant for everyone. el website de me4 wa7da menohom. this little place is just ours. me and you sweetheart</p>
 
       <form id="loginForm" autocomplete="off">
+        <div class="login-before-password">only one person should know this 👀</div>
         <div class="password-wrap">
           <input
             class="password-input"
@@ -417,10 +520,13 @@
             placeholder="enter our little secret"
             aria-label="Password"
           />
+          <button class="password-toggle" id="passwordToggle" type="button" aria-label="Show password">🧸</button>
           <div class="login-hint">the date i first followed you. (dd-mm-yyyy format)</div>
+          <div class="login-hint-extra">you definitely know this one sweetheart</div>
         </div>
-        <button class="login-button" type="submit">let me in 💗</button>
+        <button class="login-button" type="submit">open our little place 💗</button>
         <div class="login-message" id="loginMessage"></div>
+        <div class="login-footer">private property of Omar &amp; Karmel</div>
       </form>
     </div>
   </div>
@@ -539,11 +645,34 @@
     const loginForm = document.getElementById('loginForm');
     const passwordInput = document.getElementById('passwordInput');
     const loginMessage = document.getElementById('loginMessage');
+    const loginLock = document.getElementById('loginLock');
+    const loginLockIcon = document.getElementById('loginLockIcon');
+    const loginSecretHeart = document.getElementById('loginSecretHeart');
+    const loginSecretBubble = document.getElementById('loginSecretBubble');
+    const passwordToggle = document.getElementById('passwordToggle');
+    let loginHeartClicks = 0;
+
+    function loginHeartBurst(){
+      const things = ['💗','🌸','💞','🌷'];
+      for(let i=0;i<24;i++){
+        setTimeout(() => {
+          const h = document.createElement('div');
+          h.className = 'login-heart';
+          h.textContent = things[Math.floor(Math.random()*things.length)];
+          h.style.left = (12 + Math.random()*76) + 'vw';
+          h.style.top = (62 + Math.random()*22) + 'vh';
+          document.body.appendChild(h);
+          setTimeout(() => h.remove(), 2000);
+        }, i*45);
+      }
+    }
 
     function unlockSite(){
       sessionStorage.setItem('karmelUnlocked','yes');
-      loginMessage.textContent = 'welcome home, karamellety 💗';
-      setTimeout(() => loginGate.classList.add('unlocked'), 900);
+      loginLockIcon.textContent = '🔓';
+      loginMessage.textContent = 'knew it was you 💗';
+      loginHeartBurst();
+      setTimeout(() => loginGate.classList.add('unlocked'), 1350);
     }
 
     if(sessionStorage.getItem('karmelUnlocked') === 'yes'){
@@ -552,6 +681,28 @@
       setTimeout(() => passwordInput.focus(), 250);
     }
 
+    passwordInput.addEventListener('input', () => {
+      passwordInput.classList.toggle('typing', passwordInput.value.length > 0);
+      if(loginMessage.textContent) loginMessage.textContent = '';
+    });
+
+    passwordToggle.addEventListener('click', () => {
+      const showing = passwordInput.type === 'text';
+      passwordInput.type = showing ? 'password' : 'text';
+      passwordToggle.textContent = showing ? '🧸' : '💗';
+      passwordToggle.setAttribute('aria-label', showing ? 'Show password' : 'Hide password');
+      passwordInput.focus();
+    });
+
+    loginSecretHeart.addEventListener('click', () => {
+      loginHeartClicks++;
+      if(loginHeartClicks >= 4){
+        loginSecretBubble.classList.add('show');
+        setTimeout(() => loginSecretBubble.classList.remove('show'), 2400);
+        loginHeartClicks = 0;
+      }
+    });
+
     loginForm.addEventListener('submit', e => {
       e.preventDefault();
       if(passwordInput.value.trim() === SITE_PASSWORD){
@@ -559,8 +710,11 @@
       } else {
         loginMessage.textContent = 'tsk tsk wrong password, what would be the password to our secret place? 😂';
         loginCard.classList.remove('shake');
+        loginLock.classList.remove('wrong');
         void loginCard.offsetWidth;
+        void loginLock.offsetWidth;
         loginCard.classList.add('shake');
+        loginLock.classList.add('wrong');
         passwordInput.select();
       }
     });
