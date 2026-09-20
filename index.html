@@ -7,7 +7,6 @@
   <title>For Karmel 💗</title>
   <style>
     :root{
-      --bg:#fff8fb;
       --pink:#ff8fb6;
       --pink-dark:#e96494;
       --pink-soft:#ffd9e6;
@@ -45,9 +44,13 @@
     .f4{right:8%;bottom:7%;font-size:40px;animation-delay:-2.1s}
     .f5{left:15%;top:50%;font-size:29px;animation-delay:-4s}
     .f6{right:15%;top:48%;font-size:30px;animation-delay:-.8s}
+    .f7{left:24%;top:20%;font-size:34px;animation-delay:-2.8s}
+    .f8{right:24%;top:72%;font-size:33px;animation-delay:-3.8s}
+    .f9{left:40%;top:6%;font-size:26px;animation-delay:-1.2s}
+    .f10{right:38%;bottom:10%;font-size:28px;animation-delay:-4.5s}
     @keyframes float{50%{transform:translateY(-13px) rotate(5deg)}}
 
-    .wrap{width:min(92vw,620px);position:relative;z-index:2}
+    .wrap{width:min(92vw,640px);position:relative;z-index:2}
     .topline{
       display:flex;align-items:center;justify-content:space-between;
       margin:0 8px 10px;color:var(--muted);font-size:14px;font-weight:700;
@@ -66,7 +69,7 @@
       border-radius:30px;
       box-shadow:var(--shadow);
       padding:36px 30px 30px;
-      min-height:420px;
+      min-height:450px;
       backdrop-filter:blur(10px);
       overflow:hidden;
     }
@@ -80,11 +83,7 @@
     .tiny{font-size:13px;color:var(--pink-dark);font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
     h1{font-size:clamp(28px,6vw,43px);line-height:1.08;margin:0 0 10px;letter-spacing:-.035em}
     .sub{margin:0;color:var(--muted);font-size:16px;line-height:1.55}
-    .question{
-      display:none;
-      height:100%;
-      animation:pop .35s ease;
-    }
+    .question{display:none;height:100%;animation:pop .35s ease}
     .question.active{display:block}
     @keyframes pop{from{opacity:0;transform:translateY(8px) scale(.985)}to{opacity:1;transform:none}}
 
@@ -104,12 +103,12 @@
       appearance:none;border:0;cursor:pointer;
       padding:14px 20px;border-radius:999px;
       font:800 15px/1 ui-rounded,"SF Pro Rounded","Segoe UI",system-ui,sans-serif;
-      transition:transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+      transition:transform .18s ease, box-shadow .18s ease, opacity .18s ease, background .18s ease;
       touch-action:manipulation;
       white-space:nowrap;
     }
     button:hover{transform:translateY(-2px)}
-    .yes,.good{
+    .yes,.good,.restart{
       color:#fff;background:linear-gradient(135deg,#ff8fb6,#f776a7);
       box-shadow:0 9px 20px rgba(240,112,160,.28);
     }
@@ -122,25 +121,73 @@
       box-shadow:0 7px 17px rgba(180,110,140,.10);
       z-index:5;
     }
-    .hint{height:20px;text-align:center;color:#b86a87;font-size:13px;font-weight:700;margin-top:2px}
+    .hint{min-height:20px;text-align:center;color:#b86a87;font-size:13px;font-weight:700;margin-top:2px}
 
-    .final{text-align:center;padding-top:7px}
-    .final .emoji-head{font-size:72px}
-    .final h1{color:#d95789}
+    .affirmation{
+      position:fixed;
+      left:50%;top:34px;transform:translateX(-50%) translateY(-20px);
+      background:#fff0f5;color:#b34f77;border:1px solid #f5bed2;
+      border-radius:999px;padding:12px 18px;font-weight:800;
+      box-shadow:0 12px 30px rgba(201,99,139,.20);
+      opacity:0;pointer-events:none;z-index:30;transition:.25s ease;
+      max-width:min(90vw,520px);text-align:center;
+    }
+    .affirmation.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+    .secret-teddy{
+      position:absolute;right:18px;top:18px;z-index:6;
+      border:0;background:#fff4f8;border-radius:50%;width:54px;height:54px;
+      display:grid;place-items:center;font-size:28px;color:#b34f77;
+      box-shadow:0 8px 18px rgba(230,130,165,.18);
+    }
+    .secret-bubble{
+      position:absolute;right:12px;top:80px;z-index:6;
+      background:#fff0f5;color:#b34f77;border:1px solid #f5bed2;
+      border-radius:18px;padding:10px 12px;font-weight:800;font-size:13px;
+      box-shadow:0 10px 22px rgba(201,99,139,.18);
+      opacity:0;transform:translateY(-5px);pointer-events:none;transition:.25s ease;
+      max-width:230px;
+    }
+    .secret-bubble.show{opacity:1;transform:translateY(0)}
+
+    .final{text-align:center;padding-top:6px}
+    .final .emoji-head{font-size:40px;margin-bottom:6px}
+    .final-title{font-size:12px;color:var(--pink-dark);font-weight:900;letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px}
+    .final-main{color:#d95789;margin-bottom:8px}
+    .final-heart{
+      font-size:74px;
+      line-height:1;
+      margin:6px 0 14px;
+      filter:drop-shadow(0 0 18px rgba(255,143,182,.45));
+      animation:pulse 1.7s ease-in-out infinite;
+    }
+    @keyframes pulse{50%{transform:scale(1.08)}}
     .love-note{
       margin:20px auto 0;
-      max-width:430px;
+      max-width:480px;
+      min-height:150px;
       padding:17px 18px;
       border-radius:20px;
       background:#fff0f5;
       color:#815065;
-      line-height:1.6;
+      line-height:1.72;
       font-weight:650;
+      text-align:left;
+      white-space:pre-wrap;
     }
+    .typing-cursor{display:inline-block;width:8px;animation:blink 1s steps(1) infinite}
+    @keyframes blink{50%{opacity:0}}
     .signature{margin-top:18px;color:#d65d8b;font-weight:900}
+    .final-actions{margin-top:18px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+    .restart{padding:14px 20px}
+    .magic224{
+      color:#d95789;font-weight:900;cursor:pointer;
+      text-decoration:underline dotted; text-underline-offset:4px;
+    }
+    .tiny-note{margin-top:10px;color:#b86a87;font-size:13px;font-weight:800}
     .heart{
       position:fixed;
-      z-index:9;
+      z-index:35;
       pointer-events:none;
       font-size:22px;
       animation:heartFly 1.9s ease-out forwards;
@@ -150,11 +197,13 @@
       to{transform:translateY(-180px) scale(1.35) rotate(22deg);opacity:0}
     }
     @media(max-width:520px){
-      .card{padding:28px 18px 22px;min-height:430px;border-radius:25px}
+      .card{padding:28px 18px 22px;min-height:470px;border-radius:25px}
       .answers{min-height:175px;margin-top:22px}
       button{padding:14px 17px}
       .floaty{opacity:.48}
-      .f5,.f6{display:none}
+      .f5,.f6,.f9,.f10{display:none}
+      .secret-teddy{right:14px;top:14px}
+      .secret-bubble{right:8px;top:72px}
     }
   </style>
 </head>
@@ -166,7 +215,13 @@
     <div class="floaty f4">🧸</div>
     <div class="floaty f5">💗</div>
     <div class="floaty f6">🌼</div>
+    <div class="floaty f7">🧱</div>
+    <div class="floaty f8">🧱</div>
+    <div class="floaty f9">💞</div>
+    <div class="floaty f10">🌷</div>
   </div>
+
+  <div class="affirmation" id="affirmation"></div>
 
   <main class="wrap">
     <div class="topline">
@@ -176,14 +231,17 @@
     <div class="progress"><div class="bar" id="bar"></div></div>
 
     <section class="card">
+      <button class="secret-teddy" id="secretTeddy" type="button" aria-label="Secret teddy">🧸</button>
+      <div class="secret-bubble" id="secretBubble">stop touching me karamellety 😭</div>
+
       <div class="question active" data-q="1">
         <div class="tiny">question one</div>
         <div class="emoji-head">🌷🧸</div>
         <h1>Do you know how much Omar respects you?</h1>
         <p class="sub">There is definitely a correct answer here btw.</p>
         <div class="answers">
-          <button class="yes" onclick="nextQuestion()">YESSS 💗</button>
-          <button class="no dodger">no</button>
+          <button class="yes" onclick="nextQuestion('knew you’d say yes baby girl 💗')">YESSS 💗</button>
+          <button class="no dodger" type="button">no</button>
         </div>
         <div class="hint">try pressing no if you can 😭</div>
       </div>
@@ -194,9 +252,9 @@
         <h1>You know how much does he love you?</h1>
         <p class="sub">Choose very carefully...</p>
         <div class="answers">
-          <button class="good" onclick="nextQuestion()">ALOTTTTTT 💗</button>
-          <button class="soft shrinker">little 🤏</button>
-          <button class="no dodger">not at all</button>
+          <button class="good" onclick="nextQuestion('there we go karamellety 😌💗')">ALOTTTTTT 💗</button>
+          <button class="soft shrinker" type="button">little 🤏</button>
+          <button class="no dodger" type="button">not at all</button>
         </div>
         <div class="hint" id="littleHint"></div>
       </div>
@@ -207,22 +265,22 @@
         <h1>How pretty does Omar think Karmel is?</h1>
         <p class="sub">This one should be extremely easy.</p>
         <div class="answers">
-          <button class="good" onclick="nextQuestion()">VERY VERY PRETTY</button>
-          <button class="soft" onclick="nextQuestion()">literally gorgeous ✨</button>
-          <button class="no dodger">ehhh</button>
+          <button class="good" onclick="nextQuestion('correct answer my pretty girl ✨')">VERY VERY PRETTY</button>
+          <button class="soft" onclick="nextQuestion('also correct because you are literally gorgeous 😭💗')">literally gorgeous ✨</button>
+          <button class="no dodger" type="button">ehhh</button>
         </div>
         <div class="hint">wrong answers seem to be having technical issues 🤭 sadly they dont work</div>
       </div>
 
       <div class="question" data-q="4">
         <div class="tiny">question four</div>
-        <div class="emoji-head">💐🧸</div>
+        <div class="emoji-head">💐🧸🧱</div>
         <h1>Would you let Omar keep spoiling you with flowers and legos?</h1>
         <p class="sub">HYPOTHETICALLY HYPOTHETICALLY IN THE FAR FAR FUTURE... but also not hypothetically.</p>
         <div class="answers">
-          <button class="good" onclick="nextQuestion()">obviously 💐🧱</button>
-          <button class="soft" onclick="nextQuestion()">yes hehe</button>
-          <button class="no dodger">nope</button>
+          <button class="good" onclick="nextQuestion('good girl 😭 flowers and legos it is 💐🧱')">obviously 💐🧱</button>
+          <button class="soft" onclick="nextQuestion('yes hehe works perfectly too 💗')">yes hehe</button>
+          <button class="no dodger" type="button">nope</button>
         </div>
         <div class="hint"></div>
       </div>
@@ -233,18 +291,22 @@
         <h1>Do you know how lucky Omar feels to have you?</h1>
         <p class="sub">Final answer, Karmel.</p>
         <div class="answers">
-          <button class="good" onclick="finishQuiz()">yes 💗</button>
-          <button class="soft" onclick="finishQuiz()">tell me 🥺</button>
+          <button class="good" onclick="finishQuiz('imma tell you anyway baby girl 💗')">yes 💗</button>
+          <button class="soft" onclick="finishQuiz('okay then let me tell you 😌💗')">tell me 🥺</button>
         </div>
       </div>
 
       <div class="question final" data-q="6">
-        <div class="emoji-head">🌷💗🧸</div>
-        <h1>A LOT. Like, a lot a lot.</h1>
-        <div class="love-note">
-          IM AM MAD LUCKY TO HAVE YOU BABY GIRL. im even luckier to be the one you chosoe to love and show care towards and emotions to. i love everything you do my love, you existing by itself makes me happy and feel loved and sweet. youre the best thing that happened to me and i appreciate you so so much. i love you 2 2 4.
-        </div>
+        <div class="final-title">FOR MY KARAMELLETY 💗</div>
+        <div class="emoji-head">🌷🧸🧱🌸</div>
+        <div class="final-heart">💗</div>
+        <h1 class="final-main">IM AM MAD LUCKY TO HAVE YOU BABY GIRL.</h1>
+        <div class="love-note" id="loveNote"></div>
+        <div class="tiny-note">tap 2 2 4 when it appears 👀</div>
         <div class="signature">— made for Karmel, from Omar 🌸</div>
+        <div class="final-actions">
+          <button class="restart" type="button" onclick="restartQuiz()">do it again because I love attention 💗</button>
+        </div>
       </div>
     </section>
   </main>
@@ -252,6 +314,9 @@
   <script>
     let current = 1;
     const total = 5;
+    let teddyClicks = 0;
+    let typingTimer;
+    const fullLoveNote = `im even luckier to be the one you chosoe to love and show care towards and emotions to. i love everything you do my love, you existing by itself makes me happy and feel loved and sweet. youre the best thing that happened to me and i appreciate you so so much. i love you 2 2 4.`;
 
     function setProgress(){
       document.getElementById('count').textContent = current <= total ? current + ' / ' + total : '💗';
@@ -264,18 +329,46 @@
       if(next) next.classList.add('active');
       resetDodgers();
       setProgress();
+      if(n === 6) startTypingLoveNote();
     }
 
-    function nextQuestion(){
-      current++;
-      showQuestion(current);
+    function showAffirmation(msg, callback){
+      const box = document.getElementById('affirmation');
+      box.textContent = msg;
+      box.classList.add('show');
+      setTimeout(() => {
+        box.classList.remove('show');
+        setTimeout(callback, 180);
+      }, 900);
     }
 
-    function finishQuiz(){
-      current = 6;
-      showQuestion(6);
-      document.getElementById('bar').style.width = '100%';
-      burstHearts();
+    function nextQuestion(msg){
+      showAffirmation(msg || 'correct 😌💗', () => {
+        current++;
+        showQuestion(current);
+      });
+    }
+
+    function finishQuiz(msg){
+      showAffirmation(msg || 'okay baby girl 💗', () => {
+        current = 6;
+        showQuestion(6);
+        document.getElementById('bar').style.width = '100%';
+        burstHearts();
+      });
+    }
+
+    function restartQuiz(){
+      clearTimeout(typingTimer);
+      current = 1;
+      document.getElementById('loveNote').textContent = '';
+      document.getElementById('littleHint').textContent = '';
+      document.querySelectorAll('.shrinker').forEach(btn => {
+        btn.style.transform = 'scale(1)';
+        btn.textContent = 'little 🤏';
+      });
+      showQuestion(1);
+      window.scrollTo({top:0,behavior:'smooth'});
     }
 
     function moveButton(btn){
@@ -283,13 +376,11 @@
       if(!area) return;
       const a = area.getBoundingClientRect();
       const b = btn.getBoundingClientRect();
-
       btn.style.position = 'absolute';
       const maxX = Math.max(0, a.width - b.width - 10);
       const maxY = Math.max(0, a.height - b.height - 10);
       const x = 5 + Math.random() * Math.max(0,maxX - 5);
       const y = 5 + Math.random() * Math.max(0,maxY - 5);
-
       btn.style.left = x + 'px';
       btn.style.top = y + 'px';
       btn.style.transform = 'rotate(' + (Math.random()*12-6) + 'deg)';
@@ -324,8 +415,8 @@
       });
     });
 
-    function burstHearts(){
-      const things = ['💗','🌸','💞','🌷'];
+    function burstHearts(extra){
+      const things = extra || ['💗','🌸','💞','🌷','🧱'];
       for(let i=0;i<28;i++){
         setTimeout(() => {
           const h = document.createElement('div');
@@ -337,6 +428,42 @@
           setTimeout(() => h.remove(), 2000);
         }, i*55);
       }
+    }
+
+    document.getElementById('secretTeddy').addEventListener('click', () => {
+      teddyClicks++;
+      if(teddyClicks >= 4){
+        const bubble = document.getElementById('secretBubble');
+        bubble.classList.add('show');
+        burstHearts(['🧸','💗','🌸']);
+        setTimeout(() => bubble.classList.remove('show'), 2200);
+        teddyClicks = 0;
+      }
+    });
+
+    function startTypingLoveNote(){
+      clearTimeout(typingTimer);
+      const note = document.getElementById('loveNote');
+      note.innerHTML = '';
+      let i = 0;
+      function type(){
+        if(i <= fullLoveNote.length){
+          note.innerHTML = fullLoveNote.slice(0, i) + '<span class="typing-cursor">|</span>';
+          i++;
+          typingTimer = setTimeout(type, 26);
+        } else {
+          note.textContent = fullLoveNote;
+          note.innerHTML = note.textContent.replace('2 2 4', '<span class="magic224" id="magic224">2 2 4</span>');
+          const easter = document.getElementById('magic224');
+          if(easter){
+            easter.addEventListener('click', () => {
+              burstHearts(['💗','🌷','🧱','🧸','🌸']);
+              showAffirmation('you know what it means 💗', () => {});
+            });
+          }
+        }
+      }
+      type();
     }
 
     setProgress();
