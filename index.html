@@ -114,19 +114,23 @@
       50%{transform:rotate(8deg)}
       75%{transform:rotate(-5deg)}
     }
-    .login-secret-heart{
-      border:0;
-      background:transparent;
+    .login-teddy-easter{
+      position:absolute;
+      right:16px;
+      bottom:16px;
+      width:46px;
+      height:46px;
       padding:0;
-      margin:0;
-      font-size:28px;
-      line-height:1;
-      cursor:pointer;
-      box-shadow:none;
-      position:relative;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      background:#fff4f8;
+      border:1px solid #f5bed2;
+      box-shadow:0 8px 18px rgba(230,130,165,.18);
+      font-size:24px;
       z-index:3;
     }
-    .login-secret-heart:hover{transform:scale(1.08)}
+    .login-teddy-easter:hover{transform:scale(1.06)}
     .login-secret-bubble{
       position:absolute;
       top:102px;
@@ -502,8 +506,9 @@
     <div class="login-card" id="loginCard">
       <div class="login-lock" id="loginLock">
         <span id="loginLockIcon">🔐</span>
-        <button class="login-secret-heart" id="loginSecretHeart" type="button" aria-label="Secret heart">💗</button>
+        <span aria-hidden="true">💗</span>
       </div>
+      <button class="login-teddy-easter" id="loginTeddyEaster" type="button" aria-label="Secret teddy">🧸</button>
       <div class="login-secret-bubble" id="loginSecretBubble">la2 ya detective i dont know the password 😭</div>
       <div class="login-kicker">private little place</div>
       <h1>for Karmel only.</h1>
@@ -647,10 +652,10 @@
     const loginMessage = document.getElementById('loginMessage');
     const loginLock = document.getElementById('loginLock');
     const loginLockIcon = document.getElementById('loginLockIcon');
-    const loginSecretHeart = document.getElementById('loginSecretHeart');
+    const loginTeddyEaster = document.getElementById('loginTeddyEaster');
     const loginSecretBubble = document.getElementById('loginSecretBubble');
     const passwordToggle = document.getElementById('passwordToggle');
-    let loginHeartClicks = 0;
+    let loginTeddyClicks = 0;
 
     function loginHeartBurst(){
       const things = ['💗','🌸','💞','🌷'];
@@ -694,12 +699,12 @@
       passwordInput.focus();
     });
 
-    loginSecretHeart.addEventListener('click', () => {
-      loginHeartClicks++;
-      if(loginHeartClicks >= 4){
+    loginTeddyEaster.addEventListener('click', () => {
+      loginTeddyClicks++;
+      if(loginTeddyClicks >= 4){
         loginSecretBubble.classList.add('show');
         setTimeout(() => loginSecretBubble.classList.remove('show'), 2400);
-        loginHeartClicks = 0;
+        loginTeddyClicks = 0;
       }
     });
 
