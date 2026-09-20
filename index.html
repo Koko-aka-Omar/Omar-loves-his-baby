@@ -48,6 +48,7 @@
     .f8{right:24%;top:72%;font-size:33px;animation-delay:-3.8s}
     .f9{left:40%;top:6%;font-size:26px;animation-delay:-1.2s}
     .f10{right:38%;bottom:10%;font-size:28px;animation-delay:-4.5s}
+    .random-shorts{position:fixed;font-size:30px;z-index:1;opacity:.72;pointer-events:none;animation:float 6s ease-in-out infinite;filter:drop-shadow(0 5px 8px rgba(170,90,120,.12));}
     @keyframes float{50%{transform:translateY(-13px) rotate(5deg)}}
 
     .wrap{width:min(92vw,640px);position:relative;z-index:2}
@@ -220,6 +221,8 @@
     <div class="floaty f9">💞</div>
     <div class="floaty f10">🌷</div>
   </div>
+
+  <div class="random-shorts" id="randomShorts" aria-hidden="true">🩳</div>
 
   <div class="affirmation" id="affirmation"></div>
 
@@ -466,6 +469,15 @@
       type();
     }
 
+    function placeRandomShorts(){
+      const shorts = document.getElementById('randomShorts');
+      const x = 5 + Math.random() * 88;
+      const y = 5 + Math.random() * 84;
+      shorts.style.left = x + 'vw';
+      shorts.style.top = y + 'vh';
+    }
+
+    placeRandomShorts();
     setProgress();
   </script>
 </body>
