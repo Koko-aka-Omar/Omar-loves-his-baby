@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ffd9e6" />
+  <title>For Karmel 💗</title>
+  <style>
+    :root{
+      --bg:#fff8fb;
+      --pink:#ff8fb6;
+      --pink-dark:#e96494;
+      --pink-soft:#ffd9e6;
+      --cream:#fffdf7;
+      --text:#5d3b49;
+      --muted:#9a7180;
+      --shadow:0 18px 55px rgba(201, 99, 139, .20);
+    }
+    *{box-sizing:border-box}
+    html,body{min-height:100%}
+    body{
+      margin:0;
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255,180,205,.35) 0 10%, transparent 28%),
+        radial-gradient(circle at 85% 80%, rgba(255,210,225,.5) 0 10%, transparent 27%),
+        linear-gradient(145deg,#fff9fc,#fff4f8 55%,#fffaf3);
+      font-family: ui-rounded, "SF Pro Rounded", "Segoe UI", system-ui, sans-serif;
+    }
+    .floaties{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+    .floaty{
+      position:absolute;
+      opacity:.72;
+      filter:drop-shadow(0 5px 8px rgba(170,90,120,.12));
+      animation:float 6s ease-in-out infinite;
+      user-select:none;
+    }
+    .f1{left:4%;top:9%;font-size:38px}
+    .f2{right:5%;top:13%;font-size:42px;animation-delay:-1.5s}
+    .f3{left:7%;bottom:8%;font-size:45px;animation-delay:-3s}
+    .f4{right:8%;bottom:7%;font-size:40px;animation-delay:-2.1s}
+    .f5{left:15%;top:50%;font-size:29px;animation-delay:-4s}
+    .f6{right:15%;top:48%;font-size:30px;animation-delay:-.8s}
+    @keyframes float{50%{transform:translateY(-13px) rotate(5deg)}}
+
+    .wrap{width:min(92vw,620px);position:relative;z-index:2}
+    .topline{
+      display:flex;align-items:center;justify-content:space-between;
+      margin:0 8px 10px;color:var(--muted);font-size:14px;font-weight:700;
+    }
+    .progress{
+      height:9px;background:#ffe9f0;border-radius:999px;overflow:hidden;
+      box-shadow:inset 0 0 0 1px rgba(210,125,155,.08);
+      margin-bottom:14px;
+    }
+    .bar{height:100%;width:20%;border-radius:inherit;background:linear-gradient(90deg,#ff8fb6,#ffb8ce);transition:width .45s ease}
+
+    .card{
+      position:relative;
+      background:rgba(255,253,249,.91);
+      border:1px solid rgba(255,155,190,.27);
+      border-radius:30px;
+      box-shadow:var(--shadow);
+      padding:36px 30px 30px;
+      min-height:420px;
+      backdrop-filter:blur(10px);
+      overflow:hidden;
+    }
+    .card:before,.card:after{
+      content:"";
+      position:absolute;border-radius:50%;background:var(--pink-soft);opacity:.38;filter:blur(2px)
+    }
+    .card:before{width:120px;height:120px;right:-55px;top:-45px}
+    .card:after{width:90px;height:90px;left:-42px;bottom:-38px}
+
+    .tiny{font-size:13px;color:var(--pink-dark);font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+    h1{font-size:clamp(28px,6vw,43px);line-height:1.08;margin:0 0 10px;letter-spacing:-.035em}
+    .sub{margin:0;color:var(--muted);font-size:16px;line-height:1.55}
+    .question{
+      display:none;
+      height:100%;
+      animation:pop .35s ease;
+    }
+    .question.active{display:block}
+    @keyframes pop{from{opacity:0;transform:translateY(8px) scale(.985)}to{opacity:1;transform:none}}
+
+    .emoji-head{font-size:58px;margin:5px 0 13px;filter:drop-shadow(0 8px 9px rgba(208,106,145,.12))}
+    .answers{
+      position:relative;
+      min-height:148px;
+      margin-top:26px;
+      display:flex;
+      flex-wrap:wrap;
+      align-content:flex-start;
+      justify-content:center;
+      gap:12px;
+      padding:6px;
+    }
+    button{
+      appearance:none;border:0;cursor:pointer;
+      padding:14px 20px;border-radius:999px;
+      font:800 15px/1 ui-rounded,"SF Pro Rounded","Segoe UI",system-ui,sans-serif;
+      transition:transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+      touch-action:manipulation;
+      white-space:nowrap;
+    }
+    button:hover{transform:translateY(-2px)}
+    .yes,.good{
+      color:#fff;background:linear-gradient(135deg,#ff8fb6,#f776a7);
+      box-shadow:0 9px 20px rgba(240,112,160,.28);
+    }
+    .soft{
+      color:#b34f77;background:#ffe3ed;
+      box-shadow:0 8px 18px rgba(230,130,165,.14);
+    }
+    .no{
+      color:#966071;background:#fff;border:1.5px solid #f4bfd1;
+      box-shadow:0 7px 17px rgba(180,110,140,.10);
+      z-index:5;
+    }
+    .hint{height:20px;text-align:center;color:#b86a87;font-size:13px;font-weight:700;margin-top:2px}
+
+    .final{text-align:center;padding-top:7px}
+    .final .emoji-head{font-size:72px}
+    .final h1{color:#d95789}
+    .love-note{
+      margin:20px auto 0;
+      max-width:430px;
+      padding:17px 18px;
+      border-radius:20px;
+      background:#fff0f5;
+      color:#815065;
+      line-height:1.6;
+      font-weight:650;
+    }
+    .signature{margin-top:18px;color:#d65d8b;font-weight:900}
+    .heart{
+      position:fixed;
+      z-index:9;
+      pointer-events:none;
+      font-size:22px;
+      animation:heartFly 1.9s ease-out forwards;
+    }
+    @keyframes heartFly{
+      from{transform:translateY(0) scale(.7) rotate(0);opacity:1}
+      to{transform:translateY(-180px) scale(1.35) rotate(22deg);opacity:0}
+    }
+    @media(max-width:520px){
+      .card{padding:28px 18px 22px;min-height:430px;border-radius:25px}
+      .answers{min-height:175px;margin-top:22px}
+      button{padding:14px 17px}
+      .floaty{opacity:.48}
+      .f5,.f6{display:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="floaties" aria-hidden="true">
+    <div class="floaty f1">🌷</div>
+    <div class="floaty f2">🧸</div>
+    <div class="floaty f3">🌸</div>
+    <div class="floaty f4">🧸</div>
+    <div class="floaty f5">💗</div>
+    <div class="floaty f6">🌼</div>
+  </div>
+
+  <main class="wrap">
+    <div class="topline">
+      <span>for Karmel 💗</span>
+      <span id="count">1 / 5</span>
+    </div>
+    <div class="progress"><div class="bar" id="bar"></div></div>
+
+    <section class="card">
+      <div class="question active" data-q="1">
+        <div class="tiny">question one</div>
+        <div class="emoji-head">🌷🧸</div>
+        <h1>Do you know how much Omar respects you?</h1>
+        <p class="sub">There is definitely a correct answer here btw.</p>
+        <div class="answers">
+          <button class="yes" onclick="nextQuestion()">YESSS 💗</button>
+          <button class="no dodger">no</button>
+        </div>
+        <div class="hint">try pressing no if you can 😭</div>
+      </div>
+
+      <div class="question" data-q="2">
+        <div class="tiny">question two</div>
+        <div class="emoji-head">💞</div>
+        <h1>You know how much does he love you?</h1>
+        <p class="sub">Choose very carefully...</p>
+        <div class="answers">
+          <button class="good" onclick="nextQuestion()">ALOTTTTTT 💗</button>
+          <button class="soft shrinker">little 🤏</button>
+          <button class="no dodger">not at all</button>
+        </div>
+        <div class="hint" id="littleHint"></div>
+      </div>
+
+      <div class="question" data-q="3">
+        <div class="tiny">question three</div>
+        <div class="emoji-head">🌸✨</div>
+        <h1>How pretty does Omar think Karmel is?</h1>
+        <p class="sub">This one should be extremely easy.</p>
+        <div class="answers">
+          <button class="good" onclick="nextQuestion()">VERY VERY PRETTY</button>
+          <button class="soft" onclick="nextQuestion()">literally gorgeous ✨</button>
+          <button class="no dodger">ehhh</button>
+        </div>
+        <div class="hint">wrong answers seem to be having technical issues 🤭</div>
+      </div>
+
+      <div class="question" data-q="4">
+        <div class="tiny">question four</div>
+        <div class="emoji-head">💐🧸</div>
+        <h1>Would you let Omar keep spoiling you with flowers?</h1>
+        <p class="sub">Hypothetically... but also not hypothetically.</p>
+        <div class="answers">
+          <button class="good" onclick="nextQuestion()">obviously 💐</button>
+          <button class="soft" onclick="nextQuestion()">yes hehe</button>
+          <button class="no dodger">nope</button>
+        </div>
+        <div class="hint"></div>
+      </div>
+
+      <div class="question" data-q="5">
+        <div class="tiny">last one</div>
+        <div class="emoji-head">🧸💗🧸</div>
+        <h1>Do you know how lucky Omar feels to have you?</h1>
+        <p class="sub">Final answer, Karmel.</p>
+        <div class="answers">
+          <button class="good" onclick="finishQuiz()">yes 💗</button>
+          <button class="soft" onclick="finishQuiz()">tell me 🥺</button>
+        </div>
+      </div>
+
+      <div class="question final" data-q="6">
+        <div class="emoji-head">🌷💗🧸</div>
+        <h1>A LOT. Like, a lot a lot.</h1>
+        <div class="love-note">
+          Karmel, Omar respects you, adores you, and loves you more than this tiny website can fit.
+          You deserve flowers, soft days, happy little moments, and to always know how special you are to him. 💗
+        </div>
+        <div class="signature">— made for Karmel, from Omar 🌸</div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    let current = 1;
+    const total = 5;
+
+    function setProgress(){
+      document.getElementById('count').textContent = current <= total ? current + ' / ' + total : '💗';
+      document.getElementById('bar').style.width = Math.min(current,total) / total * 100 + '%';
+    }
+
+    function showQuestion(n){
+      document.querySelectorAll('.question').forEach(q => q.classList.remove('active'));
+      const next = document.querySelector('[data-q="' + n + '"]');
+      if(next) next.classList.add('active');
+      resetDodgers();
+      setProgress();
+    }
+
+    function nextQuestion(){
+      current++;
+      showQuestion(current);
+    }
+
+    function finishQuiz(){
+      current = 6;
+      showQuestion(6);
+      document.getElementById('bar').style.width = '100%';
+      burstHearts();
+    }
+
+    function moveButton(btn){
+      const area = btn.closest('.answers');
+      if(!area) return;
+      const a = area.getBoundingClientRect();
+      const b = btn.getBoundingClientRect();
+
+      btn.style.position = 'absolute';
+      const maxX = Math.max(0, a.width - b.width - 10);
+      const maxY = Math.max(0, a.height - b.height - 10);
+      const x = 5 + Math.random() * Math.max(0,maxX - 5);
+      const y = 5 + Math.random() * Math.max(0,maxY - 5);
+
+      btn.style.left = x + 'px';
+      btn.style.top = y + 'px';
+      btn.style.transform = 'rotate(' + (Math.random()*12-6) + 'deg)';
+    }
+
+    function resetDodgers(){
+      document.querySelectorAll('.dodger').forEach(btn => {
+        btn.style.position = '';
+        btn.style.left = '';
+        btn.style.top = '';
+        btn.style.transform = '';
+      });
+    }
+
+    document.querySelectorAll('.dodger').forEach(btn => {
+      btn.addEventListener('mouseenter', () => moveButton(btn));
+      btn.addEventListener('pointerdown', e => {
+        e.preventDefault();
+        moveButton(btn);
+      });
+      btn.addEventListener('focus', () => moveButton(btn));
+    });
+
+    document.querySelectorAll('.shrinker').forEach(btn => {
+      let size = 1;
+      btn.addEventListener('click', () => {
+        size = Math.max(.35, size - .18);
+        btn.style.transform = 'scale(' + size + ')';
+        btn.textContent = size < .55 ? 'tiny?? 😭' : 'little 🤏';
+        document.getElementById('littleHint').textContent =
+          size < .55 ? 'look what happened to “little” 😭 pick ALOTTTTT' : 'hmm... that answer is getting smaller';
+      });
+    });
+
+    function burstHearts(){
+      const things = ['💗','🌸','💞','🌷'];
+      for(let i=0;i<28;i++){
+        setTimeout(() => {
+          const h = document.createElement('div');
+          h.className = 'heart';
+          h.textContent = things[Math.floor(Math.random()*things.length)];
+          h.style.left = (10 + Math.random()*80) + 'vw';
+          h.style.top = (65 + Math.random()*25) + 'vh';
+          document.body.appendChild(h);
+          setTimeout(() => h.remove(), 2000);
+        }, i*55);
+      }
+    }
+
+    setProgress();
+  </script>
+</body>
+</html>
