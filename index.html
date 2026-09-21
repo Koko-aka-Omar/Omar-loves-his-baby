@@ -1367,6 +1367,144 @@
       .ambient-heart,.cursor-spark{display:none!important}
     }
 
+  
+    /* Clean section shapes + day night */
+    html,body{transition:background-color .8s ease,color .8s ease}
+    body{transition:background .9s ease,color .8s ease}
+    .home-card,.notes-card,.simple-section-card,.flower-card,.card,.login-card{
+      transition:background .8s ease,border-color .8s ease,box-shadow .8s ease,color .8s ease;
+    }
+
+    /* Each section gets its own subtle silhouette */
+    .notes-card{
+      border-radius:22px 34px 24px 32px;
+      padding:46px 30px 34px;
+    }
+    body.games-mode .simple-section-card{
+      border-radius:42px;
+      padding:46px 30px 34px;
+    }
+    body.love-mode .simple-section-card{
+      border-radius:30px 44px 30px 44px;
+      padding:48px 32px 36px;
+    }
+    .flower-card{
+      border-radius:46px 34px 46px 34px;
+      padding:48px 34px 38px;
+      max-width:650px;
+      margin:auto;
+    }
+
+    /* Garden details: deliberately sparse */
+    .garden-leaf,.garden-petal{
+      position:absolute;
+      z-index:1;
+      pointer-events:none;
+      user-select:none;
+      opacity:.46;
+      filter:drop-shadow(0 6px 10px rgba(92,130,88,.10));
+    }
+    .leaf-a{left:18px;top:22px;font-size:29px;transform:rotate(-24deg)}
+    .leaf-b{right:20px;bottom:24px;font-size:27px;transform:rotate(28deg)}
+    .petal-a{right:25px;top:28px;font-size:18px;opacity:.34;transform:rotate(13deg)}
+    .petal-b{left:25px;bottom:28px;font-size:19px;opacity:.30;transform:rotate(-15deg)}
+    .flower-card .big-secret-flower,
+    .flower-card h1,
+    .flower-card .flower-secret-copy,
+    .flower-card .flower-back,
+    .flower-card .home-kicker{position:relative;z-index:2}
+
+    /* Automatic night mode stays pastel instead of becoming dark */
+    body.night-mode{
+      --text:#5f5068;
+      --muted:#9b879f;
+    }
+    body.night-mode.home-mode{
+      background:
+        linear-gradient(
+          145deg,
+          #f8f3fb 0%,
+          #f7edf5 28%,
+          #f1effb 56%,
+          #f8f0f3 80%,
+          #f7f3f8 100%
+        );
+      background-size:220% 220%;
+    }
+    body.night-mode.home-mode::after{
+      opacity:.78;
+      filter:saturate(.82) brightness(.96);
+    }
+    body.night-mode .cute-ambience .soft-sparkle{
+      opacity:.48;
+      color:#aa8fc1;
+      text-shadow:0 0 18px rgba(255,245,255,.95);
+    }
+    body.night-mode .cute-ambience .soft-blob{opacity:.16}
+    body.night-mode .home-card,
+    body.night-mode .notes-card,
+    body.night-mode .simple-section-card{
+      background:rgba(252,248,251,.94);
+      border-color:rgba(200,178,220,.42);
+      box-shadow:
+        0 24px 65px rgba(112,91,132,.15),
+        0 0 0 7px rgba(255,255,255,.28),
+        inset 0 0 30px rgba(255,255,255,.30);
+    }
+    body.night-mode .note-shell{
+      background:
+        linear-gradient(rgba(252,248,251,.66),rgba(252,248,251,.66)),
+        repeating-linear-gradient(0deg,#fbf6fa 0 30px,#eadce7 31px 32px);
+    }
+    body.night-mode .home-title,
+    body.night-mode .notes-card h1,
+    body.night-mode .simple-section-card h1{color:#68566f}
+    body.night-mode .home-sub,
+    body.night-mode .notes-card p,
+    body.night-mode .simple-section-card p{color:#938096}
+
+    body.night-mode.flower-mode{
+      background:
+        radial-gradient(circle at 18% 18%,rgba(224,196,215,.42),transparent 29%),
+        radial-gradient(circle at 82% 80%,rgba(190,214,190,.42),transparent 31%),
+        linear-gradient(145deg,#f8f4f6,#f6eef4 48%,#f2f7f1);
+    }
+    body.night-mode.flower-mode .flower-card{
+      background:rgba(250,247,246,.95);
+      border-color:rgba(188,160,178,.30);
+      box-shadow:0 22px 65px rgba(93,78,92,.15);
+    }
+    body.night-mode.flower-mode .garden-leaf,
+    body.night-mode.flower-mode .garden-petal{opacity:.40}
+
+    body.night-mode:not(.home-mode):not(.flower-mode){
+      background:
+        radial-gradient(circle at 16% 20%,rgba(219,194,212,.30),transparent 29%),
+        radial-gradient(circle at 84% 80%,rgba(204,196,226,.30),transparent 30%),
+        linear-gradient(145deg,#faf6f8,#f7f1f6 55%,#f7f4fa);
+    }
+    body.night-mode .card{
+      background:rgba(250,247,248,.94);
+      border-color:rgba(222,174,194,.25);
+      box-shadow:0 18px 55px rgba(112,82,101,.14);
+    }
+    body.night-mode .login-gate{
+      background:
+        radial-gradient(circle at 20% 15%,rgba(222,190,207,.38),transparent 30%),
+        radial-gradient(circle at 80% 85%,rgba(207,196,225,.38),transparent 32%),
+        linear-gradient(145deg,#faf6f8,#f6f0f6 55%,#f9f5f2);
+    }
+    body.night-mode .login-card{background:rgba(250,247,246,.95)}
+
+    @media(max-width:520px){
+      .notes-card{border-radius:22px 28px 22px 28px;padding:38px 20px 30px}
+      body.games-mode .simple-section-card{border-radius:32px;padding:38px 20px 30px}
+      body.love-mode .simple-section-card{border-radius:26px 34px 26px 34px;padding:40px 20px 30px}
+      .flower-card{border-radius:34px 26px 34px 26px;padding:40px 20px 32px}
+      .garden-leaf{font-size:23px}
+      .garden-petal{font-size:16px}
+    }
+
   </style>
 </head>
 <body>
@@ -1511,6 +1649,10 @@
 
   <main class="flower-page" id="flowerPage">
     <section class="flower-card">
+      <span class="garden-leaf leaf-a" aria-hidden="true">🌿</span>
+      <span class="garden-leaf leaf-b" aria-hidden="true">🍃</span>
+      <span class="garden-petal petal-a" aria-hidden="true">🌸</span>
+      <span class="garden-petal petal-b" aria-hidden="true">🌷</span>
       <div class="home-kicker">secret garden unlocked</div>
       <div class="big-secret-flower">🌷</div>
       <h1>you found your flower, karamellety.</h1>
@@ -1617,6 +1759,13 @@
   <script>
 
     const SITE_PASSWORD = '24-04-2026';
+
+    function applyAutomaticDayNight(){
+      const hour = new Date().getHours();
+      document.body.classList.toggle('night-mode', hour >= 19 || hour < 6);
+    }
+    applyAutomaticDayNight();
+    setInterval(applyAutomaticDayNight, 60000);
     const homePage = document.getElementById('homePage');
     const quizWrap = document.getElementById('quizWrap');
     const randomNote = document.getElementById('randomNote');
