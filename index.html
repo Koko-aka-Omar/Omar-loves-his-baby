@@ -286,6 +286,152 @@
       75%{transform:translateX(-4px)}
     }
 
+    body.home-mode{
+      background:
+        radial-gradient(circle at 16% 18%, rgba(205,188,255,.38) 0 10%, transparent 29%),
+        radial-gradient(circle at 84% 78%, rgba(255,211,176,.48) 0 11%, transparent 30%),
+        linear-gradient(145deg,#fffafc,#faf6ff 52%,#fff8ef);
+    }
+    .home-page{
+      width:min(92vw,680px);
+      position:relative;
+      z-index:2;
+      margin:auto;
+      animation:homeIn .45s ease;
+    }
+    .home-page.hidden{display:none}
+    @keyframes homeIn{
+      from{opacity:0;transform:translateY(10px) scale(.985)}
+      to{opacity:1;transform:none}
+    }
+    .home-card{
+      position:relative;
+      overflow:hidden;
+      padding:38px 32px 30px;
+      border-radius:32px;
+      background:rgba(255,253,250,.93);
+      border:1px solid rgba(183,157,230,.28);
+      box-shadow:0 22px 65px rgba(137,108,184,.16);
+      backdrop-filter:blur(12px);
+      text-align:center;
+    }
+    .home-card:before,.home-card:after{
+      content:"";
+      position:absolute;
+      border-radius:50%;
+      pointer-events:none;
+      opacity:.42;
+    }
+    .home-card:before{
+      width:150px;height:150px;right:-65px;top:-60px;
+      background:#e8dcff;
+    }
+    .home-card:after{
+      width:120px;height:120px;left:-55px;bottom:-52px;
+      background:#ffe2c9;
+    }
+    .home-kicker{
+      color:#8d6dc2;
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      margin-bottom:9px;
+      position:relative;
+      z-index:1;
+    }
+    .home-title{
+      margin:0;
+      color:#5f476e;
+      font-size:clamp(34px,8vw,50px);
+      line-height:1.02;
+      letter-spacing:-.04em;
+      position:relative;
+      z-index:1;
+    }
+    .home-sub{
+      margin:10px auto 24px;
+      max-width:420px;
+      color:#927d98;
+      line-height:1.55;
+      font-weight:650;
+      position:relative;
+      z-index:1;
+    }
+    .home-stickers{
+      display:flex;
+      justify-content:center;
+      gap:11px;
+      font-size:29px;
+      margin-bottom:18px;
+      position:relative;
+      z-index:1;
+    }
+    .home-stickers span{display:inline-block;animation:float 5.5s ease-in-out infinite}
+    .home-stickers span:nth-child(2){animation-delay:-1.3s}
+    .home-stickers span:nth-child(3){animation-delay:-2.6s}
+    .home-stickers span:nth-child(4){animation-delay:-3.8s}
+    .note-shell{
+      position:relative;
+      z-index:1;
+      margin:0 auto;
+      max-width:520px;
+      padding:18px;
+      border-radius:24px;
+      background:linear-gradient(145deg,#f4edff,#fff4e8);
+      border:1px solid rgba(177,145,224,.22);
+      box-shadow:0 12px 28px rgba(135,104,171,.10);
+    }
+    .note-label{
+      color:#a47ec7;
+      font-size:11px;
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin-bottom:9px;
+    }
+    .random-note{
+      min-height:82px;
+      display:grid;
+      place-items:center;
+      margin:0;
+      color:#66506f;
+      font-size:18px;
+      line-height:1.55;
+      font-weight:850;
+      transition:opacity .18s ease, transform .18s ease;
+    }
+    .random-note.swap{opacity:0;transform:translateY(5px)}
+    .home-actions{
+      display:flex;
+      justify-content:center;
+      gap:11px;
+      flex-wrap:wrap;
+      margin-top:20px;
+      position:relative;
+      z-index:1;
+    }
+    .note-button{
+      color:#76599a;
+      background:#eee5ff;
+      box-shadow:0 8px 18px rgba(133,101,177,.13);
+    }
+    .quiz-button{
+      color:#fff;
+      background:linear-gradient(135deg,#b790e4,#f2a0ba);
+      box-shadow:0 10px 22px rgba(169,120,194,.22);
+    }
+    .home-mini{
+      padding:8px 12px;
+      font-size:12px;
+      color:#8c6aac;
+      background:#f0e8fb;
+      box-shadow:none;
+    }
+    .topline-right{display:flex;align-items:center;gap:8px}
+    .quiz-wrap{display:none}
+    .quiz-wrap.active{display:block}
+
     .wrap{width:min(92vw,640px);position:relative;z-index:2;margin:auto}
     .topline{
       display:flex;align-items:center;justify-content:space-between;
@@ -526,6 +672,10 @@
     }
     @media(max-width:520px){
       body{place-items:start center;padding:14px 0 24px}
+      .home-page{margin:0 auto}
+      .home-card{padding:30px 18px 24px;border-radius:26px}
+      .random-note{min-height:98px;font-size:16px}
+      .note-shell{padding:16px 14px}
       .wrap{margin:0 auto}
       .card{padding:28px 18px 22px;min-height:470px;border-radius:25px}
       .answers{min-height:175px;margin-top:22px}
@@ -590,10 +740,34 @@
 
   <div class="affirmation" id="affirmation"></div>
 
-  <main class="wrap">
+  <main class="home-page" id="homePage">
+    <section class="home-card">
+      <div class="home-kicker">welcome to our little place</div>
+      <div class="home-stickers" aria-hidden="true">
+        <span>🌼</span><span>💌</span><span>🧸</span><span>✨</span>
+      </div>
+      <h1 class="home-title">hi karamellety.</h1>
+      <p class="home-sub">a tiny corner of the internet that is suspiciously specific to one girl.</p>
+
+      <div class="note-shell">
+        <div class="note-label">random note for Queen karamel</div>
+        <p class="random-note" id="randomNote"></p>
+      </div>
+
+      <div class="home-actions">
+        <button class="note-button" id="anotherNote" type="button">another note 💌</button>
+        <button class="quiz-button" id="enterQuiz" type="button">take the quiz 💗</button>
+      </div>
+    </section>
+  </main>
+
+  <main class="wrap quiz-wrap" id="quizWrap">
     <div class="topline">
       <span>for Karmel 💗</span>
-      <span id="count">1 / 5</span>
+      <span class="topline-right">
+        <button class="home-mini" type="button" onclick="showHome()">home 🌼</button>
+        <span id="count">1 / 5</span>
+      </span>
     </div>
     <div class="progress"><div class="bar" id="bar"></div></div>
 
@@ -685,6 +859,21 @@
   <script>
 
     const SITE_PASSWORD = '24-04-2026';
+    const homePage = document.getElementById('homePage');
+    const quizWrap = document.getElementById('quizWrap');
+    const randomNote = document.getElementById('randomNote');
+    const anotherNote = document.getElementById('anotherNote');
+    const enterQuiz = document.getElementById('enterQuiz');
+    const homeNotes = [
+      'why are you here? you should be doing cute girl things not on a random website😂😂',
+      'fun fact: Omar LOVESSSS you baby girl',
+      'karmel is such a cute name, but karamellety is way cuter',
+      'Todays mood: loving karamella',
+      'did you know: omar has a curfew. 11pm SHARP',
+      'i love you so much honey'
+    ];
+    let lastHomeNote = -1;
+
     const loginGate = document.getElementById('loginGate');
     const loginCard = document.getElementById('loginCard');
     const loginForm = document.getElementById('loginForm');
@@ -698,6 +887,46 @@
     const loginSleepEaster = document.getElementById('loginSleepEaster');
     const loginSleepBubble = document.getElementById('loginSleepBubble');
     let loginTeddyClicks = 0;
+
+    function showRandomHomeNote(animate = true){
+      let next = Math.floor(Math.random() * homeNotes.length);
+      if(homeNotes.length > 1){
+        while(next === lastHomeNote){
+          next = Math.floor(Math.random() * homeNotes.length);
+        }
+      }
+      const apply = () => {
+        randomNote.textContent = homeNotes[next];
+        lastHomeNote = next;
+        randomNote.classList.remove('swap');
+      };
+      if(animate && randomNote.textContent){
+        randomNote.classList.add('swap');
+        setTimeout(apply, 180);
+      } else {
+        apply();
+      }
+    }
+
+    function showHome(){
+      quizWrap.classList.remove('active');
+      homePage.classList.remove('hidden');
+      document.body.classList.add('home-mode');
+      showRandomHomeNote(false);
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+
+    function showQuiz(){
+      homePage.classList.add('hidden');
+      quizWrap.classList.add('active');
+      document.body.classList.remove('home-mode');
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+
+    anotherNote.addEventListener('click', () => showRandomHomeNote(true));
+    enterQuiz.addEventListener('click', showQuiz);
+    showRandomHomeNote(false);
+    document.body.classList.add('home-mode');
 
     function loginHeartBurst(){
       const things = ['💗','🌸','💞','🌷'];
@@ -719,11 +948,15 @@
       loginLockIcon.textContent = '🔓';
       loginMessage.textContent = 'authorized user detected: Queen karamel.';
       loginHeartBurst();
-      setTimeout(() => loginGate.classList.add('unlocked'), 1350);
+      setTimeout(() => {
+        loginGate.classList.add('unlocked');
+        showHome();
+      }, 1350);
     }
 
     if(sessionStorage.getItem('karmelUnlocked') === 'yes'){
       loginGate.classList.add('unlocked');
+      showHome();
     } else {
       setTimeout(() => passwordInput.focus(), 250);
     }
