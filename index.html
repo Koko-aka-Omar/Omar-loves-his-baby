@@ -1115,9 +1115,298 @@
       .note-shell:before{right:9px;top:-17px;font-size:27px}
     }
 
+  
+    /* Cute depth pass */
+    @keyframes ambientBob{
+      0%,100%{transform:translate3d(0,0,0) rotate(0deg)}
+      50%{transform:translate3d(0,-16px,0) rotate(4deg)}
+    }
+    @keyframes sparkleDrift{
+      0%,100%{transform:translateY(0) scale(.85);opacity:.18}
+      50%{transform:translateY(-18px) scale(1.15);opacity:.62}
+    }
+    @keyframes stickerWiggle{
+      0%{transform:translateY(0) rotate(0deg) scale(1)}
+      35%{transform:translateY(-6px) rotate(-5deg) scale(1.08)}
+      70%{transform:translateY(-2px) rotate(5deg) scale(1.05)}
+      100%{transform:translateY(-4px) rotate(0deg) scale(1.06)}
+    }
+    @keyframes charmSwing{
+      0%,100%{transform:rotate(-7deg)}
+      50%{transform:rotate(7deg)}
+    }
+    @keyframes edgeGlow{
+      0%,100%{opacity:.22;filter:hue-rotate(0deg)}
+      50%{opacity:.60;filter:hue-rotate(18deg)}
+    }
+    @keyframes tinyHeartFloat{
+      0%{transform:translateY(0) scale(.72) rotate(-8deg);opacity:0}
+      18%{opacity:.34}
+      100%{transform:translateY(-130px) scale(1.05) rotate(10deg);opacity:0}
+    }
+    @keyframes cursorFade{
+      from{transform:translate(-50%,-50%) scale(1);opacity:.55}
+      to{transform:translate(-50%,-70%) scale(.15);opacity:0}
+    }
+
+    .cute-ambience{
+      display:none;
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      overflow:hidden;
+      z-index:0;
+    }
+    body.home-mode .cute-ambience{display:block}
+    .soft-blob{
+      position:absolute;
+      border-radius:50%;
+      filter:blur(42px);
+      opacity:.19;
+      animation:ambientBob 12s ease-in-out infinite;
+    }
+    .blob-one{
+      width:280px;height:220px;left:-70px;top:35%;
+      background:#f7b8cf;
+    }
+    .blob-two{
+      width:320px;height:250px;right:-100px;top:42%;
+      background:#cfc0fa;
+      animation-duration:15s;
+      animation-delay:-5s;
+    }
+    .blob-three{
+      width:230px;height:190px;left:38%;bottom:-70px;
+      background:#f9e4a7;
+      animation-duration:17s;
+      animation-delay:-8s;
+    }
+    .soft-sparkle{
+      position:absolute;
+      color:#b78fc7;
+      font-weight:900;
+      text-shadow:0 0 14px rgba(255,255,255,.95);
+      animation:sparkleDrift 6s ease-in-out infinite;
+      opacity:.3;
+    }
+    .s1{left:9%;top:17%;font-size:18px}
+    .s2{left:18%;top:70%;font-size:24px;animation-delay:-2s}
+    .s3{right:12%;top:28%;font-size:20px;animation-delay:-4s}
+    .s4{right:20%;bottom:13%;font-size:27px;animation-delay:-1s}
+    .s5{left:35%;top:9%;font-size:15px;animation-delay:-3s}
+    .s6{right:38%;bottom:7%;font-size:23px;animation-delay:-5s}
+    .s7{left:6%;bottom:29%;font-size:17px;animation-delay:-1.5s}
+    .s8{right:6%;top:65%;font-size:25px;animation-delay:-3.5s}
+
+    .home-card{
+      box-shadow:
+        0 24px 65px rgba(165,107,139,.15),
+        0 0 0 7px rgba(255,255,255,.38),
+        inset 0 0 30px rgba(255,255,255,.38);
+    }
+    .home-card:focus-within{box-shadow:0 24px 70px rgba(165,107,139,.18),0 0 0 7px rgba(255,255,255,.42)}
+    .edge-shimmer{
+      position:absolute;
+      inset:2px;
+      border-radius:34px;
+      pointer-events:none;
+      z-index:0;
+      border:1px solid transparent;
+      background:linear-gradient(120deg,rgba(247,184,207,.08),rgba(221,208,255,.70),rgba(255,240,184,.48),rgba(247,184,207,.08)) border-box;
+      -webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);
+      -webkit-mask-composite:xor;
+      mask-composite:exclude;
+      animation:edgeGlow 5.5s ease-in-out infinite;
+    }
+    .hanging-charm{
+      position:absolute;
+      top:-1px;
+      left:50%;
+      width:2px;
+      height:42px;
+      background:linear-gradient(#d9b9ca,#f3d7e2);
+      transform-origin:top center;
+      z-index:2;
+      animation:charmSwing 3.6s ease-in-out infinite;
+    }
+    .hanging-charm span{
+      position:absolute;
+      left:50%;
+      bottom:-19px;
+      transform:translateX(-50%);
+      font-size:22px;
+      filter:drop-shadow(0 5px 7px rgba(177,104,143,.18));
+    }
+    .corner-doodle{
+      position:absolute;
+      z-index:2;
+      pointer-events:none;
+      filter:drop-shadow(0 6px 8px rgba(150,90,120,.12));
+      opacity:.9;
+    }
+    .doodle-one{left:15px;top:15px;font-size:24px;transform:rotate(-12deg)}
+    .doodle-two{right:14px;bottom:13px;font-size:25px;transform:rotate(10deg)}
+    .doodle-three{left:20px;bottom:18px;font-size:23px;color:#c29bd4}
+
+    .home-stickers span{
+      position:relative;
+      overflow:visible;
+      transition:box-shadow .2s ease,filter .2s ease;
+    }
+    .home-stickers span:nth-child(1){rotate:-4deg}
+    .home-stickers span:nth-child(2){rotate:3deg}
+    .home-stickers span:nth-child(3){rotate:-2deg}
+    .home-stickers span:nth-child(4){rotate:5deg}
+    .home-stickers span:hover,
+    .home-stickers span:focus{
+      animation:stickerWiggle .55s ease both;
+      outline:none;
+      filter:drop-shadow(0 7px 12px rgba(158,99,133,.18));
+    }
+    .home-stickers span::after{
+      content:attr(data-label);
+      position:absolute;
+      left:50%;
+      top:calc(100% + 8px);
+      transform:translateX(-50%) translateY(-4px);
+      white-space:nowrap;
+      padding:5px 8px;
+      border-radius:999px;
+      background:rgba(255,253,249,.96);
+      border:1px solid rgba(234,191,210,.58);
+      color:#846276;
+      font-size:10px;
+      font-weight:900;
+      letter-spacing:.04em;
+      box-shadow:0 6px 14px rgba(137,92,116,.10);
+      opacity:0;
+      pointer-events:none;
+      transition:.18s ease;
+    }
+    .home-stickers span:hover::after,
+    .home-stickers span:focus::after{
+      opacity:1;
+      transform:translateX(-50%) translateY(0);
+    }
+
+    .note-shell{
+      transform:rotate(-.25deg);
+      background:
+        linear-gradient(rgba(255,255,255,.58),rgba(255,255,255,.58)),
+        repeating-linear-gradient(0deg,#fff9fb 0 30px,#f4d6e2 31px 32px);
+      box-shadow:
+        0 14px 30px rgba(163,109,138,.12),
+        inset 0 0 24px rgba(255,255,255,.48);
+    }
+    .tape{
+      position:absolute;
+      top:-8px;
+      width:76px;
+      height:22px;
+      background:rgba(255,238,197,.64);
+      border:1px solid rgba(225,202,154,.26);
+      box-shadow:0 3px 7px rgba(130,100,70,.05);
+      backdrop-filter:blur(1px);
+      z-index:2;
+    }
+    .tape-left{left:17%;transform:rotate(-6deg)}
+    .tape-right{right:17%;transform:rotate(5deg)}
+    .note-shell:before{z-index:3}
+    .random-note{font-family:ui-rounded,"SF Pro Rounded","Segoe UI",system-ui,sans-serif}
+
+    .home-actions button{
+      box-shadow:0 10px 22px rgba(169,120,194,.17),0 0 0 rgba(247,184,207,0);
+    }
+    .home-actions button:hover,
+    .notes-back:hover{
+      box-shadow:
+        0 12px 25px rgba(169,120,194,.19),
+        0 0 24px rgba(247,184,207,.28),
+        0 0 16px rgba(221,208,255,.22);
+    }
+
+    body.notes-mode{
+      background:
+        radial-gradient(circle at 16% 20%,rgba(255,218,232,.70),transparent 28%),
+        radial-gradient(circle at 82% 76%,rgba(255,239,205,.62),transparent 30%),
+        linear-gradient(145deg,#fffaf4,#fff5f8 55%,#fff9ef);
+    }
+    body.games-mode{
+      background:
+        radial-gradient(circle at 16% 18%,rgba(221,208,255,.72),transparent 29%),
+        radial-gradient(circle at 84% 80%,rgba(255,240,184,.58),transparent 29%),
+        linear-gradient(145deg,#fffaf6,#faf7ff 55%,#fffbed);
+    }
+    body.love-mode{
+      background:
+        radial-gradient(circle at 18% 20%,rgba(255,210,226,.78),transparent 29%),
+        radial-gradient(circle at 84% 75%,rgba(237,218,255,.70),transparent 31%),
+        linear-gradient(145deg,#fff8fb,#fff3f8 52%,#fbf7ff);
+    }
+    body.notes-mode .notes-card{border-color:rgba(247,184,207,.58)}
+    body.games-mode .simple-section-card{border-color:rgba(205,188,255,.62)}
+    body.love-mode .simple-section-card{border-color:rgba(247,184,207,.62)}
+
+    .paper-grain{
+      pointer-events:none;
+      position:absolute;
+      inset:0;
+      border-radius:inherit;
+      opacity:.11;
+      background-image:
+        radial-gradient(circle at 20% 30%,#765667 .45px,transparent .7px),
+        radial-gradient(circle at 70% 65%,#765667 .4px,transparent .65px);
+      background-size:17px 19px,23px 21px;
+      mix-blend-mode:multiply;
+      z-index:0;
+    }
+
+    .ambient-heart{
+      position:fixed;
+      bottom:-30px;
+      pointer-events:none;
+      z-index:1;
+      color:#eaa2bc;
+      filter:drop-shadow(0 5px 8px rgba(173,105,140,.10));
+      animation:tinyHeartFloat 5.6s ease-out forwards;
+    }
+    .cursor-spark{
+      position:fixed;
+      z-index:200;
+      pointer-events:none;
+      font-size:11px;
+      color:#d690b0;
+      animation:cursorFade .72s ease-out forwards;
+    }
+
+    @media(max-width:520px){
+      .corner-doodle{opacity:.72}
+      .hanging-charm{height:34px}
+      .home-stickers{gap:9px}
+      .home-stickers span::after{display:none}
+      .tape{width:58px}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .soft-blob,.soft-sparkle,.hanging-charm,.edge-shimmer{animation:none!important}
+      .ambient-heart,.cursor-spark{display:none!important}
+    }
+
   </style>
 </head>
 <body>
+  <div class="cute-ambience" id="cuteAmbience" aria-hidden="true">
+    <span class="soft-blob blob-one"></span>
+    <span class="soft-blob blob-two"></span>
+    <span class="soft-blob blob-three"></span>
+    <span class="soft-sparkle s1">✦</span>
+    <span class="soft-sparkle s2">·</span>
+    <span class="soft-sparkle s3">✧</span>
+    <span class="soft-sparkle s4">·</span>
+    <span class="soft-sparkle s5">✦</span>
+    <span class="soft-sparkle s6">·</span>
+    <span class="soft-sparkle s7">✧</span>
+    <span class="soft-sparkle s8">·</span>
+  </div>
 
   <div class="login-gate" id="loginGate">
     <div class="login-card" id="loginCard">
@@ -1170,14 +1459,22 @@
 
   <main class="home-page" id="homePage">
     <section class="home-card">
+      <div class="paper-grain" aria-hidden="true"></div>
+      <div class="edge-shimmer" aria-hidden="true"></div>
+      <div class="hanging-charm" aria-hidden="true"><span>💗</span></div>
+      <span class="corner-doodle doodle-one" aria-hidden="true">🎀</span>
+      <span class="corner-doodle doodle-two" aria-hidden="true">🌷</span>
+      <span class="corner-doodle doodle-three" aria-hidden="true">✦</span>
       <div class="home-kicker">welcome to our little place</div>
       <div class="home-stickers" aria-hidden="true">
-        <span class="flower-trigger" id="flowerTrigger" role="button" tabindex="0" aria-label="Flower">🌼</span><span class="note-trigger" id="noteTrigger" role="button" tabindex="0" aria-label="Notes and diary">💌</span><span class="games-trigger" id="gamesTrigger" role="button" tabindex="0" aria-label="Secret games and puzzles">🧸</span><span class="love-trigger" id="loveTrigger" role="button" tabindex="0" aria-label="Things I love about you">✨</span>
+        <span class="flower-trigger" id="flowerTrigger" role="button" tabindex="0" aria-label="Flower" data-label="secret">🌼</span><span class="note-trigger" id="noteTrigger" role="button" tabindex="0" aria-label="Notes and diary" data-label="diary">💌</span><span class="games-trigger" id="gamesTrigger" role="button" tabindex="0" aria-label="Secret games and puzzles" data-label="games">🧸</span><span class="love-trigger" id="loveTrigger" role="button" tabindex="0" aria-label="Things I love about you" data-label="things i love">✨</span>
       </div>
       <h1 class="home-title">hi karamellety.</h1>
       <p class="home-sub">a tiny corner of the internet that is specific to one girl.</p>
 
       <div class="note-shell">
+        <span class="tape tape-left" aria-hidden="true"></span>
+        <span class="tape tape-right" aria-hidden="true"></span>
         <div class="note-label">random quote for my cupcake karamella</div>
         <p class="random-note" id="randomNote"></p>
         <div class="quote-counter" id="quoteCounter">quotes found: 0 / 39</div>
@@ -1192,6 +1489,7 @@
 
   <main class="notes-page" id="notesPage">
     <section class="notes-card">
+      <div class="paper-grain" aria-hidden="true"></div>
       <div class="home-kicker">notes &amp; diary</div>
       <div class="notes-icon">💌</div>
       <h1>site under construction 🚧</h1>
@@ -1202,6 +1500,8 @@
 
   <main class="simple-section-page" id="gamesPage">
     <section class="simple-section-card">
+      <div class="paper-grain" aria-hidden="true"></div>
+      <div class="paper-grain" aria-hidden="true"></div>
       <div class="home-kicker">secret games &amp; puzzles</div>
       <div class="simple-section-icon">🧸🧩</div>
       <h1>site under construction 🚧</h1>
@@ -1492,6 +1792,11 @@
       }
     }
 
+    function setCuteSectionMode(mode){
+      document.body.classList.remove('notes-mode','games-mode','love-mode');
+      if(mode) document.body.classList.add(mode);
+    }
+
     function showHome(){
       quizWrap.classList.remove('active');
       flowerPage.classList.remove('active');
@@ -1500,6 +1805,7 @@
       lovePage.classList.remove('active');
       homePage.classList.remove('hidden');
       document.body.classList.remove('flower-mode');
+      setCuteSectionMode('');
       document.body.classList.add('home-mode');
       showRandomHomeNote(false);
       window.scrollTo({top:0,behavior:'smooth'});
@@ -1513,6 +1819,7 @@
       lovePage.classList.remove('active');
       notesPage.classList.add('active');
       document.body.classList.remove('flower-mode');
+      setCuteSectionMode('notes-mode');
       document.body.classList.add('home-mode');
       window.scrollTo({top:0,behavior:'smooth'});
     }
@@ -1525,6 +1832,7 @@
       lovePage.classList.remove('active');
       gamesPage.classList.add('active');
       document.body.classList.remove('flower-mode');
+      setCuteSectionMode('games-mode');
       document.body.classList.add('home-mode');
       window.scrollTo({top:0,behavior:'smooth'});
     }
@@ -1537,6 +1845,7 @@
       gamesPage.classList.remove('active');
       lovePage.classList.add('active');
       document.body.classList.remove('flower-mode');
+      setCuteSectionMode('love-mode');
       document.body.classList.add('home-mode');
       window.scrollTo({top:0,behavior:'smooth'});
     }
@@ -1549,6 +1858,7 @@
       lovePage.classList.remove('active');
       quizWrap.classList.add('active');
       document.body.classList.remove('flower-mode');
+      setCuteSectionMode('');
       document.body.classList.remove('home-mode');
       window.scrollTo({top:0,behavior:'smooth'});
     }
@@ -1575,6 +1885,7 @@
         lovePage.classList.remove('active');
         quizWrap.classList.remove('active');
         flowerPage.classList.add('active');
+        setCuteSectionMode('');
         document.body.classList.remove('home-mode');
         document.body.classList.add('flower-mode');
         burstHearts(['🌷','🌸','💗','🌼']);
@@ -1631,6 +1942,43 @@
     updateQuoteCounter();
     showRandomHomeNote(false);
     document.body.classList.add('home-mode');
+
+    function spawnAmbientHeart(){
+      if(!document.body.classList.contains('home-mode')) return;
+      const h = document.createElement('span');
+      h.className = 'ambient-heart';
+      h.textContent = Math.random() > .35 ? '♡' : '♥';
+      h.style.left = (5 + Math.random()*90) + 'vw';
+      h.style.fontSize = (10 + Math.random()*8) + 'px';
+      h.style.animationDuration = (4.8 + Math.random()*2.2) + 's';
+      document.body.appendChild(h);
+      setTimeout(() => h.remove(), 7500);
+    }
+
+    function scheduleAmbientHeart(){
+      setTimeout(() => {
+        spawnAmbientHeart();
+        scheduleAmbientHeart();
+      }, 10000 + Math.random()*9000);
+    }
+    scheduleAmbientHeart();
+
+    if(window.matchMedia('(pointer:fine)').matches){
+      let lastCursorSpark = 0;
+      window.addEventListener('mousemove', e => {
+        if(!document.body.classList.contains('home-mode')) return;
+        const now = Date.now();
+        if(now - lastCursorSpark < 85) return;
+        lastCursorSpark = now;
+        const s = document.createElement('span');
+        s.className = 'cursor-spark';
+        s.textContent = Math.random() > .5 ? '✦' : '♡';
+        s.style.left = e.clientX + 'px';
+        s.style.top = e.clientY + 'px';
+        document.body.appendChild(s);
+        setTimeout(() => s.remove(), 800);
+      });
+    }
 
     function loginHeartBurst(){
       const things = ['💗','🌸','💞','🌷'];
