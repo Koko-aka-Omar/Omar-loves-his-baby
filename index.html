@@ -1131,10 +1131,6 @@
       70%{transform:translateY(-2px) rotate(5deg) scale(1.05)}
       100%{transform:translateY(-4px) rotate(0deg) scale(1.06)}
     }
-    @keyframes charmSwing{
-      0%,100%{transform:rotate(-7deg)}
-      50%{transform:rotate(7deg)}
-    }
     @keyframes edgeGlow{
       0%,100%{opacity:.22;filter:hue-rotate(0deg)}
       50%{opacity:.60;filter:hue-rotate(18deg)}
@@ -1217,25 +1213,6 @@
       -webkit-mask-composite:xor;
       mask-composite:exclude;
       animation:edgeGlow 5.5s ease-in-out infinite;
-    }
-    .hanging-charm{
-      position:absolute;
-      top:-1px;
-      left:50%;
-      width:2px;
-      height:42px;
-      background:linear-gradient(#d9b9ca,#f3d7e2);
-      transform-origin:top center;
-      z-index:2;
-      animation:charmSwing 3.6s ease-in-out infinite;
-    }
-    .hanging-charm span{
-      position:absolute;
-      left:50%;
-      bottom:-19px;
-      transform:translateX(-50%);
-      font-size:22px;
-      filter:drop-shadow(0 5px 7px rgba(177,104,143,.18));
     }
     .corner-doodle{
       position:absolute;
@@ -1381,13 +1358,12 @@
 
     @media(max-width:520px){
       .corner-doodle{opacity:.72}
-      .hanging-charm{height:34px}
       .home-stickers{gap:9px}
       .home-stickers span::after{display:none}
       .tape{width:58px}
     }
     @media(prefers-reduced-motion:reduce){
-      .soft-blob,.soft-sparkle,.hanging-charm,.edge-shimmer{animation:none!important}
+      .soft-blob,.soft-sparkle,.edge-shimmer{animation:none!important}
       .ambient-heart,.cursor-spark{display:none!important}
     }
 
@@ -1461,7 +1437,6 @@
     <section class="home-card">
       <div class="paper-grain" aria-hidden="true"></div>
       <div class="edge-shimmer" aria-hidden="true"></div>
-      <div class="hanging-charm" aria-hidden="true"><span>💗</span></div>
       <span class="corner-doodle doodle-one" aria-hidden="true">🎀</span>
       <span class="corner-doodle doodle-two" aria-hidden="true">🌷</span>
       <span class="corner-doodle doodle-three" aria-hidden="true">✦</span>
