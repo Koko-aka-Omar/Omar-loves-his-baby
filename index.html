@@ -371,6 +371,110 @@
     .home-stickers span:nth-child(2){animation-delay:-1.3s}
     .home-stickers span:nth-child(3){animation-delay:-2.6s}
     .home-stickers span:nth-child(4){animation-delay:-3.8s}
+    .flower-trigger{cursor:pointer;user-select:none}
+    .flower-trigger:hover{transform:translateY(-3px) scale(1.08)}
+    .flower-puzzle{
+      position:fixed;
+      inset:0;
+      z-index:80;
+      display:none;
+      place-items:center;
+      padding:22px;
+      background:rgba(82,61,93,.20);
+      backdrop-filter:blur(8px);
+    }
+    .flower-puzzle.show{display:grid}
+    .flower-puzzle-card{
+      width:min(92vw,390px);
+      padding:28px 24px 24px;
+      border-radius:28px;
+      text-align:center;
+      background:#fffdf8;
+      border:1px solid rgba(191,157,225,.32);
+      box-shadow:0 20px 60px rgba(105,78,132,.20);
+    }
+    .flower-puzzle-card .puzzle-emoji{font-size:44px;margin-bottom:8px}
+    .flower-puzzle-card h2{margin:0 0 9px;color:#654f71}
+    .flower-puzzle-card p{margin:0 0 16px;color:#8d7894;line-height:1.5;font-weight:700}
+    .flower-code{
+      width:100%;
+      border:1.5px solid #d9c4ee;
+      background:#fff;
+      border-radius:16px;
+      padding:13px 15px;
+      outline:none;
+      text-align:center;
+      font:900 18px/1 ui-rounded,"SF Pro Rounded","Segoe UI",system-ui,sans-serif;
+      color:#674e76;
+      letter-spacing:.1em;
+    }
+    .flower-code:focus{box-shadow:0 0 0 4px rgba(183,144,228,.14)}
+    .puzzle-actions{display:flex;justify-content:center;gap:10px;margin-top:14px;flex-wrap:wrap}
+    .puzzle-open{color:#fff;background:linear-gradient(135deg,#b58be0,#ef9fbd)}
+    .puzzle-close{color:#7f6691;background:#eee6f7}
+    .puzzle-msg{min-height:18px;margin-top:11px;color:#b05f85;font-size:13px;font-weight:850}
+
+    body.flower-mode{
+      background:
+        radial-gradient(circle at 20% 18%, rgba(255,209,221,.45), transparent 28%),
+        radial-gradient(circle at 82% 80%, rgba(205,228,189,.55), transparent 30%),
+        linear-gradient(145deg,#fffdf8,#fff5f8 48%,#f8fff5);
+    }
+    .flower-page{
+      display:none;
+      width:min(92vw,680px);
+      margin:auto;
+      position:relative;
+      z-index:2;
+      animation:homeIn .45s ease;
+    }
+    .flower-page.active{display:block}
+    .flower-card{
+      text-align:center;
+      padding:42px 28px 30px;
+      border-radius:34px;
+      background:rgba(255,254,249,.94);
+      border:1px solid rgba(220,160,185,.26);
+      box-shadow:0 22px 65px rgba(132,97,121,.17);
+      overflow:hidden;
+      position:relative;
+    }
+    .flower-card:before,.flower-card:after{
+      content:"";
+      position:absolute;
+      border-radius:50%;
+      pointer-events:none;
+      opacity:.42;
+    }
+    .flower-card:before{width:160px;height:160px;right:-70px;top:-65px;background:#ffdbe7}
+    .flower-card:after{width:130px;height:130px;left:-55px;bottom:-58px;background:#dff0d3}
+    .big-secret-flower{
+      font-size:clamp(120px,30vw,190px);
+      line-height:1;
+      margin:8px 0 14px;
+      filter:drop-shadow(0 16px 24px rgba(201,99,139,.20));
+      animation:pulse 2.1s ease-in-out infinite;
+      position:relative;
+      z-index:1;
+    }
+    .flower-card h1{position:relative;z-index:1;color:#694c61;margin-bottom:10px}
+    .flower-secret-copy{
+      position:relative;
+      z-index:1;
+      max-width:450px;
+      margin:0 auto 18px;
+      color:#947483;
+      line-height:1.65;
+      font-weight:700;
+    }
+    .flower-back{
+      position:relative;
+      z-index:1;
+      color:#fff;
+      background:linear-gradient(135deg,#ef93b5,#a98bd7);
+      box-shadow:0 9px 20px rgba(173,118,165,.20);
+    }
+
     .note-shell{
       position:relative;
       z-index:1;
@@ -744,7 +848,7 @@
     <section class="home-card">
       <div class="home-kicker">welcome to our little place</div>
       <div class="home-stickers" aria-hidden="true">
-        <span>🌼</span><span>💌</span><span>🧸</span><span>✨</span>
+        <span class="flower-trigger" id="flowerTrigger" role="button" tabindex="0" aria-label="Flower">🌼</span><span>💌</span><span>🧸</span><span>✨</span>
       </div>
       <h1 class="home-title">hi karamellety.</h1>
       <p class="home-sub">a tiny corner of the internet that is suspiciously specific to one girl.</p>
@@ -758,6 +862,30 @@
         <button class="note-button" id="anotherNote" type="button">another quote 💌</button>
         <button class="quiz-button" id="enterQuiz" type="button">take the quiz 💗</button>
       </div>
+    </section>
+  </main>
+
+  <div class="flower-puzzle" id="flowerPuzzle" aria-hidden="true">
+    <div class="flower-puzzle-card">
+      <div class="puzzle-emoji">🌱👀</div>
+      <h2>you found something...</h2>
+      <p>complete this very suspicious little code:<br><strong>2 &nbsp; 2 &nbsp; _</strong></p>
+      <input class="flower-code" id="flowerCode" type="text" inputmode="numeric" maxlength="1" placeholder="?" aria-label="Puzzle answer" />
+      <div class="puzzle-actions">
+        <button class="puzzle-open" id="flowerPuzzleOpen" type="button">try it 🌷</button>
+        <button class="puzzle-close" id="flowerPuzzleClose" type="button">hmmm nevermind</button>
+      </div>
+      <div class="puzzle-msg" id="flowerPuzzleMsg"></div>
+    </div>
+  </div>
+
+  <main class="flower-page" id="flowerPage">
+    <section class="flower-card">
+      <div class="home-kicker">secret garden unlocked</div>
+      <div class="big-secret-flower">🌷</div>
+      <h1>you found your flower, karamellety.</h1>
+      <p class="flower-secret-copy">i told you maybe there was a hidden flower somewhere on this site 😂🌷 this one is yours baby girl 💗</p>
+      <button class="flower-back" type="button" onclick="showHome()">back home 💗</button>
     </section>
   </main>
 
@@ -864,6 +992,14 @@
     const randomNote = document.getElementById('randomNote');
     const anotherNote = document.getElementById('anotherNote');
     const enterQuiz = document.getElementById('enterQuiz');
+    const flowerTrigger = document.getElementById('flowerTrigger');
+    const flowerPuzzle = document.getElementById('flowerPuzzle');
+    const flowerCode = document.getElementById('flowerCode');
+    const flowerPuzzleOpen = document.getElementById('flowerPuzzleOpen');
+    const flowerPuzzleClose = document.getElementById('flowerPuzzleClose');
+    const flowerPuzzleMsg = document.getElementById('flowerPuzzleMsg');
+    const flowerPage = document.getElementById('flowerPage');
+    let flowerClicks = 0;
     const homeNotes = [
       "why are you here? you should be doing cute girl things not on a random website😂😂 💗",
       "fun fact: Omar LOVESSSS you baby girl 💗🧸",
@@ -943,7 +1079,9 @@
 
     function showHome(){
       quizWrap.classList.remove('active');
+      flowerPage.classList.remove('active');
       homePage.classList.remove('hidden');
+      document.body.classList.remove('flower-mode');
       document.body.classList.add('home-mode');
       showRandomHomeNote(false);
       window.scrollTo({top:0,behavior:'smooth'});
@@ -951,10 +1089,60 @@
 
     function showQuiz(){
       homePage.classList.add('hidden');
+      flowerPage.classList.remove('active');
       quizWrap.classList.add('active');
+      document.body.classList.remove('flower-mode');
       document.body.classList.remove('home-mode');
       window.scrollTo({top:0,behavior:'smooth'});
     }
+
+    function openFlowerPuzzle(){
+      flowerPuzzle.classList.add('show');
+      flowerPuzzle.setAttribute('aria-hidden','false');
+      flowerPuzzleMsg.textContent = '';
+      flowerCode.value = '';
+      setTimeout(() => flowerCode.focus(), 120);
+    }
+
+    function closeFlowerPuzzle(){
+      flowerPuzzle.classList.remove('show');
+      flowerPuzzle.setAttribute('aria-hidden','true');
+    }
+
+    function unlockFlowerPage(){
+      if(flowerCode.value.trim() === '4'){
+        closeFlowerPuzzle();
+        homePage.classList.add('hidden');
+        quizWrap.classList.remove('active');
+        flowerPage.classList.add('active');
+        document.body.classList.remove('home-mode');
+        document.body.classList.add('flower-mode');
+        burstHearts(['🌷','🌸','💗','🌼']);
+        window.scrollTo({top:0,behavior:'smooth'});
+      } else {
+        flowerPuzzleMsg.textContent = 'closeeee 😂 think of something you already know 👀';
+        flowerCode.select();
+      }
+    }
+
+    flowerTrigger.addEventListener('click', () => {
+      flowerClicks++;
+      if(flowerClicks >= 3){
+        flowerClicks = 0;
+        openFlowerPuzzle();
+      }
+    });
+    flowerTrigger.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        flowerTrigger.click();
+      }
+    });
+    flowerPuzzleOpen.addEventListener('click', unlockFlowerPage);
+    flowerPuzzleClose.addEventListener('click', closeFlowerPuzzle);
+    flowerCode.addEventListener('keydown', e => {
+      if(e.key === 'Enter') unlockFlowerPage();
+    });
 
     anotherNote.addEventListener('click', () => showRandomHomeNote(true));
     enterQuiz.addEventListener('click', showQuiz);
