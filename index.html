@@ -865,6 +865,11 @@
     }
   
     /* Strawberry milk + lavender homepage refresh */
+    @keyframes baseGradientDrift{
+      0%,100%{background-position:0% 35%}
+      35%{background-position:45% 55%}
+      70%{background-position:100% 40%}
+    }
     @keyframes glowPinkDrift{
       0%,100%{transform:translate3d(-8vw,-6vh,0) scale(1)}
       35%{transform:translate3d(18vw,10vh,0) scale(1.12)}
@@ -886,7 +891,17 @@
       70%{transform:translate3d(-10vw,-26vh,0) scale(.96)}
     }
     body.home-mode{
-      background:linear-gradient(145deg,#fffaf4 0%,#fff5f9 44%,#faf7ff 72%,#fffaf4 100%);
+      background:
+        linear-gradient(
+          145deg,
+          #fffaf4 0%,
+          #fff3f8 28%,
+          #faf6ff 55%,
+          #fff8ef 78%,
+          #fffaf4 100%
+        );
+      background-size:220% 220%;
+      animation:baseGradientDrift 34s ease-in-out infinite;
       position:relative;
       isolation:isolate;
     }
