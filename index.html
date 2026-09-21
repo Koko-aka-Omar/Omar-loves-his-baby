@@ -1505,6 +1505,407 @@
       .garden-petal{font-size:16px}
     }
 
+  
+    /* Phone-first polish */
+    @media(max-width:600px){
+      html{
+        min-height:100%;
+        background:#fff7fa;
+      }
+      body{
+        min-height:100svh;
+        display:block;
+        padding:
+          max(12px,env(safe-area-inset-top))
+          0
+          max(22px,env(safe-area-inset-bottom));
+        -webkit-text-size-adjust:100%;
+      }
+
+      .home-page,
+      .notes-page,
+      .simple-section-page,
+      .flower-page,
+      .wrap{
+        width:calc(100% - 24px);
+        max-width:none;
+        margin:0 auto;
+      }
+
+      /* Keep decoration cute but out of the way */
+      .floaty{opacity:.34;filter:none}
+      .f5,.f6,.f7,.f8,.f9,.f10{display:none}
+      .soft-blob{filter:blur(54px);opacity:.12}
+      .soft-sparkle{opacity:.22}
+      .s2,.s4,.s6,.s8{display:none}
+      .corner-doodle{font-size:18px;opacity:.56}
+      .doodle-one{left:12px;top:12px}
+      .doodle-two{right:12px;bottom:12px}
+      .doodle-three{left:14px;bottom:14px}
+
+      /* Login feels like a native phone card */
+      .login-gate{
+        align-items:center;
+        padding:
+          max(16px,env(safe-area-inset-top))
+          14px
+          max(20px,env(safe-area-inset-bottom));
+      }
+      .login-card{
+        width:100%;
+        max-width:410px;
+        padding:30px 18px 26px;
+        border-radius:28px;
+        box-shadow:0 18px 45px rgba(201,99,139,.16);
+      }
+      .login-lock{
+        width:78px;
+        height:64px;
+        margin-bottom:15px;
+        font-size:30px;
+        border-radius:21px;
+      }
+      .login-card h1{
+        font-size:clamp(29px,9vw,38px);
+        line-height:1.02;
+      }
+      .login-copy{
+        font-size:14px;
+        line-height:1.52;
+        margin-bottom:18px;
+      }
+      .password-input{
+        min-height:52px;
+        border-radius:17px;
+        font-size:16px;
+      }
+      .login-button{
+        min-height:50px;
+        border-radius:17px;
+        margin-top:14px;
+      }
+      .login-teddy-easter,.login-sleep-easter{
+        width:43px;height:43px;font-size:22px;
+      }
+      .login-secret-bubble,.login-sleep-bubble{
+        max-width:min(270px,76vw);
+        font-size:12px;
+      }
+
+      /* Homepage composition */
+      .home-card{
+        padding:31px 15px 22px;
+        border-radius:27px;
+        box-shadow:
+          0 18px 42px rgba(165,107,139,.13),
+          0 0 0 4px rgba(255,255,255,.30),
+          inset 0 0 22px rgba(255,255,255,.30);
+      }
+      .edge-shimmer{
+        inset:1px;
+        border-radius:26px;
+      }
+      .home-kicker{
+        font-size:10px;
+        letter-spacing:.11em;
+        margin-bottom:8px;
+      }
+      .home-title{
+        font-size:clamp(32px,10vw,42px);
+        line-height:1;
+        letter-spacing:-.035em;
+      }
+      .home-sub{
+        max-width:320px;
+        margin:9px auto 17px;
+        font-size:14px;
+        line-height:1.48;
+      }
+      .home-stickers{
+        display:grid;
+        grid-template-columns:repeat(4,1fr);
+        width:min(100%,278px);
+        margin:0 auto 17px;
+        gap:9px;
+      }
+      .home-stickers span{
+        width:100%;
+        aspect-ratio:1;
+        height:auto;
+        max-width:58px;
+        justify-self:center;
+        border-radius:17px;
+        font-size:25px;
+        touch-action:manipulation;
+      }
+      .home-stickers span:active{
+        transform:scale(.91) rotate(0deg);
+      }
+
+      .note-shell{
+        width:100%;
+        padding:18px 13px 15px;
+        border-radius:21px;
+        transform:none;
+      }
+      .note-shell:before{
+        font-size:24px;
+        right:8px;
+        top:-14px;
+      }
+      .tape{
+        width:50px;
+        height:17px;
+        top:-6px;
+      }
+      .tape-left{left:13%}
+      .tape-right{right:13%}
+      .note-label{
+        font-size:9.5px;
+        margin-bottom:7px;
+      }
+      .random-note{
+        min-height:96px;
+        padding:2px 4px;
+        font-size:16px;
+        line-height:1.48;
+        text-wrap:pretty;
+      }
+      .quote-counter{
+        margin-top:10px;
+        padding:6px 9px;
+        font-size:10.5px;
+      }
+      .home-actions{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:9px;
+        margin-top:15px;
+      }
+      .home-actions button{
+        width:100%;
+        min-height:48px;
+        padding:12px 11px;
+        font-size:13px;
+        white-space:normal;
+        line-height:1.15;
+      }
+
+      /* Section cards */
+      .notes-card,
+      body.games-mode .simple-section-card,
+      body.love-mode .simple-section-card,
+      .flower-card{
+        width:100%;
+        min-height:calc(100svh - 58px);
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        padding:34px 19px 28px;
+        box-shadow:0 18px 42px rgba(137,108,184,.13);
+      }
+      .notes-card{border-radius:22px 29px 22px 29px}
+      body.games-mode .simple-section-card{border-radius:32px}
+      body.love-mode .simple-section-card{border-radius:25px 34px 25px 34px}
+      .flower-card{border-radius:31px 24px 31px 24px}
+
+      .notes-icon,.simple-section-icon{
+        font-size:64px;
+        margin-bottom:9px;
+      }
+      .notes-card h1,.simple-section-card h1,.flower-card h1{
+        font-size:clamp(27px,8.6vw,36px);
+        line-height:1.06;
+      }
+      .notes-card p,.simple-section-card p,.flower-secret-copy{
+        font-size:14px;
+        line-height:1.55;
+        margin-bottom:18px;
+      }
+      .notes-back,.flower-back{
+        min-height:48px;
+        padding:13px 18px;
+      }
+
+      .big-secret-flower{
+        font-size:clamp(112px,39vw,154px);
+        margin:3px 0 10px;
+      }
+      .garden-leaf{font-size:21px}
+      .garden-petal{font-size:15px}
+      .leaf-a{left:12px;top:14px}
+      .leaf-b{right:12px;bottom:16px}
+      .petal-a{right:14px;top:18px}
+      .petal-b{left:14px;bottom:18px}
+
+      /* Puzzle modal */
+      .flower-puzzle{
+        padding:
+          max(16px,env(safe-area-inset-top))
+          14px
+          max(18px,env(safe-area-inset-bottom));
+      }
+      .flower-puzzle-card{
+        width:100%;
+        max-width:390px;
+        padding:25px 18px 20px;
+        border-radius:24px;
+      }
+      .flower-code{
+        min-height:50px;
+        font-size:18px;
+      }
+      .puzzle-actions{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:8px;
+      }
+      .puzzle-actions button{
+        width:100%;
+        min-height:46px;
+        padding:12px 10px;
+        font-size:13px;
+        white-space:normal;
+      }
+
+      /* Quiz becomes a clean full-width phone card */
+      .quiz-wrap{
+        padding-top:2px;
+      }
+      .topline{
+        margin:0 4px 8px;
+        font-size:12px;
+      }
+      .home-mini{
+        min-height:38px;
+        padding:9px 11px;
+        font-size:11px;
+      }
+      .progress{
+        height:8px;
+        margin-bottom:10px;
+      }
+      .card{
+        min-height:calc(100svh - 112px);
+        padding:28px 17px 24px;
+        border-radius:27px;
+        box-shadow:0 18px 44px rgba(201,99,139,.14);
+      }
+      .tiny{
+        font-size:11px;
+        letter-spacing:.07em;
+      }
+      .emoji-head{
+        font-size:50px;
+        margin:3px 0 10px;
+      }
+      .question h1{
+        font-size:clamp(27px,8vw,36px);
+        line-height:1.06;
+      }
+      .sub{
+        font-size:14px;
+        line-height:1.48;
+      }
+      .answers{
+        min-height:162px;
+        margin-top:20px;
+        gap:10px;
+        padding:4px 2px;
+      }
+      .answers button{
+        min-height:47px;
+        max-width:100%;
+        padding:13px 16px;
+        white-space:normal;
+        line-height:1.15;
+      }
+      .secret-teddy,.cat-easter,.shorts-easter{
+        width:44px;
+        height:44px;
+        font-size:23px;
+      }
+      .secret-teddy{right:12px;top:12px}
+      .cat-easter{right:12px;bottom:12px}
+      .shorts-easter{left:12px;bottom:12px}
+      .secret-bubble,.easter-bubble{
+        max-width:min(240px,72vw);
+        font-size:12px;
+      }
+      .love-note{
+        min-height:180px;
+        padding:15px;
+        margin-top:16px;
+        font-size:14px;
+        line-height:1.62;
+        border-radius:18px;
+      }
+      .final-heart{
+        font-size:62px;
+      }
+      .final-main{
+        font-size:clamp(25px,7.6vw,34px);
+      }
+      .restart{
+        width:100%;
+        min-height:48px;
+        white-space:normal;
+      }
+
+      /* Tap feedback: phone-friendly instead of hover-dependent */
+      button:active{
+        transform:scale(.97);
+      }
+      .home-stickers span:hover,
+      .home-stickers span:focus{
+        animation:none;
+      }
+      .home-actions button:hover,
+      .notes-back:hover{
+        transform:none;
+      }
+
+      /* Reduce visual crowding on small screens */
+      .paper-grain{opacity:.075}
+      .ambient-heart{opacity:.55}
+    }
+
+    @media(max-width:380px){
+      .home-page,
+      .notes-page,
+      .simple-section-page,
+      .flower-page,
+      .wrap{
+        width:calc(100% - 18px);
+      }
+      .home-card{padding-left:12px;padding-right:12px}
+      .home-title{font-size:31px}
+      .home-sub{font-size:13.5px}
+      .home-stickers{gap:6px}
+      .home-stickers span{max-width:52px;font-size:23px}
+      .random-note{font-size:15px}
+      .home-actions{
+        grid-template-columns:1fr;
+      }
+      .card{
+        padding-left:14px;
+        padding-right:14px;
+      }
+      .answers button{
+        font-size:13px;
+        padding-left:13px;
+        padding-right:13px;
+      }
+    }
+
+    @media(hover:none) and (pointer:coarse){
+      button:hover{transform:none}
+      .flower-trigger:hover,
+      .note-trigger:hover,
+      .games-trigger:hover,
+      .love-trigger:hover{transform:none}
+    }
+
   </style>
 </head>
 <body>
