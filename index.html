@@ -2056,6 +2056,136 @@
       }
     }
 
+  
+    /* Discovery + transitions polish */
+    @keyframes diaryEnter{
+      from{opacity:0;transform:translateY(18px) rotate(-.8deg) scale(.985)}
+      to{opacity:1;transform:none}
+    }
+    @keyframes gamesEnter{
+      0%{opacity:0;transform:translateY(14px) scale(.96)}
+      68%{opacity:1;transform:translateY(-3px) scale(1.012)}
+      100%{opacity:1;transform:none}
+    }
+    @keyframes loveEnter{
+      from{opacity:0;transform:translateY(10px) scale(.985);filter:blur(2px)}
+      to{opacity:1;transform:none;filter:none}
+    }
+    @keyframes gardenEnter{
+      from{opacity:0;transform:translateY(14px) scale(.985)}
+      to{opacity:1;transform:none}
+    }
+    @keyframes petalWelcome{
+      0%{opacity:0;transform:translateY(-18px) rotate(-12deg) scale(.7)}
+      45%{opacity:.48}
+      100%{opacity:.30;transform:translateY(0) rotate(-15deg) scale(1)}
+    }
+    @keyframes discoveredGlow{
+      0%,100%{box-shadow:0 8px 18px rgba(174,117,148,.12),0 0 0 0 rgba(239,167,195,0)}
+      50%{box-shadow:0 9px 22px rgba(174,117,148,.15),0 0 0 5px rgba(239,167,195,.10)}
+    }
+    @keyframes nightTwinkle{
+      0%,100%{opacity:.12;transform:scale(.75) translateY(0)}
+      50%{opacity:.62;transform:scale(1.1) translateY(-4px)}
+    }
+
+    .notes-page.active .notes-card{animation:diaryEnter .48s cubic-bezier(.2,.8,.2,1)}
+    body.games-mode .simple-section-page.active .simple-section-card{animation:gamesEnter .52s cubic-bezier(.2,.8,.2,1)}
+    body.love-mode .simple-section-page.active .simple-section-card{animation:loveEnter .52s ease}
+    .flower-page.active .flower-card{animation:gardenEnter .5s ease}
+    .flower-page.active .petal-a{animation:petalWelcome .85s ease both}
+    .flower-page.active .petal-b{animation:petalWelcome .9s .08s ease both}
+
+    .flower-trigger.discovered{
+      animation:discoveredGlow 3.2s ease-in-out infinite;
+      border-color:#efabc4!important;
+    }
+    .flower-trigger.discovered::before{
+      content:"✓";
+      position:absolute;
+      right:-5px;
+      top:-6px;
+      width:18px;
+      height:18px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      background:#fffdf9;
+      border:1px solid #efb4c9;
+      color:#c76d91;
+      font:900 10px/1 ui-rounded,"SF Pro Rounded","Segoe UI",system-ui,sans-serif;
+      box-shadow:0 4px 9px rgba(156,92,124,.12);
+      z-index:4;
+    }
+
+    .new-badge{
+      display:none;
+      position:absolute;
+      right:-13px;
+      top:-10px;
+      z-index:5;
+      padding:4px 6px;
+      border-radius:999px;
+      background:#fff8d9;
+      border:1px solid #ecd995;
+      color:#9a7b36;
+      font:900 8px/1 ui-rounded,"SF Pro Rounded","Segoe UI",system-ui,sans-serif;
+      font-style:normal;
+      letter-spacing:.04em;
+      box-shadow:0 5px 10px rgba(130,105,60,.10);
+      white-space:nowrap;
+    }
+    .home-stickers span.has-new .new-badge{display:block}
+
+    .night-star{
+      display:none;
+      position:absolute;
+      color:#a992c3;
+      pointer-events:none;
+      text-shadow:0 0 13px rgba(255,249,255,.92);
+      animation:nightTwinkle 4.8s ease-in-out infinite;
+    }
+    body.night-mode .night-star{display:block}
+    .ns1{left:12%;top:12%;font-size:13px}
+    .ns2{left:28%;top:28%;font-size:10px;animation-delay:-1.5s}
+    .ns3{right:18%;top:16%;font-size:14px;animation-delay:-3s}
+    .ns4{right:11%;top:58%;font-size:11px;animation-delay:-2.2s}
+    .ns5{left:15%;bottom:17%;font-size:12px;animation-delay:-3.8s}
+    .ns6{right:33%;bottom:11%;font-size:13px;animation-delay:-.8s}
+
+    .home-footer{
+      margin-top:18px;
+      color:#aa8a9a;
+      font-size:10px;
+      font-weight:800;
+      letter-spacing:.035em;
+      opacity:.76;
+      position:relative;
+      z-index:2;
+    }
+
+    .section-leaving{
+      opacity:0!important;
+      transform:translateY(5px) scale(.992)!important;
+      transition:opacity .16s ease,transform .16s ease!important;
+    }
+
+    @media(max-width:520px){
+      .home-footer{font-size:9px;margin-top:16px}
+      .night-star{opacity:.8}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .notes-page.active .notes-card,
+      body.games-mode .simple-section-page.active .simple-section-card,
+      body.love-mode .simple-section-page.active .simple-section-card,
+      .flower-page.active .flower-card,
+      .flower-page.active .petal-a,
+      .flower-page.active .petal-b,
+      .flower-trigger.discovered,
+      .night-star{animation:none!important}
+      .section-leaving{transition:none!important}
+    }
+
   </style>
 </head>
 <body>
@@ -2071,6 +2201,12 @@
     <span class="soft-sparkle s6">·</span>
     <span class="soft-sparkle s7">✧</span>
     <span class="soft-sparkle s8">·</span>
+    <span class="night-star ns1">✦</span>
+    <span class="night-star ns2">⋆</span>
+    <span class="night-star ns3">✧</span>
+    <span class="night-star ns4">⋆</span>
+    <span class="night-star ns5">✦</span>
+    <span class="night-star ns6">✧</span>
   </div>
 
   <div class="login-gate" id="loginGate">
@@ -2131,7 +2267,7 @@
       <span class="corner-doodle doodle-three" aria-hidden="true">✦</span>
       <div class="home-kicker">welcome to our little place</div>
       <div class="home-stickers" aria-hidden="true">
-        <span class="flower-trigger" id="flowerTrigger" role="button" tabindex="0" aria-label="Flower" data-label="secret">🌼</span><span class="note-trigger" id="noteTrigger" role="button" tabindex="0" aria-label="Notes and diary" data-label="diary">💌</span><span class="games-trigger" id="gamesTrigger" role="button" tabindex="0" aria-label="Secret games and puzzles" data-label="games">🧸</span><span class="love-trigger" id="loveTrigger" role="button" tabindex="0" aria-label="Things I love about you" data-label="things i love">✨</span>
+        <span class="flower-trigger" id="flowerTrigger" role="button" tabindex="0" aria-label="Flower" data-label="secret">🌼</span><span class="note-trigger" id="noteTrigger" role="button" tabindex="0" aria-label="Notes and diary" data-label="diary">💌<i class="new-badge">NEW ✦</i></span><span class="games-trigger" id="gamesTrigger" role="button" tabindex="0" aria-label="Secret games and puzzles" data-label="games">🧸<i class="new-badge">NEW ✦</i></span><span class="love-trigger" id="loveTrigger" role="button" tabindex="0" aria-label="Things I love about you" data-label="things i love">✨<i class="new-badge">NEW ✦</i></span>
       </div>
       <h1 class="home-title">hi karamellety.</h1>
       <p class="home-sub">a tiny corner of the internet that is specific to one girl.</p>
@@ -2148,6 +2284,7 @@
         <button class="note-button" id="anotherNote" type="button">another quote 💌</button>
         <button class="quiz-button" id="enterQuiz" type="button">take the quiz 💗</button>
       </div>
+      <div class="home-footer">made with an unreasonable amount of attachment 💗</div>
       <div class="home-footer-sparkle" aria-hidden="true">♡ &nbsp; ✦ &nbsp; ♡</div>
     </section>
   </main>
@@ -2338,6 +2475,35 @@
     const flowerPuzzleMsg = document.getElementById('flowerPuzzleMsg');
     const flowerPage = document.getElementById('flowerPage');
     let flowerClicks = 0;
+    const FLOWER_FOUND_KEY = 'karmelFlowerFound';
+
+    function refreshFlowerDiscovery(){
+      flowerTrigger.classList.toggle('discovered', localStorage.getItem(FLOWER_FOUND_KEY) === 'yes');
+    }
+    refreshFlowerDiscovery();
+
+    function currentVisibleSection(){
+      if(!homePage.classList.contains('hidden')) return homePage;
+      if(notesPage.classList.contains('active')) return notesPage;
+      if(gamesPage.classList.contains('active')) return gamesPage;
+      if(lovePage.classList.contains('active')) return lovePage;
+      if(flowerPage.classList.contains('active')) return flowerPage;
+      if(quizWrap.classList.contains('active')) return quizWrap;
+      return null;
+    }
+
+    function transitionTo(action){
+      const currentSection = currentVisibleSection();
+      if(!currentSection){
+        action();
+        return;
+      }
+      currentSection.classList.add('section-leaving');
+      setTimeout(() => {
+        currentSection.classList.remove('section-leaving');
+        action();
+      }, 165);
+    }
     const homeNotes = [
       "why are you here? you should be doing cute girl things not on a random website😂😂 💗",
       "fun fact: Omar LOVESSSS you baby girl 💗🧸",
@@ -2473,7 +2639,7 @@
       if(mode) document.body.classList.add(mode);
     }
 
-    function showHome(){
+    function showHomeImmediate(){
       quizWrap.classList.remove('active');
       flowerPage.classList.remove('active');
       notesPage.classList.remove('active');
@@ -2487,7 +2653,7 @@
       window.scrollTo({top:0,behavior:'smooth'});
     }
 
-    function showNotes(){
+    function showNotesImmediate(){
       homePage.classList.add('hidden');
       quizWrap.classList.remove('active');
       flowerPage.classList.remove('active');
@@ -2500,7 +2666,7 @@
       window.scrollTo({top:0,behavior:'smooth'});
     }
 
-    function showGames(){
+    function showGamesImmediate(){
       homePage.classList.add('hidden');
       quizWrap.classList.remove('active');
       flowerPage.classList.remove('active');
@@ -2513,7 +2679,7 @@
       window.scrollTo({top:0,behavior:'smooth'});
     }
 
-    function showLovePage(){
+    function showLovePageImmediate(){
       homePage.classList.add('hidden');
       quizWrap.classList.remove('active');
       flowerPage.classList.remove('active');
@@ -2526,7 +2692,7 @@
       window.scrollTo({top:0,behavior:'smooth'});
     }
 
-    function showQuiz(){
+    function showQuizImmediate(){
       homePage.classList.add('hidden');
       flowerPage.classList.remove('active');
       notesPage.classList.remove('active');
@@ -2538,6 +2704,12 @@
       document.body.classList.remove('home-mode');
       window.scrollTo({top:0,behavior:'smooth'});
     }
+
+    function showHome(){ transitionTo(showHomeImmediate); }
+    function showNotes(){ transitionTo(showNotesImmediate); }
+    function showGames(){ transitionTo(showGamesImmediate); }
+    function showLovePage(){ transitionTo(showLovePageImmediate); }
+    function showQuiz(){ transitionTo(showQuizImmediate); }
 
     function openFlowerPuzzle(){
       flowerPuzzle.classList.add('show');
@@ -2555,6 +2727,9 @@
     function unlockFlowerPage(){
       if(flowerCode.value.trim() === '4'){
         closeFlowerPuzzle();
+        localStorage.setItem(FLOWER_FOUND_KEY,'yes');
+        refreshFlowerDiscovery();
+        transitionTo(() => {
         homePage.classList.add('hidden');
         notesPage.classList.remove('active');
         gamesPage.classList.remove('active');
@@ -2566,6 +2741,7 @@
         document.body.classList.add('flower-mode');
         burstHearts(['🌷','🌸','💗','🌼']);
         window.scrollTo({top:0,behavior:'smooth'});
+        });
       } else {
         flowerPuzzleMsg.textContent = 'closeeee 😂 think of something you already know 👀';
         flowerCode.select();
@@ -2616,6 +2792,7 @@
     anotherNote.addEventListener('click', () => showRandomHomeNote(true));
     enterQuiz.addEventListener('click', showQuiz);
     updateQuoteCounter();
+    refreshFlowerDiscovery();
     showRandomHomeNote(false);
     document.body.classList.add('home-mode');
 
@@ -2678,13 +2855,13 @@
       loginHeartBurst();
       setTimeout(() => {
         loginGate.classList.add('unlocked');
-        showHome();
+        showHomeImmediate();
       }, 1350);
     }
 
     if(sessionStorage.getItem('karmelUnlocked') === 'yes'){
       loginGate.classList.add('unlocked');
-      showHome();
+      showHomeImmediate();
     } else {
       setTimeout(() => passwordInput.focus(), 250);
     }
