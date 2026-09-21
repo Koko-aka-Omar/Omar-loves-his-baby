@@ -865,13 +865,23 @@
     }
   
     /* Strawberry milk + lavender homepage refresh */
+    @keyframes karamellaGradientShift{
+      0%{background-position:0% 0%,100% 0%,0% 100%,100% 100%,0% 50%}
+      25%{background-position:28% 18%,72% 35%,18% 72%,82% 62%,35% 50%}
+      50%{background-position:72% 30%,28% 70%,62% 38%,35% 82%,70% 50%}
+      75%{background-position:38% 72%,65% 18%,82% 68%,18% 30%,40% 50%}
+      100%{background-position:0% 0%,100% 0%,0% 100%,100% 100%,0% 50%}
+    }
     body.home-mode{
       background:
-        radial-gradient(circle at 12% 14%, rgba(255,220,232,.82) 0 9%, transparent 26%),
-        radial-gradient(circle at 88% 18%, rgba(221,208,255,.72) 0 10%, transparent 27%),
-        radial-gradient(circle at 18% 86%, rgba(255,240,184,.48) 0 8%, transparent 24%),
-        radial-gradient(circle at 85% 82%, rgba(223,243,228,.54) 0 9%, transparent 25%),
+        radial-gradient(circle at center, rgba(255,220,232,.88) 0 9%, transparent 28%),
+        radial-gradient(circle at center, rgba(221,208,255,.76) 0 10%, transparent 29%),
+        radial-gradient(circle at center, rgba(255,240,184,.52) 0 8%, transparent 26%),
+        radial-gradient(circle at center, rgba(223,243,228,.58) 0 9%, transparent 27%),
         linear-gradient(145deg,#fffaf4 0%,#fff5f9 44%,#faf7ff 72%,#fffaf4 100%);
+      background-size:72% 72%,76% 76%,66% 66%,70% 70%,220% 220%;
+      background-repeat:no-repeat;
+      animation:karamellaGradientShift 18s ease-in-out infinite;
     }
     body.home-mode:before{
       content:"";
