@@ -506,6 +506,13 @@
       transition:opacity .18s ease, transform .18s ease;
     }
     .random-note.swap{opacity:0;transform:translateY(5px)}
+    .quote-counter{
+      margin-top:12px;
+      color:#9673ad;
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.04em;
+    }
     .home-actions{
       display:flex;
       justify-content:center;
@@ -856,6 +863,7 @@
       <div class="note-shell">
         <div class="note-label">random quote for my cupcake karamella</div>
         <p class="random-note" id="randomNote"></p>
+        <div class="quote-counter" id="quoteCounter">quotes found: 0 / 39</div>
       </div>
 
       <div class="home-actions">
@@ -991,6 +999,7 @@
     const quizWrap = document.getElementById('quizWrap');
     const randomNote = document.getElementById('randomNote');
     const anotherNote = document.getElementById('anotherNote');
+    const quoteCounter = document.getElementById('quoteCounter');
     const enterQuiz = document.getElementById('enterQuiz');
     const flowerTrigger = document.getElementById('flowerTrigger');
     const flowerPuzzle = document.getElementById('flowerPuzzle');
@@ -1042,6 +1051,27 @@
       "MY FUTURE WIFE 💍💗🧸"
     ];
     let lastHomeNote = -1;
+    const QUOTE_PROGRESS_KEY = 'karmelQuoteProgress';
+    let foundQuotes = [];
+    try{
+      foundQuotes = JSON.parse(localStorage.getItem(QUOTE_PROGRESS_KEY) || '[]');
+      if(!Array.isArray(foundQuotes)) foundQuotes = [];
+    }catch(e){
+      foundQuotes = [];
+    }
+
+    function updateQuoteCounter(){
+      quoteCounter.textContent = 'quotes found: ' + foundQuotes.length + ' / ' + homeNotes.length;
+    }
+
+    function markQuoteFound(index){
+      if(!foundQuotes.includes(index)){
+        foundQuotes.push(index);
+        foundQuotes.sort((a,b) => a-b);
+        localStorage.setItem(QUOTE_PROGRESS_KEY, JSON.stringify(foundQuotes));
+      }
+      updateQuoteCounter();
+    }
 
     const loginGate = document.getElementById('loginGate');
     const loginCard = document.getElementById('loginCard');
@@ -1067,6 +1097,7 @@
       const apply = () => {
         randomNote.textContent = homeNotes[next];
         lastHomeNote = next;
+        markQuoteFound(next);
         randomNote.classList.remove('swap');
       };
       if(animate && randomNote.textContent){
@@ -1146,6 +1177,7 @@
 
     anotherNote.addEventListener('click', () => showRandomHomeNote(true));
     enterQuiz.addEventListener('click', showQuiz);
+    updateQuoteCounter();
     showRandomHomeNote(false);
     document.body.classList.add('home-mode');
 
