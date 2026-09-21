@@ -2451,7 +2451,7 @@
 
     function applyAutomaticDayNight(){
       const hour = new Date().getHours();
-      document.body.classList.toggle('night-mode', hour >= 19 || hour < 6);
+      document.body.classList.toggle('night-mode', hour >= 19 || hour < 5);
     }
     applyAutomaticDayNight();
     setInterval(applyAutomaticDayNight, 60000);
