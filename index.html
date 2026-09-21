@@ -373,6 +373,41 @@
     .home-stickers span:nth-child(4){animation-delay:-3.8s}
     .flower-trigger{cursor:pointer;user-select:none}
     .flower-trigger:hover{transform:translateY(-3px) scale(1.08)}
+    .note-trigger{cursor:pointer;user-select:none}
+    .note-trigger:hover{transform:translateY(-3px) scale(1.08)}
+    .notes-page{
+      display:none;
+      width:min(92vw,680px);
+      margin:auto;
+      position:relative;
+      z-index:2;
+      animation:homeIn .45s ease;
+    }
+    .notes-page.active{display:block}
+    .notes-card{
+      position:relative;
+      overflow:hidden;
+      padding:44px 28px 32px;
+      border-radius:32px;
+      text-align:center;
+      background:rgba(255,253,250,.94);
+      border:1px solid rgba(183,157,230,.28);
+      box-shadow:0 22px 65px rgba(137,108,184,.16);
+    }
+    .notes-icon{font-size:82px;margin-bottom:12px}
+    .notes-card h1{color:#604b6c;margin-bottom:10px}
+    .notes-card p{
+      max-width:420px;
+      margin:0 auto 22px;
+      color:#927d98;
+      line-height:1.6;
+      font-weight:700;
+    }
+    .notes-back{
+      color:#fff;
+      background:linear-gradient(135deg,#b790e4,#f2a0ba);
+      box-shadow:0 10px 22px rgba(169,120,194,.22);
+    }
     .flower-puzzle{
       position:fixed;
       inset:0;
@@ -855,7 +890,7 @@
     <section class="home-card">
       <div class="home-kicker">welcome to our little place</div>
       <div class="home-stickers" aria-hidden="true">
-        <span class="flower-trigger" id="flowerTrigger" role="button" tabindex="0" aria-label="Flower">🌼</span><span>💌</span><span>🧸</span><span>✨</span>
+        <span class="flower-trigger" id="flowerTrigger" role="button" tabindex="0" aria-label="Flower">🌼</span><span class="note-trigger" id="noteTrigger" role="button" tabindex="0" aria-label="Notes and diary">💌</span><span>🧸</span><span>✨</span>
       </div>
       <h1 class="home-title">hi karamellety.</h1>
       <p class="home-sub">a tiny corner of the internet that is suspiciously specific to one girl.</p>
@@ -870,6 +905,16 @@
         <button class="note-button" id="anotherNote" type="button">another quote 💌</button>
         <button class="quiz-button" id="enterQuiz" type="button">take the quiz 💗</button>
       </div>
+    </section>
+  </main>
+
+  <main class="notes-page" id="notesPage">
+    <section class="notes-card">
+      <div class="home-kicker">notes &amp; diary</div>
+      <div class="notes-icon">💌</div>
+      <h1>site under construction 🚧</h1>
+      <p>more notes and little diary entries will live here soon.</p>
+      <button class="notes-back" type="button" onclick="showHome()">back home 💗</button>
     </section>
   </main>
 
@@ -1002,6 +1047,8 @@
     const quoteCounter = document.getElementById('quoteCounter');
     const enterQuiz = document.getElementById('enterQuiz');
     const flowerTrigger = document.getElementById('flowerTrigger');
+    const noteTrigger = document.getElementById('noteTrigger');
+    const notesPage = document.getElementById('notesPage');
     const flowerPuzzle = document.getElementById('flowerPuzzle');
     const flowerCode = document.getElementById('flowerCode');
     const flowerPuzzleOpen = document.getElementById('flowerPuzzleOpen');
@@ -1135,6 +1182,7 @@
     function showHome(){
       quizWrap.classList.remove('active');
       flowerPage.classList.remove('active');
+      notesPage.classList.remove('active');
       homePage.classList.remove('hidden');
       document.body.classList.remove('flower-mode');
       document.body.classList.add('home-mode');
@@ -1142,9 +1190,20 @@
       window.scrollTo({top:0,behavior:'smooth'});
     }
 
+    function showNotes(){
+      homePage.classList.add('hidden');
+      quizWrap.classList.remove('active');
+      flowerPage.classList.remove('active');
+      notesPage.classList.add('active');
+      document.body.classList.remove('flower-mode');
+      document.body.classList.add('home-mode');
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+
     function showQuiz(){
       homePage.classList.add('hidden');
       flowerPage.classList.remove('active');
+      notesPage.classList.remove('active');
       quizWrap.classList.add('active');
       document.body.classList.remove('flower-mode');
       document.body.classList.remove('home-mode');
@@ -1168,6 +1227,7 @@
       if(flowerCode.value.trim() === '4'){
         closeFlowerPuzzle();
         homePage.classList.add('hidden');
+        notesPage.classList.remove('active');
         quizWrap.classList.remove('active');
         flowerPage.classList.add('active');
         document.body.classList.remove('home-mode');
@@ -1179,6 +1239,14 @@
         flowerCode.select();
       }
     }
+
+    noteTrigger.addEventListener('click', showNotes);
+    noteTrigger.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        showNotes();
+      }
+    });
 
     flowerTrigger.addEventListener('click', () => {
       flowerClicks++;
