@@ -375,6 +375,8 @@
     .flower-trigger:hover{transform:translateY(-3px) scale(1.08)}
     .note-trigger{cursor:pointer;user-select:none}
     .note-trigger:hover{transform:translateY(-3px) scale(1.08)}
+    .games-trigger,.love-trigger{cursor:pointer;user-select:none}
+    .games-trigger:hover,.love-trigger:hover{transform:translateY(-3px) scale(1.08)}
     .notes-page{
       display:none;
       width:min(92vw,680px);
@@ -407,6 +409,34 @@
       color:#fff;
       background:linear-gradient(135deg,#b790e4,#f2a0ba);
       box-shadow:0 10px 22px rgba(169,120,194,.22);
+    }
+    .simple-section-page{
+      display:none;
+      width:min(92vw,680px);
+      margin:auto;
+      position:relative;
+      z-index:2;
+      animation:homeIn .45s ease;
+    }
+    .simple-section-page.active{display:block}
+    .simple-section-card{
+      position:relative;
+      overflow:hidden;
+      padding:44px 28px 32px;
+      border-radius:32px;
+      text-align:center;
+      background:rgba(255,253,250,.94);
+      border:1px solid rgba(183,157,230,.28);
+      box-shadow:0 22px 65px rgba(137,108,184,.16);
+    }
+    .simple-section-icon{font-size:86px;margin-bottom:12px}
+    .simple-section-card h1{color:#604b6c;margin-bottom:10px}
+    .simple-section-card p{
+      max-width:430px;
+      margin:0 auto 22px;
+      color:#927d98;
+      line-height:1.6;
+      font-weight:700;
     }
     .flower-puzzle{
       position:fixed;
@@ -890,7 +920,7 @@
     <section class="home-card">
       <div class="home-kicker">welcome to our little place</div>
       <div class="home-stickers" aria-hidden="true">
-        <span class="flower-trigger" id="flowerTrigger" role="button" tabindex="0" aria-label="Flower">🌼</span><span class="note-trigger" id="noteTrigger" role="button" tabindex="0" aria-label="Notes and diary">💌</span><span>🧸</span><span>✨</span>
+        <span class="flower-trigger" id="flowerTrigger" role="button" tabindex="0" aria-label="Flower">🌼</span><span class="note-trigger" id="noteTrigger" role="button" tabindex="0" aria-label="Notes and diary">💌</span><span class="games-trigger" id="gamesTrigger" role="button" tabindex="0" aria-label="Secret games and puzzles">🧸</span><span class="love-trigger" id="loveTrigger" role="button" tabindex="0" aria-label="Things I love about you">✨</span>
       </div>
       <h1 class="home-title">hi karamellety.</h1>
       <p class="home-sub">a tiny corner of the internet that is suspiciously specific to one girl.</p>
@@ -914,6 +944,26 @@
       <div class="notes-icon">💌</div>
       <h1>site under construction 🚧</h1>
       <p>more notes and little diary entries will live here soon.</p>
+      <button class="notes-back" type="button" onclick="showHome()">back home 💗</button>
+    </section>
+  </main>
+
+  <main class="simple-section-page" id="gamesPage">
+    <section class="simple-section-card">
+      <div class="home-kicker">secret games &amp; puzzles</div>
+      <div class="simple-section-icon">🧸🧩</div>
+      <h1>site under construction 🚧</h1>
+      <p>secret little games, puzzles and suspicious karamella challenges will live here soon.</p>
+      <button class="notes-back" type="button" onclick="showHome()">back home 💗</button>
+    </section>
+  </main>
+
+  <main class="simple-section-page" id="lovePage">
+    <section class="simple-section-card">
+      <div class="home-kicker">things i love about you</div>
+      <div class="simple-section-icon">✨💗</div>
+      <h1>site under construction 🚧</h1>
+      <p>this page will eventually be full of all the little and big things i love about you.</p>
       <button class="notes-back" type="button" onclick="showHome()">back home 💗</button>
     </section>
   </main>
@@ -1049,6 +1099,10 @@
     const flowerTrigger = document.getElementById('flowerTrigger');
     const noteTrigger = document.getElementById('noteTrigger');
     const notesPage = document.getElementById('notesPage');
+    const gamesTrigger = document.getElementById('gamesTrigger');
+    const loveTrigger = document.getElementById('loveTrigger');
+    const gamesPage = document.getElementById('gamesPage');
+    const lovePage = document.getElementById('lovePage');
     const flowerPuzzle = document.getElementById('flowerPuzzle');
     const flowerCode = document.getElementById('flowerCode');
     const flowerPuzzleOpen = document.getElementById('flowerPuzzleOpen');
@@ -1183,6 +1237,8 @@
       quizWrap.classList.remove('active');
       flowerPage.classList.remove('active');
       notesPage.classList.remove('active');
+      gamesPage.classList.remove('active');
+      lovePage.classList.remove('active');
       homePage.classList.remove('hidden');
       document.body.classList.remove('flower-mode');
       document.body.classList.add('home-mode');
@@ -1194,7 +1250,33 @@
       homePage.classList.add('hidden');
       quizWrap.classList.remove('active');
       flowerPage.classList.remove('active');
+      gamesPage.classList.remove('active');
+      lovePage.classList.remove('active');
       notesPage.classList.add('active');
+      document.body.classList.remove('flower-mode');
+      document.body.classList.add('home-mode');
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+
+    function showGames(){
+      homePage.classList.add('hidden');
+      quizWrap.classList.remove('active');
+      flowerPage.classList.remove('active');
+      notesPage.classList.remove('active');
+      lovePage.classList.remove('active');
+      gamesPage.classList.add('active');
+      document.body.classList.remove('flower-mode');
+      document.body.classList.add('home-mode');
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+
+    function showLovePage(){
+      homePage.classList.add('hidden');
+      quizWrap.classList.remove('active');
+      flowerPage.classList.remove('active');
+      notesPage.classList.remove('active');
+      gamesPage.classList.remove('active');
+      lovePage.classList.add('active');
       document.body.classList.remove('flower-mode');
       document.body.classList.add('home-mode');
       window.scrollTo({top:0,behavior:'smooth'});
@@ -1204,6 +1286,8 @@
       homePage.classList.add('hidden');
       flowerPage.classList.remove('active');
       notesPage.classList.remove('active');
+      gamesPage.classList.remove('active');
+      lovePage.classList.remove('active');
       quizWrap.classList.add('active');
       document.body.classList.remove('flower-mode');
       document.body.classList.remove('home-mode');
@@ -1228,6 +1312,8 @@
         closeFlowerPuzzle();
         homePage.classList.add('hidden');
         notesPage.classList.remove('active');
+        gamesPage.classList.remove('active');
+        lovePage.classList.remove('active');
         quizWrap.classList.remove('active');
         flowerPage.classList.add('active');
         document.body.classList.remove('home-mode');
@@ -1241,10 +1327,24 @@
     }
 
     noteTrigger.addEventListener('click', showNotes);
+    gamesTrigger.addEventListener('click', showGames);
+    loveTrigger.addEventListener('click', showLovePage);
     noteTrigger.addEventListener('keydown', e => {
       if(e.key === 'Enter' || e.key === ' '){
         e.preventDefault();
         showNotes();
+      }
+    });
+    gamesTrigger.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        showGames();
+      }
+    });
+    loveTrigger.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        showLovePage();
       }
     });
 
