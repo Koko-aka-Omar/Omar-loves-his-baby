@@ -2197,6 +2197,66 @@
       .section-leaving{transition:none!important}
     }
 
+
+    /* Two little places to spend time together. */
+    .little-places{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px;flex-shrink:0}
+    .little-place{white-space:normal;display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 10px;border:1px solid #ddcdec;border-radius:18px;background:#f2ebfc;color:#72538b;font-size:13px;line-height:1.4;box-shadow:0 5px 14px #8262a014}
+    .little-place.bakery-link{background:#fff0dc;border-color:#ecd6b9;color:#865a3f}
+    .little-place span{font-size:23px}
+    .cozy-dialog{width:min(94vw,580px);max-height:90vh;max-height:90dvh;margin:auto;padding:0;border:1px solid #e3d4ed;border-radius:28px;background:#fffaf5;color:#654d70;box-shadow:0 24px 90px #30214150;overflow:auto;overscroll-behavior:contain}
+    .cozy-dialog::backdrop{background:#30233f80;backdrop-filter:blur(6px)}
+    body.cozy-open{overflow:hidden}
+    .cozy-content{padding:22px;text-align:center}
+    .cozy-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+    .cozy-kicker{font-size:10px;letter-spacing:.15em;text-transform:uppercase;font-weight:900}
+    .cozy-close{min-width:44px;min-height:44px;padding:8px;border-radius:50%;background:#eee5f3;color:#725487;box-shadow:none;font-size:22px}
+    .cozy-dialog h2{margin:0 0 8px;font-size:clamp(28px,7vw,38px);letter-spacing:-.04em;line-height:1.15}
+    .cozy-intro{margin:0 auto 18px;max-width:400px;line-height:1.6;font-size:14px;color:#826f8c}
+    .cozy-dialog button:focus-visible,.little-place:focus-visible{outline:3px solid #9a69b7;outline-offset:4px}
+    .sit-scene{--sit-offset:77px;position:relative;height:280px;border-radius:23px;overflow:hidden;background:radial-gradient(ellipse at 50% 110%,#bca1c0 0%,transparent 55%),linear-gradient(#302e58,#66577e);isolation:isolate}
+    .sit-scene::before{content:"";position:absolute;width:500px;height:130px;left:50%;bottom:-76px;transform:translateX(-50%);border-radius:50%;background:#85758e;z-index:-1}
+    .sit-stars{position:absolute;inset:20px 16px auto;color:#ffedbf;font-size:16px;word-spacing:22px;line-height:2;pointer-events:none}
+    .sit-moon{position:absolute;right:12%;top:43px;width:34px;height:34px;border-radius:50%;background:#fff1cb;box-shadow:0 0 32px #ffe8b25c}
+    .sit-blanket{position:absolute;width:76%;height:36px;left:12%;bottom:23px;background:repeating-linear-gradient(90deg,#c294ae 0 18px,#d4adc2 18px 20px);border:3px solid #ddbbcf;border-radius:50%;transform:rotate(-3deg)}
+    .sit-person{position:absolute;bottom:45px;width:82px;text-align:center;color:#fff5ed;font-size:11px;font-weight:800}
+    .sit-person svg{display:block;width:82px;height:100px;overflow:visible}
+    button.sit-omar{left:12%;padding:0;border:0;border-radius:15px;background:transparent;box-shadow:none;transition:left .8s ease;transform:none}
+    .sit-omar:hover{transform:none}
+    .sit-omar:hover svg{filter:drop-shadow(0 0 7px #fff0ce55)}
+    .sit-karmel{left:64%;transition:left .8s ease}
+    .sit-scene[data-closeness="1"] .sit-omar{left:calc(24.6667% - var(--sit-offset) * .333333)}
+    .sit-scene[data-closeness="2"] .sit-omar{left:calc(37.3333% - var(--sit-offset) * .666667)}
+    .sit-scene[data-closeness="3"] .sit-omar{left:calc(50% - 77px)}
+    .sit-scene[data-closeness="3"] .sit-karmel{left:calc(50% - 3px)}
+    .sit-heart{color:#ffe3ed;position:absolute;left:calc(50% - 14px);bottom:156px;font-size:26px;opacity:0;transform:translateY(8px);transition:opacity .8s,transform .8s}
+    .sit-scene[data-closeness="3"] .sit-heart{opacity:1;transform:none}
+    .cozy-message{min-height:52px;display:grid;place-items:center;margin:15px 0 8px;line-height:1.6;font-size:15px;font-weight:750}
+    .cozy-hint{margin:8px 0 16px;font-size:12px;color:#88718d;line-height:1.5}
+    .cozy-action{background:#eaddf5;color:#72518c;box-shadow:none;min-height:44px}
+    .bakery-dialog{background:#fffaf1;border-color:#edd5b9;color:#79523b}
+    .bakery-dialog .cozy-close{background:#f5e8d5;color:#79523b}
+    .bakery-dialog .cozy-intro{color:#907055}
+    .bakery-awning{height:23px;background:repeating-linear-gradient(90deg,#edb3b2 0 32px,#fff0d9 32px 64px);border-bottom:4px solid #f2d1ba}
+    .bakery-menu{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .bakery-treat{white-space:normal;padding:16px 8px 13px;min-height:111px;border:1px solid #edd6bb;border-radius:18px;background:#fffefa;color:#805a40;box-shadow:0 4px 0 #f2e3cf;font-size:13px;line-height:1.5}
+    .bakery-treat .treat-icon{display:block;font-size:38px;margin-bottom:6px}
+    .bakery-treat[aria-pressed="true"]{background:#ffe8db;border-color:#c88372;box-shadow:0 0 0 2px #dba794}
+    .bakery-serving{margin-top:20px;padding:17px 16px;border:1px dashed #d6b493;border-radius:18px;background:#fffdf8}
+    .bakery-plate{display:grid;place-items:center;width:100px;height:70px;margin:0 auto 10px;background:#f9eadb;border:5px solid #fff;outline:1px solid #e8d5c1;border-radius:50%;font-size:43px}
+    .bakery-serving h3{margin:0 0 6px;font-size:17px}
+    .bakery-serving p{margin:0;font-size:14px;line-height:1.6;color:#8a634b}
+    .bakery-price{margin:14px 0 0;font-size:11px;letter-spacing:.04em;color:#977355}
+    @media(max-width:360px){
+      .cozy-content{padding:16px}.sit-scene{--sit-offset:66px;height:255px}
+      .sit-person,.sit-person svg{width:70px}
+      .sit-scene[data-closeness="3"] .sit-omar{left:calc(50% - 66px)}
+      .sit-scene[data-closeness="3"] .sit-karmel{left:calc(50% - 3px)}
+      .little-place{font-size:12px;gap:5px}.little-place span{font-size:20px}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .cozy-dialog *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+    }
+
   </style>
 </head>
 <body>
@@ -2223,11 +2283,11 @@
   <div class="login-gate" id="loginGate">
     <div class="login-card" id="loginCard">
       <div class="login-lock" id="loginLock">
-        <span id="loginLockIcon">🔐</span>
+        <span id="loginLockIcon">💌</span>
         <span aria-hidden="true">💗</span>
       </div>
       <button class="login-teddy-easter" id="loginTeddyEaster" type="button" aria-label="Secret teddy">🧸</button>
-      <div class="login-secret-bubble" id="loginSecretBubble">la2 ya detective the password isnt hidden here 😂</div>
+      <div class="login-secret-bubble" id="loginSecretBubble">you found the welcome teddy, ya detective 😂</div>
       <button class="login-sleep-easter" id="loginSleepEaster" type="button" aria-label="Morning message">☀️</button>
       <div class="login-sleep-bubble" id="loginSleepBubble">good morning my love, hope you slept well and had cute dreams, good luck with your day baby, GO GET THE KNOWLEDGE 💗📚</div>
       <div class="login-kicker">private little place</div>
@@ -2235,19 +2295,6 @@
       <p class="login-copy">fe 7agat meant for everyone. el website de me4 wa7da menohom. this little place is just ours. me and you sweetheart</p>
 
       <form id="loginForm" autocomplete="off">
-        <div class="login-before-password">only one person should know this 👀</div>
-        <div class="password-wrap">
-          <input
-            class="password-input"
-            id="passwordInput"
-            type="password"
-            inputmode="numeric"
-            placeholder="enter our little secret"
-            aria-label="Password"
-          />
-          <button class="password-toggle" id="passwordToggle" type="button" aria-label="Show password">🧸</button>
-          <div class="login-hint">the date i first followed you. (dd-mm-yyyy format)</div>
-        </div>
         <button class="login-button" type="submit">open our little place 💗</button>
         <div class="login-message" id="loginMessage"></div>
         <div class="login-footer">private property of Omar &amp; Karmel</div>
@@ -2295,11 +2342,55 @@
         <button class="note-button" id="anotherNote" type="button">another quote 💌</button>
         <button class="quiz-button" id="enterQuiz" type="button">take the quiz 💗</button>
       </div>
+      <div class="little-places" aria-label="Our little places">
+        <button class="little-place" type="button" id="openSit" aria-haspopup="dialog"><span aria-hidden="true">🌙</span>sit with me</button>
+        <button class="little-place bakery-link" type="button" id="openBakery" aria-haspopup="dialog"><span aria-hidden="true">🧁</span>tiny bakery</button>
+      </div>
       <div class="home-footer">made with an unreasonable amount of attachment 💗</div>
-      <div class="last-change" id="lastChange">last change on: 23 September 2026</div>
+      <div class="last-change" id="lastChange">last change on: 25 September 2026</div>
       <div class="home-footer-sparkle" aria-hidden="true">♡ &nbsp; ✦ &nbsp; ♡</div>
     </section>
   </main>
+
+
+  <dialog class="cozy-dialog" id="sitDialog" aria-labelledby="sitTitle" aria-describedby="sitIntro">
+    <div class="cozy-content">
+      <div class="cozy-top"><span class="cozy-kicker">a little time, just us</span><button type="button" class="cozy-close" data-close-cozy aria-label="Close sit with me">×</button></div>
+      <h2 id="sitTitle">sit with me 🌙</h2>
+      <p class="cozy-intro" id="sitIntro">you don't have to say anything, baby. just come sit.</p>
+      <div class="sit-scene" id="sitScene" data-closeness="0">
+        <div class="sit-stars" aria-hidden="true">✦ · ⋆ &nbsp; ✧ ·<br> · ✧ &nbsp; · ⋆</div>
+        <div class="sit-moon" aria-hidden="true"></div><div class="sit-blanket" aria-hidden="true"></div>
+        <span class="sit-heart" aria-hidden="true">♡</span>
+        <button type="button" class="sit-person sit-omar" id="sitOmar" aria-label="Move Omar closer to Karmel"><svg viewBox="0 0 90 110" aria-hidden="true"><ellipse cx="45" cy="82" rx="26" ry="25" fill="#c79876"/><ellipse cx="45" cy="86" rx="17" ry="18" fill="#ffead8"/><circle cx="22" cy="23" r="13" fill="#c79876"/><circle cx="68" cy="23" r="13" fill="#c79876"/><circle cx="22" cy="23" r="7" fill="#e8b2a4"/><circle cx="68" cy="23" r="7" fill="#e8b2a4"/><ellipse cx="45" cy="45" rx="32" ry="29" fill="#c79876"/><ellipse cx="45" cy="55" rx="13" ry="10" fill="#fff0df"/><circle cx="33" cy="44" r="2.5" fill="#604337"/><circle cx="57" cy="44" r="2.5" fill="#604337"/><ellipse cx="45" cy="51" rx="4" ry="3" fill="#604337"/><path d="M40 58 Q45 63 50 58" fill="none" stroke="#604337" stroke-width="2" stroke-linecap="round"/><ellipse cx="24" cy="55" rx="6" ry="3" fill="#e99e9e" opacity=".65"/><ellipse cx="66" cy="55" rx="6" ry="3" fill="#e99e9e" opacity=".65"/><ellipse cx="22" cy="96" rx="13" ry="9" fill="#c79876"/><ellipse cx="68" cy="96" rx="13" ry="9" fill="#c79876"/><path d="M25 70 Q45 82 65 70 L65 78 Q45 90 25 78Z" fill="#afa1d4"/></svg><span>omar</span></button>
+        <div class="sit-person sit-karmel"><svg viewBox="0 0 90 110" aria-hidden="true"><ellipse cx="45" cy="82" rx="26" ry="25" fill="#ead0b1"/><ellipse cx="45" cy="86" rx="17" ry="18" fill="#ffead8"/><circle cx="22" cy="23" r="13" fill="#ead0b1"/><circle cx="68" cy="23" r="13" fill="#ead0b1"/><circle cx="22" cy="23" r="7" fill="#e8b2a4"/><circle cx="68" cy="23" r="7" fill="#e8b2a4"/><ellipse cx="45" cy="45" rx="32" ry="29" fill="#ead0b1"/><ellipse cx="45" cy="55" rx="13" ry="10" fill="#fff0df"/><circle cx="33" cy="44" r="2.5" fill="#604337"/><circle cx="57" cy="44" r="2.5" fill="#604337"/><ellipse cx="45" cy="51" rx="4" ry="3" fill="#604337"/><path d="M40 58 Q45 63 50 58" fill="none" stroke="#604337" stroke-width="2" stroke-linecap="round"/><ellipse cx="24" cy="55" rx="6" ry="3" fill="#e99e9e" opacity=".65"/><ellipse cx="66" cy="55" rx="6" ry="3" fill="#e99e9e" opacity=".65"/><ellipse cx="22" cy="96" rx="13" ry="9" fill="#ead0b1"/><ellipse cx="68" cy="96" rx="13" ry="9" fill="#ead0b1"/><path d="M56 20 Q43 5 46 23 Q52 30 57 24 Q73 35 73 19 Q66 15 56 20" fill="#e696ae"/><circle cx="58" cy="22" r="4" fill="#ce6f91"/></svg><span>karamella</span></div>
+      </div>
+      <p class="cozy-message" id="sitMessage" role="status" aria-live="polite" aria-atomic="true">saved you a spot. always.</p>
+      <p class="cozy-hint" id="sitHint">tap omar to bring him a little closer ♡</p>
+      <button class="cozy-action" type="button" id="sitReset">one more little moment ↺</button>
+    </div>
+  </dialog>
+
+  <dialog class="cozy-dialog bakery-dialog" id="bakeryDialog" aria-labelledby="bakeryTitle" aria-describedby="bakeryIntro">
+    <div class="bakery-awning" aria-hidden="true"></div>
+    <div class="cozy-content">
+      <div class="cozy-top"><span class="cozy-kicker">baked with unreasonable affection</span><button type="button" class="cozy-close" data-close-cozy aria-label="Close tiny bakery">×</button></div>
+      <h2 id="bakeryTitle">karamella's tiny bakery</h2>
+      <p class="cozy-intro" id="bakeryIntro">one very spoiled customer. pick something sweet, my love.</p>
+      <div class="bakery-menu" role="group" aria-label="Choose a dessert">
+        <button class="bakery-treat" type="button" data-treat="cupcake" aria-pressed="false"><span class="treat-icon" aria-hidden="true">🧁</span>my cupcake</button>
+        <button class="bakery-treat" type="button" data-treat="cookie" aria-pressed="false"><span class="treat-icon" aria-hidden="true">🍪</span>comfort cookie</button>
+        <button class="bakery-treat" type="button" data-treat="cake" aria-pressed="false"><span class="treat-icon" aria-hidden="true">🍰</span>just-because cake</button>
+        <button class="bakery-treat" type="button" data-treat="caramel" aria-pressed="false"><span class="treat-icon" aria-hidden="true">🍮</span>caramel for karamella</button>
+      </div>
+      <div class="bakery-serving" role="status" aria-live="polite" aria-atomic="true">
+        <div class="bakery-plate" id="bakeryPlate" aria-hidden="true">♡</div>
+        <h3 id="bakeryServingTitle">a little plate, just for you</h3>
+        <p id="bakeryMessage">everything here comes with a note from omar.</p>
+      </div>
+      <p class="bakery-price">your total: one smile. refills: forever. ♡</p>
+    </div>
+  </dialog>
 
   <main class="notes-page" id="notesPage">
     <section class="notes-card">
@@ -2482,7 +2573,6 @@
     updateLastChangeDate();
 
 
-    const SITE_PASSWORD = '24-04-2026';
 
     function applyAutomaticDayNight(){
       const hour = new Date().getHours();
@@ -2637,13 +2727,11 @@
     const loginGate = document.getElementById('loginGate');
     const loginCard = document.getElementById('loginCard');
     const loginForm = document.getElementById('loginForm');
-    const passwordInput = document.getElementById('passwordInput');
     const loginMessage = document.getElementById('loginMessage');
     const loginLock = document.getElementById('loginLock');
     const loginLockIcon = document.getElementById('loginLockIcon');
     const loginTeddyEaster = document.getElementById('loginTeddyEaster');
     const loginSecretBubble = document.getElementById('loginSecretBubble');
-    const passwordToggle = document.getElementById('passwordToggle');
     const loginSleepEaster = document.getElementById('loginSleepEaster');
     const loginSleepBubble = document.getElementById('loginSleepBubble');
     let loginTeddyClicks = 0;
@@ -2885,8 +2973,8 @@
 
     function unlockSite(){
       sessionStorage.setItem('karmelUnlocked','yes');
-      loginLockIcon.textContent = '🔓';
-      loginMessage.textContent = 'authorized user detected: Queen karamel.';
+      loginLockIcon.textContent = '💖';
+      loginMessage.textContent = 'welcome home, Queen karamel.';
       loginHeartBurst();
       setTimeout(() => {
         loginGate.classList.add('unlocked');
@@ -2898,21 +2986,8 @@
       loginGate.classList.add('unlocked');
       showHomeImmediate();
     } else {
-      setTimeout(() => passwordInput.focus(), 250);
+      setTimeout(() => loginForm.querySelector('button[type="submit"]').focus(), 250);
     }
-
-    passwordInput.addEventListener('input', () => {
-      passwordInput.classList.toggle('typing', passwordInput.value.length > 0);
-      if(loginMessage.textContent) loginMessage.textContent = '';
-    });
-
-    passwordToggle.addEventListener('click', () => {
-      const showing = passwordInput.type === 'text';
-      passwordInput.type = showing ? 'password' : 'text';
-      passwordToggle.textContent = showing ? '🧸' : '💗';
-      passwordToggle.setAttribute('aria-label', showing ? 'Show password' : 'Hide password');
-      passwordInput.focus();
-    });
 
     loginTeddyEaster.addEventListener('click', () => {
       loginTeddyClicks++;
@@ -2930,18 +3005,9 @@
 
     loginForm.addEventListener('submit', e => {
       e.preventDefault();
-      if(passwordInput.value.trim() === SITE_PASSWORD){
-        unlockSite();
-      } else {
-        loginMessage.textContent = 'tsk tsk wrong password, what would be the password to our secret place? 😂';
-        loginCard.classList.remove('shake');
-        loginLock.classList.remove('wrong');
-        void loginCard.offsetWidth;
-        void loginLock.offsetWidth;
-        loginCard.classList.add('shake');
-        loginLock.classList.add('wrong');
-        passwordInput.select();
-      }
+      if (loginForm.querySelector('button[type="submit"]').disabled) return;
+      loginForm.querySelector('button[type="submit"]').disabled = true;
+      unlockSite();
     });
 
     let current = 1;
@@ -3114,5 +3180,65 @@
     }
     setProgress();
   </script>
+
+  <script>
+    // Native dialogs keep focus inside each corner and support Escape.
+    (() => {
+      const sitDialog = document.getElementById('sitDialog');
+      const bakeryDialog = document.getElementById('bakeryDialog');
+      function openCozy(dialog) {
+        dialog.showModal();
+        document.body.classList.add('cozy-open');
+      }
+      document.getElementById('openSit').addEventListener('click', () => openCozy(sitDialog));
+      document.getElementById('openBakery').addEventListener('click', () => openCozy(bakeryDialog));
+      [sitDialog, bakeryDialog].forEach(dialog => {
+        dialog.querySelector('[data-close-cozy]').addEventListener('click', () => dialog.close());
+        dialog.addEventListener('close', () => document.body.classList.remove('cozy-open'));
+      });
+      const scene = document.getElementById('sitScene');
+      const omar = document.getElementById('sitOmar');
+      const message = document.getElementById('sitMessage');
+      const hint = document.getElementById('sitHint');
+      const moments = [
+        'saved you a spot. always.',
+        'okay but this is still too far away.',
+        'just a little closer, ya karamella.',
+        "there. my favourite place is next to you. 2 2 4 ♡"
+      ];
+      let closeness = 0;
+      omar.addEventListener('click', () => {
+        closeness = Math.min(3, closeness + 1);
+        scene.dataset.closeness = String(closeness);
+        message.textContent = moments[closeness];
+        if (closeness === 3) {
+          hint.textContent = 'no rush. we can stay here a while ♡';
+          omar.setAttribute('aria-label', 'Omar is sitting beside Karmel');
+        }
+      });
+      document.getElementById('sitReset').addEventListener('click', () => {
+        closeness = 0;
+        scene.dataset.closeness = '0';
+        message.textContent = moments[0];
+        hint.textContent = 'tap omar to bring him a little closer ♡';
+        omar.setAttribute('aria-label', 'Move Omar closer to Karmel');
+      });
+      const treats = {
+        cupcake: ['🧁', 'a cupcake for my cupcake', "extra frosting because you deserve extra everything. still not sweeter than you, though."],
+        cookie: ['🍪', 'one warm comfort cookie', "for the days that feel a little heavy. come here, baby. cookie first, then you can tell me all about it."],
+        cake: ['🍰', 'a slice of just because', "no birthday needed. you existing is enough of a reason to celebrate."],
+        caramel: ['🍮', 'caramel for my karamella', "the bakery tried to make something sweeter than you. they failed. enjoy their very cute attempt."]
+      };
+      const choices = [...document.querySelectorAll('[data-treat]')];
+      choices.forEach(button => button.addEventListener('click', () => {
+        const [emoji, title, note] = treats[button.dataset.treat];
+        choices.forEach(choice => choice.setAttribute('aria-pressed', String(choice === button)));
+        document.getElementById('bakeryPlate').textContent = emoji;
+        document.getElementById('bakeryServingTitle').textContent = title;
+        document.getElementById('bakeryMessage').textContent = note;
+      }));
+    })();
+  </script>
+
 </body>
 </html>
