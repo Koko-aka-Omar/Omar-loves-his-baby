@@ -4734,6 +4734,219 @@
       .catch-battle-score strong{font-size:26px}
     }
 
+  
+    /* Polished Find Karamella + scratch reward */
+    .find-game-panel{
+      max-width:560px;
+      margin:0 auto;
+    }
+    .find-hero{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      margin:1px auto 10px;
+      text-align:left;
+    }
+    .find-hero-icon{
+      width:54px;
+      height:54px;
+      flex:0 0 54px;
+      display:grid;
+      place-items:center;
+      border-radius:18px;
+      background:linear-gradient(145deg,#fff,#ffe7f0);
+      border:1px solid #edb2c8;
+      box-shadow:0 8px 18px rgba(145,53,91,.10);
+      font-size:27px;
+      transform:rotate(-4deg);
+    }
+    .find-hero .home-kicker{
+      margin-bottom:2px;
+      text-align:left;
+    }
+    .find-hero h1{
+      margin:0!important;
+      font-size:clamp(32px,7vw,42px)!important;
+    }
+    .find-status{
+      min-height:36px;
+      margin-bottom:10px;
+    }
+    .find-tries-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:4px;
+      padding:7px 10px!important;
+      border-radius:999px!important;
+      background:#fff0f5!important;
+      border:1px solid #edb5ca!important;
+      color:#9d496c!important;
+    }
+    .find-round-message{
+      flex:1;
+      color:#936276;
+      font-size:11px;
+      font-weight:850;
+    }
+    .find-grid{
+      gap:10px!important;
+      perspective:900px;
+    }
+    .find-card{
+      position:relative;
+      overflow:hidden;
+      min-height:84px!important;
+      border-radius:20px!important;
+      background:
+        radial-gradient(circle at 30% 25%,rgba(255,255,255,.96),transparent 34%),
+        linear-gradient(145deg,#fff9fc,#ffe7f0)!important;
+      border:1px solid #edb2c8!important;
+      box-shadow:0 8px 20px rgba(145,53,91,.10)!important;
+      color:#c55d84!important;
+      transition:transform .24s ease,box-shadow .24s ease,background .24s ease!important;
+    }
+    .find-card:before{
+      content:"♡";
+      position:absolute;
+      font-size:11px;
+      right:10px;
+      top:8px;
+      opacity:.45;
+    }
+    .find-card:hover{
+      transform:translateY(-3px) rotate(.6deg)!important;
+      box-shadow:0 12px 25px rgba(145,53,91,.14)!important;
+    }
+    .find-card.revealed{
+      transform:rotateY(180deg)!important;
+      background:#fff7fb!important;
+    }
+    .find-card.revealed{
+      animation:findFlip .38s cubic-bezier(.2,.8,.2,1) both;
+    }
+    .find-card.found{
+      background:linear-gradient(145deg,#ffe4ee,#ffd7e6)!important;
+      border-color:#e4598b!important;
+      box-shadow:0 0 0 3px rgba(228,89,139,.11),0 12px 28px rgba(145,53,91,.15)!important;
+      animation:findFound .60s cubic-bezier(.16,.84,.24,1) both!important;
+    }
+    @keyframes findFlip{
+      0%{transform:rotateY(0) scale(1)}
+      48%{transform:rotateY(90deg) scale(.94)}
+      100%{transform:rotateY(0) scale(1)}
+    }
+    @keyframes findFound{
+      0%{transform:scale(.92)}
+      55%{transform:scale(1.10) rotate(3deg)}
+      100%{transform:scale(1.02)}
+    }
+
+    .scratch-game-panel[hidden]{display:none!important}
+    .scratch-game-panel{
+      max-width:560px;
+      margin:0 auto;
+      animation:gamePanelEnter .30s cubic-bezier(.16,.84,.24,1) both;
+    }
+    .scratch-win-badge{
+      width:max-content;
+      margin:0 auto 12px;
+      padding:7px 11px;
+      border-radius:999px;
+      background:#ffe3ed;
+      border:1px solid #eaa9c2;
+      color:#a24066;
+      font-size:10px;
+      font-weight:950;
+      letter-spacing:.08em;
+    }
+    .scratch-game-panel h1{
+      margin:2px 0 7px!important;
+      font-size:clamp(34px,7vw,44px)!important;
+    }
+    .scratch-card{
+      position:relative;
+      width:min(100%,470px);
+      height:210px;
+      margin:17px auto 10px;
+      overflow:hidden;
+      border-radius:24px;
+      background:linear-gradient(145deg,#fff8fc,#ffe8f1);
+      border:1px solid #e8a8c0;
+      box-shadow:0 15px 35px rgba(145,53,91,.15);
+      isolation:isolate;
+    }
+    .scratch-reward{
+      position:absolute;
+      inset:0;
+      z-index:1;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:7px;
+      padding:24px;
+      text-align:center;
+      background:
+        radial-gradient(circle at 18% 20%,rgba(235,95,145,.17),transparent 28%),
+        radial-gradient(circle at 84% 78%,rgba(244,141,177,.15),transparent 30%),
+        linear-gradient(145deg,#fff8fc,#ffe7f0);
+    }
+    .scratch-reward-kicker{
+      color:#a24066;
+      font-size:10px;
+      font-weight:950;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+    .scratch-reward strong{
+      max-width:350px;
+      color:#603247;
+      font-family:"DM Serif Display",Georgia,serif;
+      font-size:clamp(25px,6vw,36px);
+      font-weight:400;
+      line-height:1.08;
+    }
+    .scratch-reward-hearts{
+      color:#d7608c;
+      font-size:18px;
+      letter-spacing:.10em;
+    }
+    #scratchCanvas{
+      position:absolute;
+      inset:0;
+      z-index:2;
+      width:100%;
+      height:100%;
+      cursor:grab;
+      touch-action:none;
+      -webkit-user-select:none;
+      user-select:none;
+    }
+    #scratchCanvas:active{cursor:grabbing}
+    .scratch-hint{
+      min-height:22px;
+      color:#936276;
+      font-size:11px;
+      font-weight:850;
+    }
+    .scratch-actions{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:10px;
+    }
+
+    @media(max-width:560px){
+      .find-hero{gap:9px}
+      .find-hero-icon{width:46px;height:46px;flex-basis:46px;border-radius:15px;font-size:23px}
+      .find-grid{gap:7px!important}
+      .find-card{min-height:70px!important;border-radius:16px!important}
+      .scratch-card{height:190px;border-radius:20px}
+      .scratch-reward strong{font-size:27px}
+    }
+
   </style>
 </head>
 <body>
@@ -5049,17 +5262,49 @@
 
       <div class="find-game-panel" id="findGamePanel" hidden>
         <button class="mini-back" id="backFromFind" type="button">← games</button>
-        <div class="home-kicker">find karamella</div>
-        <h1>where did you go 😭🎀</h1>
-        <p class="mini-game-copy">3 tries. find karamella.</p>
+
+        <div class="find-hero">
+          <span class="find-hero-icon" aria-hidden="true">🎀</span>
+          <div>
+            <div class="home-kicker">find karamella</div>
+            <h1>where did you go 😭</h1>
+          </div>
+        </div>
+
+        <p class="mini-game-copy">3 tries. one of these is my baby.</p>
 
         <div class="find-status">
-          <span>tries <strong id="findTries">3</strong></span>
-          <span id="findRoundMsg">good luck baby 😂</span>
+          <span class="find-tries-pill">tries <strong id="findTries">3</strong></span>
+          <span class="find-round-message" id="findRoundMsg">good luck baby 😂</span>
         </div>
 
         <div class="find-grid" id="findGrid" aria-label="Find Karamella cards"></div>
         <button class="mini-game-action" id="findReset" type="button">hide again 🎀</button>
+      </div>
+
+      <div class="scratch-game-panel" id="scratchGamePanel" hidden>
+        <button class="mini-back" id="backFromScratch" type="button">← games</button>
+
+        <div class="scratch-win-badge">FOUND HER 🎀💗</div>
+        <div class="home-kicker">your reward</div>
+        <h1>scratch ittt 👀</h1>
+        <p class="mini-game-copy">you found karamella so obviously you get something.</p>
+
+        <div class="scratch-card" id="scratchCard">
+          <div class="scratch-reward">
+            <span class="scratch-reward-kicker">you got</span>
+            <strong id="scratchRewardText">you won 100 kisses</strong>
+            <span class="scratch-reward-hearts" aria-hidden="true">♡ 💗 ♡</span>
+          </div>
+          <canvas id="scratchCanvas" aria-label="Scratch card. Swipe over the card to reveal your reward."></canvas>
+        </div>
+
+        <div class="scratch-hint" id="scratchHint">scratch with your finger baby 💗</div>
+
+        <div class="scratch-actions">
+          <button class="mini-game-action" id="scratchAgain" type="button">new scratch 🎀</button>
+          <button class="mini-game-action primary" id="scratchDone" type="button">back to games 💗</button>
+        </div>
       </div>
 
       <div class="catch-battle-panel" id="catchBattlePanel" hidden>
@@ -5285,6 +5530,14 @@
     const findTries = document.getElementById('findTries');
     const findRoundMsg = document.getElementById('findRoundMsg');
     const findReset = document.getElementById('findReset');
+    const scratchGamePanel = document.getElementById('scratchGamePanel');
+    const backFromScratch = document.getElementById('backFromScratch');
+    const scratchCard = document.getElementById('scratchCard');
+    const scratchCanvas = document.getElementById('scratchCanvas');
+    const scratchRewardText = document.getElementById('scratchRewardText');
+    const scratchHint = document.getElementById('scratchHint');
+    const scratchAgain = document.getElementById('scratchAgain');
+    const scratchDone = document.getElementById('scratchDone');
     const openCatchBattle = document.getElementById('openCatchBattle');
     const catchBattlePanel = document.getElementById('catchBattlePanel');
     const backFromCatchBattle = document.getElementById('backFromCatchBattle');
@@ -5867,6 +6120,7 @@
             findRoundMsg.textContent = 'FOUND KARAMELLA 😭💗';
             findGrid.querySelectorAll('.find-card').forEach(btn => btn.disabled = true);
             burstHearts(['🎀','💗','🌸','🩷']);
+            setTimeout(() => openScratchReward(), 720);
             return;
           }
 
@@ -5890,6 +6144,171 @@
     }
 
     findReset.addEventListener('click', setupFindKaramella);
+
+    const scratchRewards = [
+      'you won 100 kisses',
+      'free yap session',
+      'omar owes you food',
+      'one unlimited hug coupon'
+    ];
+    let currentScratchReward = scratchRewards[0];
+    let scratchDrawing = false;
+    let scratchRevealed = false;
+    let scratchLastPoint = null;
+
+    function chooseScratchReward(){
+      currentScratchReward = scratchRewards[Math.floor(Math.random()*scratchRewards.length)];
+      scratchRewardText.textContent = currentScratchReward;
+    }
+
+    function paintScratchCover(){
+      const rect = scratchCard.getBoundingClientRect();
+      const dpr = Math.max(1,window.devicePixelRatio || 1);
+      const width = Math.max(1,Math.round(rect.width*dpr));
+      const height = Math.max(1,Math.round(rect.height*dpr));
+
+      scratchCanvas.width = width;
+      scratchCanvas.height = height;
+      scratchCanvas.style.width = rect.width + 'px';
+      scratchCanvas.style.height = rect.height + 'px';
+
+      const ctx = scratchCanvas.getContext('2d');
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      ctx.globalCompositeOperation = 'source-over';
+
+      const gradient = ctx.createLinearGradient(0,0,rect.width,rect.height);
+      gradient.addColorStop(0,'#e86f9b');
+      gradient.addColorStop(.5,'#f59aba');
+      gradient.addColorStop(1,'#ca78a5');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0,0,rect.width,rect.height);
+
+      ctx.fillStyle = 'rgba(255,255,255,.20)';
+      for(let y=12;y<rect.height;y+=22){
+        for(let x=12;x<rect.width;x+=28){
+          ctx.beginPath();
+          ctx.arc(x,y,1.4,0,Math.PI*2);
+          ctx.fill();
+        }
+      }
+
+      ctx.fillStyle = '#fff8fc';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.font = '900 13px "Nunito Sans", sans-serif';
+      ctx.fillText('SCRATCH ME 💗',rect.width/2,rect.height/2-8);
+      ctx.font = '800 10px "Nunito Sans", sans-serif';
+      ctx.fillText('swipe your finger here',rect.width/2,rect.height/2+13);
+
+      scratchRevealed = false;
+      scratchHint.textContent = 'scratch with your finger baby 💗';
+      scratchCanvas.style.opacity = '1';
+      scratchCanvas.style.pointerEvents = 'auto';
+    }
+
+    function scratchPoint(clientX,clientY){
+      if(scratchRevealed) return;
+      const rect = scratchCanvas.getBoundingClientRect();
+      const x = clientX-rect.left;
+      const y = clientY-rect.top;
+      const ctx = scratchCanvas.getContext('2d');
+
+      ctx.save();
+      const dpr = Math.max(1,window.devicePixelRatio || 1);
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.lineWidth = 34;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+
+      if(scratchLastPoint){
+        ctx.beginPath();
+        ctx.moveTo(scratchLastPoint.x,scratchLastPoint.y);
+        ctx.lineTo(x,y);
+        ctx.stroke();
+      }
+
+      ctx.beginPath();
+      ctx.arc(x,y,18,0,Math.PI*2);
+      ctx.fill();
+      ctx.restore();
+
+      scratchLastPoint={x,y};
+      maybeRevealScratch();
+    }
+
+    function maybeRevealScratch(){
+      if(scratchRevealed) return;
+      const ctx = scratchCanvas.getContext('2d',{willReadFrequently:true});
+      const pixels = ctx.getImageData(0,0,scratchCanvas.width,scratchCanvas.height).data;
+      let clear = 0;
+      const sampleStep = 40;
+
+      for(let i=3;i<pixels.length;i+=4*sampleStep){
+        if(pixels[i] < 45) clear += 1;
+      }
+
+      const samples = Math.ceil((pixels.length/4)/sampleStep);
+      if(clear/samples >= .42){
+        revealScratchReward();
+      }
+    }
+
+    function revealScratchReward(){
+      if(scratchRevealed) return;
+      scratchRevealed = true;
+      scratchCanvas.style.pointerEvents = 'none';
+      scratchCanvas.style.transition = 'opacity .45s ease';
+      scratchCanvas.style.opacity = '0';
+      scratchHint.textContent = 'okayyyyy you got it 😭💗';
+      burstHearts(['💗','🎀','🩷','🌸','💌']);
+    }
+
+    function resetScratchCard(){
+      chooseScratchReward();
+      requestAnimationFrame(() => {
+        scratchCanvas.style.transition = 'none';
+        paintScratchCover();
+      });
+    }
+
+    function openScratchReward(){
+      chooseScratchReward();
+      stopAllMiniGames();
+      swapGamePanel(findGamePanel,scratchGamePanel,true);
+      setTimeout(() => {
+        paintScratchCover();
+        window.scrollTo({top:0,behavior:'smooth'});
+      },220);
+    }
+
+    scratchCanvas.addEventListener('pointerdown',e => {
+      scratchDrawing = true;
+      scratchLastPoint = null;
+      scratchCanvas.setPointerCapture?.(e.pointerId);
+      scratchPoint(e.clientX,e.clientY);
+    });
+    scratchCanvas.addEventListener('pointermove',e => {
+      if(!scratchDrawing) return;
+      e.preventDefault();
+      scratchPoint(e.clientX,e.clientY);
+    });
+    scratchCanvas.addEventListener('pointerup',() => {
+      scratchDrawing = false;
+      scratchLastPoint = null;
+    });
+    scratchCanvas.addEventListener('pointercancel',() => {
+      scratchDrawing = false;
+      scratchLastPoint = null;
+    });
+    scratchCanvas.addEventListener('pointerleave',() => {
+      scratchDrawing = false;
+      scratchLastPoint = null;
+    });
+
+    scratchAgain.addEventListener('click',resetScratchCard);
+    scratchDone.addEventListener('click',() => showGamesHub(true));
+    backFromScratch.addEventListener('click',() => showGamesHub(true));
 
     let catchBattleRunning = false;
     let catchBattleSeconds = 10;
@@ -6079,7 +6498,7 @@
       }, 180);
     }
 
-    const gamePanels = [catchGamePanel, findGamePanel, catchBattlePanel];
+    const gamePanels = [catchGamePanel, findGamePanel, scratchGamePanel, catchBattlePanel];
 
     function currentOpenGamePanel(){
       return gamePanels.find(panel => !panel.hidden) || null;
