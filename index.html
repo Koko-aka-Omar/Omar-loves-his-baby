@@ -4945,7 +4945,7 @@
 
     noteTrigger.addEventListener('click', showNotes);
     gamesTrigger.addEventListener('click', showGames);
-    loveTrigger.addEventListener('click', showLovePage);
+    if(loveTrigger) loveTrigger.addEventListener('click', showLovePage);
     noteTrigger.addEventListener('keydown', e => {
       if(e.key === 'Enter' || e.key === ' '){
         e.preventDefault();
@@ -4958,7 +4958,7 @@
         showGames();
       }
     });
-    loveTrigger.addEventListener('keydown', e => {
+    if(loveTrigger) loveTrigger.addEventListener('keydown', e => {
       if(e.key === 'Enter' || e.key === ' '){
         e.preventDefault();
         showLovePage();
