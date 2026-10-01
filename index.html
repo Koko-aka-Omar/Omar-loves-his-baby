@@ -4426,6 +4426,206 @@
       }
     }
 
+  
+    /* Find Karamella + rigged Tap Battle + ban popup */
+    .game-ban-popup{
+      position:fixed;
+      inset:0;
+      z-index:260;
+      display:none;
+      place-items:center;
+      padding:20px;
+      background:rgba(86,31,55,.44);
+      backdrop-filter:blur(9px);
+    }
+    .game-ban-popup.show{
+      display:grid;
+      animation:banBackdropIn .20s ease both;
+    }
+    .game-ban-card{
+      width:min(92vw,390px);
+      padding:27px 22px 22px;
+      text-align:center;
+      border-radius:24px;
+      background:#fff7fb;
+      border:1px solid #eaa9c2;
+      box-shadow:0 24px 70px rgba(89,34,58,.27);
+      animation:banCardIn .35s cubic-bezier(.16,.84,.24,1) both;
+    }
+    .game-ban-emoji{font-size:46px;margin-bottom:9px}
+    .game-ban-card p{
+      margin:0 auto 18px;
+      color:#673448;
+      font-size:17px;
+      font-weight:900;
+      line-height:1.48;
+    }
+    .game-ban-card button{
+      color:#fff!important;
+      background:linear-gradient(135deg,#e85d8e,#c86f9f)!important;
+      box-shadow:0 9px 20px rgba(178,64,109,.20)!important;
+    }
+    @keyframes banBackdropIn{from{opacity:0}to{opacity:1}}
+    @keyframes banCardIn{
+      from{opacity:0;transform:translateY(18px) scale(.94) rotate(-1deg)}
+      to{opacity:1;transform:none}
+    }
+
+    .find-game-panel[hidden],
+    .tap-game-panel[hidden]{display:none!important}
+    .find-game-panel,.tap-game-panel{
+      animation:gamePanelEnter .30s cubic-bezier(.16,.84,.24,1) both;
+    }
+    .mini-game-copy{
+      max-width:390px;
+      margin:0 auto 15px!important;
+      color:var(--a-muted,#94677b)!important;
+      font-size:12px!important;
+      line-height:1.5!important;
+    }
+
+    .find-status{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin:0 0 11px;
+      color:#8f5f72;
+      font-size:11px;
+      font-weight:850;
+    }
+    .find-status span:first-child{
+      flex:0 0 auto;
+      padding:6px 9px;
+      border-radius:999px;
+      background:#fff0f5;
+      border:1px solid #efb6cb;
+    }
+    .find-status span:last-child{text-align:right}
+    .find-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:9px;
+      margin:0 0 15px;
+    }
+    .find-card{
+      aspect-ratio:1/1;
+      min-height:76px;
+      display:grid;
+      place-items:center;
+      padding:0!important;
+      border-radius:18px!important;
+      background:linear-gradient(145deg,#fffafd,#ffeef5)!important;
+      border:1px solid #edb5ca!important;
+      box-shadow:0 7px 17px rgba(145,53,91,.09)!important;
+      font-size:29px!important;
+    }
+    .find-card.revealed{background:#fff5f9!important}
+    .find-card.found{
+      background:#ffe2ed!important;
+      border-color:#e45d8e!important;
+      box-shadow:0 0 0 3px rgba(228,93,142,.10)!important;
+    }
+
+    .mini-game-action{
+      min-width:128px;
+      color:#a33e64!important;
+      background:#fff3f7!important;
+      border:1px solid #edb5ca!important;
+      box-shadow:none!important;
+    }
+    .mini-game-action.primary{
+      color:#fff!important;
+      background:linear-gradient(135deg,#e65b8b,#c873a2)!important;
+      border:0!important;
+      box-shadow:0 9px 20px rgba(176,62,107,.19)!important;
+    }
+
+    .tap-battle-timer{
+      width:max-content;
+      margin:0 auto 13px;
+      padding:7px 12px;
+      border-radius:999px;
+      background:#fff0f5;
+      border:1px solid #edb5ca;
+      color:#9f4267;
+      font-size:16px;
+      font-weight:1000;
+    }
+    .tap-battle-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      margin-bottom:13px;
+    }
+    .tap-score-card{
+      min-height:185px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:7px;
+      padding:16px;
+      white-space:normal;
+      border-radius:22px!important;
+      border:1px solid #edb5ca!important;
+      box-shadow:0 10px 23px rgba(145,53,91,.11)!important;
+    }
+    .tap-omar-card{
+      background:linear-gradient(155deg,#fff8fb,#f7edf5)!important;
+      color:#693c53!important;
+    }
+    button.tap-karamella-card{
+      background:linear-gradient(155deg,#fff4f8,#ffe1ec)!important;
+      color:#693c53!important;
+      transition:transform .07s ease!important;
+    }
+    button.tap-karamella-card:not(:disabled):active{
+      transform:scale(.965)!important;
+    }
+    button.tap-karamella-card:disabled{
+      opacity:.68;
+      cursor:default;
+    }
+    .tap-fighter-emoji{font-size:42px}
+    .tap-score-card strong{font-size:14px}
+    .tap-score-card > span:nth-of-type(2){
+      font-family:"DM Serif Display",Georgia,serif;
+      font-size:44px;
+      line-height:1;
+      color:#a33e64;
+    }
+    .tap-score-card small{
+      color:#a33e64;
+      font-size:9px;
+      font-weight:950;
+      letter-spacing:.08em;
+    }
+    .tap-battle-message{
+      min-height:42px;
+      display:grid;
+      place-items:center;
+      margin:2px auto 10px;
+      color:#936276;
+      font-size:12px;
+      font-weight:850;
+      line-height:1.45;
+    }
+
+    @media(max-width:560px){
+      .find-grid{gap:7px}
+      .find-card{min-height:68px;font-size:26px!important;border-radius:16px!important}
+      .tap-score-card{min-height:155px;border-radius:18px!important}
+      .tap-fighter-emoji{font-size:36px}
+      .tap-score-card > span:nth-of-type(2){font-size:38px}
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      .game-ban-popup.show,.game-ban-card,.find-game-panel,.tap-game-panel{
+        animation:none!important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -4466,10 +4666,10 @@
       <form id="loginForm" autocomplete="off">
         <div class="login-before-password">tiny key 🔐</div>
         <div class="password-wrap">
-          <input class="password-input" id="passwordInput" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="3" placeholder="XXX" aria-label="Password" autocomplete="off">
+          <input class="password-input" id="passwordInput" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="XXXXXX" aria-label="Password" autocomplete="off">
           <button class="password-toggle" id="passwordToggle" type="button" aria-label="Show password">👀</button>
         </div>
-        <div class="login-hint">three numbers XXX... what could it be? number of days in a year maybe? 👀</div>
+        <div class="login-hint">six numbers XXXXXX... you know this one 👀</div>
         <button class="login-button" type="submit">open our little place 💗</button>
         <div class="login-message" id="loginMessage"></div>
         <div class="login-footer">private property of Omar &amp; Karmel</div>
@@ -4523,6 +4723,14 @@
   </div>
 
   <div class="affirmation" id="affirmation"></div>
+
+  <div class="game-ban-popup" id="gameBanPopup" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="gameBanText">
+    <div class="game-ban-card">
+      <div class="game-ban-emoji">🚨😭</div>
+      <p id="gameBanText">that’s it. no more games for you you’re banned 😂😂😂😂</p>
+      <button id="gameBanClose" type="button">okay okay 😂</button>
+    </div>
+  </div>
 
   <main class="home-page" id="homePage">
     <section class="home-card">
@@ -4672,6 +4880,22 @@
               <small>caramel for karamella obviously</small>
             </span>
           </button>
+
+          <button class="game-tile" id="openFindKaramella" type="button">
+            <span class="game-tile-icon" aria-hidden="true">🎀</span>
+            <span class="game-tile-copy">
+              <strong>find karamella</strong>
+              <small>where did my baby go 😭</small>
+            </span>
+          </button>
+
+          <button class="game-tile" id="openTapBattle" type="button">
+            <span class="game-tile-icon" aria-hidden="true">⚡</span>
+            <span class="game-tile-copy">
+              <strong>tap battle</strong>
+              <small>you vs a totally fair definitely-not-rigged omar</small>
+            </span>
+          </button>
         </div>
 
         <button class="section-back-clean" type="button" onclick="showHome()">back home</button>
@@ -4714,6 +4938,49 @@
           <button class="catch-start" id="catchStart" type="button">start catching 💗</button>
         </div>
       </div>
+
+      <div class="find-game-panel" id="findGamePanel" hidden>
+        <button class="mini-back" id="backFromFind" type="button">← games</button>
+        <div class="home-kicker">find karamella</div>
+        <h1>where did you go 😭🎀</h1>
+        <p class="mini-game-copy">3 tries. find karamella.</p>
+
+        <div class="find-status">
+          <span>tries <strong id="findTries">3</strong></span>
+          <span id="findRoundMsg">good luck baby 😂</span>
+        </div>
+
+        <div class="find-grid" id="findGrid" aria-label="Find Karamella cards"></div>
+        <button class="mini-game-action" id="findReset" type="button">hide again 🎀</button>
+      </div>
+
+      <div class="tap-game-panel" id="tapGamePanel" hidden>
+        <button class="mini-back" id="backFromTap" type="button">← games</button>
+        <div class="home-kicker">tap battle</div>
+        <h1>karamella vs omar ⚡</h1>
+        <p class="mini-game-copy">tap for yourself. omar has a very suspicious automatic score 😂</p>
+
+        <div class="tap-battle-timer"><span id="tapBattleTime">8</span>s</div>
+
+        <div class="tap-battle-grid">
+          <div class="tap-score-card tap-omar-card">
+            <span class="tap-fighter-emoji">🧸</span>
+            <strong>omar</strong>
+            <span id="tapOmarScore">0</span>
+          </div>
+
+          <button class="tap-score-card tap-karamella-card" id="tapKaramella" type="button" disabled>
+            <span class="tap-fighter-emoji">🎀</span>
+            <strong>karamella</strong>
+            <span id="tapKaramellaScore">0</span>
+            <small>TAP ME 😭</small>
+          </button>
+        </div>
+
+        <div class="tap-battle-message" id="tapBattleMessage">press start and prepare to get scammed 😂</div>
+        <button class="mini-game-action primary" id="tapBattleStart" type="button">start battle ⚡</button>
+      </div>
+
     </section>
   </main>
 
@@ -4759,7 +5026,7 @@
     <div class="topline">
       <span>for Karmel 💗</span>
       <span class="topline-right">
-        <button class="home-mini" type="button" onclick="showHome()">home 🌼</button>
+        <button class="home-mini" type="button" onclick="showGames()">games 💗</button>
         <span id="count">1 / 5</span>
       </span>
     </div>
@@ -4904,6 +5171,24 @@
     const catchGamePanel = document.getElementById('catchGamePanel');
     const openCatchGame = document.getElementById('openCatchGame');
     const backToGames = document.getElementById('backToGames');
+    const openFindKaramella = document.getElementById('openFindKaramella');
+    const findGamePanel = document.getElementById('findGamePanel');
+    const backFromFind = document.getElementById('backFromFind');
+    const findGrid = document.getElementById('findGrid');
+    const findTries = document.getElementById('findTries');
+    const findRoundMsg = document.getElementById('findRoundMsg');
+    const findReset = document.getElementById('findReset');
+    const openTapBattle = document.getElementById('openTapBattle');
+    const tapGamePanel = document.getElementById('tapGamePanel');
+    const backFromTap = document.getElementById('backFromTap');
+    const tapBattleTime = document.getElementById('tapBattleTime');
+    const tapOmarScore = document.getElementById('tapOmarScore');
+    const tapKaramellaScore = document.getElementById('tapKaramellaScore');
+    const tapKaramella = document.getElementById('tapKaramella');
+    const tapBattleMessage = document.getElementById('tapBattleMessage');
+    const tapBattleStart = document.getElementById('tapBattleStart');
+    const gameBanPopup = document.getElementById('gameBanPopup');
+    const gameBanClose = document.getElementById('gameBanClose');
     const lovePage = document.getElementById('lovePage');
     const flowerPuzzle = document.getElementById('flowerPuzzle');
     const flowerCode = document.getElementById('flowerCode');
@@ -5221,6 +5506,7 @@
     let catchSeconds = 20;
     let catchSpawnTimer = null;
     let catchClockTimer = null;
+    let catchManStreak = 0;
     const catchTargets = new Set();
 
     function refreshCatchBest(){
@@ -5248,6 +5534,7 @@
       if(resetMessage){
         catchScoreValue = 0;
         catchSeconds = 20;
+        catchManStreak = 0;
         catchScore.textContent = '0';
         catchTime.textContent = '20';
         catchMessage.classList.remove('danger');
@@ -5315,11 +5602,20 @@
 
         if(item.bad){
           catchScoreValue = Math.max(0, catchScoreValue + item.points);
+          catchManStreak += 1;
           catchMessage.classList.add('danger');
           catchMessage.textContent = 'OMAR DEFENSE SYSTEM ACTIVATED 🚨 random man removed 😭';
           showCatchPoints(target,'-3 😭',true);
           if(navigator.vibrate) navigator.vibrate(40);
+
+          if(catchManStreak >= 5){
+            removeCatchTarget(target);
+            catchScore.textContent = catchScoreValue;
+            banCatchGame();
+            return;
+          }
         } else {
+          catchManStreak = 0;
           catchScoreValue += item.points;
           catchMessage.classList.remove('danger');
           catchMessage.textContent =
@@ -5379,6 +5675,7 @@
       stopCatchGame(false);
       catchScoreValue = 0;
       catchSeconds = 20;
+      catchManStreak = 0;
       catchScore.textContent = '0';
       catchTime.textContent = '20';
       catchMessage.classList.remove('danger');
@@ -5400,6 +5697,201 @@
 
     refreshCatchBest();
     catchStart.addEventListener('click',startCatchGame);
+
+    function banCatchGame(){
+      catchRunning = false;
+      if(catchSpawnTimer) clearTimeout(catchSpawnTimer);
+      if(catchClockTimer) clearInterval(catchClockTimer);
+      catchSpawnTimer = null;
+      catchClockTimer = null;
+      clearCatchTargets();
+      catchArena.classList.remove('running');
+      catchStart.disabled = false;
+      catchStart.textContent = 'play again 😭';
+      catchMessage.classList.add('danger');
+      catchMessage.textContent = 'FIVE MEN???? 😭';
+      gameBanPopup.classList.add('show');
+      gameBanPopup.setAttribute('aria-hidden','false');
+      if(navigator.vibrate) navigator.vibrate([70,50,70]);
+    }
+
+    gameBanClose.addEventListener('click', () => {
+      gameBanPopup.classList.remove('show');
+      gameBanPopup.setAttribute('aria-hidden','true');
+      catchManStreak = 0;
+    });
+
+    gameBanPopup.addEventListener('click', e => {
+      if(e.target === gameBanPopup) gameBanClose.click();
+    });
+
+    const findDecoys = ['🧸','🌷','💌','🧁','🐱','🌸','🍪','🍮'];
+    let findTargetIndex = 0;
+    let findTriesLeft = 3;
+    let findRoundOver = false;
+
+    function setupFindKaramella(){
+      findGrid.innerHTML = '';
+      findTargetIndex = Math.floor(Math.random()*9);
+      findTriesLeft = 3;
+      findRoundOver = false;
+      findTries.textContent = '3';
+      findRoundMsg.textContent = 'good luck baby 😂';
+
+      const shuffled = [...findDecoys].sort(() => Math.random() - .5);
+
+      for(let i=0;i<9;i++){
+        const card = document.createElement('button');
+        card.type = 'button';
+        card.className = 'find-card';
+        card.textContent = '♡';
+        card.setAttribute('aria-label','Hidden card ' + (i+1));
+        card.dataset.reveal = i === findTargetIndex ? '🎀' : shuffled[i % shuffled.length];
+
+        card.addEventListener('click', () => {
+          if(findRoundOver || card.classList.contains('revealed')) return;
+          card.classList.add('revealed');
+          card.textContent = card.dataset.reveal;
+
+          if(i === findTargetIndex){
+            card.classList.add('found');
+            findRoundOver = true;
+            findRoundMsg.textContent = 'FOUND KARAMELLA 😭💗';
+            findGrid.querySelectorAll('.find-card').forEach(btn => btn.disabled = true);
+            burstHearts(['🎀','💗','🌸','🩷']);
+            return;
+          }
+
+          findTriesLeft -= 1;
+          findTries.textContent = String(findTriesLeft);
+
+          if(findTriesLeft <= 0){
+            findRoundOver = true;
+            const target = findGrid.children[findTargetIndex];
+            target.classList.add('revealed','found');
+            target.textContent = '🎀';
+            findRoundMsg.textContent = 'BABY YOU LOST YOURSELF 😭😭';
+            findGrid.querySelectorAll('.find-card').forEach(btn => btn.disabled = true);
+          } else {
+            findRoundMsg.textContent = findTriesLeft === 1 ? 'LAST TRY 😭' : 'nopeeee 😂';
+          }
+        });
+
+        findGrid.appendChild(card);
+      }
+    }
+
+    findReset.addEventListener('click', setupFindKaramella);
+
+    let tapBattleRunning = false;
+    let tapBattleSeconds = 8;
+    let tapBattleTimer = null;
+    let tapBotTimer = null;
+    let karamellaTaps = 0;
+    let omarFakeScore = 0;
+    let karamellaShownScore = 0;
+    let riggedEnding = 'normal';
+
+    function stopTapBattle(reset = false){
+      if(tapBattleTimer) clearInterval(tapBattleTimer);
+      if(tapBotTimer) clearInterval(tapBotTimer);
+      tapBattleTimer = null;
+      tapBotTimer = null;
+      tapBattleRunning = false;
+      tapKaramella.disabled = true;
+      tapBattleStart.disabled = false;
+
+      if(reset){
+        tapBattleSeconds = 8;
+        karamellaTaps = 0;
+        omarFakeScore = 0;
+        karamellaShownScore = 0;
+        tapBattleTime.textContent = '8';
+        tapOmarScore.textContent = '0';
+        tapKaramellaScore.textContent = '0';
+        tapBattleStart.textContent = 'start battle ⚡';
+        tapBattleMessage.textContent = 'press start and prepare to get scammed 😂';
+      }
+    }
+
+    function finishRiggedTapBattle(){
+      if(!tapBattleRunning) return;
+      tapBattleRunning = false;
+      if(tapBattleTimer) clearInterval(tapBattleTimer);
+      if(tapBotTimer) clearInterval(tapBotTimer);
+      tapBattleTimer = null;
+      tapBotTimer = null;
+      tapKaramella.disabled = true;
+      tapBattleStart.disabled = true;
+
+      const base = Math.max(24, omarFakeScore, karamellaTaps + 10);
+
+      if(riggedEnding === 'omarFakeWin'){
+        tapOmarScore.textContent = String(base + 3);
+        tapKaramellaScore.textContent = String(base);
+        tapBattleMessage.textContent = 'wait WHAT???? omar won??? absolutely not.';
+        setTimeout(() => {
+          tapKaramellaScore.textContent = String(base + 4);
+          tapBattleMessage.textContent = 'SYSTEM CORRECTION: karamella wins 😂🎀 totally fair.';
+          tapBattleStart.disabled = false;
+          tapBattleStart.textContent = 'rematch ⚡';
+          burstHearts(['🎀','💗','🩷']);
+        },850);
+      } else if(riggedEnding === 'tie'){
+        tapOmarScore.textContent = String(base + 1);
+        tapKaramellaScore.textContent = String(base + 1);
+        tapBattleMessage.textContent = 'a tie??? checking VAR...';
+        setTimeout(() => {
+          tapKaramellaScore.textContent = String(base + 2);
+          tapBattleMessage.textContent = 'VAR says karamella by one 😂💗';
+          tapBattleStart.disabled = false;
+          tapBattleStart.textContent = 'rematch ⚡';
+          burstHearts(['🎀','💗','🌸']);
+        },850);
+      } else {
+        tapOmarScore.textContent = String(base);
+        tapKaramellaScore.textContent = String(base + 2 + Math.floor(Math.random()*4));
+        tapBattleMessage.textContent = 'KARAMELLA WON 😭🎀 definitely not rigged at all.';
+        tapBattleStart.disabled = false;
+        tapBattleStart.textContent = 'rematch ⚡';
+        burstHearts(['🎀','💗','🩷']);
+      }
+    }
+
+    function startRiggedTapBattle(){
+      stopTapBattle(true);
+      tapBattleRunning = true;
+      tapKaramella.disabled = false;
+      tapBattleStart.disabled = true;
+      tapBattleStart.textContent = 'GO GO GO';
+      tapBattleMessage.textContent = 'TAPPPPP 😭⚡';
+
+      const roll = Math.random();
+      riggedEnding = roll < .22 ? 'omarFakeWin' : (roll < .42 ? 'tie' : 'normal');
+
+      tapBattleTimer = setInterval(() => {
+        tapBattleSeconds -= 1;
+        tapBattleTime.textContent = String(Math.max(0,tapBattleSeconds));
+        if(tapBattleSeconds <= 0) finishRiggedTapBattle();
+      },1000);
+
+      tapBotTimer = setInterval(() => {
+        if(!tapBattleRunning) return;
+        omarFakeScore += 1 + Math.floor(Math.random()*3);
+        karamellaShownScore = karamellaTaps + Math.floor(omarFakeScore * .38);
+        tapOmarScore.textContent = String(omarFakeScore);
+        tapKaramellaScore.textContent = String(karamellaShownScore);
+      },250 + Math.floor(Math.random()*100));
+    }
+
+    tapKaramella.addEventListener('click', () => {
+      if(!tapBattleRunning) return;
+      karamellaTaps += 1;
+      karamellaShownScore += 1 + (Math.random() < .24 ? 1 : 0);
+      tapKaramellaScore.textContent = String(karamellaShownScore);
+    });
+
+    tapBattleStart.addEventListener('click', startRiggedTapBattle);
 
     function swapGamePanel(fromPanel, toPanel, animate = true){
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -5423,20 +5915,53 @@
       }, 180);
     }
 
+    const gamePanels = [catchGamePanel, findGamePanel, tapGamePanel];
+
+    function currentOpenGamePanel(){
+      return gamePanels.find(panel => !panel.hidden) || null;
+    }
+
+    function stopAllMiniGames(){
+      stopCatchGame(true);
+      stopTapBattle(false);
+    }
+
     function showGamesHub(animate = true){
-      stopCatchGame(true);
-      swapGamePanel(catchGamePanel, gamesHub, animate);
+      stopAllMiniGames();
+      const current = currentOpenGamePanel();
+
+      if(!animate){
+        gamePanels.forEach(panel => {
+          panel.hidden = true;
+          panel.classList.remove('game-panel-leaving','game-panel-entering');
+        });
+        gamesHub.hidden = false;
+      } else if(current){
+        swapGamePanel(current, gamesHub, true);
+      } else {
+        gamesHub.hidden = false;
+      }
+
       window.scrollTo({top:0,behavior:'smooth'});
     }
 
-    function openCatchGamePanel(){
-      stopCatchGame(true);
-      swapGamePanel(gamesHub, catchGamePanel, true);
+    function openGamePanel(panel, setup){
+      stopAllMiniGames();
+      if(typeof setup === 'function') setup();
+
+      const current = currentOpenGamePanel();
+      const from = current || gamesHub;
+      swapGamePanel(from, panel, true);
       window.scrollTo({top:0,behavior:'smooth'});
     }
 
-    openCatchGame.addEventListener('click', openCatchGamePanel);
+    openCatchGame.addEventListener('click', () => openGamePanel(catchGamePanel));
+    openFindKaramella.addEventListener('click', () => openGamePanel(findGamePanel, setupFindKaramella));
+    openTapBattle.addEventListener('click', () => openGamePanel(tapGamePanel, () => stopTapBattle(true)));
+
     backToGames.addEventListener('click', () => showGamesHub(true));
+    backFromFind.addEventListener('click', () => showGamesHub(true));
+    backFromTap.addEventListener('click', () => showGamesHub(true));
 
     function showRandomHomeNote(animate = true){
       if(!randomNote) return;
@@ -5716,8 +6241,8 @@
       const submitButton = loginForm.querySelector('button[type="submit"]');
       if(submitButton.disabled) return;
 
-      if(passwordInput.value.trim() !== '154'){
-        loginMessage.textContent = 'not this one, baby 👀 try the three numbers from the hint.';
+      if(passwordInput.value.trim() !== '172006'){
+        loginMessage.textContent = 'not this one, baby 👀 try the six numbers.';
         loginLock.classList.remove('wrong');
         void loginLock.offsetWidth;
         loginLock.classList.add('wrong');
