@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#fff7fa" />
+  <meta name="theme-color" content="#fff0f5" />
   <title>For Karmel 💗</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800;6..12,900&display=swap" rel="stylesheet">
   <style>
     :root{
       --pink:#ff8fb6;
@@ -3889,6 +3892,377 @@
       }
     }
 
+  
+    /* =========================================================
+       RICH ROSE AESTHETIC — clean, pink, intentional
+       ========================================================= */
+    :root{
+      --a-bg:#fff0f5;
+      --a-bg-2:#ffe6ef;
+      --a-surface:#fffafd;
+      --a-surface-2:#fff3f7;
+      --a-pink:#e55989;
+      --a-pink-2:#f086ad;
+      --a-pink-dark:#a33e64;
+      --a-plum:#5d3448;
+      --a-muted:#94677b;
+      --a-line:#edb8cc;
+      --a-line-soft:#f4d5e1;
+      --a-lilac:#aa7fc6;
+      --a-shadow:0 18px 44px rgba(145,53,91,.17);
+      --a-shadow-sm:0 8px 20px rgba(145,53,91,.10);
+    }
+
+    html{background:var(--a-bg)!important}
+
+    body,
+    body.home-mode,
+    body.notes-mode,
+    body.games-mode,
+    body.love-mode,
+    body.flower-mode,
+    body.night-mode,
+    body.night-mode.home-mode,
+    body.night-mode.flower-mode,
+    body.night-mode:not(.home-mode):not(.flower-mode){
+      font-family:"Nunito Sans",ui-rounded,"SF Pro Rounded","Segoe UI",system-ui,sans-serif!important;
+      color:var(--a-plum)!important;
+      background:
+        radial-gradient(circle at 10% 10%,rgba(230,89,137,.20),transparent 27%),
+        radial-gradient(circle at 90% 82%,rgba(170,127,198,.15),transparent 30%),
+        linear-gradient(145deg,var(--a-bg) 0%,#fff8fb 52%,var(--a-bg-2) 100%)!important;
+      background-attachment:fixed!important;
+    }
+
+    h1,h2,h3,
+    .home-title,
+    .final-title,
+    .final-main,
+    .today-intro h1,
+    .cozy-dialog h2{
+      font-family:"DM Serif Display",Georgia,serif!important;
+      font-weight:400!important;
+      letter-spacing:-.025em!important;
+      color:var(--a-plum)!important;
+    }
+
+    .home-kicker,.login-kicker,.note-label,.cozy-kicker,
+    .today-letter-kicker,.tiny{
+      color:var(--a-pink-dark)!important;
+      font-weight:900!important;
+      letter-spacing:.12em!important;
+    }
+
+    .home-sub,.login-copy,.notes-card p,.simple-section-card p,
+    .cozy-intro,.sub,.flower-secret-copy,.today-intro p{
+      color:var(--a-muted)!important;
+    }
+
+    .login-card,.home-card,.notes-card,.simple-section-card,
+    .flower-card,.card,.flower-puzzle-card,.today-intro,.cozy-dialog{
+      background:rgba(255,250,253,.97)!important;
+      border:1px solid var(--a-line)!important;
+      box-shadow:var(--a-shadow)!important;
+      border-radius:26px!important;
+      backdrop-filter:blur(10px)!important;
+    }
+
+    body.home-mode .home-page::before,
+    body.home-mode .home-page::after{
+      opacity:.24!important;
+      filter:blur(36px)!important;
+    }
+    body.home-mode:before{
+      opacity:.10!important;
+      background-image:radial-gradient(rgba(197,78,124,.36) 1px,transparent 1px)!important;
+      background-size:24px 24px!important;
+    }
+    .floaties{opacity:.34!important}
+    .paper-grain{opacity:.045!important}
+
+    /* HOME */
+    body.home-mode .home-card{
+      width:min(92vw,600px)!important;
+      padding:35px 28px 26px!important;
+    }
+    body.home-mode .corner-doodle,
+    body.home-mode .edge-shimmer{display:none!important}
+
+    .home-title{
+      font-size:clamp(40px,8vw,54px)!important;
+      line-height:.98!important;
+    }
+    body.home-mode .home-sub{
+      margin:10px auto 19px!important;
+      max-width:390px!important;
+      font-size:14px!important;
+    }
+
+    .home-section-nav{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      margin:0 0 16px;
+      position:relative;
+      z-index:2;
+    }
+    .home-section-button{
+      display:flex;
+      align-items:center;
+      gap:11px;
+      min-width:0;
+      min-height:70px;
+      padding:12px 13px;
+      white-space:normal;
+      text-align:left;
+      color:var(--a-plum)!important;
+      background:linear-gradient(145deg,#fffafd,#fff0f5)!important;
+      border:1px solid var(--a-line)!important;
+      border-radius:18px!important;
+      box-shadow:var(--a-shadow-sm)!important;
+    }
+    .home-section-button:hover{
+      transform:translateY(-2px)!important;
+      border-color:#e18dac!important;
+      box-shadow:0 12px 26px rgba(145,53,91,.15)!important;
+    }
+    .home-section-icon{
+      width:42px;height:42px;flex:0 0 42px;
+      display:grid;place-items:center;
+      border-radius:14px;
+      background:#fff;
+      border:1px solid var(--a-line-soft);
+      font-size:22px;
+    }
+    .home-section-button strong{
+      display:block;color:var(--a-plum);font-size:14px;
+    }
+    .home-section-button small{
+      display:block;margin-top:2px;color:var(--a-muted);
+      font-size:10px;font-weight:700;
+    }
+
+    .home-quotes,
+    body.home-mode .note-shell{
+      margin-top:0!important;
+      padding:20px 19px 17px!important;
+      transform:none!important;
+      background:
+        linear-gradient(rgba(255,249,252,.89),rgba(255,249,252,.89)),
+        repeating-linear-gradient(0deg,#fff7fa 0 30px,#efc6d6 30px 31px)!important;
+      border:1px solid var(--a-line)!important;
+      border-radius:20px!important;
+      box-shadow:none!important;
+    }
+    .home-quotes .random-note{
+      min-height:74px!important;
+      color:var(--a-plum)!important;
+      font-size:15px!important;
+      line-height:1.55!important;
+    }
+    .home-quotes .quote-counter{
+      margin-top:9px!important;
+      padding:0!important;
+      color:var(--a-muted)!important;
+      background:transparent!important;
+      border:0!important;
+      box-shadow:none!important;
+      font-size:10px!important;
+    }
+    body.home-mode .home-actions{margin-top:11px!important}
+    body.home-mode .last-change{display:none!important}
+    body.home-mode .home-footer{margin-top:6px!important}
+
+    /* BUTTON LANGUAGE */
+    button{
+      font-family:"Nunito Sans",ui-rounded,system-ui,sans-serif!important;
+    }
+    .login-button,.quiz-button,.notes-back,.flower-back,.catch-start,
+    .yes,.good,.restart,.puzzle-open,.today-primary{
+      color:#fff!important;
+      background:linear-gradient(135deg,var(--a-pink),#c977a8)!important;
+      border:0!important;
+      box-shadow:0 10px 22px rgba(179,66,111,.21)!important;
+    }
+    .note-button,.section-back-clean,.mini-back,.catch-home,.cozy-close,
+    .soft,.puzzle-close,.today-letter-controls button:not(.today-primary){
+      color:var(--a-pink-dark)!important;
+      background:#fff4f8!important;
+      border:1px solid var(--a-line)!important;
+      box-shadow:none!important;
+    }
+    .no{
+      color:var(--a-plum)!important;
+      background:#fffafd!important;
+      border:1px solid var(--a-line)!important;
+      box-shadow:none!important;
+    }
+
+    /* NOTES */
+    .letters-card{
+      width:min(92vw,620px)!important;
+      padding:35px 26px 28px!important;
+    }
+    .letters-card .notes-icon{
+      font-size:52px!important;
+      margin-bottom:4px!important;
+    }
+    .letter-entry{
+      background:linear-gradient(145deg,#fffafd,#fff0f5)!important;
+      border:1px solid var(--a-line)!important;
+      border-radius:18px!important;
+      box-shadow:var(--a-shadow-sm)!important;
+    }
+    .letter-entry-icon{
+      background:#fff!important;border-color:var(--a-line-soft)!important;
+    }
+    .letter-entry-copy strong{color:var(--a-plum)!important}
+    .letter-entry-copy small{color:var(--a-muted)!important}
+    .letter-entry-arrow{color:var(--a-pink-dark)!important}
+
+    /* GAMES */
+    #gamesPage{width:min(94vw,700px)!important}
+    .games-hub-card{padding:34px 25px 28px!important}
+    .games-hub-card h1{
+      margin:2px 0 20px!important;
+      font-size:clamp(34px,7vw,44px)!important;
+    }
+    .games-grid{
+      display:grid;grid-template-columns:1fr 1fr;
+      gap:10px;margin-bottom:18px;
+    }
+    .game-tile{
+      display:flex;align-items:center;gap:11px;
+      min-height:94px;padding:14px;
+      white-space:normal;text-align:left;
+      color:var(--a-plum)!important;
+      background:linear-gradient(145deg,#fffafd,#fff1f6)!important;
+      border:1px solid var(--a-line)!important;
+      border-radius:19px!important;
+      box-shadow:var(--a-shadow-sm)!important;
+    }
+    .game-tile:hover{
+      transform:translateY(-2px)!important;
+      border-color:#e18dac!important;
+      box-shadow:0 12px 26px rgba(145,53,91,.15)!important;
+    }
+    .game-tile-icon{
+      width:46px;height:46px;flex:0 0 46px;
+      display:grid;place-items:center;
+      border-radius:14px;background:#fff;
+      border:1px solid var(--a-line-soft);
+      font-size:24px;
+    }
+    .game-tile-copy{
+      min-width:0;display:flex;flex-direction:column;gap:3px;
+    }
+    .game-tile-copy strong{color:var(--a-plum);font-size:13px}
+    .game-tile-copy small{
+      color:var(--a-muted);font-size:10px;line-height:1.35;font-weight:700;
+    }
+    .section-back-clean{
+      min-width:112px;padding:11px 15px!important;
+    }
+    .catch-game-panel[hidden]{display:none!important}
+    .catch-game-panel{animation:homeIn .28s ease}
+    .mini-back{
+      display:block;margin:0 0 14px!important;
+      padding:9px 12px!important;border-radius:999px!important;
+      font-size:11px!important;
+    }
+    .catch-rule,.catch-stat{
+      background:#fff4f8!important;color:var(--a-plum)!important;
+      border-color:var(--a-line)!important;box-shadow:none!important;
+    }
+    .catch-rule.danger{
+      background:#fff0f2!important;color:#a64d60!important;
+      border-color:#edb9c5!important;
+    }
+    .catch-stat-label{color:var(--a-muted)!important}
+    .catch-stat strong{color:var(--a-plum)!important}
+    .catch-arena{
+      background:
+        radial-gradient(circle at 14% 20%,rgba(230,89,137,.18),transparent 25%),
+        radial-gradient(circle at 84% 78%,rgba(170,127,198,.14),transparent 28%),
+        linear-gradient(155deg,#fff7fa,#ffedf4)!important;
+      border:1px solid var(--a-line)!important;
+      box-shadow:inset 0 0 28px rgba(202,84,130,.06)!important;
+    }
+    .catch-target{
+      background:#fffafd!important;border-color:var(--a-line)!important;
+      box-shadow:var(--a-shadow-sm)!important;
+    }
+
+    /* QUIZ */
+    .card{
+      background:rgba(255,250,253,.98)!important;
+      border-color:var(--a-line)!important;
+      box-shadow:var(--a-shadow)!important;
+    }
+    .progress{background:#f5d7e3!important;box-shadow:none!important}
+    .bar{background:linear-gradient(90deg,var(--a-pink),var(--a-lilac))!important}
+
+    /* DIALOGS */
+    .cozy-dialog,.bakery-dialog{
+      background:#fffafd!important;color:var(--a-plum)!important;
+      border-color:var(--a-line)!important;
+      box-shadow:0 24px 70px rgba(91,37,61,.23)!important;
+    }
+    .cozy-dialog::backdrop{
+      background:rgba(81,34,55,.40)!important;
+      backdrop-filter:blur(8px)!important;
+    }
+    .bakery-treat{
+      background:#fff4f8!important;color:var(--a-plum)!important;
+      border-color:var(--a-line)!important;box-shadow:none!important;
+    }
+    .bakery-treat[aria-pressed="true"]{
+      background:#ffe4ed!important;border-color:var(--a-pink)!important;
+      box-shadow:0 0 0 2px rgba(230,89,137,.10)!important;
+    }
+    .bakery-serving{
+      background:#fff5f8!important;border-color:var(--a-line)!important;
+    }
+    .bakery-awning{
+      background:repeating-linear-gradient(90deg,#e8789e 0 30px,#fff0f5 30px 60px)!important;
+      border-bottom-color:#edb8cc!important;
+    }
+
+    /* LETTER */
+    .today-letter-page{
+      background:
+        radial-gradient(circle at 10% 10%,rgba(230,89,137,.20),transparent 27%),
+        radial-gradient(circle at 90% 82%,rgba(170,127,198,.15),transparent 30%),
+        linear-gradient(145deg,var(--a-bg),#fff8fb 55%,var(--a-bg-2))!important;
+    }
+    .today-intro{
+      background:#fffafd!important;border-color:var(--a-line)!important;
+      box-shadow:var(--a-shadow)!important;
+    }
+    .today-date-chip{
+      background:#fff0f5!important;color:var(--a-pink-dark)!important;
+      border-color:var(--a-line)!important;
+    }
+    .today-letter-sheet{
+      border-color:#e8a8c0!important;box-shadow:var(--a-shadow)!important;
+    }
+
+    button:focus-visible,[role="button"]:focus-visible,input:focus-visible{
+      outline:3px solid rgba(230,89,137,.27)!important;
+      outline-offset:3px!important;
+    }
+
+    @media(max-width:560px){
+      body.home-mode .home-card{padding:29px 16px 22px!important}
+      .home-section-nav{gap:8px}
+      .home-section-button{min-height:66px;padding:10px}
+      .home-section-icon{width:38px;height:38px;flex-basis:38px;font-size:20px}
+      .games-grid{grid-template-columns:1fr;gap:8px}
+      .game-tile{min-height:78px;padding:12px}
+      .game-tile-icon{width:42px;height:42px;flex-basis:42px;font-size:22px}
+      .letters-card,.games-hub-card{padding:28px 16px 22px!important}
+    }
+
   </style>
 </head>
 <body>
@@ -3994,36 +4368,38 @@
       <span class="corner-doodle doodle-one" aria-hidden="true">🎀</span>
       <span class="corner-doodle doodle-two" aria-hidden="true">🌷</span>
       <span class="corner-doodle doodle-three" aria-hidden="true">✦</span>
-      <div class="home-kicker">welcome to our little place</div>
+      <div class="home-kicker">our little place</div>
       <h1 class="home-title">hi karamellety.</h1>
-      <p class="home-sub">a tiny corner of the internet that is specific to one girl.</p>
+      <p class="home-sub">70 little yaps because apparently i never shut up 😂💗</p>
 
-      <nav class="home-menu home-menu-clean" aria-label="Main menu">
-        <button class="home-menu-feature note-trigger" id="noteTrigger" type="button">
-          <span class="menu-icon" aria-hidden="true">💌</span>
-          <span class="home-menu-copy">
-            <span class="home-menu-title">letters</span>
-            <span class="home-menu-desc">my yaps live here</span>
+      <nav class="home-section-nav" aria-label="Main sections">
+        <button class="home-section-button games-trigger" id="gamesTrigger" type="button">
+          <span class="home-section-icon" aria-hidden="true">💗</span>
+          <span>
+            <strong>games</strong>
+            <small>the silly stuff</small>
           </span>
-          <span class="home-menu-badge">NEW</span>
         </button>
 
-        <button class="home-menu-small games-trigger" id="gamesTrigger" type="button">
-          <span class="menu-icon" aria-hidden="true">💗</span>
-          <span class="home-menu-title">games</span>
-        </button>
-
-        <button class="home-menu-small" id="enterQuiz" type="button">
-          <span class="menu-icon" aria-hidden="true">🧸</span>
-          <span class="home-menu-title">quiz</span>
+        <button class="home-section-button note-trigger" id="noteTrigger" type="button">
+          <span class="home-section-icon" aria-hidden="true">💌</span>
+          <span>
+            <strong>notes</strong>
+            <small>the big yaps</small>
+          </span>
         </button>
       </nav>
 
-      <p class="home-voice">i made all this because apparently texting you normally wasnt enough 😂💗</p>
+      <div class="note-shell home-quotes">
+        <span class="tape tape-left" aria-hidden="true"></span>
+        <span class="tape tape-right" aria-hidden="true"></span>
+        <div class="note-label">random omar yap</div>
+        <p class="random-note" id="randomNote"></p>
+        <div class="quote-counter" id="quoteCounter">quotes found: 0 / 70</div>
+      </div>
 
-      <div class="little-places" aria-label="Our little places">
-        <button class="little-place" type="button" id="openSit" aria-haspopup="dialog"><span aria-hidden="true">🌙</span>sit with me</button>
-        <button class="little-place bakery-link" type="button" id="openBakery" aria-haspopup="dialog"><span aria-hidden="true">🧁</span>tiny bakery</button>
+      <div class="home-actions">
+        <button class="note-button" id="anotherNote" type="button">another one 💌</button>
       </div>
       <span class="home-secret-flower flower-trigger" id="flowerTrigger" role="button" tabindex="0" aria-label="Secret flower">🌼</span>
       <div class="home-footer">made with an unreasonable amount of attachment 💗</div>
@@ -4075,9 +4451,9 @@
   <main class="notes-page" id="notesPage">
     <section class="notes-card letters-card">
       <div class="paper-grain" aria-hidden="true"></div>
-      <div class="home-kicker">letters</div>
+      <div class="home-kicker">notes</div>
       <div class="notes-icon">💌</div>
-      <h1>my yaps to you.</h1>
+      <h1>the big yaps.</h1>
 
       <button class="letter-entry" type="button" onclick="openTodayLetterPage(false)">
         <span class="letter-entry-icon" aria-hidden="true">🚌</span>
@@ -4088,49 +4464,92 @@
         <span class="letter-entry-arrow" aria-hidden="true">›</span>
       </button>
 
-      <p class="letters-small-copy">more yaps will probably end up here because i clearly dont know how to shut up when it comes to you 💗</p>
+      <p class="letters-small-copy">more coming whenever i yap too much again 😂💗</p>
       <button class="notes-back letters-home" type="button" onclick="showHome()">back home</button>
     </section>
   </main>
 
   <main class="simple-section-page" id="gamesPage">
-    <section class="simple-section-card catch-game-card">
+    <section class="simple-section-card games-hub-card">
       <div class="paper-grain" aria-hidden="true"></div>
-      <div class="home-kicker">secret games &amp; puzzles</div>
-      <div class="simple-section-icon">💗🌷</div>
-      <h1>catch the hearts</h1>
-      <p class="catch-game-intro">20 seconds. catch the cute stuff. avoid the man 😭</p>
 
-      <div class="catch-rules" aria-label="Game rules">
-        <span class="catch-rule">💗 🌷 🌸 = +1</span>
-        <span class="catch-rule">💌 🎀 🫶 = +2</span>
-        <span class="catch-rule danger">👨 = -3 😭</span>
+      <div id="gamesHub">
+        <div class="home-kicker">games</div>
+        <h1>pick one 😂</h1>
+
+        <div class="games-grid">
+          <button class="game-tile" id="openCatchGame" type="button">
+            <span class="game-tile-icon" aria-hidden="true">💗</span>
+            <span class="game-tile-copy">
+              <strong>catch the hearts</strong>
+              <small>catch love. avoid the man 😭</small>
+            </span>
+          </button>
+
+          <button class="game-tile" id="enterQuiz" type="button">
+            <span class="game-tile-icon" aria-hidden="true">🧸</span>
+            <span class="game-tile-copy">
+              <strong>quiz</strong>
+              <small>very serious karamella research</small>
+            </span>
+          </button>
+
+          <button class="game-tile" id="openSit" type="button" aria-haspopup="dialog">
+            <span class="game-tile-icon" aria-hidden="true">🌙</span>
+            <span class="game-tile-copy">
+              <strong>sit with me</strong>
+              <small>come sit next to me</small>
+            </span>
+          </button>
+
+          <button class="game-tile" id="openBakery" type="button" aria-haspopup="dialog">
+            <span class="game-tile-icon" aria-hidden="true">🧁</span>
+            <span class="game-tile-copy">
+              <strong>tiny bakery</strong>
+              <small>caramel for karamella obviously</small>
+            </span>
+          </button>
+        </div>
+
+        <button class="section-back-clean" type="button" onclick="showHome()">back home</button>
       </div>
 
-      <div class="catch-stats" aria-label="Game statistics">
-        <div class="catch-stat">
-          <span class="catch-stat-label">score</span>
-          <strong id="catchScore">0</strong>
-        </div>
-        <div class="catch-stat">
-          <span class="catch-stat-label">time</span>
-          <strong><span id="catchTime">20</span>s</strong>
-        </div>
-        <div class="catch-stat">
-          <span class="catch-stat-label">best</span>
-          <strong id="catchBest">0</strong>
-        </div>
-      </div>
+      <div class="catch-game-panel" id="catchGamePanel" hidden>
+        <button class="mini-back" id="backToGames" type="button">← games</button>
+        <div class="home-kicker">catch the hearts</div>
+        <h1>GO GET MY HEARTS 😭💗</h1>
+        <p class="catch-game-intro">20 seconds. catch the cute stuff. avoid the man.</p>
 
-      <div class="catch-arena" id="catchArena" aria-label="Catch the hearts game area">
-        <div class="catch-arena-start" aria-hidden="true"><span>tap start and steal Omar’s hearts 💗</span></div>
-      </div>
+        <div class="catch-rules" aria-label="Game rules">
+          <span class="catch-rule">💗 🌷 🌸 = +1</span>
+          <span class="catch-rule">💌 🎀 🫶 = +2</span>
+          <span class="catch-rule danger">👨 = -3 😭</span>
+        </div>
 
-      <div class="catch-message" id="catchMessage" aria-live="polite">ready when you are, baby 💗</div>
+        <div class="catch-stats" aria-label="Game statistics">
+          <div class="catch-stat">
+            <span class="catch-stat-label">score</span>
+            <strong id="catchScore">0</strong>
+          </div>
+          <div class="catch-stat">
+            <span class="catch-stat-label">time</span>
+            <strong><span id="catchTime">20</span>s</strong>
+          </div>
+          <div class="catch-stat">
+            <span class="catch-stat-label">best</span>
+            <strong id="catchBest">0</strong>
+          </div>
+        </div>
 
-      <div class="catch-actions">
-        <button class="catch-start" id="catchStart" type="button">start catching 💗</button>
-        <button class="catch-home" type="button" onclick="showHome()">back home 🌷</button>
+        <div class="catch-arena" id="catchArena" aria-label="Catch the hearts game area">
+          <div class="catch-arena-start" aria-hidden="true"><span>tap start and steal Omar’s hearts 💗</span></div>
+        </div>
+
+        <div class="catch-message" id="catchMessage" aria-live="polite">ready when you are, baby 💗</div>
+
+        <div class="catch-actions">
+          <button class="catch-start" id="catchStart" type="button">start catching 💗</button>
+        </div>
       </div>
     </section>
   </main>
@@ -4318,6 +4737,10 @@
     const catchTime = document.getElementById('catchTime');
     const catchBest = document.getElementById('catchBest');
     const catchMessage = document.getElementById('catchMessage');
+    const gamesHub = document.getElementById('gamesHub');
+    const catchGamePanel = document.getElementById('catchGamePanel');
+    const openCatchGame = document.getElementById('openCatchGame');
+    const backToGames = document.getElementById('backToGames');
     const lovePage = document.getElementById('lovePage');
     const flowerPuzzle = document.getElementById('flowerPuzzle');
     const flowerCode = document.getElementById('flowerCode');
@@ -4802,6 +5225,23 @@
     refreshCatchBest();
     catchStart.addEventListener('click',startCatchGame);
 
+    function showGamesHub(){
+      stopCatchGame(true);
+      catchGamePanel.hidden = true;
+      gamesHub.hidden = false;
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+
+    function openCatchGamePanel(){
+      gamesHub.hidden = true;
+      catchGamePanel.hidden = false;
+      stopCatchGame(true);
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+
+    openCatchGame.addEventListener('click', openCatchGamePanel);
+    backToGames.addEventListener('click', showGamesHub);
+
     function showRandomHomeNote(animate = true){
       if(!randomNote) return;
       let next = Math.floor(Math.random() * homeNotes.length);
@@ -4859,7 +5299,7 @@
     }
 
     function showGamesImmediate(){
-      if(!catchRunning) stopCatchGame(true);
+      showGamesHub();
       homePage.classList.add('hidden');
       quizWrap.classList.remove('active');
       flowerPage.classList.remove('active');
