@@ -4381,6 +4381,51 @@
       margin:auto;
     }
 
+  
+    /* Smooth page + game transitions */
+    @keyframes sectionExitSoft{
+      from{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
+      to{opacity:0;transform:translateY(-10px) scale(.985);filter:blur(2px)}
+    }
+    @keyframes sectionEnterSoft{
+      from{opacity:0;transform:translateY(14px) scale(.985);filter:blur(3px)}
+      to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
+    }
+    @keyframes gamePanelExit{
+      from{opacity:1;transform:translateX(0) scale(1)}
+      to{opacity:0;transform:translateX(-12px) scale(.99)}
+    }
+    @keyframes gamePanelEnter{
+      from{opacity:0;transform:translateX(14px) scale(.99)}
+      to{opacity:1;transform:translateX(0) scale(1)}
+    }
+
+    .section-leaving{
+      animation:sectionExitSoft .22s cubic-bezier(.4,0,.2,1) forwards!important;
+      pointer-events:none!important;
+    }
+    .section-entering{
+      animation:sectionEnterSoft .38s cubic-bezier(.16,.84,.24,1) both!important;
+    }
+
+    .game-panel-leaving{
+      animation:gamePanelExit .18s ease forwards!important;
+      pointer-events:none!important;
+    }
+    .game-panel-entering{
+      animation:gamePanelEnter .30s cubic-bezier(.16,.84,.24,1) both!important;
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      .section-leaving,
+      .section-entering,
+      .game-panel-leaving,
+      .game-panel-entering{
+        animation:none!important;
+        transition:none!important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -4886,15 +4931,28 @@
 
     function transitionTo(action){
       const currentSection = currentVisibleSection();
-      if(!currentSection){
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if(!currentSection || reduceMotion){
         action();
         return;
       }
+
+      currentSection.classList.remove('section-entering');
       currentSection.classList.add('section-leaving');
+
       setTimeout(() => {
         currentSection.classList.remove('section-leaving');
         action();
-      }, 165);
+
+        const nextSection = currentVisibleSection();
+        if(nextSection){
+          nextSection.classList.remove('section-entering');
+          void nextSection.offsetWidth;
+          nextSection.classList.add('section-entering');
+          setTimeout(() => nextSection.classList.remove('section-entering'), 420);
+        }
+      }, 220);
     }
     const homeNotes = [
       "why are you here? you should be doing cute girl things not on a random website😂😂 💗",
@@ -5343,22 +5401,42 @@
     refreshCatchBest();
     catchStart.addEventListener('click',startCatchGame);
 
-    function showGamesHub(){
+    function swapGamePanel(fromPanel, toPanel, animate = true){
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(!animate || reduceMotion || fromPanel.hidden){
+        fromPanel.hidden = true;
+        toPanel.hidden = false;
+        toPanel.classList.remove('game-panel-leaving','game-panel-entering');
+        return;
+      }
+
+      fromPanel.classList.add('game-panel-leaving');
+      setTimeout(() => {
+        fromPanel.classList.remove('game-panel-leaving');
+        fromPanel.hidden = true;
+
+        toPanel.hidden = false;
+        toPanel.classList.remove('game-panel-entering');
+        void toPanel.offsetWidth;
+        toPanel.classList.add('game-panel-entering');
+        setTimeout(() => toPanel.classList.remove('game-panel-entering'), 340);
+      }, 180);
+    }
+
+    function showGamesHub(animate = true){
       stopCatchGame(true);
-      catchGamePanel.hidden = true;
-      gamesHub.hidden = false;
+      swapGamePanel(catchGamePanel, gamesHub, animate);
       window.scrollTo({top:0,behavior:'smooth'});
     }
 
     function openCatchGamePanel(){
-      gamesHub.hidden = true;
-      catchGamePanel.hidden = false;
       stopCatchGame(true);
+      swapGamePanel(gamesHub, catchGamePanel, true);
       window.scrollTo({top:0,behavior:'smooth'});
     }
 
     openCatchGame.addEventListener('click', openCatchGamePanel);
-    backToGames.addEventListener('click', showGamesHub);
+    backToGames.addEventListener('click', () => showGamesHub(true));
 
     function showRandomHomeNote(animate = true){
       if(!randomNote) return;
@@ -5417,7 +5495,7 @@
     }
 
     function showGamesImmediate(){
-      showGamesHub();
+      showGamesHub(false);
       homePage.classList.add('hidden');
       quizWrap.classList.remove('active');
       flowerPage.classList.remove('active');
