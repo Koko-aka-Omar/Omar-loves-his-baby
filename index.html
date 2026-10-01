@@ -2884,6 +2884,269 @@
       .catch-target,.catch-score-pop{animation:none!important}
     }
 
+  
+    /* Cleaner home navigation — 01.10.2026 */
+    body.home-mode .floaties{opacity:.32}
+    body.home-mode .f7,
+    body.home-mode .f8,
+    body.home-mode .f9,
+    body.home-mode .f10{display:none}
+
+    body.home-mode .home-card{
+      width:min(92vw,620px);
+      padding:38px 30px 28px;
+      border-radius:28px;
+      background:rgba(255,253,251,.96);
+      border:1px solid rgba(221,190,210,.52);
+      box-shadow:0 18px 48px rgba(126,86,112,.12);
+    }
+    body.home-mode .edge-shimmer{display:none}
+    body.home-mode .corner-doodle{opacity:.38}
+    body.home-mode .home-kicker{margin-bottom:7px}
+    body.home-mode .home-title{
+      font-size:clamp(34px,7vw,46px);
+    }
+    body.home-mode .home-sub{
+      margin:9px auto 20px;
+      max-width:390px;
+      font-size:14px;
+    }
+
+    .home-stickers{display:none!important}
+
+    .home-menu{
+      position:relative;
+      z-index:2;
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:9px;
+      margin:0 0 16px;
+    }
+    .home-menu button{
+      min-width:0;
+      min-height:72px;
+      margin:0;
+      padding:12px 10px;
+      border-radius:18px;
+      border:1px solid #ead7e2;
+      background:#fff9fb;
+      color:#765b6a;
+      box-shadow:0 6px 16px rgba(122,82,104,.07);
+      white-space:normal;
+      text-align:center;
+    }
+    .home-menu button:hover{
+      transform:translateY(-2px);
+      box-shadow:0 9px 20px rgba(122,82,104,.10);
+    }
+    .home-menu-feature{
+      grid-column:1/-1;
+      min-height:84px!important;
+      display:flex;
+      align-items:center;
+      justify-content:flex-start;
+      gap:14px;
+      padding:14px 17px!important;
+      text-align:left!important;
+      background:linear-gradient(135deg,#fff0f6,#f9efff)!important;
+      border-color:#edbfd2!important;
+      box-shadow:0 9px 22px rgba(189,104,140,.11)!important;
+    }
+    .home-menu-feature .menu-icon{
+      width:52px;
+      height:52px;
+      flex:0 0 52px;
+      display:grid;
+      place-items:center;
+      border-radius:16px;
+      background:rgba(255,255,255,.78);
+      font-size:27px;
+      box-shadow:0 5px 13px rgba(168,101,130,.08);
+    }
+    .home-menu-copy{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+      min-width:0;
+    }
+    .home-menu-title{
+      color:#6d4d5d;
+      font-size:15px;
+      font-weight:950;
+      line-height:1.1;
+    }
+    .home-menu-desc{
+      color:#a3788b;
+      font-size:11px;
+      font-weight:750;
+      line-height:1.35;
+    }
+    .home-menu-badge{
+      margin-left:auto;
+      flex:0 0 auto;
+      padding:5px 7px;
+      border-radius:999px;
+      background:#fff;
+      border:1px solid #f0cada;
+      color:#bd6d8d;
+      font-size:8px;
+      font-weight:950;
+      letter-spacing:.07em;
+      text-transform:uppercase;
+    }
+    .home-menu-small .menu-icon{
+      display:block;
+      margin-bottom:5px;
+      font-size:23px;
+    }
+    .home-menu-small .home-menu-title{
+      font-size:12px;
+    }
+
+    body.home-mode .note-shell{
+      margin-top:3px;
+      padding:18px 18px 16px;
+      border-radius:20px;
+      background:#fff9f5;
+      border:1px solid #eaded8;
+      box-shadow:none;
+    }
+    body.home-mode .note-shell:before{display:none}
+    body.home-mode .note-label{
+      font-size:9px;
+      letter-spacing:.10em;
+      color:#a27d91;
+    }
+    body.home-mode .random-note{
+      min-height:66px;
+      font-size:15px;
+      line-height:1.5;
+    }
+    body.home-mode .quote-counter{
+      margin-top:8px;
+      font-size:10px;
+      opacity:.74;
+    }
+
+    body.home-mode .home-actions{
+      margin-top:11px;
+    }
+    body.home-mode .home-actions .note-button{
+      padding:10px 15px;
+      font-size:12px;
+      background:#f6edf3;
+      color:#846575;
+      box-shadow:none;
+      border:1px solid #ead8e1;
+    }
+
+    body.home-mode .little-places{
+      margin-top:10px;
+      gap:8px;
+    }
+    body.home-mode .little-place{
+      padding:11px 9px;
+      border-radius:15px;
+      background:#faf6fb;
+      border-color:#e6dce9;
+      box-shadow:none;
+      font-size:11px;
+      color:#765d7c;
+    }
+    body.home-mode .little-place.bakery-link{
+      background:#fff8ef;
+      border-color:#eadfd1;
+      color:#7e6251;
+    }
+    body.home-mode .little-place span{font-size:18px}
+
+    .home-secret-flower{
+      display:inline-grid;
+      place-items:center;
+      position:relative;
+      z-index:2;
+      width:34px;
+      height:34px;
+      margin:12px auto 0;
+      border-radius:50%;
+      cursor:pointer;
+      user-select:none;
+      font-size:17px;
+      opacity:.52;
+      transition:opacity .18s ease,transform .18s ease;
+    }
+    .home-secret-flower:hover{
+      opacity:.9;
+      transform:rotate(8deg) scale(1.05);
+    }
+    .home-secret-flower.discovered{
+      opacity:.9;
+      border:1px solid #efc4d4;
+      background:#fff8fb;
+    }
+    .home-secret-flower.discovered::before{
+      content:"✓";
+      position:absolute;
+      right:-3px;
+      top:-4px;
+      width:14px;
+      height:14px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      background:#fff;
+      border:1px solid #efc4d4;
+      color:#be6b8d;
+      font:900 8px/1 ui-rounded,"SF Pro Rounded","Segoe UI",system-ui,sans-serif;
+    }
+
+    body.home-mode .home-footer{
+      margin-top:9px;
+      opacity:.55;
+    }
+    body.home-mode .last-change{
+      margin-top:4px;
+      opacity:.52;
+    }
+    body.home-mode .home-footer-sparkle{display:none}
+
+    @media(max-width:560px){
+      body.home-mode .home-card{
+        width:min(94vw,560px);
+        padding:30px 17px 22px;
+        border-radius:24px;
+      }
+      .home-menu{
+        grid-template-columns:repeat(3,minmax(0,1fr));
+        gap:7px;
+      }
+      .home-menu-feature{
+        min-height:78px!important;
+        padding:12px 13px!important;
+        gap:11px;
+      }
+      .home-menu-feature .menu-icon{
+        width:46px;
+        height:46px;
+        flex-basis:46px;
+        font-size:24px;
+      }
+      .home-menu-title{font-size:14px}
+      .home-menu-desc{font-size:10px}
+      .home-menu-small{
+        min-height:66px!important;
+        padding:10px 5px!important;
+      }
+      .home-menu-small .menu-icon{
+        font-size:21px;
+        margin-bottom:4px;
+      }
+      .home-menu-small .home-menu-title{
+        font-size:10.5px;
+      }
+      body.home-mode .random-note{font-size:14px}
+    }
+
   </style>
 </head>
 <body>
@@ -2991,11 +3254,34 @@
       <span class="corner-doodle doodle-two" aria-hidden="true">🌷</span>
       <span class="corner-doodle doodle-three" aria-hidden="true">✦</span>
       <div class="home-kicker">welcome to our little place</div>
-      <div class="home-stickers" aria-hidden="true">
-        <span class="flower-trigger" id="flowerTrigger" role="button" tabindex="0" aria-label="Flower" data-label="secret">🌼</span><span class="note-trigger" id="noteTrigger" role="button" tabindex="0" aria-label="Notes and diary" data-label="diary">💌<i class="new-badge">NEW ✦</i></span><span class="games-trigger" id="gamesTrigger" role="button" tabindex="0" aria-label="Secret games and puzzles" data-label="games">🧸<i class="new-badge">NEW ✦</i></span><span class="love-trigger" id="loveTrigger" role="button" tabindex="0" aria-label="Things I love about you" data-label="things i love">✨<i class="new-badge">NEW ✦</i></span>
-      </div>
       <h1 class="home-title">hi karamellety.</h1>
       <p class="home-sub">a tiny corner of the internet that is specific to one girl.</p>
+
+      <nav class="home-menu" aria-label="Main menu">
+        <button class="home-menu-feature games-trigger" id="gamesTrigger" type="button">
+          <span class="menu-icon" aria-hidden="true">💗</span>
+          <span class="home-menu-copy">
+            <span class="home-menu-title">play games</span>
+            <span class="home-menu-desc">Catch the Hearts is waiting for you</span>
+          </span>
+          <span class="home-menu-badge">NEW</span>
+        </button>
+
+        <button class="home-menu-small note-trigger" id="noteTrigger" type="button">
+          <span class="menu-icon" aria-hidden="true">💌</span>
+          <span class="home-menu-title">notes</span>
+        </button>
+
+        <button class="home-menu-small love-trigger" id="loveTrigger" type="button">
+          <span class="menu-icon" aria-hidden="true">✨</span>
+          <span class="home-menu-title">things i love</span>
+        </button>
+
+        <button class="home-menu-small" id="enterQuiz" type="button">
+          <span class="menu-icon" aria-hidden="true">🧸</span>
+          <span class="home-menu-title">quiz</span>
+        </button>
+      </nav>
 
       <div class="note-shell">
         <span class="tape tape-left" aria-hidden="true"></span>
@@ -3007,12 +3293,12 @@
 
       <div class="home-actions">
         <button class="note-button" id="anotherNote" type="button">another quote 💌</button>
-        <button class="quiz-button" id="enterQuiz" type="button">take the quiz 💗</button>
       </div>
       <div class="little-places" aria-label="Our little places">
         <button class="little-place" type="button" id="openSit" aria-haspopup="dialog"><span aria-hidden="true">🌙</span>sit with me</button>
         <button class="little-place bakery-link" type="button" id="openBakery" aria-haspopup="dialog"><span aria-hidden="true">🧁</span>tiny bakery</button>
       </div>
+      <span class="home-secret-flower flower-trigger" id="flowerTrigger" role="button" tabindex="0" aria-label="Secret flower">🌼</span>
       <div class="home-footer">made with an unreasonable amount of attachment 💗</div>
       <div class="last-change" id="lastChange">last change on: 25 September 2026</div>
       <div class="home-footer-sparkle" aria-hidden="true">♡ &nbsp; ✦ &nbsp; ♡</div>
