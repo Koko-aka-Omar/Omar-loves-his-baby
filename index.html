@@ -5302,7 +5302,6 @@
         <div class="scratch-hint" id="scratchHint">scratch with your finger baby 💗</div>
 
         <div class="scratch-actions">
-          <button class="mini-game-action" id="scratchAgain" type="button">new scratch 🎀</button>
           <button class="mini-game-action primary" id="scratchDone" type="button">back to games 💗</button>
         </div>
       </div>
@@ -5536,7 +5535,6 @@
     const scratchCanvas = document.getElementById('scratchCanvas');
     const scratchRewardText = document.getElementById('scratchRewardText');
     const scratchHint = document.getElementById('scratchHint');
-    const scratchAgain = document.getElementById('scratchAgain');
     const scratchDone = document.getElementById('scratchDone');
     const openCatchBattle = document.getElementById('openCatchBattle');
     const catchBattlePanel = document.getElementById('catchBattlePanel');
@@ -6151,13 +6149,35 @@
       'omar owes you food',
       'one unlimited hug coupon'
     ];
+    const DAILY_SCRATCH_DATE_KEY = 'karmelDailyScratchDate';
+    const DAILY_SCRATCH_REWARD_KEY = 'karmelDailyScratchReward';
+
     let currentScratchReward = scratchRewards[0];
     let scratchDrawing = false;
     let scratchRevealed = false;
     let scratchLastPoint = null;
 
+    function scratchDayKey(){
+      const now = new Date();
+      const y = now.getFullYear();
+      const m = String(now.getMonth()+1).padStart(2,'0');
+      const d = String(now.getDate()).padStart(2,'0');
+      return y + '-' + m + '-' + d;
+    }
+
     function chooseScratchReward(){
-      currentScratchReward = scratchRewards[Math.floor(Math.random()*scratchRewards.length)];
+      const today = scratchDayKey();
+      const savedDate = localStorage.getItem(DAILY_SCRATCH_DATE_KEY);
+      const savedReward = localStorage.getItem(DAILY_SCRATCH_REWARD_KEY);
+
+      if(savedDate === today && scratchRewards.includes(savedReward)){
+        currentScratchReward = savedReward;
+      } else {
+        currentScratchReward = scratchRewards[Math.floor(Math.random()*scratchRewards.length)];
+        localStorage.setItem(DAILY_SCRATCH_DATE_KEY,today);
+        localStorage.setItem(DAILY_SCRATCH_REWARD_KEY,currentScratchReward);
+      }
+
       scratchRewardText.textContent = currentScratchReward;
     }
 
@@ -6260,16 +6280,8 @@
       scratchCanvas.style.pointerEvents = 'none';
       scratchCanvas.style.transition = 'opacity .45s ease';
       scratchCanvas.style.opacity = '0';
-      scratchHint.textContent = 'okayyyyy you got it 😭💗';
+      scratchHint.textContent = 'same reward for today baby 😂 come back tomorrow and try your luck again 💗';
       burstHearts(['💗','🎀','🩷','🌸','💌']);
-    }
-
-    function resetScratchCard(){
-      chooseScratchReward();
-      requestAnimationFrame(() => {
-        scratchCanvas.style.transition = 'none';
-        paintScratchCover();
-      });
     }
 
     function openScratchReward(){
@@ -6277,6 +6289,7 @@
       stopAllMiniGames();
       swapGamePanel(findGamePanel,scratchGamePanel,true);
       setTimeout(() => {
+        scratchCanvas.style.transition = 'none';
         paintScratchCover();
         window.scrollTo({top:0,behavior:'smooth'});
       },220);
@@ -6306,7 +6319,6 @@
       scratchLastPoint = null;
     });
 
-    scratchAgain.addEventListener('click',resetScratchCard);
     scratchDone.addEventListener('click',() => showGamesHub(true));
     backFromScratch.addEventListener('click',() => showGamesHub(true));
 
