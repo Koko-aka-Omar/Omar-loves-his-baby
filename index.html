@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#ffd9e6" />
+  <meta name="theme-color" content="#fff7fa" />
   <title>For Karmel 💗</title>
   <style>
     :root{
@@ -3145,6 +3145,572 @@
         font-size:10.5px;
       }
       body.home-mode .random-note{font-size:14px}
+    }
+
+  
+    /* =========================================================
+       Unified visual system — blush paper / soft lilac / cream
+       Keeps all existing content and interactions intact.
+       ========================================================= */
+    :root{
+      --ui-bg:#fff7fa;
+      --ui-bg-2:#fffaf5;
+      --ui-surface:rgba(255,252,250,.96);
+      --ui-surface-solid:#fffaf9;
+      --ui-surface-soft:#fff5f8;
+      --ui-rose:#d9789d;
+      --ui-rose-strong:#bd6488;
+      --ui-rose-soft:#f6dce6;
+      --ui-lilac:#e9e1f5;
+      --ui-lilac-strong:#8d73a5;
+      --ui-cream:#fff1da;
+      --ui-text:#694f5c;
+      --ui-muted:#9a7a88;
+      --ui-line:#ecd7e1;
+      --ui-line-strong:#e5c2d1;
+      --ui-shadow:0 16px 42px rgba(132,82,105,.12);
+      --ui-shadow-small:0 7px 18px rgba(132,82,105,.08);
+      --ui-radius-xl:28px;
+      --ui-radius-lg:22px;
+      --ui-radius-md:16px;
+      --ui-pill:999px;
+
+      --pink:var(--ui-rose);
+      --pink-dark:var(--ui-rose-strong);
+      --pink-soft:var(--ui-rose-soft);
+      --cream:var(--ui-bg-2);
+      --text:var(--ui-text);
+      --muted:var(--ui-muted);
+      --shadow:var(--ui-shadow);
+    }
+
+    html{
+      background:var(--ui-bg);
+    }
+
+    body,
+    body.home-mode,
+    body.notes-mode,
+    body.games-mode,
+    body.love-mode,
+    body.flower-mode,
+    body.night-mode,
+    body.night-mode.home-mode,
+    body.night-mode.flower-mode,
+    body.night-mode:not(.home-mode):not(.flower-mode){
+      color:var(--ui-text);
+      background:
+        radial-gradient(circle at 14% 14%,rgba(246,213,226,.72),transparent 28%),
+        radial-gradient(circle at 86% 82%,rgba(232,224,247,.64),transparent 30%),
+        linear-gradient(145deg,var(--ui-bg),var(--ui-bg-2) 58%,#fff8fb);
+      background-attachment:fixed;
+    }
+
+    body.night-mode{
+      --ui-bg:#faf5fa;
+      --ui-bg-2:#f9f5f7;
+      --ui-surface:rgba(253,249,251,.96);
+      --ui-surface-solid:#fdf9fb;
+      --ui-surface-soft:#f7eff5;
+      --ui-text:#675867;
+      --ui-muted:#948492;
+      --ui-line:#e2d3df;
+      --ui-line-strong:#d8c3d2;
+      --ui-shadow:0 16px 42px rgba(90,72,93,.12);
+      --ui-shadow-small:0 7px 18px rgba(90,72,93,.08);
+    }
+
+    body.home-mode:before{
+      opacity:.15;
+      background-image:radial-gradient(rgba(202,141,168,.34) 1px,transparent 1px);
+      background-size:24px 24px;
+    }
+
+    body.home-mode .home-page::before,
+    body.home-mode .home-page::after{
+      opacity:.42;
+      filter:blur(28px);
+    }
+
+    .floaty{
+      opacity:.38;
+      filter:drop-shadow(0 4px 7px rgba(151,91,118,.08));
+    }
+
+    .cute-ambience .soft-blob{opacity:.12}
+    .cute-ambience .soft-sparkle{opacity:.28}
+
+    /* One card language everywhere */
+    .login-card,
+    .home-card,
+    .notes-card,
+    .simple-section-card,
+    .flower-card,
+    .card,
+    .flower-puzzle-card,
+    .today-intro,
+    .cozy-dialog{
+      background:var(--ui-surface);
+      color:var(--ui-text);
+      border:1px solid var(--ui-line);
+      border-radius:var(--ui-radius-xl);
+      box-shadow:var(--ui-shadow);
+      backdrop-filter:blur(10px);
+    }
+
+    .home-card,
+    .notes-card,
+    .simple-section-card,
+    body.games-mode .simple-section-card,
+    body.love-mode .simple-section-card,
+    .flower-card{
+      border-radius:var(--ui-radius-xl);
+    }
+
+    .notes-card,
+    body.games-mode .simple-section-card,
+    body.love-mode .simple-section-card,
+    .flower-card{
+      padding:38px 28px 30px;
+    }
+
+    .home-card:before,
+    .login-card:before,
+    .notes-card:before,
+    .simple-section-card:before{
+      background:var(--ui-rose-soft);
+      opacity:.30;
+    }
+
+    .home-card:after,
+    .login-card:after,
+    .notes-card:after,
+    .simple-section-card:after{
+      background:var(--ui-lilac);
+      opacity:.28;
+    }
+
+    /* Common type hierarchy */
+    h1,h2,h3,
+    .home-title,
+    .notes-card h1,
+    .simple-section-card h1,
+    .flower-card h1,
+    .card h1,
+    .today-intro h1,
+    .cozy-dialog h2{
+      color:var(--ui-text);
+    }
+
+    .home-kicker,
+    .login-kicker,
+    .cozy-kicker,
+    .today-letter-kicker,
+    .note-label,
+    .tiny{
+      color:var(--ui-rose-strong);
+    }
+
+    .home-sub,
+    .notes-card p,
+    .simple-section-card p,
+    .flower-secret-copy,
+    .login-copy,
+    .cozy-intro,
+    .sub,
+    .today-intro p{
+      color:var(--ui-muted);
+    }
+
+    .home-kicker,
+    .login-kicker,
+    .cozy-kicker{
+      letter-spacing:.12em;
+    }
+
+    /* One input language */
+    .password-input,
+    .flower-code{
+      background:#fffdfc;
+      color:var(--ui-text);
+      border:1px solid var(--ui-line-strong);
+      border-radius:var(--ui-radius-md);
+      box-shadow:none;
+    }
+    .password-input:focus,
+    .flower-code:focus{
+      border-color:var(--ui-rose);
+      box-shadow:0 0 0 4px rgba(217,120,157,.11);
+    }
+
+    .password-toggle,
+    .login-teddy-easter,
+    .login-sleep-easter{
+      background:var(--ui-surface-soft);
+      color:var(--ui-rose-strong);
+      border:1px solid var(--ui-line);
+      box-shadow:var(--ui-shadow-small);
+    }
+
+    .login-lock{
+      background:var(--ui-surface-soft);
+      box-shadow:var(--ui-shadow-small);
+    }
+
+    .login-secret-bubble,
+    .login-sleep-bubble,
+    .secret-bubble,
+    .easter-bubble{
+      background:var(--ui-surface-solid);
+      color:var(--ui-rose-strong);
+      border-color:var(--ui-line);
+      box-shadow:var(--ui-shadow-small);
+    }
+
+    /* Common buttons */
+    .login-button,
+    .quiz-button,
+    .notes-back,
+    .flower-back,
+    .catch-start,
+    .yes,
+    .good,
+    .restart,
+    .puzzle-open,
+    .today-letter-controls .today-primary{
+      color:#fff;
+      background:linear-gradient(135deg,var(--ui-rose),#c88eb4);
+      border:1px solid transparent;
+      box-shadow:0 9px 20px rgba(183,100,137,.18);
+    }
+
+    .note-button,
+    .soft,
+    .catch-home,
+    .puzzle-close,
+    .cozy-action,
+    .today-letter-controls button:not(.today-primary),
+    .home-mini,
+    .cozy-close{
+      color:var(--ui-text);
+      background:var(--ui-surface-soft);
+      border:1px solid var(--ui-line);
+      box-shadow:none;
+    }
+
+    .no{
+      color:var(--ui-text);
+      background:#fffdfc;
+      border:1px solid var(--ui-line-strong);
+      box-shadow:none;
+    }
+
+    .login-button:hover,
+    .quiz-button:hover,
+    .notes-back:hover,
+    .flower-back:hover,
+    .catch-start:hover,
+    .note-button:hover,
+    .soft:hover,
+    .catch-home:hover,
+    .puzzle-open:hover,
+    .puzzle-close:hover,
+    .cozy-action:hover,
+    .today-letter-controls button:hover{
+      transform:translateY(-2px);
+      box-shadow:0 10px 23px rgba(132,82,105,.13);
+    }
+
+    /* Homepage menu + quote use the same surfaces */
+    .home-menu button{
+      background:var(--ui-surface-solid);
+      color:var(--ui-text);
+      border-color:var(--ui-line);
+      box-shadow:var(--ui-shadow-small);
+      border-radius:var(--ui-radius-lg);
+    }
+
+    .home-menu-feature{
+      background:linear-gradient(135deg,#fff1f6,#f4eefb)!important;
+      border-color:var(--ui-line-strong)!important;
+      box-shadow:var(--ui-shadow-small)!important;
+    }
+
+    .home-menu-feature .menu-icon{
+      background:rgba(255,255,255,.75);
+      border:1px solid rgba(255,255,255,.85);
+      box-shadow:none;
+      border-radius:var(--ui-radius-md);
+    }
+
+    .home-menu-title{color:var(--ui-text)}
+    .home-menu-desc{color:var(--ui-muted)}
+    .home-menu-badge{
+      color:var(--ui-rose-strong);
+      border-color:var(--ui-line-strong);
+      background:#fffdfc;
+    }
+
+    body.home-mode .note-shell,
+    .note-shell{
+      transform:none;
+      background:
+        linear-gradient(rgba(255,251,252,.82),rgba(255,251,252,.82)),
+        repeating-linear-gradient(0deg,#fff9fb 0 30px,#efd9e2 30px 31px);
+      border:1px solid var(--ui-line);
+      border-radius:var(--ui-radius-lg);
+      box-shadow:none;
+    }
+
+    .tape{
+      background:rgba(250,229,190,.54);
+      border-color:rgba(219,196,159,.28);
+      box-shadow:none;
+    }
+
+    .random-note{color:var(--ui-text)}
+    .quote-counter{
+      color:var(--ui-muted);
+      background:transparent;
+      border:0;
+      box-shadow:none;
+      padding:0;
+    }
+
+    body.home-mode .little-place,
+    .little-place,
+    .little-place.bakery-link{
+      color:var(--ui-text);
+      background:var(--ui-surface-soft);
+      border:1px solid var(--ui-line);
+      border-radius:var(--ui-radius-md);
+      box-shadow:none;
+    }
+
+    .home-secret-flower{
+      background:transparent;
+      border:0;
+    }
+
+    /* Quiz */
+    .wrap{width:min(92vw,680px)}
+    .card{
+      border-radius:var(--ui-radius-xl);
+      min-height:430px;
+      background:var(--ui-surface);
+    }
+    .progress{
+      height:8px;
+      background:#f2e2e9;
+      box-shadow:none;
+    }
+    .bar{
+      background:linear-gradient(90deg,var(--ui-rose),#c9a7df);
+    }
+    .answers{gap:10px}
+    .answers button{
+      border-radius:var(--ui-pill);
+    }
+
+    /* Notes / Love / Garden */
+    .notes-page,
+    .simple-section-page,
+    .flower-page{
+      width:min(92vw,700px);
+    }
+
+    body.notes-mode .notes-card,
+    body.games-mode .simple-section-card,
+    body.love-mode .simple-section-card,
+    body.night-mode .home-card,
+    body.night-mode .notes-card,
+    body.night-mode .simple-section-card{
+      background:var(--ui-surface);
+      border-color:var(--ui-line);
+      box-shadow:var(--ui-shadow);
+    }
+
+    .notes-icon,
+    .simple-section-icon,
+    .big-secret-flower{
+      filter:drop-shadow(0 6px 10px rgba(151,91,118,.08));
+    }
+
+    .flower-card{
+      max-width:700px;
+    }
+
+    .garden-leaf,
+    .garden-petal{
+      opacity:.32;
+      filter:none;
+    }
+
+    /* Games */
+    #gamesPage{
+      width:min(94vw,720px);
+    }
+    #gamesPage .catch-game-card{
+      padding:34px 26px 28px;
+      background:var(--ui-surface);
+      border-color:var(--ui-line);
+    }
+    .catch-rule,
+    .catch-stat{
+      background:var(--ui-surface-soft);
+      color:var(--ui-text);
+      border-color:var(--ui-line);
+      box-shadow:none;
+    }
+    .catch-rule.danger{
+      background:#fff5f5;
+      color:#9b6169;
+      border-color:#ecd4d5;
+    }
+    .catch-stat-label{color:var(--ui-muted)}
+    .catch-stat strong{color:var(--ui-text)}
+    .catch-arena{
+      border-color:var(--ui-line);
+      border-radius:var(--ui-radius-lg);
+      background:
+        radial-gradient(circle at 16% 18%,rgba(246,220,230,.58),transparent 25%),
+        radial-gradient(circle at 82% 28%,rgba(235,226,248,.58),transparent 26%),
+        linear-gradient(160deg,#fffafb,#fff7fa 55%,#fffaf6);
+      box-shadow:inset 0 0 28px rgba(219,163,187,.07);
+    }
+    .catch-arena-start span{
+      background:rgba(255,252,252,.90);
+      color:var(--ui-muted);
+      border-color:var(--ui-line);
+      box-shadow:none;
+    }
+    .catch-target{
+      border-color:var(--ui-line);
+      background:rgba(255,253,252,.92);
+      box-shadow:var(--ui-shadow-small);
+    }
+
+    /* Dialogs */
+    .cozy-dialog{
+      background:var(--ui-surface-solid);
+      color:var(--ui-text);
+      border-color:var(--ui-line);
+    }
+    .cozy-dialog::backdrop{
+      background:rgba(82,61,76,.34);
+      backdrop-filter:blur(7px);
+    }
+    .bakery-dialog{
+      background:var(--ui-surface-solid);
+      color:var(--ui-text);
+      border-color:var(--ui-line);
+    }
+    .bakery-dialog .cozy-close{
+      background:var(--ui-surface-soft);
+      color:var(--ui-text);
+    }
+    .bakery-dialog .cozy-intro,
+    .bakery-serving p,
+    .bakery-price{
+      color:var(--ui-muted);
+    }
+    .bakery-awning{
+      background:repeating-linear-gradient(90deg,#e8b1c4 0 32px,#fff0dc 32px 64px);
+      border-bottom-color:#edd6c8;
+    }
+    .bakery-treat{
+      color:var(--ui-text);
+      background:#fffaf7;
+      border-color:var(--ui-line);
+      border-radius:var(--ui-radius-md);
+      box-shadow:none;
+    }
+    .bakery-treat[aria-pressed="true"]{
+      background:#fff0f4;
+      border-color:var(--ui-rose);
+      box-shadow:0 0 0 2px rgba(217,120,157,.10);
+    }
+    .bakery-serving{
+      background:var(--ui-surface-soft);
+      border-color:var(--ui-line);
+      border-radius:var(--ui-radius-md);
+    }
+
+    /* Special letter uses the same chrome; the ruled paper remains special */
+    .today-letter-page{
+      background:
+        radial-gradient(circle at 14% 14%,rgba(246,213,226,.72),transparent 28%),
+        radial-gradient(circle at 86% 82%,rgba(232,224,247,.64),transparent 30%),
+        linear-gradient(145deg,var(--ui-bg),var(--ui-bg-2) 58%,#fff8fb);
+    }
+    .today-intro{
+      background:var(--ui-surface);
+      border-color:var(--ui-line);
+      border-radius:var(--ui-radius-xl);
+      box-shadow:var(--ui-shadow);
+    }
+    .today-date-chip{
+      background:var(--ui-surface-soft);
+      color:var(--ui-rose-strong);
+      border-color:var(--ui-line);
+    }
+    .today-letter-sheet{
+      border-color:var(--ui-line-strong);
+      border-radius:var(--ui-radius-xl);
+      box-shadow:var(--ui-shadow);
+    }
+    .today-letter-controls{
+      border-top-color:var(--ui-line);
+    }
+    .today-letter-controls button{
+      border-radius:var(--ui-pill);
+    }
+
+    /* Focus treatment */
+    button:focus-visible,
+    [role="button"]:focus-visible,
+    input:focus-visible{
+      outline:3px solid rgba(217,120,157,.22);
+      outline-offset:3px;
+    }
+
+    /* Mobile consistency */
+    @media(max-width:600px){
+      .login-card,
+      .home-card,
+      .notes-card,
+      .simple-section-card,
+      body.games-mode .simple-section-card,
+      body.love-mode .simple-section-card,
+      .flower-card,
+      .card,
+      .flower-puzzle-card,
+      .today-intro,
+      .cozy-dialog{
+        border-radius:22px;
+      }
+
+      .home-card,
+      .notes-card,
+      .simple-section-card,
+      body.games-mode .simple-section-card,
+      body.love-mode .simple-section-card,
+      .flower-card{
+        padding-left:17px;
+        padding-right:17px;
+      }
+
+      .today-letter-sheet{
+        border-radius:22px;
+      }
+
+      .home-menu button{
+        border-radius:16px;
+      }
+
+      .catch-arena{
+        border-radius:18px;
+      }
     }
 
   </style>
