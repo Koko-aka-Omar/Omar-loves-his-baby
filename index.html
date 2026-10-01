@@ -2257,6 +2257,332 @@
       .cozy-dialog *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
     }
 
+  
+    /* 01.10.2026 — special bus-yap letter */
+    body.today-letter-open{overflow:hidden}
+    .today-letter-page{
+      position:fixed;
+      inset:0;
+      z-index:90;
+      display:none;
+      overflow-y:auto;
+      overscroll-behavior:contain;
+      padding:24px 16px 46px;
+      background:
+        radial-gradient(circle at 12% 12%,rgba(255,205,225,.74),transparent 27%),
+        radial-gradient(circle at 88% 18%,rgba(255,236,199,.58),transparent 25%),
+        radial-gradient(circle at 18% 86%,rgba(222,205,255,.45),transparent 27%),
+        linear-gradient(155deg,#fff8fb 0%,#fffaf4 48%,#fff3f8 100%);
+    }
+    .today-letter-page.active{display:block}
+    .today-floral-wall{
+      position:fixed;
+      inset:0;
+      overflow:hidden;
+      pointer-events:none;
+      z-index:0;
+    }
+    .today-floral-wall span{
+      position:absolute;
+      opacity:.23;
+      filter:saturate(.92);
+      animation:todayFloat 6s ease-in-out infinite;
+      user-select:none;
+    }
+    .today-floral-wall span:nth-child(1){left:3%;top:8%;font-size:34px}
+    .today-floral-wall span:nth-child(2){right:4%;top:9%;font-size:30px;animation-delay:-1s}
+    .today-floral-wall span:nth-child(3){left:8%;top:34%;font-size:28px;animation-delay:-3s}
+    .today-floral-wall span:nth-child(4){right:7%;top:40%;font-size:36px;animation-delay:-2s}
+    .today-floral-wall span:nth-child(5){left:4%;top:68%;font-size:31px;animation-delay:-4s}
+    .today-floral-wall span:nth-child(6){right:5%;top:74%;font-size:29px;animation-delay:-.7s}
+    .today-floral-wall span:nth-child(7){left:17%;bottom:5%;font-size:28px;animation-delay:-2.8s}
+    .today-floral-wall span:nth-child(8){right:18%;bottom:5%;font-size:31px;animation-delay:-1.7s}
+    .today-floral-wall span:nth-child(9){left:45%;top:3%;font-size:24px;animation-delay:-3.8s}
+    .today-floral-wall span:nth-child(10){right:42%;bottom:3%;font-size:25px;animation-delay:-2.3s}
+    @keyframes todayFloat{50%{transform:translateY(-12px) rotate(7deg) scale(1.05)}}
+    .today-stage{
+      position:relative;
+      z-index:2;
+      width:min(100%,820px);
+      min-height:calc(100dvh - 70px);
+      margin:0 auto;
+      display:grid;
+      place-items:center;
+    }
+    .today-intro{
+      width:min(100%,560px);
+      padding:34px 22px 28px;
+      text-align:center;
+      border:1px solid rgba(239,174,199,.54);
+      border-radius:34px;
+      background:rgba(255,253,249,.88);
+      box-shadow:0 24px 70px rgba(172,92,126,.20);
+      backdrop-filter:blur(12px);
+      transition:opacity .36s ease,transform .36s ease;
+    }
+    .today-intro.hidden{
+      display:none;
+    }
+    .today-date-chip{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      margin-bottom:18px;
+      padding:8px 12px;
+      border:1px solid #f1bfd2;
+      border-radius:999px;
+      background:#fff4f8;
+      color:#b75f81;
+      font-size:11px;
+      font-weight:900;
+      letter-spacing:.09em;
+      text-transform:uppercase;
+    }
+    .today-intro h1{
+      margin:20px auto 8px;
+      color:#684f60;
+      font-size:clamp(27px,7vw,40px);
+      line-height:1.08;
+    }
+    .today-intro p{
+      max-width:390px;
+      margin:0 auto;
+      color:#9d7687;
+      line-height:1.6;
+      font-weight:700;
+    }
+    .today-envelope-button{
+      appearance:none;
+      width:230px;
+      height:168px;
+      margin:2px auto 0;
+      padding:0;
+      border:0;
+      background:transparent;
+      box-shadow:none;
+      position:relative;
+      perspective:800px;
+      animation:waitingEnvelope 1.55s ease-in-out infinite;
+    }
+    .today-envelope-button:hover{transform:none}
+    @keyframes waitingEnvelope{
+      0%,100%{transform:rotate(-1deg) translateY(0)}
+      18%{transform:rotate(1.8deg) translateY(-3px)}
+      36%{transform:rotate(-1.8deg) translateY(0)}
+      54%{transform:rotate(1.1deg) translateY(-2px)}
+      72%{transform:rotate(-.5deg) translateY(0)}
+    }
+    .today-envelope{
+      position:absolute;
+      left:15px;
+      right:15px;
+      bottom:8px;
+      height:124px;
+      border-radius:10px 10px 18px 18px;
+      background:linear-gradient(145deg,#f9b8cf,#f59dbc);
+      box-shadow:0 18px 34px rgba(183,87,125,.22);
+      overflow:visible;
+    }
+    .today-envelope:before,
+    .today-envelope:after{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:inherit;
+      pointer-events:none;
+    }
+    .today-envelope:before{
+      clip-path:polygon(0 0,50% 55%,100% 0,100% 100%,0 100%);
+      background:linear-gradient(160deg,#ffd3e1,#f6abc6);
+      z-index:3;
+    }
+    .today-envelope:after{
+      clip-path:polygon(0 100%,50% 43%,100% 100%);
+      background:linear-gradient(160deg,#ffc4d8,#ef93b5);
+      z-index:4;
+    }
+    .today-envelope-flap{
+      position:absolute;
+      left:15px;
+      right:15px;
+      top:36px;
+      height:78px;
+      clip-path:polygon(0 0,50% 72%,100% 0);
+      background:#ffd9e6;
+      transform-origin:50% 0;
+      z-index:5;
+      transition:transform .55s cubic-bezier(.2,.75,.2,1),z-index .05s .25s;
+      filter:drop-shadow(0 4px 5px rgba(169,80,116,.08));
+    }
+    .today-envelope-paper{
+      position:absolute;
+      left:42px;
+      right:42px;
+      bottom:31px;
+      height:112px;
+      border-radius:10px 10px 5px 5px;
+      background:#fffdf8;
+      border:1px solid #f2d6df;
+      box-shadow:0 7px 16px rgba(164,101,126,.12);
+      z-index:2;
+      display:grid;
+      place-items:center;
+      color:#c86d90;
+      font-size:30px;
+      transition:transform .72s cubic-bezier(.18,.78,.2,1),height .72s ease;
+    }
+    .today-envelope-button.opening{
+      animation:none;
+      pointer-events:none;
+    }
+    .today-envelope-button.opening .today-envelope-flap{
+      transform:rotateX(180deg);
+      z-index:1;
+    }
+    .today-envelope-button.opening .today-envelope-paper{
+      transform:translateY(-83px) scale(1.04);
+      height:142px;
+    }
+    .today-tap{
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:-14px;
+      z-index:7;
+      color:#b96787;
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.03em;
+    }
+    .today-letter-sheet{
+      display:none;
+      width:min(100%,760px);
+      margin:18px auto;
+      padding:38px clamp(20px,5vw,54px) 32px;
+      border:1px solid rgba(226,190,203,.70);
+      border-radius:30px 34px 28px 35px;
+      background:
+        linear-gradient(rgba(255,253,248,.965),rgba(255,253,248,.965)),
+        repeating-linear-gradient(0deg,transparent 0 31px,rgba(232,198,211,.22) 31px 32px);
+      box-shadow:0 24px 80px rgba(150,86,113,.20);
+      position:relative;
+      overflow:hidden;
+      transform-origin:50% 12%;
+    }
+    .today-letter-sheet.show{
+      display:block;
+      animation:letterRise .76s cubic-bezier(.18,.82,.23,1) both;
+    }
+    @keyframes letterRise{
+      0%{opacity:0;transform:translateY(70px) scale(.82) rotate(-1.5deg)}
+      62%{opacity:1;transform:translateY(-5px) scale(1.015) rotate(.25deg)}
+      100%{opacity:1;transform:none}
+    }
+    .today-letter-sheet:before{
+      content:"🌷  ♡  🌸  ♡  🌼";
+      display:block;
+      text-align:center;
+      margin-bottom:16px;
+      color:#d77d9d;
+      letter-spacing:.20em;
+      font-size:18px;
+      opacity:.9;
+    }
+    .today-letter-kicker{
+      text-align:center;
+      color:#b7738d;
+      font-size:11px;
+      line-height:1.4;
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin-bottom:18px;
+    }
+    .today-letter-text{
+      min-height:240px;
+      white-space:pre-wrap;
+      color:#634f59;
+      font:650 clamp(15px,2.5vw,17px)/1.84 ui-rounded,"SF Pro Rounded","Segoe UI",system-ui,sans-serif;
+      letter-spacing:.005em;
+      text-align:left;
+      overflow-wrap:anywhere;
+    }
+    .today-typing-cursor{
+      display:inline-block;
+      margin-left:1px;
+      color:#da759a;
+      animation:todayBlink .72s steps(1) infinite;
+    }
+    @keyframes todayBlink{50%{opacity:0}}
+    .today-letter-controls{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:9px;
+      margin-top:28px;
+      padding-top:22px;
+      border-top:1px dashed #edcbd8;
+    }
+    .today-letter-controls button{
+      margin:0;
+      padding:11px 14px;
+      border-radius:999px;
+      border:1px solid #edbed0;
+      background:#fff5f8;
+      color:#a95e7b;
+      box-shadow:0 6px 14px rgba(162,86,117,.10);
+      font-size:12px;
+      font-weight:900;
+    }
+    .today-letter-controls button:hover{transform:translateY(-1px)}
+    .today-letter-controls .today-primary{
+      background:linear-gradient(135deg,#f99dbc,#f37ea8);
+      border-color:transparent;
+      color:#fff;
+    }
+    .today-confetti{
+      position:fixed;
+      inset:0;
+      z-index:95;
+      overflow:hidden;
+      pointer-events:none;
+    }
+    .today-confetti-piece{
+      position:absolute;
+      top:-50px;
+      animation:todayConfettiFall var(--fall,2.8s) cubic-bezier(.18,.65,.34,1) forwards;
+      will-change:transform,opacity;
+    }
+    @keyframes todayConfettiFall{
+      0%{opacity:0;transform:translate3d(0,-30px,0) rotate(0)}
+      9%{opacity:1}
+      100%{opacity:.95;transform:translate3d(var(--drift,0px),115vh,0) rotate(var(--spin,480deg))}
+    }
+    .today-reopen{
+      margin-top:16px!important;
+      background:linear-gradient(135deg,#fff0f5,#f9e6ef)!important;
+      color:#ab607d!important;
+      border:1px solid #edbed0!important;
+    }
+    @media(max-width:560px){
+      .today-letter-page{padding:12px 10px 34px}
+      .today-stage{min-height:calc(100dvh - 34px)}
+      .today-intro{padding:28px 15px 25px;border-radius:26px}
+      .today-envelope-button{width:210px;height:156px}
+      .today-letter-sheet{
+        margin:4px auto;
+        padding:30px 17px 26px;
+        border-radius:24px 29px 23px 28px;
+      }
+      .today-letter-text{font-size:15px;line-height:1.78}
+      .today-letter-controls{gap:7px}
+      .today-letter-controls button{font-size:11px;padding:10px 12px}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .today-envelope-button,.today-floral-wall span,.today-letter-sheet.show,.today-typing-cursor{animation:none!important}
+      .today-envelope-flap,.today-envelope-paper{transition:none!important}
+    }
+
   </style>
 </head>
 <body>
@@ -2295,12 +2621,52 @@
       <p class="login-copy">fe 7agat meant for everyone. el website de me4 wa7da menohom. this little place is just ours. me and you sweetheart</p>
 
       <form id="loginForm" autocomplete="off">
+        <div class="login-before-password">today has its own tiny key 🔐</div>
+        <div class="password-wrap">
+          <input class="password-input" id="passwordInput" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="3" placeholder="XXX" aria-label="Password" autocomplete="off">
+          <button class="password-toggle" id="passwordToggle" type="button" aria-label="Show password">👀</button>
+        </div>
+        <div class="login-hint">this is a special password for today, Hmm maybe there’s something new added today?</div>
+        <div class="login-hint-extra">three numbers XXX, what could it be? i wonder, number of days in a year maybe?</div>
         <button class="login-button" type="submit">open our little place 💗</button>
         <div class="login-message" id="loginMessage"></div>
         <div class="login-footer">private property of Omar &amp; Karmel</div>
       </form>
     </div>
   </div>
+
+  <section class="today-letter-page" id="todayLetterPage" aria-hidden="true">
+    <div class="today-floral-wall" aria-hidden="true">
+      <span>🌷</span><span>💗</span><span>🌸</span><span>♡</span><span>🌼</span>
+      <span>💞</span><span>🌹</span><span>♡</span><span>🪻</span><span>🌺</span>
+    </div>
+    <div class="today-confetti" id="todayConfetti" aria-hidden="true"></div>
+    <div class="today-stage">
+      <section class="today-intro" id="todayLetterIntro">
+        <div class="today-date-chip">01.10.2026 · special delivery 💌</div>
+        <button class="today-envelope-button" id="openTodayLetter" type="button" aria-label="Open today's letter">
+          <span class="today-envelope-paper" aria-hidden="true">♡</span>
+          <span class="today-envelope" aria-hidden="true"></span>
+          <span class="today-envelope-flap" aria-hidden="true"></span>
+          <span class="today-tap">tap me, i’ve been waiting 🥺</span>
+        </button>
+        <h1>you have a letter waiting.</h1>
+        <p>apparently somebody had no data on the bus and still found a way to yap to you 😭💗</p>
+      </section>
+
+      <article class="today-letter-sheet" id="todayLetterSheet" aria-live="polite">
+        <div class="today-letter-kicker">a bus yap · typed with love · from omar</div>
+        <div class="today-letter-text" id="todayLetterText"></div>
+        <div class="today-letter-controls">
+          <button class="today-primary" id="finishTodayLetter" type="button">show the whole yap 💌</button>
+          <button id="moreTodayFlowers" type="button">more flowers 🌷</button>
+          <button id="todayLetterTop" type="button">back to the top ↑</button>
+          <button id="closeTodayLetter" type="button">our little place 💗</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
   <div class="floaties" aria-hidden="true">
     <div class="floaty f1">🌷</div>
     <div class="floaty f2">🧸</div>
@@ -2397,8 +2763,9 @@
       <div class="paper-grain" aria-hidden="true"></div>
       <div class="home-kicker">notes &amp; diary</div>
       <div class="notes-icon">💌</div>
-      <h1>site under construction 🚧</h1>
-      <p>more notes and little diary entries will live here soon.</p>
+      <h1>today’s bus yap is here 💗</h1>
+      <p>01.10.2026 got its own little letter. you can come back and read it whenever you want.</p>
+      <button class="notes-back today-reopen" type="button" onclick="openTodayLetterPage(true)">open today’s letter 🌷</button>
       <button class="notes-back" type="button" onclick="showHome()">back home 💗</button>
     </section>
   </main>
@@ -2736,6 +3103,148 @@
     const loginSleepBubble = document.getElementById('loginSleepBubble');
     let loginTeddyClicks = 0;
 
+    const passwordInput = document.getElementById('passwordInput');
+    const passwordToggle = document.getElementById('passwordToggle');
+    const todayLetterPage = document.getElementById('todayLetterPage');
+    const todayLetterIntro = document.getElementById('todayLetterIntro');
+    const openTodayLetter = document.getElementById('openTodayLetter');
+    const todayLetterSheet = document.getElementById('todayLetterSheet');
+    const todayLetterText = document.getElementById('todayLetterText');
+    const finishTodayLetter = document.getElementById('finishTodayLetter');
+    const moreTodayFlowers = document.getElementById('moreTodayFlowers');
+    const todayLetterTop = document.getElementById('todayLetterTop');
+    const closeTodayLetter = document.getElementById('closeTodayLetter');
+    const todayConfetti = document.getElementById('todayConfetti');
+    const TODAY_LETTER_KEY = 'todayLetterOpened20261001';
+    const todayLetterFullText = "Bus yap \nso i walked to the bus forgetting i don’t have data for today, because im broke right now i shall renew it by this weekend inshallah THAT BEING SAID i know ill come home to you sad because i dipped randomly 😭😭 and despite having two of my friends talking to me in the bus i excused myself to be able to sit and talk and write you this, if you see this then its on the website i may OR MAY NOT publish it and if i published it i may or may not tell you that i did to see how long it will take you to check the website but i dont blame u for not checking i haven’t updated it in a while, it has been a long week full of weird sleep schedules and exams and quizzes. that being being im so glad we somehow find time for each other even if its just an hour or some texts during the day of us checking up on each other and catching up together. its always fun and cute seeing us trying to lock in with life and each other and helping each other whenever we can. anywho enough of the baseless yap; the reason im writing you this is because i want to express how thankful and greatfull i have to you. it’s always reassuring and somehow energy giving that you are by my side through thick and thin. this week has been full of emotions and us missing each other and it’s always a good feeling opening my phone to you double texting or triple, or even calls sometimes too. i’ll never be able to pinpoint and explain my emotions clearly or effectively because my feelings are so intense it would take the whole english dictionary and multiple days long worth of yap to explain how much i love you and appreciate you. you mean the whole world to me karamella. i feel such a nice feeling just by calling you baby or even better karamellety because no one else gets to call you that and no one will. i love you so much and i love how cute you are. you’re cute in everything it actually makes me sit and wonder how can a person be this beautiful and have a nice respectful soul too. i want to you to know i find you extremely beautiful and extremely gorgeous, i love everything about you and everything you do and i pray you stay mine forever and i get to love you my whole life. you have such a sweet soul it’s admirable, and you have such a beautiful pair of eyes i always get lost in them, and i love your smile so much just the thought of you smiling makes me smile, i love your nose i love your red cheeks that turn red from hot showers i love literally everything about you. i find you gorgeous with all what the word gorgeous has to offer. gorgeous is the soul and in the body it’s genuinely something i’ve never seen or whitenessed before and it feels nice that i get to love you the way i would want to love you, it feels nice to be able to spam you with pics and yaps and paragraphs and random thoughts and everything. it feels nice to get to ask you for love and care and to be goofy with you. i somehow do everything during my day while having you as the main thought on my mind, weather i’m with friends or family or studying or working i’m always looking forward to texting you and talking to you and laughing with you or checking up on you. i’m actually so blessed to have you in my life and even if i thanked you my whole life it wouldn’t be enough. you changed a lot of things in my day to day life and you help me go and push through the hard days and even tho sometimes you make me overthink and worry at the end of the day you still do your best and offer all you got from mental capacity and time to be with me and clear my mind and ease my brain. i always find myself thanking you and being so grateful especially during times that you are as i say “dealing with me” i sometimes forget what’s bothering me and just smile at the thought that you are on the opposite side of the screen trying to know how im feeling and what’s bothering me and i be wanting to say thank you but for some reason i end up apologizing and feeling somewhat guilty. you are mean to me these days ngl but it’s fun and always goofy and it brings me laughs and fun especially that these days i don’t sleep well and i find it tiring to just survive and these jokes always come through and make me feel better. you wrote me couple paragraphs this week or it’s best to say those past ten days and god knows how many times i’ve read them through the week weather i’m feeling down or tired or doubting or just missing you, i owe you so much and i hope one day id be able to pay you back what you have been doing and continue to do for me. im so lucky to have you saying you love me and every time i think about it my brain lags and glitches. i cannot fathom the fact that you love me, goofy omar? is purely loved? for being himself?? no way. you came into my life during a rough patch but has always been with me since day one and continue to be with me and draw a smile on my face everyday. i’ve got way way way way much more to say but sadly this yap, or vent idk what to call it is coming to an end. i was gonna write this purely to thank you and keep it short but i ended up getting lost in my feelings and shared some of these feelings with you, that if i got home and decided to update the website (btw a lot of new updates on the way i just need to lock in on them). you deserve the world BAS WORLD WOTHOUT ANY MEN. only me. and i dreamt of you last night, not yesterday. and it was such a cute night we were out normally for once 😂😂. either way my bus stop is close, i’ll text you once im home and got wifi my love. i love you tons over tons and once again thank you for everything and especially loving and caring for me. i shall continue this yap later hippity hoppity hoo. \n-your obsessed lover,\nomar. \nhehe";
+    let todayTypingTimer = null;
+    let todayTypingIndex = 0;
+    let todayTypingActive = false;
+
+    function scatterTodayConfetti(count = 64){
+      const pieces = ['💗','🌷','🌸','🌼','♡','✦','💞','🪻'];
+      for(let i=0;i<count;i++){
+        const piece = document.createElement('span');
+        piece.className = 'today-confetti-piece';
+        piece.textContent = pieces[Math.floor(Math.random()*pieces.length)];
+        piece.style.left = (Math.random()*100) + 'vw';
+        piece.style.fontSize = (11 + Math.random()*16) + 'px';
+        piece.style.setProperty('--fall',(2.1 + Math.random()*2.5) + 's');
+        piece.style.setProperty('--drift',((-85 + Math.random()*170)) + 'px');
+        piece.style.setProperty('--spin',((-520 + Math.random()*1040)) + 'deg');
+        piece.style.animationDelay = (Math.random()*.55) + 's';
+        todayConfetti.appendChild(piece);
+        setTimeout(() => piece.remove(), 5200);
+      }
+    }
+
+    function stopTodayTyping(showAll = false){
+      todayTypingActive = false;
+      if(todayTypingTimer) clearTimeout(todayTypingTimer);
+      todayTypingTimer = null;
+      if(showAll){
+        todayTypingIndex = todayLetterFullText.length;
+        todayLetterText.textContent = todayLetterFullText;
+        finishTodayLetter.textContent = 'the whole yap is here 💗';
+      }
+    }
+
+    function typeTodayLetter(){
+      stopTodayTyping(false);
+      todayLetterText.textContent = '';
+      todayTypingIndex = 0;
+      todayTypingActive = true;
+      finishTodayLetter.textContent = 'show the whole yap 💌';
+
+      const tick = () => {
+        if(!todayTypingActive) return;
+        if(todayTypingIndex >= todayLetterFullText.length){
+          todayTypingActive = false;
+          todayLetterText.textContent = todayLetterFullText;
+          finishTodayLetter.textContent = 'the whole yap is here 💗';
+          return;
+        }
+        const remaining = todayLetterFullText.length - todayTypingIndex;
+        const chunk = remaining > 900 ? 3 : (remaining > 300 ? 2 : 1);
+        todayTypingIndex = Math.min(todayLetterFullText.length, todayTypingIndex + chunk);
+        todayLetterText.innerHTML =
+          escapeHtml(todayLetterFullText.slice(0,todayTypingIndex)) +
+          '<span class="today-typing-cursor">|</span>';
+        todayTypingTimer = setTimeout(tick, todayLetterFullText[todayTypingIndex - 1] === '\n' ? 42 : 10);
+      };
+      tick();
+    }
+
+    function escapeHtml(value){
+      return value.replace(/[&<>"']/g, ch => ({
+        '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'
+      })[ch]);
+    }
+
+    function openTodayLetterPage(directRead = false){
+      stopTodayTyping(false);
+      todayLetterPage.classList.add('active');
+      todayLetterPage.setAttribute('aria-hidden','false');
+      document.body.classList.add('today-letter-open');
+
+      openTodayLetter.classList.remove('opening');
+      if(directRead){
+        todayLetterIntro.classList.add('hidden');
+        todayLetterSheet.classList.add('show');
+        todayLetterText.textContent = todayLetterFullText;
+        todayTypingIndex = todayLetterFullText.length;
+        finishTodayLetter.textContent = 'the whole yap is here 💗';
+        todayLetterPage.scrollTo({top:0,behavior:'smooth'});
+      } else {
+        todayLetterIntro.classList.remove('hidden');
+        todayLetterSheet.classList.remove('show');
+        todayLetterText.textContent = '';
+        finishTodayLetter.textContent = 'show the whole yap 💌';
+        todayLetterPage.scrollTo({top:0,behavior:'auto'});
+      }
+    }
+
+    function closeTodayLetterPage(){
+      stopTodayTyping(false);
+      todayLetterPage.classList.remove('active');
+      todayLetterPage.setAttribute('aria-hidden','true');
+      document.body.classList.remove('today-letter-open');
+      showHomeImmediate();
+    }
+
+    openTodayLetter.addEventListener('click', () => {
+      if(openTodayLetter.classList.contains('opening')) return;
+      openTodayLetter.classList.add('opening');
+      sessionStorage.setItem(TODAY_LETTER_KEY,'yes');
+      scatterTodayConfetti(84);
+      setTimeout(() => {
+        todayLetterIntro.classList.add('hidden');
+        todayLetterSheet.classList.add('show');
+        todayLetterPage.scrollTo({top:0,behavior:'smooth'});
+        typeTodayLetter();
+      }, 820);
+    });
+
+    finishTodayLetter.addEventListener('click', () => stopTodayTyping(true));
+    moreTodayFlowers.addEventListener('click', () => scatterTodayConfetti(54));
+    todayLetterTop.addEventListener('click', () => todayLetterPage.scrollTo({top:0,behavior:'smooth'}));
+    closeTodayLetter.addEventListener('click', closeTodayLetterPage);
+
+    passwordToggle.addEventListener('click', () => {
+      const showing = passwordInput.type === 'text';
+      passwordInput.type = showing ? 'password' : 'text';
+      passwordToggle.textContent = showing ? '👀' : '🙈';
+      passwordToggle.setAttribute('aria-label', showing ? 'Show password' : 'Hide password');
+      passwordInput.focus();
+    });
+
+    passwordInput.addEventListener('input', () => {
+      passwordInput.classList.add('typing');
+      loginMessage.textContent = '';
+      setTimeout(() => passwordInput.classList.remove('typing'), 160);
+    });
+
+
     function showRandomHomeNote(animate = true){
       let next = Math.floor(Math.random() * homeNotes.length);
       if(homeNotes.length > 1){
@@ -2974,19 +3483,23 @@
     function unlockSite(){
       sessionStorage.setItem('karmelUnlocked','yes');
       loginLockIcon.textContent = '💖';
-      loginMessage.textContent = 'welcome home, Queen karamel.';
+      loginMessage.textContent = 'correct. something new was waiting for you 💗';
       loginHeartBurst();
       setTimeout(() => {
         loginGate.classList.add('unlocked');
-        showHomeImmediate();
-      }, 1350);
+        openTodayLetterPage(false);
+      }, 950);
     }
 
     if(sessionStorage.getItem('karmelUnlocked') === 'yes'){
       loginGate.classList.add('unlocked');
-      showHomeImmediate();
+      if(sessionStorage.getItem(TODAY_LETTER_KEY) === 'yes'){
+        showHomeImmediate();
+      } else {
+        setTimeout(() => openTodayLetterPage(false), 60);
+      }
     } else {
-      setTimeout(() => loginForm.querySelector('button[type="submit"]').focus(), 250);
+      setTimeout(() => passwordInput.focus(), 250);
     }
 
     loginTeddyEaster.addEventListener('click', () => {
@@ -3005,8 +3518,20 @@
 
     loginForm.addEventListener('submit', e => {
       e.preventDefault();
-      if (loginForm.querySelector('button[type="submit"]').disabled) return;
-      loginForm.querySelector('button[type="submit"]').disabled = true;
+      const submitButton = loginForm.querySelector('button[type="submit"]');
+      if(submitButton.disabled) return;
+
+      if(passwordInput.value.trim() !== '154'){
+        loginMessage.textContent = 'not this one, baby 👀 try the three numbers from the hint.';
+        loginLock.classList.remove('wrong');
+        void loginLock.offsetWidth;
+        loginLock.classList.add('wrong');
+        passwordInput.focus();
+        passwordInput.select();
+        return;
+      }
+
+      submitButton.disabled = true;
       unlockSite();
     });
 
