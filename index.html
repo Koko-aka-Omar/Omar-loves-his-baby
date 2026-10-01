@@ -2623,6 +2623,267 @@
       .today-envelope-flap,.today-envelope-paper{transition:none!important}
     }
 
+  
+    /* Catch the Hearts mini-game */
+    #gamesPage{
+      width:min(94vw,760px);
+    }
+    #gamesPage .catch-game-card{
+      padding:34px 26px 28px;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 12% 10%,rgba(255,213,230,.48),transparent 24%),
+        radial-gradient(circle at 88% 86%,rgba(225,211,255,.42),transparent 28%),
+        rgba(255,253,250,.96);
+    }
+    .catch-game-card .simple-section-icon{
+      font-size:62px;
+      margin:2px 0 8px;
+      filter:drop-shadow(0 8px 12px rgba(180,98,135,.10));
+    }
+    .catch-game-card h1{
+      margin-bottom:7px;
+    }
+    .catch-game-intro{
+      margin-bottom:15px!important;
+    }
+    .catch-rules{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:7px;
+      margin:0 auto 16px;
+    }
+    .catch-rule{
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid #edd4df;
+      background:rgba(255,247,250,.9);
+      color:#996b7e;
+      font-size:11px;
+      font-weight:900;
+      box-shadow:0 5px 12px rgba(145,91,113,.06);
+    }
+    .catch-rule.danger{
+      border-color:#efcccc;
+      background:#fff6f6;
+      color:#a66b70;
+    }
+    .catch-stats{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:8px;
+      margin-bottom:10px;
+    }
+    .catch-stat{
+      padding:10px 8px;
+      border:1px solid #ead8e3;
+      border-radius:17px;
+      background:rgba(255,251,252,.9);
+      box-shadow:0 6px 15px rgba(127,83,105,.06);
+    }
+    .catch-stat-label{
+      display:block;
+      color:#ae8698;
+      font-size:9px;
+      font-weight:900;
+      letter-spacing:.09em;
+      text-transform:uppercase;
+    }
+    .catch-stat strong{
+      display:block;
+      margin-top:2px;
+      color:#745568;
+      font-size:21px;
+      line-height:1.1;
+    }
+    .catch-arena{
+      position:relative;
+      width:100%;
+      height:clamp(300px,46vh,390px);
+      overflow:hidden;
+      border:1px solid rgba(227,178,198,.64);
+      border-radius:25px;
+      background:
+        radial-gradient(circle at 16% 18%,rgba(255,214,229,.72),transparent 23%),
+        radial-gradient(circle at 82% 28%,rgba(244,224,255,.64),transparent 24%),
+        radial-gradient(circle at 64% 82%,rgba(255,235,208,.52),transparent 25%),
+        linear-gradient(160deg,#fff9fb,#fff5f8 48%,#fffaf4);
+      box-shadow:
+        inset 0 0 34px rgba(235,166,194,.09),
+        0 14px 34px rgba(144,91,115,.10);
+      touch-action:manipulation;
+      user-select:none;
+      -webkit-user-select:none;
+      isolation:isolate;
+    }
+    .catch-arena:before,
+    .catch-arena:after{
+      position:absolute;
+      z-index:0;
+      pointer-events:none;
+      opacity:.17;
+      filter:saturate(.8);
+    }
+    .catch-arena:before{
+      content:"♡  🌷  ♡";
+      left:16px;
+      top:14px;
+      color:#d887a7;
+      font-size:18px;
+      letter-spacing:.16em;
+      transform:rotate(-5deg);
+    }
+    .catch-arena:after{
+      content:"🌸  ♡  🎀";
+      right:14px;
+      bottom:12px;
+      font-size:18px;
+      letter-spacing:.12em;
+      transform:rotate(5deg);
+    }
+    .catch-arena-start{
+      position:absolute;
+      inset:0;
+      z-index:2;
+      display:grid;
+      place-items:center;
+      pointer-events:none;
+      transition:opacity .2s ease;
+    }
+    .catch-arena.running .catch-arena-start{
+      opacity:0;
+    }
+    .catch-arena-start span{
+      display:inline-block;
+      padding:10px 14px;
+      border:1px solid rgba(233,190,207,.8);
+      border-radius:999px;
+      background:rgba(255,252,253,.83);
+      color:#a86e87;
+      font-size:12px;
+      font-weight:900;
+      box-shadow:0 8px 20px rgba(142,91,112,.08);
+      backdrop-filter:blur(5px);
+    }
+    .catch-target{
+      position:absolute;
+      z-index:5;
+      width:58px;
+      height:58px;
+      margin:0;
+      padding:0;
+      display:grid;
+      place-items:center;
+      border:1px solid rgba(238,190,208,.66);
+      border-radius:50%;
+      background:rgba(255,255,255,.80);
+      box-shadow:0 10px 20px rgba(157,87,118,.14);
+      font-size:31px;
+      line-height:1;
+      cursor:pointer;
+      touch-action:manipulation;
+      -webkit-tap-highlight-color:transparent;
+      animation:catchTargetPop .24s cubic-bezier(.18,.82,.23,1) both;
+      backdrop-filter:blur(4px);
+    }
+    .catch-target:hover{
+      transform:scale(1.08);
+    }
+    .catch-target:active{
+      transform:scale(.90);
+    }
+    .catch-target.bad{
+      border-color:rgba(224,163,163,.80);
+      background:rgba(255,247,247,.92);
+      box-shadow:0 10px 20px rgba(152,82,88,.12);
+    }
+    @keyframes catchTargetPop{
+      from{opacity:0;transform:scale(.4) rotate(-12deg)}
+      to{opacity:1;transform:scale(1) rotate(0)}
+    }
+    .catch-score-pop{
+      position:absolute;
+      z-index:8;
+      pointer-events:none;
+      color:#bd6287;
+      font-size:15px;
+      font-weight:1000;
+      text-shadow:0 2px 5px #fff;
+      animation:catchScoreFloat .68s ease-out forwards;
+    }
+    .catch-score-pop.bad{
+      color:#b65761;
+    }
+    @keyframes catchScoreFloat{
+      0%{opacity:0;transform:translate(-50%,2px) scale(.8)}
+      20%{opacity:1}
+      100%{opacity:0;transform:translate(-50%,-42px) scale(1.12)}
+    }
+    .catch-message{
+      min-height:42px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin:11px auto 5px;
+      padding:7px 11px;
+      color:#a46d84;
+      font-size:12px;
+      font-weight:850;
+      line-height:1.45;
+      transition:.2s ease;
+    }
+    .catch-message.danger{
+      color:#a95862;
+      transform:scale(1.02);
+    }
+    .catch-actions{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:9px;
+      margin-top:6px;
+    }
+    .catch-start{
+      color:#fff;
+      background:linear-gradient(135deg,#f499ba,#e879a4);
+      box-shadow:0 10px 22px rgba(225,111,153,.21);
+    }
+    .catch-start:disabled{
+      opacity:.7;
+      cursor:default;
+      transform:none;
+    }
+    .catch-home{
+      color:#876b91;
+      background:#f1e9f8;
+      border:1px solid #dfd0eb;
+      box-shadow:none;
+    }
+    @media(max-width:560px){
+      #gamesPage .catch-game-card{
+        padding:27px 14px 22px;
+        border-radius:24px;
+      }
+      .catch-game-card .simple-section-icon{font-size:52px}
+      .catch-arena{
+        height:min(52vh,370px);
+        min-height:300px;
+        border-radius:21px;
+      }
+      .catch-target{
+        width:54px;
+        height:54px;
+        font-size:29px;
+      }
+      .catch-stat{padding:9px 5px}
+      .catch-stat strong{font-size:19px}
+      .catch-rule{font-size:10px;padding:6px 8px}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .catch-target,.catch-score-pop{animation:none!important}
+    }
+
   </style>
 </head>
 <body>
@@ -2811,14 +3072,44 @@
   </main>
 
   <main class="simple-section-page" id="gamesPage">
-    <section class="simple-section-card">
-      <div class="paper-grain" aria-hidden="true"></div>
+    <section class="simple-section-card catch-game-card">
       <div class="paper-grain" aria-hidden="true"></div>
       <div class="home-kicker">secret games &amp; puzzles</div>
-      <div class="simple-section-icon">🧸🧩</div>
-      <h1>site under construction 🚧</h1>
-      <p>secret little games, puzzles and challenges will live here soon.</p>
-      <button class="notes-back" type="button" onclick="showHome()">back home 💗</button>
+      <div class="simple-section-icon">💗🌷</div>
+      <h1>catch the hearts</h1>
+      <p class="catch-game-intro">20 seconds. catch as much love as you can, karamellety. and maybe avoid anything suspicious 😭</p>
+
+      <div class="catch-rules" aria-label="Game rules">
+        <span class="catch-rule">💗 🌷 🌸 = +1</span>
+        <span class="catch-rule">💌 🎀 🫶 = +2</span>
+        <span class="catch-rule danger">👨 = -3 😭</span>
+      </div>
+
+      <div class="catch-stats" aria-label="Game statistics">
+        <div class="catch-stat">
+          <span class="catch-stat-label">score</span>
+          <strong id="catchScore">0</strong>
+        </div>
+        <div class="catch-stat">
+          <span class="catch-stat-label">time</span>
+          <strong><span id="catchTime">20</span>s</strong>
+        </div>
+        <div class="catch-stat">
+          <span class="catch-stat-label">best</span>
+          <strong id="catchBest">0</strong>
+        </div>
+      </div>
+
+      <div class="catch-arena" id="catchArena" aria-label="Catch the hearts game area">
+        <div class="catch-arena-start" aria-hidden="true"><span>tap start and steal Omar’s hearts 💗</span></div>
+      </div>
+
+      <div class="catch-message" id="catchMessage" aria-live="polite">ready when you are, baby 💗</div>
+
+      <div class="catch-actions">
+        <button class="catch-start" id="catchStart" type="button">start catching 💗</button>
+        <button class="catch-home" type="button" onclick="showHome()">back home 🌷</button>
+      </div>
     </section>
   </main>
 
@@ -2999,6 +3290,12 @@
     const gamesTrigger = document.getElementById('gamesTrigger');
     const loveTrigger = document.getElementById('loveTrigger');
     const gamesPage = document.getElementById('gamesPage');
+    const catchArena = document.getElementById('catchArena');
+    const catchStart = document.getElementById('catchStart');
+    const catchScore = document.getElementById('catchScore');
+    const catchTime = document.getElementById('catchTime');
+    const catchBest = document.getElementById('catchBest');
+    const catchMessage = document.getElementById('catchMessage');
     const lovePage = document.getElementById('lovePage');
     const flowerPuzzle = document.getElementById('flowerPuzzle');
     const flowerCode = document.getElementById('flowerCode');
@@ -3297,6 +3594,192 @@
     });
 
 
+    const CATCH_BEST_KEY = 'karmelCatchHeartsBest';
+    let catchRunning = false;
+    let catchScoreValue = 0;
+    let catchSeconds = 20;
+    let catchSpawnTimer = null;
+    let catchClockTimer = null;
+    const catchTargets = new Set();
+
+    function refreshCatchBest(){
+      const best = Math.max(0, Number(localStorage.getItem(CATCH_BEST_KEY)) || 0);
+      catchBest.textContent = best;
+      return best;
+    }
+
+    function clearCatchTargets(){
+      catchTargets.forEach(target => target.remove());
+      catchTargets.clear();
+      catchArena.querySelectorAll('.catch-score-pop').forEach(pop => pop.remove());
+    }
+
+    function stopCatchGame(resetMessage = false){
+      catchRunning = false;
+      if(catchSpawnTimer) clearTimeout(catchSpawnTimer);
+      if(catchClockTimer) clearInterval(catchClockTimer);
+      catchSpawnTimer = null;
+      catchClockTimer = null;
+      clearCatchTargets();
+      catchArena.classList.remove('running');
+      catchStart.disabled = false;
+      catchStart.textContent = catchScoreValue > 0 ? 'play again 💗' : 'start catching 💗';
+      if(resetMessage){
+        catchScoreValue = 0;
+        catchSeconds = 20;
+        catchScore.textContent = '0';
+        catchTime.textContent = '20';
+        catchMessage.classList.remove('danger');
+        catchMessage.textContent = 'ready when you are, baby 💗';
+        catchStart.textContent = 'start catching 💗';
+      }
+    }
+
+    function showCatchPoints(target, text, bad = false){
+      const pop = document.createElement('span');
+      pop.className = 'catch-score-pop' + (bad ? ' bad' : '');
+      pop.textContent = text;
+      pop.style.left = (target.offsetLeft + target.offsetWidth/2) + 'px';
+      pop.style.top = (target.offsetTop + 12) + 'px';
+      catchArena.appendChild(pop);
+      setTimeout(() => pop.remove(), 720);
+    }
+
+    function removeCatchTarget(target){
+      if(!target || !catchTargets.has(target)) return;
+      catchTargets.delete(target);
+      target.remove();
+    }
+
+    function spawnCatchTarget(){
+      if(!catchRunning) return;
+
+      const roll = Math.random();
+      let item;
+      if(roll < .13){
+        item = {emoji:'👨', points:-3, label:'random man', bad:true};
+      } else if(roll < .31){
+        const specials = [
+          {emoji:'💌',points:2,label:'love letter'},
+          {emoji:'🎀',points:2,label:'bow'},
+          {emoji:'🫶',points:2,label:'love hands'}
+        ];
+        item = specials[Math.floor(Math.random()*specials.length)];
+      } else {
+        const normal = [
+          {emoji:'💗',points:1,label:'heart'},
+          {emoji:'🩷',points:1,label:'pink heart'},
+          {emoji:'🌷',points:1,label:'tulip'},
+          {emoji:'🌸',points:1,label:'flower'},
+          {emoji:'🌼',points:1,label:'flower'},
+          {emoji:'💞',points:1,label:'hearts'}
+        ];
+        item = normal[Math.floor(Math.random()*normal.length)];
+      }
+
+      const target = document.createElement('button');
+      target.type = 'button';
+      target.className = 'catch-target' + (item.bad ? ' bad' : '');
+      target.textContent = item.emoji;
+      target.setAttribute('aria-label', item.bad ? 'Avoid the random man' : 'Catch ' + item.label);
+
+      const size = window.innerWidth <= 560 ? 54 : 58;
+      const maxX = Math.max(4, catchArena.clientWidth - size - 8);
+      const maxY = Math.max(4, catchArena.clientHeight - size - 8);
+      target.style.left = (4 + Math.random()*Math.max(1,maxX-4)) + 'px';
+      target.style.top = (4 + Math.random()*Math.max(1,maxY-4)) + 'px';
+
+      target.addEventListener('click', () => {
+        if(!catchRunning || !catchTargets.has(target)) return;
+
+        if(item.bad){
+          catchScoreValue = Math.max(0, catchScoreValue + item.points);
+          catchMessage.classList.add('danger');
+          catchMessage.textContent = 'OMAR DEFENSE SYSTEM ACTIVATED 🚨 random man removed 😭';
+          showCatchPoints(target,'-3 😭',true);
+          if(navigator.vibrate) navigator.vibrate(40);
+        } else {
+          catchScoreValue += item.points;
+          catchMessage.classList.remove('danger');
+          catchMessage.textContent =
+            item.points === 2
+              ? 'BONUS LOVE 😭💗 +2'
+              : 'caught ittt 💗';
+          showCatchPoints(target,'+' + item.points + ' 💗');
+        }
+
+        catchScore.textContent = catchScoreValue;
+        removeCatchTarget(target);
+      });
+
+      catchArena.appendChild(target);
+      catchTargets.add(target);
+
+      const lifetime = 1250 + Math.random()*850;
+      setTimeout(() => removeCatchTarget(target), lifetime);
+
+      const nextSpawn = 430 + Math.random()*300;
+      catchSpawnTimer = setTimeout(spawnCatchTarget,nextSpawn);
+    }
+
+    function finishCatchGame(){
+      if(!catchRunning) return;
+      catchRunning = false;
+      if(catchSpawnTimer) clearTimeout(catchSpawnTimer);
+      if(catchClockTimer) clearInterval(catchClockTimer);
+      catchSpawnTimer = null;
+      catchClockTimer = null;
+      clearCatchTargets();
+      catchArena.classList.remove('running');
+      catchStart.disabled = false;
+      catchStart.textContent = 'play again 💗';
+
+      const oldBest = refreshCatchBest();
+      if(catchScoreValue > oldBest){
+        localStorage.setItem(CATCH_BEST_KEY,String(catchScoreValue));
+        catchBest.textContent = catchScoreValue;
+      }
+
+      catchMessage.classList.remove('danger');
+      if(catchScoreValue >= 26){
+        catchMessage.textContent = 'WHATTT 😭💗 professional heart thief. Omar owes you approximately 600 kisses.';
+        burstHearts(['💗','🩷','🌷','🎀','💞']);
+      } else if(catchScoreValue >= 17){
+        catchMessage.textContent = 'okayyyy karamella 😭💗 that was actually good. certified heart collector.';
+        burstHearts(['💗','🌸','🫶']);
+      } else if(catchScoreValue >= 9){
+        catchMessage.textContent = 'cuteeee 😭💗 you collected enough love to be suspicious.';
+      } else {
+        catchMessage.textContent = 'baby 😭😭 the hearts were RIGHT THERE. run it back.';
+      }
+    }
+
+    function startCatchGame(){
+      stopCatchGame(false);
+      catchScoreValue = 0;
+      catchSeconds = 20;
+      catchScore.textContent = '0';
+      catchTime.textContent = '20';
+      catchMessage.classList.remove('danger');
+      catchMessage.textContent = 'GO GO GO KARAMELLA 💗🌷';
+      catchArena.classList.add('running');
+      catchStart.disabled = true;
+      catchStart.textContent = 'catching... 💗';
+      catchRunning = true;
+
+      spawnCatchTarget();
+      setTimeout(spawnCatchTarget,240);
+
+      catchClockTimer = setInterval(() => {
+        catchSeconds -= 1;
+        catchTime.textContent = Math.max(0,catchSeconds);
+        if(catchSeconds <= 0) finishCatchGame();
+      },1000);
+    }
+
+    refreshCatchBest();
+    catchStart.addEventListener('click',startCatchGame);
+
     function showRandomHomeNote(animate = true){
       let next = Math.floor(Math.random() * homeNotes.length);
       if(homeNotes.length > 1){
@@ -3324,6 +3807,7 @@
     }
 
     function showHomeImmediate(){
+      stopCatchGame(false);
       quizWrap.classList.remove('active');
       flowerPage.classList.remove('active');
       notesPage.classList.remove('active');
@@ -3338,6 +3822,7 @@
     }
 
     function showNotesImmediate(){
+      stopCatchGame(false);
       homePage.classList.add('hidden');
       quizWrap.classList.remove('active');
       flowerPage.classList.remove('active');
@@ -3351,6 +3836,7 @@
     }
 
     function showGamesImmediate(){
+      if(!catchRunning) stopCatchGame(true);
       homePage.classList.add('hidden');
       quizWrap.classList.remove('active');
       flowerPage.classList.remove('active');
@@ -3364,6 +3850,7 @@
     }
 
     function showLovePageImmediate(){
+      stopCatchGame(false);
       homePage.classList.add('hidden');
       quizWrap.classList.remove('active');
       flowerPage.classList.remove('active');
@@ -3377,6 +3864,7 @@
     }
 
     function showQuizImmediate(){
+      stopCatchGame(false);
       homePage.classList.add('hidden');
       flowerPage.classList.remove('active');
       notesPage.classList.remove('active');
