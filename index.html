@@ -4351,6 +4351,36 @@
       )!important;
     }
 
+  
+    /* Hard page-state fix: never stack Home / Games / Notes */
+    .home-page.hidden,
+    body.home-mode .home-page.hidden{
+      display:none!important;
+      min-height:0!important;
+    }
+
+    .notes-page:not(.active),
+    .simple-section-page:not(.active),
+    .flower-page:not(.active),
+    .quiz-wrap:not(.active){
+      display:none!important;
+    }
+
+    .notes-page.active,
+    .simple-section-page.active,
+    .flower-page.active{
+      display:block!important;
+    }
+
+    .quiz-wrap.active{
+      display:block!important;
+    }
+
+    body.home-mode .simple-section-page.active,
+    body.home-mode .notes-page.active{
+      margin:auto;
+    }
+
   </style>
 </head>
 <body>
