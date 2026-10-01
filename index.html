@@ -3713,6 +3713,182 @@
       }
     }
 
+  
+    /* Simpler information architecture */
+    body.home-mode .corner-doodle,
+    body.home-mode .edge-shimmer{
+      display:none!important;
+    }
+
+    body.home-mode .home-card{
+      padding:36px 28px 26px;
+    }
+
+    body.home-mode .home-sub{
+      margin-bottom:18px;
+    }
+
+    .home-menu-clean{
+      grid-template-columns:1fr 1fr;
+      gap:9px;
+      margin-bottom:12px;
+    }
+
+    .home-menu-clean .home-menu-feature{
+      grid-column:1/-1;
+    }
+
+    .home-menu-clean .home-menu-small{
+      min-height:68px;
+    }
+
+    .home-voice{
+      max-width:420px;
+      margin:4px auto 14px;
+      color:var(--ui-muted);
+      font-size:12px;
+      font-weight:750;
+      line-height:1.5;
+    }
+
+    body.home-mode .little-places{
+      margin-top:8px;
+    }
+
+    body.home-mode .home-secret-flower{
+      margin-top:8px;
+    }
+
+    body.home-mode .home-footer{
+      margin-top:5px;
+    }
+
+    body.home-mode .last-change{
+      display:none;
+    }
+
+    /* Letters index */
+    .letters-card{
+      max-width:620px;
+      margin:auto;
+    }
+
+    .letters-card .notes-icon{
+      font-size:58px;
+      margin-bottom:6px;
+    }
+
+    .letters-card h1{
+      margin-bottom:18px;
+    }
+
+    .letter-entry{
+      width:100%;
+      display:flex;
+      align-items:center;
+      gap:13px;
+      padding:14px;
+      border:1px solid var(--ui-line);
+      border-radius:18px;
+      background:var(--ui-surface-soft);
+      color:var(--ui-text);
+      box-shadow:none;
+      text-align:left;
+      white-space:normal;
+    }
+
+    .letter-entry:hover{
+      transform:translateY(-2px);
+      box-shadow:var(--ui-shadow-small);
+    }
+
+    .letter-entry-icon{
+      width:44px;
+      height:44px;
+      flex:0 0 44px;
+      display:grid;
+      place-items:center;
+      border-radius:14px;
+      background:#fffdfc;
+      font-size:23px;
+      border:1px solid var(--ui-line);
+    }
+
+    .letter-entry-copy{
+      min-width:0;
+      display:flex;
+      flex:1;
+      flex-direction:column;
+      gap:3px;
+    }
+
+    .letter-entry-copy strong{
+      font-size:14px;
+      color:var(--ui-text);
+    }
+
+    .letter-entry-copy small{
+      color:var(--ui-muted);
+      font-size:11px;
+      line-height:1.4;
+      font-weight:700;
+    }
+
+    .letter-entry-arrow{
+      flex:0 0 auto;
+      color:var(--ui-rose-strong);
+      font-size:27px;
+      font-weight:500;
+    }
+
+    .letters-small-copy{
+      margin:14px auto 16px!important;
+      max-width:430px!important;
+      font-size:12px!important;
+      line-height:1.5!important;
+    }
+
+    .letters-home{
+      min-width:120px;
+    }
+
+    /* Reduce background noise site-wide */
+    .floaties{
+      opacity:.52;
+    }
+
+    body.home-mode .cute-ambience .soft-sparkle,
+    body.home-mode .cute-ambience .soft-blob{
+      opacity:.12;
+    }
+
+    .paper-grain{
+      opacity:.055;
+    }
+
+    @media(max-width:560px){
+      body.home-mode .home-card{
+        padding:28px 16px 21px;
+      }
+
+      .home-voice{
+        font-size:11px;
+        margin-bottom:11px;
+      }
+
+      .letter-entry{
+        padding:12px;
+        gap:10px;
+      }
+
+      .letter-entry-icon{
+        width:40px;
+        height:40px;
+        flex-basis:40px;
+        font-size:21px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -3748,16 +3924,15 @@
       <div class="login-sleep-bubble" id="loginSleepBubble">good morning my love, hope you slept well and had cute dreams, good luck with your day baby, GO GET THE KNOWLEDGE 💗📚</div>
       <div class="login-kicker">private little place</div>
       <h1>for Karmel only.</h1>
-      <p class="login-copy">fe 7agat meant for everyone. el website de me4 wa7da menohom. this little place is just ours. me and you sweetheart</p>
+      <p class="login-copy">this one is just ours. me and you sweetheart 💗</p>
 
       <form id="loginForm" autocomplete="off">
-        <div class="login-before-password">today has its own tiny key 🔐</div>
+        <div class="login-before-password">tiny key 🔐</div>
         <div class="password-wrap">
           <input class="password-input" id="passwordInput" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="3" placeholder="XXX" aria-label="Password" autocomplete="off">
           <button class="password-toggle" id="passwordToggle" type="button" aria-label="Show password">👀</button>
         </div>
-        <div class="login-hint">this is a special password for today, Hmm maybe there’s something new added today?</div>
-        <div class="login-hint-extra">three numbers XXX, what could it be? i wonder, number of days in a year maybe?</div>
+        <div class="login-hint">three numbers XXX... what could it be? number of days in a year maybe? 👀</div>
         <button class="login-button" type="submit">open our little place 💗</button>
         <div class="login-message" id="loginMessage"></div>
         <div class="login-footer">private property of Omar &amp; Karmel</div>
@@ -3823,24 +3998,19 @@
       <h1 class="home-title">hi karamellety.</h1>
       <p class="home-sub">a tiny corner of the internet that is specific to one girl.</p>
 
-      <nav class="home-menu" aria-label="Main menu">
-        <button class="home-menu-feature games-trigger" id="gamesTrigger" type="button">
-          <span class="menu-icon" aria-hidden="true">💗</span>
+      <nav class="home-menu home-menu-clean" aria-label="Main menu">
+        <button class="home-menu-feature note-trigger" id="noteTrigger" type="button">
+          <span class="menu-icon" aria-hidden="true">💌</span>
           <span class="home-menu-copy">
-            <span class="home-menu-title">play games</span>
-            <span class="home-menu-desc">Catch the Hearts is waiting for you</span>
+            <span class="home-menu-title">letters</span>
+            <span class="home-menu-desc">my yaps live here</span>
           </span>
           <span class="home-menu-badge">NEW</span>
         </button>
 
-        <button class="home-menu-small note-trigger" id="noteTrigger" type="button">
-          <span class="menu-icon" aria-hidden="true">💌</span>
-          <span class="home-menu-title">notes</span>
-        </button>
-
-        <button class="home-menu-small love-trigger" id="loveTrigger" type="button">
-          <span class="menu-icon" aria-hidden="true">✨</span>
-          <span class="home-menu-title">things i love</span>
+        <button class="home-menu-small games-trigger" id="gamesTrigger" type="button">
+          <span class="menu-icon" aria-hidden="true">💗</span>
+          <span class="home-menu-title">games</span>
         </button>
 
         <button class="home-menu-small" id="enterQuiz" type="button">
@@ -3849,17 +4019,8 @@
         </button>
       </nav>
 
-      <div class="note-shell">
-        <span class="tape tape-left" aria-hidden="true"></span>
-        <span class="tape tape-right" aria-hidden="true"></span>
-        <div class="note-label">random quote for my cupcake karamella</div>
-        <p class="random-note" id="randomNote"></p>
-        <div class="quote-counter" id="quoteCounter">quotes found: 0 / 39</div>
-      </div>
+      <p class="home-voice">i made all this because apparently texting you normally wasnt enough 😂💗</p>
 
-      <div class="home-actions">
-        <button class="note-button" id="anotherNote" type="button">another quote 💌</button>
-      </div>
       <div class="little-places" aria-label="Our little places">
         <button class="little-place" type="button" id="openSit" aria-haspopup="dialog"><span aria-hidden="true">🌙</span>sit with me</button>
         <button class="little-place bakery-link" type="button" id="openBakery" aria-haspopup="dialog"><span aria-hidden="true">🧁</span>tiny bakery</button>
@@ -3912,14 +4073,23 @@
   </dialog>
 
   <main class="notes-page" id="notesPage">
-    <section class="notes-card">
+    <section class="notes-card letters-card">
       <div class="paper-grain" aria-hidden="true"></div>
-      <div class="home-kicker">notes &amp; diary</div>
+      <div class="home-kicker">letters</div>
       <div class="notes-icon">💌</div>
-      <h1>today’s bus yap is here 💗</h1>
-      <p>01.10.2026 got its own little letter. you can come back and read it whenever you want.</p>
-      <button class="notes-back today-reopen" type="button" onclick="openTodayLetterPage(true)">open today’s letter 🌷</button>
-      <button class="notes-back" type="button" onclick="showHome()">back home 💗</button>
+      <h1>my yaps to you.</h1>
+
+      <button class="letter-entry" type="button" onclick="openTodayLetterPage(false)">
+        <span class="letter-entry-icon" aria-hidden="true">🚌</span>
+        <span class="letter-entry-copy">
+          <strong>bus yap</strong>
+          <small>01.10.2026 · i had no data so obviously i wrote you a whole letter 😭</small>
+        </span>
+        <span class="letter-entry-arrow" aria-hidden="true">›</span>
+      </button>
+
+      <p class="letters-small-copy">more yaps will probably end up here because i clearly dont know how to shut up when it comes to you 💗</p>
+      <button class="notes-back letters-home" type="button" onclick="showHome()">back home</button>
     </section>
   </main>
 
@@ -3929,7 +4099,7 @@
       <div class="home-kicker">secret games &amp; puzzles</div>
       <div class="simple-section-icon">💗🌷</div>
       <h1>catch the hearts</h1>
-      <p class="catch-game-intro">20 seconds. catch as much love as you can, karamellety. and maybe avoid anything suspicious 😭</p>
+      <p class="catch-game-intro">20 seconds. catch the cute stuff. avoid the man 😭</p>
 
       <div class="catch-rules" aria-label="Game rules">
         <span class="catch-rule">💗 🌷 🌸 = +1</span>
@@ -4633,6 +4803,7 @@
     catchStart.addEventListener('click',startCatchGame);
 
     function showRandomHomeNote(animate = true){
+      if(!randomNote) return;
       let next = Math.floor(Math.random() * homeNotes.length);
       if(homeNotes.length > 1){
         while(next === lastHomeNote){
@@ -4669,7 +4840,7 @@
       document.body.classList.remove('flower-mode');
       setCuteSectionMode('');
       document.body.classList.add('home-mode');
-      showRandomHomeNote(false);
+      if(randomNote) showRandomHomeNote(false);
       window.scrollTo({top:0,behavior:'smooth'});
     }
 
@@ -4813,11 +4984,11 @@
       if(e.key === 'Enter') unlockFlowerPage();
     });
 
-    anotherNote.addEventListener('click', () => showRandomHomeNote(true));
+    if(anotherNote) anotherNote.addEventListener('click', () => showRandomHomeNote(true));
     enterQuiz.addEventListener('click', showQuiz);
-    updateQuoteCounter();
+    if(quoteCounter) updateQuoteCounter();
     refreshFlowerDiscovery();
-    showRandomHomeNote(false);
+    if(randomNote) showRandomHomeNote(false);
     document.body.classList.add('home-mode');
 
     function spawnAmbientHeart(){
@@ -4875,21 +5046,17 @@
     function unlockSite(){
       sessionStorage.setItem('karmelUnlocked','yes');
       loginLockIcon.textContent = '💖';
-      loginMessage.textContent = 'correct. something new was waiting for you 💗';
+      loginMessage.textContent = 'welcome home karamellety 💗';
       loginHeartBurst();
       setTimeout(() => {
         loginGate.classList.add('unlocked');
-        openTodayLetterPage(false);
-      }, 950);
+        showHomeImmediate();
+      }, 850);
     }
 
     if(sessionStorage.getItem('karmelUnlocked') === 'yes'){
       loginGate.classList.add('unlocked');
-      if(sessionStorage.getItem(TODAY_LETTER_KEY) === 'yes'){
-        showHomeImmediate();
-      } else {
-        setTimeout(() => openTodayLetterPage(false), 60);
-      }
+      showHomeImmediate();
     } else {
       setTimeout(() => passwordInput.focus(), 250);
     }
