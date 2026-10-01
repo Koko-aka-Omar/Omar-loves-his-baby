@@ -4947,6 +4947,21 @@
       .scratch-reward strong{font-size:27px}
     }
 
+  
+    .find-chance{
+      width:max-content;
+      margin:-5px auto 14px;
+      padding:6px 10px;
+      border-radius:999px;
+      color:#a14066;
+      background:#ffe7f0;
+      border:1px solid #edb3c9;
+      font-size:10px;
+      font-weight:950;
+      letter-spacing:.03em;
+      box-shadow:0 5px 13px rgba(145,53,91,.06);
+    }
+
   </style>
 </head>
 <body>
@@ -5267,11 +5282,12 @@
           <span class="find-hero-icon" aria-hidden="true">🎀</span>
           <div>
             <div class="home-kicker">find karamella</div>
-            <h1>where did you go 😭</h1>
+            <h1>i lost karamellety 😭</h1>
           </div>
         </div>
 
-        <p class="mini-game-copy">3 tries. one of these is my baby.</p>
+        <p class="mini-game-copy">i lost karamellety, Can you help me find her?</p>
+        <div class="find-chance">7% chance each round 👀</div>
 
         <div class="find-status">
           <span class="find-tries-pill">tries <strong id="findTries">3</strong></span>
@@ -6085,15 +6101,19 @@
     });
 
     const findDecoys = ['🧸','🌷','💌','🧁','🐱','🌸','🍪','🍮'];
-    let findTargetIndex = 0;
     let findTriesLeft = 3;
     let findRoundOver = false;
+    let findRoundLucky = false;
+    let findWinningAttempt = -1;
+    let findAttempt = 0;
 
     function setupFindKaramella(){
       findGrid.innerHTML = '';
-      findTargetIndex = Math.floor(Math.random()*9);
       findTriesLeft = 3;
       findRoundOver = false;
+      findAttempt = 0;
+      findRoundLucky = Math.random() < .07;
+      findWinningAttempt = findRoundLucky ? 1 + Math.floor(Math.random()*3) : -1;
       findTries.textContent = '3';
       findRoundMsg.textContent = 'good luck baby 😂';
 
@@ -6105,14 +6125,16 @@
         card.className = 'find-card';
         card.textContent = '♡';
         card.setAttribute('aria-label','Hidden card ' + (i+1));
-        card.dataset.reveal = i === findTargetIndex ? '🎀' : shuffled[i % shuffled.length];
+        card.dataset.reveal = shuffled[i % shuffled.length];
 
         card.addEventListener('click', () => {
           if(findRoundOver || card.classList.contains('revealed')) return;
-          card.classList.add('revealed');
-          card.textContent = card.dataset.reveal;
 
-          if(i === findTargetIndex){
+          findAttempt += 1;
+          card.classList.add('revealed');
+
+          if(findRoundLucky && findAttempt === findWinningAttempt){
+            card.textContent = '🎀';
             card.classList.add('found');
             findRoundOver = true;
             findRoundMsg.textContent = 'FOUND KARAMELLA 😭💗';
@@ -6122,15 +6144,13 @@
             return;
           }
 
+          card.textContent = card.dataset.reveal;
           findTriesLeft -= 1;
           findTries.textContent = String(findTriesLeft);
 
           if(findTriesLeft <= 0){
             findRoundOver = true;
-            const target = findGrid.children[findTargetIndex];
-            target.classList.add('revealed','found');
-            target.textContent = '🎀';
-            findRoundMsg.textContent = 'BABY YOU LOST YOURSELF 😭😭';
+            findRoundMsg.textContent = 'still lost 😭 try again baby';
             findGrid.querySelectorAll('.find-card').forEach(btn => btn.disabled = true);
           } else {
             findRoundMsg.textContent = findTriesLeft === 1 ? 'LAST TRY 😭' : 'nopeeee 😂';
