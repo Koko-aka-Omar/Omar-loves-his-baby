@@ -5493,6 +5493,161 @@
       .rabena-note-hearts span{animation:none!important}
     }
 
+  
+    /* 18.08.2026 — The First Loving Paragraph ?🌸 */
+    body.loving-paragraph-open{overflow:hidden}
+    .loving-paragraph-page{
+      position:fixed;
+      inset:0;
+      z-index:94;
+      display:none;
+      overflow-y:auto;
+      overscroll-behavior:contain;
+      padding:22px 14px 46px;
+      background:
+        radial-gradient(circle at 10% 10%,rgba(236,91,143,.24),transparent 28%),
+        radial-gradient(circle at 88% 82%,rgba(249,151,187,.19),transparent 31%),
+        linear-gradient(145deg,#ffe8f1,#fff7fb 50%,#ffdeea);
+    }
+    .loving-paragraph-page.active{display:block}
+    .loving-paragraph-hearts{
+      position:fixed;
+      inset:0;
+      z-index:0;
+      pointer-events:none;
+      overflow:hidden;
+    }
+    .loving-paragraph-hearts span{
+      position:absolute;
+      opacity:.23;
+      color:#d35f8a;
+      animation:lovingParagraphFloat 7s ease-in-out infinite;
+      user-select:none;
+    }
+    .loving-paragraph-hearts span:nth-child(1){left:4%;top:8%;font-size:25px}
+    .loving-paragraph-hearts span:nth-child(2){right:6%;top:11%;font-size:24px;animation-delay:-2s}
+    .loving-paragraph-hearts span:nth-child(3){left:7%;top:36%;font-size:23px;animation-delay:-4s}
+    .loving-paragraph-hearts span:nth-child(4){right:7%;top:43%;font-size:18px;animation-delay:-1s}
+    .loving-paragraph-hearts span:nth-child(5){left:5%;top:72%;font-size:22px;animation-delay:-3s}
+    .loving-paragraph-hearts span:nth-child(6){right:10%;top:69%;font-size:20px;animation-delay:-5s}
+    .loving-paragraph-hearts span:nth-child(7){left:20%;bottom:4%;font-size:20px;animation-delay:-1.5s}
+    .loving-paragraph-hearts span:nth-child(8){right:20%;bottom:5%;font-size:19px;animation-delay:-4.4s}
+    .loving-paragraph-hearts span:nth-child(9){left:47%;top:3%;font-size:16px;animation-delay:-2.7s}
+    .loving-paragraph-hearts span:nth-child(10){right:34%;bottom:2%;font-size:19px;animation-delay:-3.6s}
+    @keyframes lovingParagraphFloat{
+      50%{transform:translateY(-11px) rotate(6deg) scale(1.05)}
+    }
+
+    .loving-paragraph-sheet{
+      position:relative;
+      z-index:1;
+      width:min(100%,720px);
+      margin:0 auto;
+      padding:27px 32px 24px;
+      border-radius:28px;
+      background:
+        linear-gradient(rgba(255,249,252,.94),rgba(255,249,252,.94)),
+        repeating-linear-gradient(0deg,#fff7fa 0 31px,#efbfd1 31px 32px);
+      border:1px solid #e9a9c1;
+      box-shadow:0 20px 58px rgba(135,48,84,.17);
+      color:#65364b;
+    }
+    .loving-paragraph-back{
+      display:block;
+      margin:0 0 19px;
+      padding:9px 12px!important;
+      border-radius:999px!important;
+      color:#a13e65!important;
+      background:#fff1f6!important;
+      border:1px solid #e9adc4!important;
+      box-shadow:none!important;
+      font-size:11px!important;
+    }
+    .loving-paragraph-date{
+      width:max-content;
+      max-width:100%;
+      margin:0 auto 12px;
+      padding:7px 11px;
+      border-radius:999px;
+      background:#ffe4ef;
+      border:1px solid #ebb0c6;
+      color:#a54167;
+      font-size:10px;
+      font-weight:900;
+      letter-spacing:.07em;
+    }
+    .loving-paragraph-kicker{
+      margin-bottom:5px;
+      text-align:center;
+      color:#a54167;
+      font-size:10px;
+      font-weight:950;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+    .loving-paragraph-sheet h1{
+      margin:0;
+      text-align:center;
+      font-family:"DM Serif Display",Georgia,serif!important;
+      font-size:clamp(35px,8vw,50px)!important;
+      font-weight:400!important;
+      color:#643248!important;
+    }
+    .loving-paragraph-divider{
+      margin:14px auto 20px;
+      text-align:center;
+      color:#d0648c;
+      font-size:14px;
+      letter-spacing:.08em;
+    }
+    .loving-paragraph-text{
+      margin:0;
+      color:#60394b;
+      font-size:15px;
+      line-height:1.88;
+      font-weight:650;
+      text-align:left;
+      white-space:pre-wrap;
+    }
+    .loving-paragraph-message-meta{
+      display:flex;
+      justify-content:flex-end;
+      align-items:center;
+      gap:5px;
+      margin-top:16px;
+      padding-top:10px;
+      color:#9b7a88;
+      font-size:11px;
+      font-weight:700;
+    }
+    .loving-paragraph-dot{
+      width:4px;
+      height:4px;
+      border-radius:50%;
+      background:#c797aa;
+      opacity:.8;
+    }
+    .loving-paragraph-entry{margin-top:0}
+
+    @media(max-width:560px){
+      .loving-paragraph-page{padding:10px 8px 30px}
+      .loving-paragraph-sheet{
+        padding:20px 16px 22px;
+        border-radius:22px;
+      }
+      .loving-paragraph-text{
+        font-size:14px;
+        line-height:1.82;
+      }
+      .loving-paragraph-message-meta{
+        margin-top:13px;
+        font-size:10px;
+      }
+    }
+    @media(prefers-reduced-motion:reduce){
+      .loving-paragraph-hearts span{animation:none!important}
+    }
+
   </style>
 </head>
 <body>
@@ -5543,6 +5698,30 @@
       </form>
     </div>
   </div>
+
+  <section class="loving-paragraph-page" id="lovingParagraphPage" aria-hidden="true">
+    <div class="loving-paragraph-hearts" aria-hidden="true">
+      <span>🌸</span><span>♡</span><span>💗</span><span>✦</span><span>🌸</span><span>✨</span>
+      <span>💞</span><span>♡</span><span>✧</span><span>💗</span>
+    </div>
+
+    <article class="loving-paragraph-sheet">
+      <button class="loving-paragraph-back" id="closeLovingParagraph" type="button">← notes</button>
+
+      <div class="loving-paragraph-date">18.08.2026 · 🌸</div>
+      <div class="loving-paragraph-kicker">one of the very first yaps</div>
+      <h1>The First Loving Paragraph ?🌸</h1>
+
+      <div class="loving-paragraph-divider" aria-hidden="true">♡ &nbsp; ✦ &nbsp; 🌸 &nbsp; ✦ &nbsp; ♡</div>
+
+      <p class="loving-paragraph-text">LISTENNNNNN listen listen listen i’ve never wrote paragraphs outside of the english exam and i know paragraphs are something only lovers do but idc i wanna write u an autistic paragraph ur either gonna be so happy or so scared when u see this😂😂😂 anyways im just autistic and happy don’t judge me😂😂 KARMEL ENTE 7ELWA AHHHHHHHHHHHHH YA DEEN OMY YOURE SO GORGEOUS AND PRETTY AND BEAUTIFUL AND CUTE AND STUNNING AND BREATHTAKING AND BEAUTIFUL AND MIND BOGGLING AND CUTE you’re soft spoken you’re smart and intelligent ur so fun to talk to and ur caringgggggg and ur easy going but 3aneda idk how 😂😂 you’re so pretty in the inside and outside and all i can say is “pretty” because there is no english word that could describe how amazing and cute u are. pretty is genuinely an understatement and unfair to you and no word could describe you enough. anywho ANA MO3GAB BEKE 😂😂😂😂</p>
+
+      <div class="loving-paragraph-message-meta">
+        <span class="loving-paragraph-dot" aria-hidden="true"></span>
+        <span class="loving-paragraph-time">2:38 AM</span>
+      </div>
+    </article>
+  </section>
 
   <section class="rabena-note-page" id="rabenaNotePage" aria-hidden="true">
     <div class="rabena-note-hearts" aria-hidden="true">
@@ -5738,11 +5917,11 @@
       <div class="notes-icon">💌</div>
       <h1>the big yaps.</h1>
 
-      <button class="letter-entry" type="button" onclick="openTodayLetterPage(false)">
-        <span class="letter-entry-icon" aria-hidden="true">🚌</span>
+      <button class="letter-entry loving-paragraph-entry" type="button" id="openLovingParagraph">
+        <span class="letter-entry-icon" aria-hidden="true">🌸</span>
         <span class="letter-entry-copy">
-          <strong>bus yap</strong>
-          <small>01.10.2026 · i had no data so obviously i wrote you a whole letter 😭</small>
+          <strong>The First Loving Paragraph ?🌸</strong>
+          <small>18.08.2026 · 2:38 AM</small>
         </span>
         <span class="letter-entry-arrow" aria-hidden="true">›</span>
       </button>
@@ -5761,6 +5940,15 @@
         <span class="letter-entry-copy">
           <strong>rabena ye5aleke leya</strong>
           <small>26.09.2026 · 7am thoughts about my sleeping princess ❤️</small>
+        </span>
+        <span class="letter-entry-arrow" aria-hidden="true">›</span>
+      </button>
+
+      <button class="letter-entry bus-yap-entry" type="button" onclick="openTodayLetterPage(false)">
+        <span class="letter-entry-icon" aria-hidden="true">🚌</span>
+        <span class="letter-entry-copy">
+          <strong>bus yap</strong>
+          <small>01.10.2026 · i had no data so obviously i wrote you a whole letter 😭</small>
         </span>
         <span class="letter-entry-arrow" aria-hidden="true">›</span>
       </button>
@@ -6343,6 +6531,9 @@
 
     const passwordInput = document.getElementById('passwordInput');
     const passwordToggle = document.getElementById('passwordToggle');
+    const lovingParagraphPage = document.getElementById('lovingParagraphPage');
+    const openLovingParagraph = document.getElementById('openLovingParagraph');
+    const closeLovingParagraph = document.getElementById('closeLovingParagraph');
     const rabenaNotePage = document.getElementById('rabenaNotePage');
     const openRabenaNote = document.getElementById('openRabenaNote');
     const closeRabenaNote = document.getElementById('closeRabenaNote');
@@ -6436,6 +6627,24 @@
         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'
       })[ch]);
     }
+
+    function openLovingParagraphPage(){
+      if(typeof recordAppRoute === 'function') recordAppRoute('/notes/the-first-loving-paragraph');
+      lovingParagraphPage.classList.add('active');
+      lovingParagraphPage.setAttribute('aria-hidden','false');
+      document.body.classList.add('loving-paragraph-open');
+      lovingParagraphPage.scrollTo({top:0,behavior:'auto'});
+    }
+
+    function closeLovingParagraphPage(){
+      lovingParagraphPage.classList.remove('active');
+      lovingParagraphPage.setAttribute('aria-hidden','true');
+      document.body.classList.remove('loving-paragraph-open');
+      showNotesImmediate();
+    }
+
+    openLovingParagraph.addEventListener('click',openLovingParagraphPage);
+    closeLovingParagraph.addEventListener('click',closeLovingParagraphPage);
 
     function openRabenaNotePage(){
       if(typeof recordAppRoute === 'function') recordAppRoute('/notes/rabena-ye5aleke-leya');
