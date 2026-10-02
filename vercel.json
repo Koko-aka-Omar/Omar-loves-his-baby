@@ -9,6 +9,26 @@
       "destination": "/index.html"
     },
     {
+      "source": "/notes/the-night",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/notes/arabic-yap",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/notes/rabena-ye5aleke-leya",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/notes/the-first-paragraph",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/notes/the-first-loving-paragraph",
+      "destination": "/index.html"
+    },
+    {
       "source": "/notes/bus-yap",
       "destination": "/index.html"
     },
