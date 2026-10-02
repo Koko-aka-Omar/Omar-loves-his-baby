@@ -5648,6 +5648,144 @@
       .loving-paragraph-hearts span{animation:none!important}
     }
 
+  
+    /* 06.10.2026 — THE night. */
+    body.the-night-open{overflow:hidden}
+    .the-night-page{
+      position:fixed;
+      inset:0;
+      z-index:95;
+      display:none;
+      overflow-y:auto;
+      overscroll-behavior:contain;
+      padding:20px 12px 50px;
+      background:
+        radial-gradient(circle at 12% 12%,rgba(213,77,126,.24),transparent 28%),
+        radial-gradient(circle at 86% 82%,rgba(157,104,180,.20),transparent 31%),
+        linear-gradient(145deg,#f8dce8 0%,#fff4f9 46%,#e9d9f1 100%);
+    }
+    .the-night-page.active{display:block}
+    .the-night-ambience{
+      position:fixed;
+      inset:0;
+      z-index:0;
+      pointer-events:none;
+      overflow:hidden;
+    }
+    .the-night-ambience span{
+      position:absolute;
+      opacity:.23;
+      color:#b64e78;
+      user-select:none;
+      animation:theNightFloat 8s ease-in-out infinite;
+    }
+    .the-night-ambience span:nth-child(1){left:4%;top:7%;font-size:20px}
+    .the-night-ambience span:nth-child(2){right:5%;top:10%;font-size:25px;animation-delay:-1.7s}
+    .the-night-ambience span:nth-child(3){left:7%;top:30%;font-size:25px;animation-delay:-3.2s}
+    .the-night-ambience span:nth-child(4){right:7%;top:37%;font-size:23px;animation-delay:-5s}
+    .the-night-ambience span:nth-child(5){left:4%;top:58%;font-size:18px;animation-delay:-2.2s}
+    .the-night-ambience span:nth-child(6){right:8%;top:64%;font-size:23px;animation-delay:-4.2s}
+    .the-night-ambience span:nth-child(7){left:16%;bottom:5%;font-size:19px;animation-delay:-1.2s}
+    .the-night-ambience span:nth-child(8){right:17%;bottom:6%;font-size:20px;animation-delay:-3.8s}
+    .the-night-ambience span:nth-child(9){left:46%;top:2%;font-size:16px;animation-delay:-2.8s}
+    .the-night-ambience span:nth-child(10){right:33%;top:22%;font-size:18px;animation-delay:-5.7s}
+    .the-night-ambience span:nth-child(11){left:30%;top:73%;font-size:19px;animation-delay:-4.8s}
+    .the-night-ambience span:nth-child(12){right:39%;bottom:2%;font-size:18px;animation-delay:-2.4s}
+    @keyframes theNightFloat{
+      50%{transform:translateY(-12px) rotate(7deg) scale(1.05)}
+    }
+
+    .the-night-sheet{
+      position:relative;
+      z-index:1;
+      width:min(100%,800px);
+      margin:0 auto;
+      padding:28px 38px 42px;
+      border-radius:30px;
+      background:
+        linear-gradient(rgba(255,249,252,.95),rgba(255,249,252,.95)),
+        repeating-linear-gradient(0deg,#fff7fa 0 31px,#e9bfd1 31px 32px);
+      border:1px solid #dda6bd;
+      box-shadow:0 22px 62px rgba(99,42,67,.18);
+      color:#593446;
+    }
+    .the-night-back{
+      display:block;
+      margin:0 0 20px;
+      padding:9px 12px!important;
+      border-radius:999px!important;
+      color:#963d61!important;
+      background:#fcecf3!important;
+      border:1px solid #dfadc1!important;
+      box-shadow:none!important;
+      font-size:11px!important;
+    }
+    .the-night-date{
+      width:max-content;
+      max-width:100%;
+      margin:0 auto 12px;
+      padding:7px 11px;
+      border-radius:999px;
+      background:#f5e1ec;
+      border:1px solid #dcb0c2;
+      color:#8f3d60;
+      font-size:10px;
+      font-weight:900;
+      letter-spacing:.08em;
+    }
+    .the-night-kicker{
+      margin-bottom:5px;
+      text-align:center;
+      color:#984263;
+      font-size:10px;
+      font-weight:950;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+    }
+    .the-night-sheet h1{
+      margin:0;
+      text-align:center;
+      font-family:"DM Serif Display",Georgia,serif!important;
+      font-size:clamp(42px,9vw,60px)!important;
+      font-weight:400!important;
+      color:#543044!important;
+    }
+    .the-night-divider,
+    .the-night-ending{
+      margin:15px auto 22px;
+      text-align:center;
+      color:#bd5b81;
+      font-size:15px;
+      letter-spacing:.11em;
+    }
+    .the-night-text p{
+      margin:0 0 22px;
+      color:#583849;
+      font-size:15px;
+      line-height:1.9;
+      font-weight:650;
+      text-align:left;
+    }
+    .the-night-text p:last-child{margin-bottom:0}
+    .the-night-ending{margin:28px auto 0}
+    .the-night-entry{margin-top:9px}
+
+    @media(max-width:560px){
+      .the-night-page{padding:9px 7px 32px}
+      .the-night-sheet{
+        padding:20px 16px 30px;
+        border-radius:22px;
+      }
+      .the-night-text p{
+        font-size:14px;
+        line-height:1.83;
+        margin-bottom:19px;
+      }
+    }
+    @media(prefers-reduced-motion:reduce){
+      .the-night-ambience span{animation:none!important}
+    }
+
   </style>
 </head>
 <body>
@@ -5698,6 +5836,51 @@
       </form>
     </div>
   </div>
+
+  <section class="the-night-page" id="theNightPage" aria-hidden="true">
+    <div class="the-night-ambience" aria-hidden="true">
+      <span>✦</span><span>♡</span><span>🌙</span><span>💗</span><span>✧</span><span>♡</span>
+      <span>✨</span><span>💞</span><span>✦</span><span>♡</span><span>🌸</span><span>💗</span>
+    </div>
+
+    <article class="the-night-sheet">
+      <button class="the-night-back" id="closeTheNight" type="button">← notes</button>
+
+      <div class="the-night-date">06.10.2026 · 🌙</div>
+      <div class="the-night-kicker">from koko’s journal</div>
+      <h1>THE night.</h1>
+      <div class="the-night-divider" aria-hidden="true">♡ &nbsp; ✦ &nbsp; 💗 &nbsp; ✦ &nbsp; ♡</div>
+
+      <div class="the-night-text">
+        <p>it has been a cute five months, because of a single person that has been keeping my mind calm and my heart warm. however i saw those five months crumble right infront of my eyes because of a mistake i did around a year ago. the same person that i promised to keep safe and sound i ended up hurting and deeply. the week was really nice, she read one of my journal entries and loved it even tho she wasn’t supposed to read it. she loved it so much to the point that she said she loves me and the way i saw her being happy and loved and appreciated made me so happy, something about seeing her happy and loved made me feel so accomplished and happy. that same day, i told her of a mistake that i did that i deeply regret and i feel i’m still paying the price of that mistake till this day, weather by my life being weird or just how i almost lost the love of my life. a friend of mine that knew someone that his dad had a office job for me wanted something and i ended up buying him that thing just to get closer to that person for him to assign me to a job. it was a mistake but i wasn’t thinking properly and wasn’t in my right mind. because of some circumstances i was forced and my and was bent and there’s still no one to blame but me and i own my mistake. that same day that she said she loved me i ended up hurting her and almost lost her. the same week that i got interviewed for a job at the university with a good pay and flexible work time that suits me and my work-study life and doesn’t take much effort or time. it’s crazy how the same week that a lot of goods happen, i see everything end right infront of my eyes. i also get blamed for the way i explained things, i explained stuff in a vague way and i have no idea why i did that, and i didn’t realise the weight of that im doing till the last text message she sent. i begged her to stay and she found some mercy in her heart to forgive me.</p>
+        <p>the aftermath of the whole thing felt like a fever dream, i haven’t cried in a while - other than me losing my scholarship and being under so much stress - and i don’t enjoy crying, however that night was one of the worst nights ive ever had, and ive had really bad nights before. i didn’t realise i was crying till the next day when she asked me if i have been crying over everything. she’s such an angelic person. she kept asking if i was doing okay and her asking made me so calmed and so relaxed, but that’s beyond the point. the night where she told me to forget her it dawned on me that im gonna lose her for real, i started thinking and in no time started tearing up and tears turned into straight crying. i was on my alt account and i kept checking and wondering why im not getting any msgs and ever time id check and find nothing id cry even harder and didnt realise till the next morning i realised i was on the wrong account and switched and found her texts at 1:44am of that night. she was mad which was fair, but she was also so hurt and that made me feel so upset, how did i hurt such a person such a pure person. ill never forgive myself for that.</p>
+        <p>i was reading her texts and getting ready for university and texting her on the way to uni, i had music blasting so i stop my brain from thinking however the weight of my thoughts crushed me and i ended up crying thinking about all of the good days we had and all of the things she did to me. all the moments she made sure i was happy and all the times she made me laugh and forget my worry. all the care she had for me just for me to end up hurting her like that. thankfully the ride to the uni was full of traffic and i took my sweet time crying and being in pain, its really amusing how when you’re sad you feel it in your stomach and chest like a sharp yet light pain as if something is pressing on you. i pulled my shit together and reached university safely and i was on time but i couldn’t leave the car. everytime i try to leave id find myself unable to move and tears running down my cheeks. i looked at myself in the mirror and i looked like a mess. no shower red eyes and puffy nose and face. i put all my strength together and got out of the car and ran to the doctors toilet to wash my face and calm myself down.</p>
+        <p>i had three lectures that day, the first one of my friends rizq commented on my face and how i look and how it looks like i have a blush”. the second i started losing focus of the lecture and no matter how hard i try to focus i found myself thinking about her and tearing up mid lecture. it felt like everyone was looking at me i felt vulnerable and weak and im not used to feeling like that. i excused myself and went to the toilet and kicked myself in one of the stalls and let it all out. however this time i couldn’t cry as if there was something stopping me. i ended up going back fk the classroom and excusing myself early because i didn’t feel well and thankfully the doctor allowed me to leave early while counting me present because i looked like i needed rest, infront of 60 different humans i looked weak and tired and sad.</p>
+        <p>on the drive home shit was way worse. everything dawned on me and it reached a point where i couldn’t see the road clearly i had to park in the side and calm myself down. by that time she started texting me again and just the thought of her notifications on my screen made me feel a hundred times better. i still thought she was going to leave and she had every right to do so. we kept talking and she had classes and i ended up sending her multiple paragraphs during my lectures and during her school times where she told me she’s in class and will read them later. however i eventually reached home and still couldn’t feel well enough to get out of the car so i spent what felt like hours but it was actually just thirty minutes in the car with music in max volume so max that my ears started ringing after i left the car. i got home with red eyes and puffy cheeks and ran to the washroom to wash my face and calm myself down, after what felt like ages i went out and found my mom waking up from her sleep and asking me why i look like that and if anything happened during uni, i told her i am scared and not feeling well and that everything is alright, little did she know i was fighting myself and felt like a thousand knife’s puncturing my lungs and heart.</p>
+        <p>after she was done with school she started asking me if i was alright and how i am feeling. i wanted to yap to her and tell her and complain to her how much i missed her and how much i love her but it didn’t matter, it was all ending. i kept telling her im fine and im more worried about her and how she’s feeling. it was so calming seeing her being worried about me one last time. but somehow it still felt so bad because in my head i was still gonna lose the single person that loved me and cared for me without me doing anything and just by me being myself. it was such a cruel sight seeing her ask if im doing okay and me lying and saying im okay. it still feels like a daydream and i love how my memory doesn’t work well when im stressed so i end up not remembering a lot of the thing that was said but i end up remembering how i felt and the cute things that i was told. she asked to see my face to make sure i was fr fine or if i was crying or not and that level of care is a level i’ve never seen or felt before. how can a person be hurt and still care about the single person that hurt them was so weird to me and out of the normal to me. i love her to death and ill forever remember her treating me like that this day.</p>
+        <p>ended up talking a little and ive no idea how or why i told her i love her and she said it back. the highlight of the day was despite her being mad and sad she still said it back. and that’s when my heart felt like a cold calming blanket fall over it. as if i was thirsty my whole life long and she came with a cold bottle of water, or as if i spend days lost and she came with a map to help me out. i was so worried things won’t be the same and somehow she had the same worry, her asking if im mad or if i have anything in my heart against her was such a beautiful sight, it showed me that we both think the same way and deal with things the same way and it’s honestly so cute and calming knowing j have someone so dear to my heart that is basically a copy of me is a feeling everyone deeerves to feel atleast once in their lifetime. i don’t remember how the night ended or what was said but i remember taking a deep breath and remembering her saying she loves me and remembering her calming me down. she slept before me tho and i ended up staying. up thinking about everything and how i almost lost her and she ended up comforting me and making me feel better despite me being the one hurting her and at fault.</p>
+        <p>the next day, i was so worried things would be awkward or uncomfortable or that we won’t be the same again, and rightfully so she wasn’t feeling well enough and she wasn’t gonna forgive me that easily and i didn’t want her to forgive me that easily either, i wanted to make it up for her by any means, i remember her being worried about not being able to cool of and forgiving me and reading her say that broke my heart into a million pieces, and before she slept she asked me to not let go of her and that once again calmed me down, it was such an emotional roller coaster that night and i know down the line we will sit together and remember this day and laugh about it too. i told myself that she just needs time to think about everything and weather she wants to forgive me or not, and during that time she needs i’ll just be myself.</p>
+        <p>the next morning was slow and boring, however mid day i got a sharp feeling of missing her so badly and i had no idea what to do so i went and texted her and found myself being goofy and being myself. i couldn’t contain my feelings and me missing her and straight up begged her to skip class and stay with me because of how much i was missing her and she was laughing about it too. here i felt like she wasn’t mad at me nor sad, she was hurt and was worried about me myself being hurt, and somehow the mix of those two feelings made her unable to communicate properly and freely but when she saw me missing her she started easing up and started laughing and telling me she missed me more, one thing that i can’t forget is how she kept calling me cute names and saying she loves me. it was such an abnormal situation to be put in, where the person that i passively hurt, was asking me if im okay and saying they love me, and despite being so glad that she loves me i still had this feeling of guilt and sadness, but me missing her overcame all the feelings and made me turn into a baby mid university and found my day getting brighter just by seeing her laugh and giggle. i also don’t remember much of the events that happened that day - which isn’t normal for me, especially how i end up remembering everyday that we spend together and every convo we have, i think it’s a matter of my brain selecting to filter the bad moments or moments of stress and worry. that being said, that day was cute and it was the first day of the more days to come where she says she loves me and she said it almost once per two hours and everytime she would say it i would say it back with a lot of love and energy in my heart and body. we ended up being fine after that and surprisingly in such a short time, im blessed and genuinely lucky that she gave me a chance and didn’t let go of me despite my stupidity and a lot of mistakes.</p>
+        <p>i don’t like to blame things like hassad but i can’t help but think that this was genuinely an eye either from us or from my friends, intentionally or not isn’t a question for sure but the question is how can i get told that she loves me, just for her to tell me to forget her in the span of 12 hours? however i think that convo showed me how much i loved her and how much i truly want her, ive never cried over someone, not when my grandparents died, not when some of my close friends died, never. and here i was crying over her like a baby crying over his mom leaving him. it’s genuinely weird to me how i don’t remember a lot of the we became noticeably more comfortable with each other after that day and somehow,                     i don’t regret telling her anything and i’ll always be grateful for her and how she deals with me and with our disagreements.</p>
+        <p>now all the formality aside, those two days taught me alot and showed me the reality of the person im dealing with, karamellety my dear and my love. i’ve been knowing that she is smart and intelligent and caring. but i didn’t realise the amount of care and love she could give to the right people that she love, she’s so short yet her love capacity and care capacity exceeds anyone ive ever came across before and anything ive ever whitnesnessdd before, her being worried about me before herself is something i’ll never forget and ill take her used to or take for granted, i’ll always remember this for her and karamella, if you get to read this, i wanna say i love you so much baby istg i love you and id like to take this moment to say i appreciate you so much baby, you became the light that shines through my day and guides me and the shoulder than i can lean on and my diary that i can talk to and yap to, you’re full of qualities and perks that raise you up so high among everyone baby, i truly admire you and look up to you in a lot of things and i want to be the best version of myself for you, i know i should motivate myself by myself but sometimes it gets lonely and depressing and having you with me by my side shoulder to shoulder during my life’s journey is so reassuring because i know you’re a good person at your core and on the outside too, i don’t say it enough but i truly cherish every moment we have together weather it’s stupid or goofy or serious and heavy i cherish all of our convos. i always end up learning something new with you weather about you or about life and you always untangle my thoughts and emotions and you make me see life more clearly. no amount of words or paragraphs or voice messages or gifts will depict how much i love you and think about you and appreciate every moment we have together. we are so similar in the way we think and deal with things and similar in thoughts and goofyness, we have the exact same love style and we have the same opinions on almost everything, i can’t believe that i among everyone is the one you get to say “i love you” to. i sit every night and think about you and how much i love you and want to be with you.</p>
+        <p>baby i’m not here for the laughs and giggles and the good times, im here to last with you. i will to chose you every day and night and i will do whatever it takes for me to be with you. i want us to last forever baby and if you allowed me to do that, i’ll make sure your nights and days are full of jokes and happiness because seeing you happy makes me happy baby, you’re so sweet and i wish i could bring you the whole world right to your doorstep. i want to wake up everyday knowing i got you and you got me, and i hope you understand that days may become slow and may start becoming repetitive and you won’t feel the same “spark” that we had but that’s how life is, down the line when “love” settles, what remains is us chosjng each other and i would chose you a hundred times over and over again baby, in all lives and in all different realities. i hope you know how much you mean to me baby and how hard and how much i want you and need you in my life, and yes baby i need need you in my life.</p>
+        <p>i need you in my life in a way that isn’t just “i need someone to talk to” or “i need someone to love me”, i need YOU specifically baby, your jokes w ra5ama your reactions w how u steal my lingo your little attitudes around anything female your random stories, the way you yap about something and somehow i could listen to you forever. the way you get excited about little things, the way you care about me and everything in your life , the way you get worried over me and not wanting me to be harmed , the way you betedala3y  on me sometimes and a5 wallahi that’s my favorite thing about you, dala3ek w baby karamella. i need the karamella that i got to know, every version of her weather happy karamella sleepy karamella angry karamella jealous karamella excited karamella yapping karamella quiet karamella emotional karamella goofy karamella and even the karamella that doesn’t feel like talking to anyone. i want all of you baby, not only the easy parts happy parts and not only the version of you that’s smiling and happy, i want you when life gets heavy too i want to always be by your side and iwant to be there when you feel like everything is against you and when you feel like you don’t know what to do, the same way you’ve been there for me always and all the time and again and again.</p>
+        <p>i love it so much when sometimes i randomly catch myself smiling cuz of something you said hours ago or remembering some goofy moment between us that probably means absolutely nothing to anyone else but means everything to me- i still cherish that morning where we had one of our first laughs and convos about the EGG SANDIECHBBB 😭😭😭. and i love that we have those things w convos our own jokes our own words our own little habits and conversations that nobody else would understand the same way we do. i love that there’s a version of me that only you get to see and there’s a version of you that i feel lucky enough to know too and see and experience i love knowing tiny details about you, the things you like, the things you hate, what makes you annoyed what makes you laugh, what makes you feel better and i wanna keep learning you baby i don’t ever wanna reach a point where i think “yeah i know everything about her”. i wanna spend years and years discovering new things about you, watching you change, watching you grow and i grow with you and we winnnn in life and being there through all of it.</p>
+        <p>these past days (it’s the 10th today as i’m writing this) made me realize that loving someone isn’t just telling them “i love you” when everything is cute and easy, it’s seeing how they react when things aren’t easy anymore and seeing how you react and deal with me babyyyy istg i love you so much for it. it’s seeing if they listen, if they care, if they try to understand you and you always always try to understand me baby, even when you’re hurt yourself. and baby you showed me so much about your heart. seeing you worry about me even while you were processing your own emotions genuinely did something to me that i can’t explain or properly understand. and i don’t think you understand how much that meant to me. you had every reason to only think about your own feelings and somehow you still had space in your heart to think about mine and ask if im okay and care about me. i will remember that baby for everrrrrr genuinely. because little things like that tell me so much more about someone than a thousand words ever could. and again</p>
+        <p>and one thing i hope you always understand about me is that when i say i choose you i don’t mean just when choosing you is easy i mean choosing you when we’re both tired choosing you when things feel repetitive and boring choosing you when life starts getting busy and we don’t have the same amount of time we used to have weather cuz of exams my work u entering uni or whatever, choosing you when we disagreechoosing you when one of us is going through something and isn’t acting exactly like themselves, choosing you through the ugly and annoying parts of life too because i don’t want a temporary love baby i don’t want something that only survives and lasts only when everything around us is perfect because life can never be always perfect baby i want something real and real means sometimes we’re gonna have to put effort into each other and remind ourselves why we started and why we stayed and i’m willing to do that over and over and over again for you.</p>
+        <p>sometimes i genuinely just sit there and think like out of everyone??? me ANAAAA??? im the person you say goodnight w good morning babyyy” to and the person you tell that you love and the person you worry about and the person you think about?? and it makes me smile like an a child every single time because i know how valuable your love is baby,. i know you don’t just give this version of yourself to everybody and that makes me wanna protect you and your love even even more. your love isn’t something i feel entitled to or that i take it for granted, it’s something i feel lucky to receive and something i wanna keep earning every single day and thank you for it everyday.</p>
+        <p>another thing i wanna touch in is how i wanna learn how to love you better as time goes on too because i know love isn’t just having feelings for someone, it’s learning that person. what makes them feel safe and loved and appreciated, what makes them feelhappy and relax, when they need reassurance, when they need space (which is never CUZ U SAID NEVER) when they need someone to listen rather than solve their problem and all those tiny things. and im still learning baby, but i wanna keep learning because you’re worth learning for, i wanna know you so well that even when you can’t explain what you’re feeling properly i can sit with you and talk for hours and try to understand it together.</p>
+        <p>i see something cute and think of you immediately, i hear something romantic a song or one of my friends happing and think of you sometimes i literally see something stupid and immediately imagine what your reaction would be and i come running to text you about it😭 you’re genuinely everywhere in my head baby and somehow im not tired of it at all. if anything i love it because thinking about you makes normal moments feel a little nicer.</p>
+        <p>and there’s something sosososososo comforting about just knowing you exist somewhere in this world at the same time as me as long as we are in the same balad. like even if we’re both doing completely different things ana uni ente sleep ana sleep ente study and not talking at that exact moment, knowing you’re there living your little life somewhere makes me happy and proud 😭 my shebr w nos walking around doing things and working hard. i love you so much baby.</p>
+        <p>and i hope whenever you read any of this you don’t just see words, u know i love yapping bas you know i don’t love wasting time and you know i mean everything i say or do, i hope you understand what’s behind such words and paragraphs because i know sometimes i struggle to explain what’s going on in my head i wish u would just come read my mind. there’s so much i feel for you that doesn’t translate properly into sentences and i can’t put normally into words, like how am i supposed to explain the feeling of talking to you  after a long tiring stressful day and instantly feeling calmer, or how i’m supposed to explain that weird happiness when i see your name pop up on my phone with the cute heart hair background or how i’m supposed to explain the feeling of knowing there’s someone out there who genuinely cares about how my day went and wants to know if i ate and how my day went</p>
+        <p>and i hope i give you even half the comfort you give me its something i think about all the time and hope i do make you relaxed and comfortable . i hope when you see my name you feel safe and happy the way i do, i hope you feel like you can tell me anything w everything , i hope you feel appreciated and wanted and valued because you are my valued baby girl. i hope you never feel like im not loving you enough or caring about you enough because sometimes i just don’t know how to put it into words and explain my feelings</p>
+        <p>baby yoou deserve reassurance w dwla3 you deserve effort, you deserve someone who listens and remembers and cares about the little things and i wanna be that person for you forever. i want to remember what makes you happy and randomly do it for you and always keep you on edge i wanna remember the things you casually mention, like the legossssss or victorias perfumes and surprise you with them later - NEW YEAR’s EVE, i wanna notice when something feels off and i love it so so much when i ask and you answer immediately you’re such a cute good girl u deserve 3ada, i wanna learn all those little details that may seem little and small but they’re not because those little details are the most importsnt things to me and is how i feel i know you more than anyone else. that’s MORE than enough for tonight, im starting to get sleepy it has been around three hours and half of typing god i love u so fuckinf much ill come pit a huge pink diamond on your finger and make you mine forever. بحبك يا كرمل يا روحي و قلبي و حياتي كلها</p>
+        <p>i will be visiting this again - this is my fourth visit already and i’ll be adding more to it depending on when she asks to read it, that if she asks in the first place.</p>
+      </div>
+
+      <div class="the-night-ending" aria-hidden="true">✦ &nbsp; ♡ &nbsp; 🌙 &nbsp; ♡ &nbsp; ✦</div>
+    </article>
+  </section>
 
   <section class="loving-paragraph-page" id="lovingParagraphPage" aria-hidden="true">
     <div class="loving-paragraph-hearts" aria-hidden="true">
@@ -5949,6 +6132,15 @@
         <span class="letter-entry-copy">
           <strong>bus yap</strong>
           <small>01.10.2026 · i had no data so obviously i wrote you a whole letter 😭</small>
+        </span>
+        <span class="letter-entry-arrow" aria-hidden="true">›</span>
+      </button>
+
+      <button class="letter-entry the-night-entry" type="button" id="openTheNight">
+        <span class="letter-entry-icon" aria-hidden="true">🌙</span>
+        <span class="letter-entry-copy">
+          <strong>THE night.</strong>
+          <small>06.10.2026 · three and a half hours of yap 💗</small>
         </span>
         <span class="letter-entry-arrow" aria-hidden="true">›</span>
       </button>
@@ -6531,6 +6723,9 @@
 
     const passwordInput = document.getElementById('passwordInput');
     const passwordToggle = document.getElementById('passwordToggle');
+    const theNightPage = document.getElementById('theNightPage');
+    const openTheNight = document.getElementById('openTheNight');
+    const closeTheNight = document.getElementById('closeTheNight');
     const lovingParagraphPage = document.getElementById('lovingParagraphPage');
     const openLovingParagraph = document.getElementById('openLovingParagraph');
     const closeLovingParagraph = document.getElementById('closeLovingParagraph');
@@ -6627,6 +6822,24 @@
         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'
       })[ch]);
     }
+
+    function openTheNightPage(){
+      if(typeof recordAppRoute === 'function') recordAppRoute('/notes/the-night');
+      theNightPage.classList.add('active');
+      theNightPage.setAttribute('aria-hidden','false');
+      document.body.classList.add('the-night-open');
+      theNightPage.scrollTo({top:0,behavior:'auto'});
+    }
+
+    function closeTheNightPage(){
+      theNightPage.classList.remove('active');
+      theNightPage.setAttribute('aria-hidden','true');
+      document.body.classList.remove('the-night-open');
+      showNotesImmediate();
+    }
+
+    openTheNight.addEventListener('click',openTheNightPage);
+    closeTheNight.addEventListener('click',closeTheNightPage);
 
     function openLovingParagraphPage(){
       if(typeof recordAppRoute === 'function') recordAppRoute('/notes/the-first-loving-paragraph');
