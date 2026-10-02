@@ -5821,6 +5821,56 @@
     @media(max-width:480px){.letters-card .letter-entry{padding:16px 12px!important;gap:12px!important}.letters-card .letter-entry-copy strong{font-size:15px!important}.mail-stage{height:280px}.mail-open{height:170px}.mail-dialog{padding:18px 20px 28px}}
     @media(prefers-reduced-motion:reduce){.mail-open,.mail-paper,.mail-flap,.mail-seal,.letters-card .letter-entry{transition:none!important}.mail-open.is-opening .mail-paper{transform:none}}
   </style>
+  <style id="handmade-polish">
+    /* Small handmade touches; the original pink theme and playful copy stay. */
+    .home-title,.letters-card h1,.games-hub-card h1{ text-wrap:balance; }
+    .home-sub,.home-footer,.letters-small-copy{ text-wrap:pretty; }
+    .home-section-button,.game-tile,.letter-entry{touch-action:manipulation;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease!important}
+    .home-section-icon,.game-tile-icon{transition:transform .22s ease!important}
+    .notes-back,.section-back-clean,.mini-back,.home-mini,.first-paragraph-back,.loving-paragraph-back,.rabena-note-back,.the-night-back,.today-letter-controls button,.mail-dismiss{min-height:44px!important;touch-action:manipulation}
+    .mail-dismiss{min-width:44px!important}
+    .home-section-button:focus-visible,.game-tile:focus-visible,.letter-entry:focus-visible,.notes-back:focus-visible,.mini-back:focus-visible{outline:3px solid #a93264!important;outline-offset:4px!important}
+    @media(hover:hover) and (pointer:fine){
+      .home-section-button:hover .home-section-icon,.game-tile:hover .game-tile-icon{transform:rotate(-8deg) scale(1.08)}
+    }
+    .letters-card h1{margin-bottom:8px!important}
+    .letters-shelf-note{margin:0 auto 24px!important;color:#8a5c70!important;font-size:12px!important;line-height:1.6!important;font-weight:500!important}
+    .letters-card .letter-entry{min-height:120px!important;border-radius:7px 17px 17px 7px!important;gap:18px!important}
+    .letters-card .letter-entry-copy{gap:4px!important}
+    .letters-card .letter-entry-copy strong{line-height:1.35!important;text-wrap:pretty}
+    .letters-card .letter-entry-copy small{display:flex;flex-direction:column;gap:4px;margin-top:1px;font-weight:500!important}
+    .letters-card .letter-entry time{color:#70485b;font-size:11px;font-weight:700;letter-spacing:.015em;font-variant-numeric:tabular-nums}
+    .letter-entry-note{font-size:11px;line-height:1.55;font-weight:500}
+    .letter-keepsake{font-size:10px;color:#805265;letter-spacing:.035em;margin-top:5px}
+    .letters-card .letter-entry-icon{box-shadow:0 5px 8px #43223220!important;transition:transform .25s ease}
+    .letters-card .letter-entry[data-letter="first-paragraph"] .letter-entry-icon{height:42px;transform:rotate(5deg)}
+    .letters-card .letter-entry[data-letter="rabena-note"] .letter-entry-icon{width:58px;flex-basis:58px;height:58px;transform:rotate(-5deg)}
+    .letters-card .letter-entry[data-letter="the-night"] .letter-entry-icon{height:53px;transform:rotate(4deg)}
+    .mail-date{display:table;max-width:100%;margin:0 auto;padding:7px 12px;border:1px dashed var(--mail-edge);border-radius:8px;color:#6d4456;font:12px/1.5 system-ui,sans-serif;font-variant-numeric:tabular-nums;background:#fffdf8}
+    .mail-dialog{background:radial-gradient(ellipse at 100% 0,#f8e6ed80,transparent 60%),#fffaf5;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:var(--mail-edge) transparent}
+    .mail-open:disabled{opacity:1}
+    .mail-paper{background:linear-gradient(90deg,transparent 49.5%,#ac8b7620 50%,transparent 51%),repeating-linear-gradient(0deg,transparent 0 23px,#aa7c921b 23px 24px),#fffdf5}
+    .mail-status{min-height:21px}
+    .first-paragraph-text,.loving-paragraph-text,.rabena-note-text,.the-night-text,.today-letter-text{font-size:16px!important;line-height:1.95!important;font-weight:450!important;overflow-wrap:break-word}
+    .first-paragraph-sheet,.loving-paragraph-sheet,.rabena-note-sheet,.the-night-sheet{max-width:740px;padding-inline:clamp(20px,5vw,42px)}
+    .first-paragraph-page,.loving-paragraph-page,.rabena-note-page,.the-night-page,.today-letter-page{padding-bottom:max(34px,env(safe-area-inset-bottom));scrollbar-width:thin;scrollbar-color:#d7aabd transparent}
+    .today-letter-kicker{line-height:1.7}
+    @media(max-width:480px){
+      .letters-card .letter-entry{padding:16px 12px!important;gap:13px!important}
+      .letters-card .letter-entry-copy strong{font-size:16px!important}
+      .letters-card .letter-entry-icon{width:54px;flex-basis:54px;height:42px}
+      .letters-card .letter-entry[data-letter="rabena-note"] .letter-entry-icon{width:50px;flex-basis:50px;height:50px}
+      .letters-shelf-note{margin-bottom:18px!important}
+      .first-paragraph-text,.loving-paragraph-text,.rabena-note-text,.the-night-text,.today-letter-text{font-size:15px!important;line-height:1.9!important}
+      .mail-stage{height:280px}
+      .mail-title{font-size:25px}
+    }
+    @media(hover:none){.letters-card .letter-entry:hover{transform:none!important}}
+    @media(prefers-reduced-motion:reduce){
+      .home-section-button,.game-tile,.letter-entry,.home-section-icon,.game-tile-icon,.letter-entry-icon{transition:none!important}
+      .home-section-button:hover .home-section-icon,.game-tile:hover .game-tile-icon,.letters-card .letter-entry:hover{transform:none!important}
+    }
+  </style>
 </head>
 <body>
   <div class="cute-ambience" id="cuteAmbience" aria-hidden="true">
@@ -6133,48 +6183,49 @@
       <div class="home-kicker">notes</div>
       <div class="notes-icon">💌</div>
       <h1>the big yaps.</h1>
+      <p class="letters-shelf-note">5 little pieces of my heart · newest first ♡</p>
 
-      <button class="letter-entry loving-paragraph-entry" type="button" id="openLovingParagraph">
-        <span class="letter-entry-icon" aria-hidden="true">🌸</span>
-        <span class="letter-entry-copy">
-          <strong>The First Loving Paragraph ?🌸</strong>
-          <small>18.08.2026 · 2:38 AM</small>
-        </span>
-        <span class="letter-entry-arrow" aria-hidden="true">›</span>
-      </button>
-
-      <button class="letter-entry first-paragraph-entry" type="button" id="openFirstParagraph">
-        <span class="letter-entry-icon" aria-hidden="true">✨</span>
-        <span class="letter-entry-copy">
-          <strong>the first paragraph</strong>
-          <small>09.09.2026 · apparently this is where the obsession started 💗</small>
-        </span>
-        <span class="letter-entry-arrow" aria-hidden="true">›</span>
-      </button>
-
-      <button class="letter-entry rabena-note-entry" type="button" id="openRabenaNote">
-        <span class="letter-entry-icon" aria-hidden="true">🌙</span>
-        <span class="letter-entry-copy">
-          <strong>rabena ye5aleke leya</strong>
-          <small>26.09.2026 · 7am thoughts about my sleeping princess ❤️</small>
-        </span>
-        <span class="letter-entry-arrow" aria-hidden="true">›</span>
-      </button>
-
-      <button class="letter-entry bus-yap-entry" type="button" onclick="openTodayLetterPage(false)">
+      <button class="letter-entry bus-yap-entry" type="button" data-letter="bus-yap" onclick="openTodayLetterPage(false)">
         <span class="letter-entry-icon" aria-hidden="true">🚌</span>
         <span class="letter-entry-copy">
           <strong>bus yap</strong>
-          <small>01.10.2026 · 5:10 PM · i had no data so obviously i wrote you a whole letter 😭</small>
+          <small><time datetime="2026-10-01T17:10:00+04:00">01.10.2026 · 5:10 PM</time><span class="letter-entry-note">i had no data so obviously i wrote you a whole letter 😭</span></small>
         </span>
         <span class="letter-entry-arrow" aria-hidden="true">›</span>
       </button>
 
-      <button class="letter-entry the-night-entry" type="button" id="openTheNight">
+      <button class="letter-entry rabena-note-entry" type="button" data-letter="rabena-note" id="openRabenaNote">
+        <span class="letter-entry-icon" aria-hidden="true">🌙</span>
+        <span class="letter-entry-copy">
+          <strong>rabena ye5aleke leya</strong>
+          <small><time datetime="2026-09-26T07:00:00+04:00">26.09.2026 · 7:00 AM</time><span class="letter-entry-note">7am thoughts about my sleeping princess ❤️</span></small>
+        </span>
+        <span class="letter-entry-arrow" aria-hidden="true">›</span>
+      </button>
+
+      <button class="letter-entry first-paragraph-entry" type="button" data-letter="first-paragraph" id="openFirstParagraph">
+        <span class="letter-entry-icon" aria-hidden="true">✨</span>
+        <span class="letter-entry-copy">
+          <strong>the first paragraph</strong>
+          <small><time datetime="2026-09-09">09.09.2026</time><span class="letter-entry-note">apparently this is where the obsession started 💗</span></small>
+        </span>
+        <span class="letter-entry-arrow" aria-hidden="true">›</span>
+      </button>
+
+      <button class="letter-entry the-night-entry" type="button" data-letter="the-night" id="openTheNight">
         <span class="letter-entry-icon" aria-hidden="true">🌙</span>
         <span class="letter-entry-copy">
           <strong>THE night.</strong>
-          <small>06.09.2026 · three and a half hours of yap 💗</small>
+          <small><time datetime="2026-09-06">06.09.2026</time><span class="letter-entry-note">three and a half hours of yap 💗</span></small>
+        </span>
+        <span class="letter-entry-arrow" aria-hidden="true">›</span>
+      </button>
+
+      <button class="letter-entry loving-paragraph-entry" type="button" data-letter="loving-paragraph" id="openLovingParagraph">
+        <span class="letter-entry-icon" aria-hidden="true">🌸</span>
+        <span class="letter-entry-copy">
+          <strong>The First Loving Paragraph ?🌸</strong>
+          <small><time datetime="2026-08-18T02:38:00+04:00">18.08.2026 · 2:38 AM</time></small>
         </span>
         <span class="letter-entry-arrow" aria-hidden="true">›</span>
       </button>
@@ -6931,7 +6982,7 @@
 
     function openTodayLetterPage(directRead = false){
       if(!directRead && window.presentLoveLetter){
-        window.presentLoveLetter(3, () => openTodayLetterPage(true));
+        window.presentLoveLetter('bus-yap', () => openTodayLetterPage(true));
         return;
       }
       recordAppRoute('/notes/bus-yap');
@@ -8407,43 +8458,67 @@
 
   <script id="letter-stationery-controller">
   (() => {
-    const designs = [
-      ['#f2ced5','#c891a1','#aa3657','58%','❀'],
-      ['#f0dfbd','#c6aa7a','#997135','42%','✦'],
-      ['#d9dfed','#a0abc7','#62658c','62%','☾'],
-      ['#d4e3d7','#9cb6a2','#507966','46%','♡'],
-      ['#e0d2e9','#b19cc5','#77518b','68%','☽']
-    ];
+    // Letter identities stay fixed even when the shelf is rearranged.
+    const letters = {
+      'loving-paragraph': {design:['#f2ced5','#c891a1','#aa3657','58%','❀'], read:openLovingParagraphPage, page:'lovingParagraphPage'},
+      'first-paragraph': {design:['#f0dfbd','#c6aa7a','#997135','42%','✦'], read:openFirstParagraphPage, page:'firstParagraphPage'},
+      'rabena-note': {design:['#d9dfed','#a0abc7','#62658c','62%','☾'], read:openRabenaNotePage, page:'rabenaNotePage'},
+      'bus-yap': {design:['#d4e3d7','#9cb6a2','#507966','46%','♡'], read:() => openTodayLetterPage(true), page:'todayLetterPage'},
+      'the-night': {design:['#e0d2e9','#b19cc5','#77518b','68%','☽'], read:openTheNightPage, page:'theNightPage'}
+    };
     const entries = [...document.querySelectorAll('.letters-card .letter-entry')];
-    function theme(el, i){
-      const d = designs[i % designs.length];
-      ['--mail-paper','--mail-edge','--mail-seal','--mail-flap'].forEach((key,j) => el.style.setProperty(key,d[j]));
+    const openedKey = 'loveLettersOpenedV1';
+    let opened = [];
+    try {
+      const saved = JSON.parse(localStorage.getItem(openedKey) || '[]');
+      if(Array.isArray(saved)) opened = saved.filter(key => Object.hasOwn(letters,key));
+    } catch(e) { /* Letters work when browser storage is unavailable. */ }
+    function theme(el, key){
+      const d = letters[key].design;
+      ['--mail-paper','--mail-edge','--mail-seal','--mail-flap'].forEach((name,i) => el.style.setProperty(name,d[i]));
       return d;
     }
-    entries.forEach(theme);
+    function markOpened(key){
+      if(!opened.includes(key)) opened.push(key);
+      try { localStorage.setItem(openedKey,JSON.stringify(opened)); } catch(e) {}
+      const entry = entries.find(el => el.dataset.letter === key);
+      if(entry) entry.querySelector('.letter-keepsake').textContent = 'opened ♡';
+    }
+    entries.forEach(entry => {
+      const key = entry.dataset.letter;
+      if(!letters[key]) return;
+      theme(entry,key);
+      const badge = document.createElement('span');
+      badge.className = 'letter-keepsake';
+      badge.textContent = opened.includes(key) ? 'opened ♡' : 'sealed with love';
+      entry.querySelector('.letter-entry-copy').appendChild(badge);
+    });
     const dialog = document.createElement('dialog');
     dialog.className = 'mail-dialog';
     dialog.setAttribute('aria-labelledby','mailTitle');
     dialog.innerHTML = `<button class="mail-dismiss" type="button" aria-label="Back to letters">×</button>
-      <p class="mail-eyebrow">from omar · only for you</p><h2 class="mail-title" id="mailTitle"></h2><p class="mail-hint mail-date"></p>
+      <p class="mail-eyebrow">from omar · only for you</p><h2 class="mail-title" id="mailTitle"></h2><p class="mail-date"></p>
       <div class="mail-stage"><button class="mail-open" type="button" aria-label="Break the seal and open this letter">
       <span class="mail-back" aria-hidden="true"></span><span class="mail-paper" aria-hidden="true">my karamella,<small>a little piece of my heart</small>♡</span>
       <span class="mail-front" aria-hidden="true"></span><span class="mail-flap" aria-hidden="true"></span>
       <span class="mail-address" aria-hidden="true">for my baby girl</span><span class="mail-stamp" aria-hidden="true"></span><span class="mail-seal" aria-hidden="true">♡</span>
-      </button></div><p class="mail-hint" aria-live="polite">tap the wax seal to open your letter</p>`;
+      </button></div><p class="mail-hint mail-status" aria-live="polite">tap the wax seal to open your letter</p>`;
     document.body.appendChild(dialog);
     const opener = dialog.querySelector('.mail-open');
-    let timer, reveal, source, previousOverflow, handingOff = false;
-    window.presentLoveLetter = (index, onRead) => {
-      if(dialog.open) return;
+    const status = dialog.querySelector('.mail-status');
+    let timer, reveal, source, currentKey, previousOverflow, handingOff = false;
+    window.presentLoveLetter = (key, onRead) => {
+      const entry = entries.find(el => el.dataset.letter === key);
+      if(dialog.open || !entry || !letters[key]) return;
       source = document.activeElement;
-      reveal = onRead;
-      const d = theme(dialog,index);
+      currentKey = key;
+      reveal = onRead || letters[key].read;
+      handingOff = false;
+      const d = theme(dialog,key);
       dialog.querySelector('.mail-stamp').textContent = d[4];
-      dialog.querySelector('.mail-title').textContent = entries[index].querySelector('strong').textContent;
-      const dateText = entries[index].querySelector('small').textContent;
-      dialog.querySelector('.mail-date').textContent = dateText.split(' · ').filter((part, i) => i === 0 || /^\d{1,2}:\d{2}\s*[AP]M$/i.test(part)).join(' · ');
-      dialog.querySelector('.mail-hint').textContent = 'tap the wax seal to open your letter';
+      dialog.querySelector('.mail-title').textContent = entry.querySelector('strong').textContent;
+      dialog.querySelector('.mail-date').textContent = entry.querySelector('time').textContent;
+      status.textContent = 'tap the wax seal to open your letter';
       opener.classList.remove('is-opening');
       opener.disabled = false;
       previousOverflow = document.body.style.overflow;
@@ -8454,31 +8529,31 @@
     dialog.addEventListener('close',() => {
       clearTimeout(timer);
       document.body.style.overflow = previousOverflow;
-      if(!handingOff && source?.isConnected) source.focus({preventScroll:true});
+      if(handingOff){
+        handingOff = false;
+        markOpened(currentKey);
+        reveal();
+        const heading = document.getElementById(letters[currentKey].page)?.querySelector('h1,h2,article');
+        if(heading){heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true});}
+      } else if(source?.isConnected) source.focus({preventScroll:true});
     });
     dialog.querySelector('.mail-dismiss').addEventListener('click',() => dialog.close());
     opener.addEventListener('click',() => {
       if(opener.disabled) return;
       opener.disabled = true;
       opener.classList.add('is-opening');
-      dialog.querySelector('.mail-hint').textContent = 'a little love, unfolding…';
+      status.textContent = 'a little love, unfolding…';
       timer = setTimeout(() => {
         if(!dialog.open) return;
         handingOff = true;
         dialog.close();
-        reveal();
-        const page = document.querySelector('.the-night-page.active,.loving-paragraph-page.active,.rabena-note-page.active,.first-paragraph-page.active,.today-letter-page.active');
-        const heading = page?.querySelector('h1,h2,article');
-        if(heading){heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true});}
-        // The native close event is queued; restore focus handling after it fires.
-        setTimeout(() => {handingOff = false;},0);
       },matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 1550);
     });
-    const readers = [openLovingParagraphPage,openFirstParagraphPage,openRabenaNotePage,() => openTodayLetterPage(true),openTheNightPage];
-    entries.forEach((entry,index) => entry.addEventListener('click',event => {
+    entries.forEach(entry => entry.addEventListener('click',event => {
+      if(!letters[entry.dataset.letter]) return;
       event.preventDefault();
       event.stopImmediatePropagation();
-      window.presentLoveLetter(index,readers[index]);
+      window.presentLoveLetter(entry.dataset.letter);
     },true));
   })();
   </script>
