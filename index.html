@@ -5786,6 +5786,145 @@
       .the-night-ambience span{animation:none!important}
     }
 
+  
+    /* 03.10.2026 — ايه ده، عربي؟؟ 🌸 */
+    body.arabic-yap-open{overflow:hidden}
+    .arabic-yap-page{
+      position:fixed;
+      inset:0;
+      z-index:96;
+      display:none;
+      overflow-y:auto;
+      overscroll-behavior:contain;
+      padding:20px 12px max(42px,env(safe-area-inset-bottom));
+      background:
+        radial-gradient(circle at 12% 12%,rgba(235,91,141,.24),transparent 28%),
+        radial-gradient(circle at 88% 82%,rgba(249,151,187,.19),transparent 31%),
+        linear-gradient(145deg,#ffe8f1,#fff7fb 50%,#ffdeea);
+      scrollbar-width:thin;
+      scrollbar-color:#d7aabd transparent;
+    }
+    .arabic-yap-page.active{display:block}
+    .arabic-yap-hearts{
+      position:fixed;
+      inset:0;
+      z-index:0;
+      pointer-events:none;
+      overflow:hidden;
+    }
+    .arabic-yap-hearts span{
+      position:absolute;
+      opacity:.23;
+      color:#d35f8a;
+      user-select:none;
+      animation:arabicYapFloat 7.4s ease-in-out infinite;
+    }
+    .arabic-yap-hearts span:nth-child(1){right:4%;top:8%;font-size:25px}
+    .arabic-yap-hearts span:nth-child(2){left:6%;top:11%;font-size:24px;animation-delay:-2s}
+    .arabic-yap-hearts span:nth-child(3){right:7%;top:34%;font-size:23px;animation-delay:-4s}
+    .arabic-yap-hearts span:nth-child(4){left:7%;top:42%;font-size:18px;animation-delay:-1s}
+    .arabic-yap-hearts span:nth-child(5){right:5%;top:70%;font-size:22px;animation-delay:-3s}
+    .arabic-yap-hearts span:nth-child(6){left:10%;top:69%;font-size:20px;animation-delay:-5s}
+    .arabic-yap-hearts span:nth-child(7){right:20%;bottom:4%;font-size:20px;animation-delay:-1.5s}
+    .arabic-yap-hearts span:nth-child(8){left:20%;bottom:5%;font-size:19px;animation-delay:-4.4s}
+    .arabic-yap-hearts span:nth-child(9){right:47%;top:3%;font-size:16px;animation-delay:-2.7s}
+    .arabic-yap-hearts span:nth-child(10){left:34%;bottom:2%;font-size:19px;animation-delay:-3.6s}
+    .arabic-yap-hearts span:nth-child(11){right:31%;top:57%;font-size:20px;animation-delay:-5.2s}
+    .arabic-yap-hearts span:nth-child(12){left:28%;top:26%;font-size:19px;animation-delay:-2.1s}
+    @keyframes arabicYapFloat{
+      50%{transform:translateY(-11px) rotate(6deg) scale(1.05)}
+    }
+    .arabic-yap-sheet{
+      position:relative;
+      z-index:1;
+      width:min(100%,760px);
+      margin:0 auto;
+      padding:28px clamp(20px,5vw,42px) 38px;
+      border-radius:29px;
+      background:
+        linear-gradient(rgba(255,249,252,.95),rgba(255,249,252,.95)),
+        repeating-linear-gradient(0deg,#fff7fa 0 31px,#efbfd1 31px 32px);
+      border:1px solid #e5a7bf;
+      box-shadow:0 22px 60px rgba(114,43,74,.18);
+      color:#5f3548;
+    }
+    .arabic-yap-back{
+      display:block;
+      margin:0 0 20px auto;
+      padding:9px 13px!important;
+      border-radius:999px!important;
+      color:#9c3e63!important;
+      background:#fff0f6!important;
+      border:1px solid #e4abc1!important;
+      box-shadow:none!important;
+      font-size:12px!important;
+    }
+    .arabic-yap-date{
+      width:max-content;
+      max-width:100%;
+      margin:0 auto 12px;
+      padding:7px 11px;
+      border-radius:999px;
+      background:#ffe4ef;
+      border:1px solid #ebb0c6;
+      color:#a54167;
+      font:800 10px/1.5 "Nunito Sans",sans-serif;
+      direction:ltr;
+      unicode-bidi:isolate;
+      letter-spacing:.03em;
+    }
+    .arabic-yap-kicker{
+      margin-bottom:5px;
+      text-align:center;
+      color:#a54167;
+      font-size:11px;
+      font-weight:900;
+    }
+    .arabic-yap-sheet h1{
+      margin:0;
+      text-align:center;
+      font-family:"DM Serif Display","Noto Naskh Arabic",Tahoma,serif!important;
+      font-size:clamp(36px,8vw,53px)!important;
+      font-weight:400!important;
+      line-height:1.25!important;
+      color:#643248!important;
+    }
+    .arabic-yap-divider,.arabic-yap-ending{
+      margin:15px auto 22px;
+      text-align:center;
+      color:#d0648c;
+      font-size:15px;
+      letter-spacing:.08em;
+      direction:ltr;
+    }
+    .arabic-yap-text{
+      direction:rtl;
+      text-align:right;
+      font-family:Tahoma,"Arial","Noto Sans Arabic",sans-serif;
+    }
+    .arabic-yap-text p{
+      margin:0 0 21px;
+      color:#5c3949;
+      font-size:17px;
+      line-height:2.05;
+      font-weight:500;
+      overflow-wrap:break-word;
+    }
+    .arabic-yap-text p:last-child{margin-bottom:0}
+    .arabic-yap-ending{margin:28px auto 0}
+    .arabic-yap-entry{--mail-paper:#f3c8d8;--mail-edge:#c98ba4;--mail-seal:#a83260}
+    .letters-card .letter-entry[data-letter="arabic-yap"] .letter-entry-icon{
+      width:60px;flex-basis:60px;height:56px;transform:rotate(-6deg)
+    }
+    @media(max-width:560px){
+      .arabic-yap-page{padding:9px 7px max(30px,env(safe-area-inset-bottom))}
+      .arabic-yap-sheet{padding:20px 16px 28px;border-radius:22px}
+      .arabic-yap-text p{font-size:16px;line-height:2;margin-bottom:19px}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .arabic-yap-hearts span{animation:none!important}
+    }
+
   </style>
   <style id="letter-stationery-styles">
     /* Scoped stationery collection: no shared site components are changed. */
@@ -5986,6 +6125,34 @@
       </div>
 
       <div class="the-night-ending" aria-hidden="true">✦ &nbsp; ♡ &nbsp; 🌙 &nbsp; ♡ &nbsp; ✦</div>
+    </article>
+  </section>
+
+  <section class="arabic-yap-page" id="arabicYapPage" aria-hidden="true" lang="ar" dir="rtl">
+    <div class="arabic-yap-hearts" aria-hidden="true">
+      <span>🌸</span><span>♡</span><span>💗</span><span>✦</span><span>🌷</span><span>✨</span>
+      <span>💞</span><span>♡</span><span>✧</span><span>🌸</span><span>💗</span><span>♡</span>
+    </div>
+
+    <article class="arabic-yap-sheet">
+      <button class="arabic-yap-back" id="closeArabicYap" type="button">الملاحظات ←</button>
+
+      <div class="arabic-yap-date">03.10.2026 · 3:37 AM · 🌸</div>
+      <div class="arabic-yap-kicker">من koko لكرملتي</div>
+      <h1>ايه ده، عربي؟؟ 🌸</h1>
+      <div class="arabic-yap-divider" aria-hidden="true">♡ &nbsp; ✦ &nbsp; 💗 &nbsp; ✦ &nbsp; ♡</div>
+
+      <div class="arabic-yap-text">
+      <p>ايه ده، عربي؟؟</p>
+      <p>مش هطوللللللل  فالموضوع أنا بس كنت عايز أقولك إنو أنا بحبك أوي يا كرملتي والله بحبك أكتر ما بحب عنيا، انتي جميلة أوي ف كل حاجة اخلاق وجمال وذكاء و حلاوة ودلع وإهتمام وحنية ورقيقة ولطيفة ومتفهمة ا عسولة ومزة وفوق كل ده دلوعة بابي ف نفسك أوي وأنا بحب الموضوع ده أوي فيكي انك هبلة كده عايزة تلعبي و تسألي و تضحكي و تهزري 😂😂😂.</p>
+      <p>و كمان حبيت أشكرك على اهتمامك بيا يا كرمل وعلى انك ديماً بتراعني وبتحاولي تخففي عني وديماً وراية لغاية ما تعرفي في إيه مضايقني. يارب أكون موفرلك نفس الحب وال إهتمام ويارب يا كرمل تفضلي جمبي ومعايا عشان أنا بجد بحبك أوي ومحتاجج معايا وعايزك طول الوقت يا كرمل. كرملة أنا بحب أوي لما تحبني وتوارني جزء من مشاعرك واهتمامك بيا عشان أنا بجد بحبك مليون ضعف وكل ما انتي بتجيلي خطوة بحس إني أنا عايز أجريلك ١٠٠٠٠ خطوة، بحس إنو اه كرمل بتحببي نفس ما أنا بحبها ف خلني أكون على رحتي وهبلي وأحبها على راحتي. انتي روحك جميلة أوي يا كرمل وخفيفة ومفيش يوم إلا ما أكن عايز أكلمك فيه وأحبك واطمن عليكي، أنا حبيي أوي وديماً بحب إنو انتي بتخدي رأي أوييييييييي والله حاجة جميلة أوي وشعور جميل أوي إنك تتحب بنفس الطريقة إلي انتا بتحب بيها، عشان انري عرفة أنا ديماً بحب أخد رأيك وأسألك عن كل حاجة. المهم خلص أنا هدخل أنام بعد ما أنزل الياب د عال website عشان تبقي تشوفها.</p>
+      <p>كمان حاجة عايز أقلها أنا بحبك أوي يا كرملتي وبحب روحك وهبلك وبحب جمالك وملامحك وعيونك الجميلة وضحكتك الحلوة ن خدودك إلي تتعض 😂😂😂 خلاص هتلم😂😂😂.</p>
+      <p>انتي عارفة أنا لسة بتهبل كل ما تقوللي انك بتحبني ولسة بنوط زي الاهبل وبتكسف وبقعد أفكر فيكي وفال كلام الحلو إلي بتقولهلي آاااخ أنا هروح أنام على صورتك وال ياب إلي كتبتهولي امبارح كان جميل أوي 😭😭😭😭😭 كنت عايزأقول برضه إنو موضوع انك تؤللي انتي فين و بتعملي إيه كيوتتتتتتتتت و أقسم بالله ال موضوع ده بيخليني حاسس بال حب أوي😭😭😭😭 موضوع إنو أنا ديماً ف بالك ده أنا عمري ما كنت اتوقع إني أوصل كده أحبك و تحبيني 😭😭😭😭 شكراً على كل حاجة انتي عملتيها ليا وكل حاجة انتي لسة هتعملهة ربنا يديمك نعمة عليا أنا بدعي ربنا تقريباً كل يوم وف كل صلاه إنك تفضلي بتاعتي ربنا العالم أنا بحترمك وبحتاجك قد اإيه يا كرمل.</p>
+      <p>انتي وحشتيني أوي أوي أوي أوج أوي أوي الإسبوع ده وكان بطيء أوي عشان مكناش بنتكلم فيه وبجد عايز أجي أفعسك مش عرف ليه بس امبارح الساعتين تلاتة إلي اتكلمنا فيهم كانو جملين أوي وبجد حسيت إنو كده براحة واحنا بنتكلم مع بعض انتي بجد أحلى وأجمل حاجة حصلتلي وأهم حاجة ف حياتي وألطف بنادم مر علي وأجمل حاجة عنيا شفتها وأكتر شخص أنا إرتحتلو وروحي وقلبي وعقلي بيحبوكي أوي يا روحي وحياتي وعمري انتي.</p>
+      <p>و كمان أنا عمري ما كتبت أي حاجة بالعربي طويلة كده ف إستحمليني أنا والعربي المكسر إلي شفتيه 😂😂😂 أنا كتبتلك حاجات كتير انجلش وبصراحة الانجلش على قد ما هو حلو، العربي أحلى العربي له طعم كده ومعانيه أجمل و أعمق. المهم خلص د ياب صغيرة على قد إيه أنا شاكر لكي وبقدرك. ربنا يسعدك ويحفظك من كل شر ومكروه يا كرملتي.</p>
+      </div>
+
+      <div class="arabic-yap-ending" aria-hidden="true">🌸 &nbsp; ♡ &nbsp; 💗 &nbsp; ♡ &nbsp; 🌸</div>
     </article>
   </section>
 
@@ -6207,7 +6374,16 @@
       <div class="notes-icon" aria-hidden="true">💌</div>
       <h1>the big yaps.</h1>
       <p class="letters-diary-intro">the paragraphs, the late-night thoughts, the random bus yaps. little moments of loving you, kept right here ♡</p>
-      <p class="letters-shelf-note">5 little pieces of my heart · newest first ♡</p>
+      <p class="letters-shelf-note">6 little pieces of my heart · newest first ♡</p>
+
+      <button class="letter-entry arabic-yap-entry" type="button" data-letter="arabic-yap" id="openArabicYap" data-pinned-latest="true">
+        <span class="letter-entry-icon" aria-hidden="true">🌸</span>
+        <span class="letter-entry-copy">
+          <strong>ايه ده، عربي؟؟ 🌸</strong>
+          <small><time datetime="2026-10-03T03:37:00+04:00">03.10.2026 · 3:37 AM</time><span class="letter-entry-note">أول ياب عربي طويل لكرملتي 💗</span></small>
+        </span>
+        <span class="letter-entry-arrow" aria-hidden="true">›</span>
+      </button>
 
       <button class="letter-entry bus-yap-entry" type="button" data-letter="bus-yap" onclick="openTodayLetterPage(false)">
         <span class="letter-entry-icon" aria-hidden="true">🚌</span>
@@ -6832,6 +7008,9 @@
 
     const passwordInput = document.getElementById('passwordInput');
     const passwordToggle = document.getElementById('passwordToggle');
+    const arabicYapPage = document.getElementById('arabicYapPage');
+    const openArabicYap = document.getElementById('openArabicYap');
+    const closeArabicYap = document.getElementById('closeArabicYap');
     const theNightPage = document.getElementById('theNightPage');
     const openTheNight = document.getElementById('openTheNight');
     const closeTheNight = document.getElementById('closeTheNight');
@@ -6931,6 +7110,24 @@
         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'
       })[ch]);
     }
+
+    function openArabicYapPage(){
+      if(typeof recordAppRoute === 'function') recordAppRoute('/notes/arabic-yap');
+      arabicYapPage.classList.add('active');
+      arabicYapPage.setAttribute('aria-hidden','false');
+      document.body.classList.add('arabic-yap-open');
+      arabicYapPage.scrollTo({top:0,behavior:'auto'});
+    }
+
+    function closeArabicYapPage(){
+      arabicYapPage.classList.remove('active');
+      arabicYapPage.setAttribute('aria-hidden','true');
+      document.body.classList.remove('arabic-yap-open');
+      showNotesImmediate();
+    }
+
+    openArabicYap.addEventListener('click',openArabicYapPage);
+    closeArabicYap.addEventListener('click',closeArabicYapPage);
 
     function openTheNightPage(){
       if(typeof recordAppRoute === 'function') recordAppRoute('/notes/the-night');
@@ -8257,6 +8454,7 @@
         '/notes/the-first-paragraph':'first-paragraph',
         '/notes/rabena-ye5aleke-leya':'rabena-note',
         '/notes/bus-yap':'bus-yap',
+        '/notes/arabic-yap':'arabic-yap',
         '/notes/the-night':'the-night'
       };
     }
@@ -8312,11 +8510,11 @@
       try {
         stopAllMiniGames();
         stopTodayTyping(false);
-        [todayLetterPage,theNightPage,lovingParagraphPage,rabenaNotePage,firstParagraphPage].forEach(page => {
+        [todayLetterPage,arabicYapPage,theNightPage,lovingParagraphPage,rabenaNotePage,firstParagraphPage].forEach(page => {
           page.classList.remove('active');
           page.setAttribute('aria-hidden','true');
         });
-        document.body.classList.remove('today-letter-open','the-night-open','loving-paragraph-open','rabena-note-open','first-paragraph-open','cozy-open');
+        document.body.classList.remove('today-letter-open','arabic-yap-open','the-night-open','loving-paragraph-open','rabena-note-open','first-paragraph-open','cozy-open');
         if(window.dismissLetterEnvelope) window.dismissLetterEnvelope();
         closeFlowerPuzzle();
         gameBanPopup.classList.remove('show');
@@ -8521,11 +8719,16 @@
       'first-paragraph': {design:['#f2ded0','#ccaa95','#a74f47','42%','✦'], read:openFirstParagraphPage, page:'firstParagraphPage'},
       'rabena-note': {design:['#ebc5c8','#c09299','#9b4057','62%','☾'], read:openRabenaNotePage, page:'rabenaNotePage'},
       'bus-yap': {design:['#f4d5c7','#d0a497','#b75c53','46%','♡'], read:() => openTodayLetterPage(true), page:'todayLetterPage'},
+      'arabic-yap': {design:['#f1c7d7','#c88da6','#a83260','54%','🌸'], read:openArabicYapPage, page:'arabicYapPage'},
       'the-night': {design:['#dec0c7','#b48491','#89324f','68%','☽'], read:openTheNightPage, page:'theNightPage'}
     };
     const entries = [...document.querySelectorAll('.letters-card .letter-entry')];
     // Keep new paragraphs in date order without adding timeline markers.
-    entries.sort((a,b) => Date.parse(b.querySelector('time').dateTime) - Date.parse(a.querySelector('time').dateTime));
+    entries.sort((a,b) => {
+      if(a.dataset.pinnedLatest === 'true') return -1;
+      if(b.dataset.pinnedLatest === 'true') return 1;
+      return Date.parse(b.querySelector('time').dateTime) - Date.parse(a.querySelector('time').dateTime);
+    });
     const shelf = document.querySelector('.letters-card');
     const shelfFooter = shelf.querySelector('.letters-small-copy');
     entries.forEach(entry => shelf.insertBefore(entry,shelfFooter));
