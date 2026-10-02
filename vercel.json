@@ -1,0 +1,48 @@
+{
+  "rewrites": [
+    {
+      "source": "/games",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/notes",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/notes/bus-yap",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/quiz",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/catch-hearts",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/find-karamella",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/catch-battle",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/scratcher",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/kitchen",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/sit-with-me",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/tiny-bakery",
+      "destination": "/index.html"
+    }
+  ]
+}

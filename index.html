@@ -5775,6 +5775,8 @@
     const randomNote = document.getElementById('randomNote');
     const anotherNote = document.getElementById('anotherNote');
     const quoteCounter = document.getElementById('quoteCounter');
+    var appRouteRestoring = false;
+    var appNavigationVersion = 0;
     const enterQuiz = document.getElementById('enterQuiz');
     const flowerTrigger = document.getElementById('flowerTrigger');
     const noteTrigger = document.getElementById('noteTrigger');
@@ -5844,6 +5846,7 @@
     }
 
     function transitionTo(action){
+      const navigationVersion = ++appNavigationVersion;
       const currentSection = currentVisibleSection();
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -5857,6 +5860,7 @@
 
       setTimeout(() => {
         currentSection.classList.remove('section-leaving');
+        if(navigationVersion !== appNavigationVersion) return;
         action();
 
         const nextSection = currentVisibleSection();
@@ -6066,6 +6070,7 @@
     }
 
     function openTodayLetterPage(directRead = false){
+      recordAppRoute('/notes/bus-yap');
       stopTodayTyping(false);
       todayLetterPage.classList.add('active');
       todayLetterPage.setAttribute('aria-hidden','false');
@@ -6394,7 +6399,10 @@
             findRoundMsg.textContent = 'FOUND KARAMELLA 😭💗';
             findGrid.querySelectorAll('.find-card').forEach(btn => btn.disabled = true);
             burstHearts(['🎀','💗','🌸','🩷']);
-            setTimeout(() => openScratchReward(), 720);
+            const navigationVersion = appNavigationVersion;
+            setTimeout(() => {
+              if(navigationVersion === appNavigationVersion && !findGamePanel.hidden) openScratchReward();
+            }, 720);
             return;
           }
 
@@ -6763,6 +6771,9 @@
     catchBattleStart.addEventListener('click',startCatchBattle);
 
     function swapGamePanel(fromPanel, toPanel, animate = true){
+      recordAppRoute(gameRoute(toPanel));
+      const navigationVersion = ++appNavigationVersion;
+      if(appRouteRestoring) animate = false;
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if(!animate || reduceMotion || fromPanel.hidden){
         fromPanel.hidden = true;
@@ -6774,6 +6785,7 @@
       fromPanel.classList.add('game-panel-leaving');
       setTimeout(() => {
         fromPanel.classList.remove('game-panel-leaving');
+        if(navigationVersion !== appNavigationVersion) return;
         fromPanel.hidden = true;
 
         toPanel.hidden = false;
@@ -6796,6 +6808,7 @@
     }
 
     function showGamesHub(animate = true){
+      recordAppRoute('/games');
       stopAllMiniGames();
       const current = currentOpenGamePanel();
 
@@ -6860,6 +6873,7 @@
     }
 
     function showHomeImmediate(){
+      recordAppRoute('/');
       stopCatchGame(false);
       quizWrap.classList.remove('active');
       flowerPage.classList.remove('active');
@@ -6875,6 +6889,7 @@
     }
 
     function showNotesImmediate(){
+      recordAppRoute('/notes');
       stopCatchGame(false);
       homePage.classList.add('hidden');
       quizWrap.classList.remove('active');
@@ -6889,6 +6904,7 @@
     }
 
     function showGamesImmediate(){
+      recordAppRoute('/games');
       showGamesHub(false);
       homePage.classList.add('hidden');
       quizWrap.classList.remove('active');
@@ -6917,6 +6933,7 @@
     }
 
     function showQuizImmediate(){
+      recordAppRoute('/quiz');
       stopCatchGame(false);
       homePage.classList.add('hidden');
       flowerPage.classList.remove('active');
@@ -7080,13 +7097,13 @@
       loginHeartBurst();
       setTimeout(() => {
         loginGate.classList.add('unlocked');
-        showHomeImmediate();
+        renderAppRoute();
       }, 850);
     }
 
     if(sessionStorage.getItem('karmelUnlocked') === 'yes'){
       loginGate.classList.add('unlocked');
-      showHomeImmediate();
+      // Restore the requested route after all screen handlers have initialized.
     } else {
       setTimeout(() => passwordInput.focus(), 250);
     }
@@ -7293,6 +7310,72 @@
       type();
     }
     setProgress();
+
+    // Meaningful screens share this document; tiny popups keep their parent's URL.
+    function recordAppRoute(path){
+      if(appRouteRestoring || sessionStorage.getItem('karmelUnlocked') !== 'yes') return;
+      if(location.pathname !== path) history.pushState(null, '', path);
+    }
+
+    function gameRoute(panel){
+      return {
+        gamesHub: '/games', catchGamePanel: '/catch-hearts',
+        findGamePanel: '/find-karamella', catchBattlePanel: '/catch-battle',
+        scratchGamePanel: '/scratcher', cookingPanel: '/kitchen'
+      }[panel.id];
+    }
+
+    function renderAppRoute(){
+      if(sessionStorage.getItem('karmelUnlocked') !== 'yes') return;
+      const knownRoutes = ['/', '/games', '/notes', '/notes/bus-yap', '/quiz',
+        '/catch-hearts', '/find-karamella', '/catch-battle', '/scratcher',
+        '/kitchen', '/sit-with-me', '/tiny-bakery'];
+      let path = location.pathname.replace(/\/$/, '') || '/';
+      if(!knownRoutes.includes(path)) path = '/';
+      // Deep links must not award a scratcher without an earned reward for today.
+      if(path === '/scratcher' && (localStorage.getItem(DAILY_SCRATCH_DATE_KEY) !== scratchDayKey() ||
+          !scratchRewards.includes(localStorage.getItem(DAILY_SCRATCH_REWARD_KEY)))){
+        path = '/find-karamella';
+      }
+      if(location.pathname !== path) history.replaceState(null, '', path);
+      appRouteRestoring = true;
+      ++appNavigationVersion; // Invalidate any screen transition still waiting on an animation.
+      try {
+        stopAllMiniGames();
+        stopTodayTyping(false);
+        todayLetterPage.classList.remove('active');
+        todayLetterPage.setAttribute('aria-hidden','true');
+        document.body.classList.remove('today-letter-open','cozy-open');
+        closeFlowerPuzzle();
+        gameBanPopup.classList.remove('show');
+        gameBanPopup.setAttribute('aria-hidden','true');
+        document.querySelectorAll('dialog[open]').forEach(dialog => dialog.close());
+        document.querySelectorAll('.section-leaving,.section-entering,.game-panel-leaving,.game-panel-entering')
+          .forEach(panel => panel.classList.remove('section-leaving','section-entering','game-panel-leaving','game-panel-entering'));
+        if(path === '/') showHomeImmediate();
+        else if(path === '/notes') showNotesImmediate();
+        else if(path === '/notes/bus-yap'){
+          showNotesImmediate();
+          openTodayLetterPage(false);
+        } else if(path === '/quiz') showQuizImmediate();
+        else {
+          showGamesImmediate();
+          if(path === '/catch-hearts') openGamePanel(catchGamePanel);
+          else if(path === '/find-karamella') openGamePanel(findGamePanel, setupFindKaramella);
+          else if(path === '/catch-battle') openGamePanel(catchBattlePanel, () => stopCatchBattle(true));
+          else if(path === '/scratcher') openScratchReward();
+          else if(path === '/kitchen') document.getElementById('openCooking').click();
+          else if(path === '/sit-with-me') document.getElementById('openSit').click();
+          else if(path === '/tiny-bakery') document.getElementById('openBakery').click();
+        }
+      } finally {
+        appRouteRestoring = false;
+      }
+    }
+
+    window.addEventListener('popstate', renderAppRoute);
+    // Wait for the later kitchen/dialog scripts to install their existing handlers.
+    document.addEventListener('DOMContentLoaded', renderAppRoute, {once:true});
   </script>
 
   <script>
@@ -7301,6 +7384,7 @@
       const sitDialog = document.getElementById('sitDialog');
       const bakeryDialog = document.getElementById('bakeryDialog');
       function openCozy(dialog) {
+        recordAppRoute(dialog.id === 'sitDialog' ? '/sit-with-me' : '/tiny-bakery');
         dialog.showModal();
         document.body.classList.add('cozy-open');
       }
@@ -7308,7 +7392,11 @@
       document.getElementById('openBakery').addEventListener('click', () => openCozy(bakeryDialog));
       [sitDialog, bakeryDialog].forEach(dialog => {
         dialog.querySelector('[data-close-cozy]').addEventListener('click', () => dialog.close());
-        dialog.addEventListener('close', () => document.body.classList.remove('cozy-open'));
+        dialog.addEventListener('close', () => {
+          document.body.classList.remove('cozy-open');
+          const path = dialog.id === 'sitDialog' ? '/sit-with-me' : '/tiny-bakery';
+          if(location.pathname === path && !dialog.open) recordAppRoute('/games');
+        });
       });
       const scene = document.getElementById('sitScene');
       const omar = document.getElementById('sitOmar');
