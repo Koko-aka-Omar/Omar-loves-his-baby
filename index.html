@@ -5335,6 +5335,164 @@
       .first-paragraph-sparkles span{animation:none!important}
     }
 
+  
+    /* 26.09.2026 — rabena ye5aleke leya */
+    body.rabena-note-open{overflow:hidden}
+    .rabena-note-page{
+      position:fixed;
+      inset:0;
+      z-index:93;
+      display:none;
+      overflow-y:auto;
+      overscroll-behavior:contain;
+      padding:22px 14px 46px;
+      background:
+        radial-gradient(circle at 10% 10%,rgba(235,91,141,.23),transparent 28%),
+        radial-gradient(circle at 88% 82%,rgba(248,151,184,.17),transparent 31%),
+        linear-gradient(145deg,#ffe9f2,#fff8fb 50%,#ffdfeb);
+    }
+    .rabena-note-page.active{display:block}
+    .rabena-note-hearts{
+      position:fixed;
+      inset:0;
+      z-index:0;
+      pointer-events:none;
+      overflow:hidden;
+    }
+    .rabena-note-hearts span{
+      position:absolute;
+      opacity:.22;
+      color:#d35f89;
+      animation:rabenaHeartFloat 7.5s ease-in-out infinite;
+      user-select:none;
+    }
+    .rabena-note-hearts span:nth-child(1){left:4%;top:8%;font-size:25px}
+    .rabena-note-hearts span:nth-child(2){right:5%;top:10%;font-size:24px;animation-delay:-2s}
+    .rabena-note-hearts span:nth-child(3){left:7%;top:36%;font-size:18px;animation-delay:-4s}
+    .rabena-note-hearts span:nth-child(4){right:7%;top:42%;font-size:26px;animation-delay:-1s}
+    .rabena-note-hearts span:nth-child(5){left:4%;top:72%;font-size:23px;animation-delay:-3s}
+    .rabena-note-hearts span:nth-child(6){right:10%;top:69%;font-size:20px;animation-delay:-5s}
+    .rabena-note-hearts span:nth-child(7){left:20%;bottom:4%;font-size:21px;animation-delay:-1.5s}
+    .rabena-note-hearts span:nth-child(8){right:20%;bottom:5%;font-size:20px;animation-delay:-4.4s}
+    .rabena-note-hearts span:nth-child(9){left:47%;top:3%;font-size:16px;animation-delay:-2.7s}
+    .rabena-note-hearts span:nth-child(10){right:34%;bottom:2%;font-size:19px;animation-delay:-3.6s}
+    @keyframes rabenaHeartFloat{
+      50%{transform:translateY(-11px) rotate(6deg) scale(1.05)}
+    }
+
+    .rabena-note-sheet{
+      position:relative;
+      z-index:1;
+      width:min(100%,720px);
+      margin:0 auto;
+      padding:27px 32px 24px;
+      border-radius:28px;
+      background:
+        linear-gradient(rgba(255,249,252,.94),rgba(255,249,252,.94)),
+        repeating-linear-gradient(0deg,#fff7fa 0 31px,#efbfd1 31px 32px);
+      border:1px solid #e9a9c1;
+      box-shadow:0 20px 58px rgba(135,48,84,.17);
+      color:#65364b;
+    }
+    .rabena-note-back{
+      display:block;
+      margin:0 0 19px;
+      padding:9px 12px!important;
+      border-radius:999px!important;
+      color:#a13e65!important;
+      background:#fff1f6!important;
+      border:1px solid #e9adc4!important;
+      box-shadow:none!important;
+      font-size:11px!important;
+    }
+    .rabena-note-date{
+      width:max-content;
+      max-width:100%;
+      margin:0 auto 12px;
+      padding:7px 11px;
+      border-radius:999px;
+      background:#ffe5ef;
+      border:1px solid #ebb0c6;
+      color:#a54167;
+      font-size:10px;
+      font-weight:900;
+      letter-spacing:.07em;
+    }
+    .rabena-note-kicker{
+      margin-bottom:5px;
+      text-align:center;
+      color:#a54167;
+      font-size:10px;
+      font-weight:950;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+    .rabena-note-sheet h1{
+      margin:0;
+      text-align:center;
+      font-family:"DM Serif Display",Georgia,serif!important;
+      font-size:clamp(37px,8vw,52px)!important;
+      font-weight:400!important;
+      color:#643248!important;
+    }
+    .rabena-note-divider{
+      margin:14px auto 20px;
+      text-align:center;
+      color:#d0648c;
+      font-size:14px;
+      letter-spacing:.08em;
+    }
+    .rabena-note-text{
+      margin:0;
+      color:#60394b;
+      font-size:15px;
+      line-height:1.88;
+      font-weight:650;
+      text-align:left;
+      white-space:pre-wrap;
+    }
+    .rabena-note-message-meta{
+      display:flex;
+      justify-content:flex-end;
+      align-items:center;
+      gap:5px;
+      margin-top:16px;
+      padding-top:10px;
+      color:#9b7a88;
+      font-size:11px;
+      font-weight:700;
+    }
+    .rabena-seen-dot{
+      width:4px;
+      height:4px;
+      border-radius:50%;
+      background:#c797aa;
+      opacity:.8;
+    }
+    .rabena-note-time{
+      letter-spacing:.01em;
+    }
+    .rabena-note-entry{margin-top:9px}
+
+    @media(max-width:560px){
+      .rabena-note-page{padding:10px 8px 30px}
+      .rabena-note-sheet{
+        padding:20px 16px 22px;
+        border-radius:22px;
+      }
+      .rabena-note-text{
+        font-size:14px;
+        line-height:1.82;
+      }
+      .rabena-note-message-meta{
+        margin-top:13px;
+        font-size:10px;
+      }
+    }
+    @media(prefers-reduced-motion:reduce){
+      .rabena-note-hearts span{animation:none!important}
+    }
+
   </style>
 </head>
 <body>
@@ -5385,6 +5543,30 @@
       </form>
     </div>
   </div>
+
+  <section class="rabena-note-page" id="rabenaNotePage" aria-hidden="true">
+    <div class="rabena-note-hearts" aria-hidden="true">
+      <span>♡</span><span>❤️</span><span>✦</span><span>💗</span><span>♡</span><span>✨</span>
+      <span>❤️</span><span>♡</span><span>✧</span><span>💞</span>
+    </div>
+
+    <article class="rabena-note-sheet">
+      <button class="rabena-note-back" id="closeRabenaNote" type="button">← notes</button>
+
+      <div class="rabena-note-date">26.09.2026 · morning yap ❤️</div>
+      <div class="rabena-note-kicker">from koko, while you were asleep</div>
+      <h1>rabena ye5aleke leya</h1>
+
+      <div class="rabena-note-divider" aria-hidden="true">♡ &nbsp; ✦ &nbsp; ❤️ &nbsp; ✦ &nbsp; ♡</div>
+
+      <p class="rabena-note-text">ITS SEVEN AM ali woke me up and im here thinking of my princess thats deep asleep AND SO I THOUGHT ILL WRITE YOU SOMETHING SMALL FOR U TO WAKEUP TO, i just wanted to say i love you so so much baby, its such a nice feeling getting to talk to you and compliment you and sweet talk to you and have you listen to me. its also such a nice feeling having someone that gets bothered when i am the one bothered, thank you so much for listning to me and the things that i keep to myself and insisting on knowing these things and not letting me go without you knowing everything that bothers me. i want to thank allah for sending you my way and i want to thank you for being the way you are. youre such a smart and cute person i love you for enternity my love. youre the sweetest and kindest person i ever came the prettiest and cutest too. ill keep it short and end it by saying rabena ye5aleke leya my love. SLEEP WELL BABY GIRL sweet dreams and i love you so so much. Good Night darling ❤️❤️❤️❤️❤️❤️</p>
+
+      <div class="rabena-note-message-meta">
+        <span class="rabena-seen-dot" aria-hidden="true"></span>
+        <span class="rabena-note-time">7:29 AM</span>
+      </div>
+    </article>
+  </section>
 
   <section class="first-paragraph-page" id="firstParagraphPage" aria-hidden="true">
     <div class="first-paragraph-sparkles" aria-hidden="true">
@@ -5570,6 +5752,15 @@
         <span class="letter-entry-copy">
           <strong>the first paragraph</strong>
           <small>09.09.2026 · apparently this is where the obsession started 💗</small>
+        </span>
+        <span class="letter-entry-arrow" aria-hidden="true">›</span>
+      </button>
+
+      <button class="letter-entry rabena-note-entry" type="button" id="openRabenaNote">
+        <span class="letter-entry-icon" aria-hidden="true">🌙</span>
+        <span class="letter-entry-copy">
+          <strong>rabena ye5aleke leya</strong>
+          <small>26.09.2026 · 7am thoughts about my sleeping princess ❤️</small>
         </span>
         <span class="letter-entry-arrow" aria-hidden="true">›</span>
       </button>
@@ -6152,6 +6343,9 @@
 
     const passwordInput = document.getElementById('passwordInput');
     const passwordToggle = document.getElementById('passwordToggle');
+    const rabenaNotePage = document.getElementById('rabenaNotePage');
+    const openRabenaNote = document.getElementById('openRabenaNote');
+    const closeRabenaNote = document.getElementById('closeRabenaNote');
     const firstParagraphPage = document.getElementById('firstParagraphPage');
     const openFirstParagraph = document.getElementById('openFirstParagraph');
     const closeFirstParagraph = document.getElementById('closeFirstParagraph');
@@ -6242,6 +6436,24 @@
         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'
       })[ch]);
     }
+
+    function openRabenaNotePage(){
+      if(typeof recordAppRoute === 'function') recordAppRoute('/notes/rabena-ye5aleke-leya');
+      rabenaNotePage.classList.add('active');
+      rabenaNotePage.setAttribute('aria-hidden','false');
+      document.body.classList.add('rabena-note-open');
+      rabenaNotePage.scrollTo({top:0,behavior:'auto'});
+    }
+
+    function closeRabenaNotePage(){
+      rabenaNotePage.classList.remove('active');
+      rabenaNotePage.setAttribute('aria-hidden','true');
+      document.body.classList.remove('rabena-note-open');
+      showNotesImmediate();
+    }
+
+    openRabenaNote.addEventListener('click',openRabenaNotePage);
+    closeRabenaNote.addEventListener('click',closeRabenaNotePage);
 
     function openFirstParagraphPage(){
       if(typeof recordAppRoute === 'function') recordAppRoute('/notes/the-first-paragraph');
