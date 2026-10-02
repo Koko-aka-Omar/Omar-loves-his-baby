@@ -5787,6 +5787,40 @@
     }
 
   </style>
+  <style id="letter-stationery-styles">
+    /* Scoped stationery collection: no shared site components are changed. */
+    .letters-card .letter-entry{position:relative;min-height:108px;margin:14px 0!important;padding:20px!important;border-radius:5px 16px 16px 5px!important;border:1px solid var(--mail-edge)!important;border-left:5px solid var(--mail-seal)!important;background:linear-gradient(115deg,#ffffffb8,transparent),var(--mail-paper)!important;box-shadow:0 5px 12px #5131460c!important;gap:18px!important}
+    .letters-card .letter-entry:hover{transform:translateY(-3px) rotate(-.35deg)!important;box-shadow:0 10px 22px #5131461c!important;border-color:var(--mail-seal)!important}
+    .letters-card .letter-entry:focus-visible,.mail-open:focus-visible,.mail-dismiss:focus-visible{outline:3px solid #943459;outline-offset:5px}
+    .letters-card .letter-entry-icon{position:relative;isolation:isolate;width:66px;height:48px;flex:0 0 66px;border-radius:3px!important;border:1px solid var(--mail-edge)!important;background:var(--mail-paper)!important;box-shadow:0 4px 6px #43223220!important;font-size:18px!important;transform:rotate(-7deg)}
+    .letters-card .letter-entry-icon:before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(145deg,transparent 49%,var(--mail-edge) 50%,transparent 52%),linear-gradient(215deg,transparent 49%,var(--mail-edge) 50%,transparent 52%);clip-path:polygon(0 0,100% 0,50% 65%)}
+    .letters-card .letter-entry:nth-of-type(even) .letter-entry-icon{transform:rotate(5deg);height:56px}
+    .letters-card .letter-entry-copy strong{font-family:Georgia,serif;font-size:17px!important;font-weight:500!important}
+    .letters-card .letter-entry-copy small{font-size:11px!important;margin-top:5px}
+    .mail-dialog{--mail-paper:#f1c8cf;--mail-edge:#c693a0;--mail-seal:#ad385b;--mail-flap:50%;border:0;border-radius:24px;padding:28px 24px 36px;width:min(520px,calc(100vw - 28px));max-height:calc(100dvh - 28px);overflow:auto;color:#593546;background:#fffaf5;box-shadow:0 30px 100px #321a4466;text-align:center}
+    .mail-dialog::backdrop{background:#2f1b35a6;backdrop-filter:blur(9px)}
+    .mail-dismiss{display:block;margin:0 0 0 auto;border:1px solid #dcc7cb;border-radius:50%;width:40px;height:40px;padding:0;background:#fff;color:#593546;font-size:22px;cursor:pointer}
+    .mail-eyebrow{font:10px/1.5 system-ui,sans-serif;letter-spacing:.22em;text-transform:uppercase;margin:8px 0 12px}
+    .mail-title{font:normal clamp(23px,5vw,32px)/1.25 Georgia,serif;margin:0 0 12px}
+    .mail-stage{height:300px;display:grid;place-items:center;perspective:1000px}
+    .mail-open{position:relative;display:block;width:min(310px,100%);height:190px;padding:0;border:0;border-radius:5px;background:transparent;cursor:pointer;isolation:isolate;transform:rotate(-3deg);transition:transform .5s;box-shadow:none!important}
+    .mail-open:hover{transform:rotate(0deg) translateY(-3px)}
+    .mail-back{position:absolute;inset:0;border-radius:5px;background:var(--mail-edge);box-shadow:0 20px 25px -12px #492c4459,inset 0 1px 2px #fff9;z-index:0}
+    .mail-paper{position:absolute;inset:12px 16px 8px;z-index:1;padding:24px 14px;background:repeating-linear-gradient(0deg,transparent 0 23px,#aa7c9220 23px 24px),#fffdf5;border:1px solid #e6d7c5;border-radius:2px;color:#785260;font:italic 24px/1.5 Georgia,serif;box-shadow:0 0 6px #42233825;transition:transform .85s cubic-bezier(.22,.7,.2,1) .65s}
+    .mail-paper small{display:block;font:10px/2 system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+    .mail-front{position:absolute;inset:0;z-index:3;clip-path:polygon(0 0,50% 56%,100% 0,100% 100%,0 100%);border-radius:4px;background:linear-gradient(32deg,transparent 49.5%,#75415325 50%,transparent 50.7%),linear-gradient(-32deg,transparent 49.5%,#75415325 50%,transparent 50.7%),linear-gradient(140deg,#ffffff70,transparent 55%),var(--mail-paper);box-shadow:inset 0 -2px 2px #75415325}
+    .mail-flap{position:absolute;inset:0;z-index:4;transform-origin:50% 0;clip-path:polygon(0 0,100% 0,100% 5%,50% var(--mail-flap),0 5%);background:linear-gradient(175deg,#ffffff85,transparent 60%),var(--mail-paper);filter:drop-shadow(0 2px 1px #60374a50);transition:transform .7s cubic-bezier(.3,.05,.25,1) .16s,z-index 0s .5s}
+    .mail-seal{position:absolute;top:43%;left:calc(50% - 22px);z-index:5;width:44px;height:44px;border-radius:45% 52% 47% 50%;display:grid;place-items:center;background:radial-gradient(circle at 32% 25%,#ffffff55,transparent 45%),var(--mail-seal);border:3px double #ffffff65;box-shadow:0 3px 4px #4821304d,inset 0 0 0 3px #00000012;color:#fff0dc;font:24px Georgia,serif;transition:transform .25s,opacity .25s}
+    .mail-stamp{position:absolute;right:14px;bottom:20px;z-index:4;width:42px;height:49px;display:grid;place-items:center;border:3px dotted var(--mail-edge);outline:2px solid #fff7e7;background:#fff7e7;color:var(--mail-seal);font:24px Georgia,serif;transform:rotate(9deg)}
+    .mail-address{position:absolute;left:18px;bottom:22px;z-index:4;color:#563642;font:italic 16px Georgia,serif}
+    .mail-open.is-opening{transform:rotate(0deg) translateY(25px);pointer-events:none}
+    .mail-open.is-opening .mail-seal{transform:scale(1.25) rotate(15deg);opacity:0}
+    .mail-open.is-opening .mail-flap{transform:rotateX(180deg);z-index:0}
+    .mail-open.is-opening .mail-paper{transform:translateY(-125px) rotate(2deg)}
+    .mail-hint{font:12px/1.7 system-ui,sans-serif;color:#805c6a;margin:0}
+    @media(max-width:480px){.letters-card .letter-entry{padding:16px 12px!important;gap:12px!important}.letters-card .letter-entry-copy strong{font-size:15px!important}.mail-stage{height:280px}.mail-open{height:170px}.mail-dialog{padding:18px 20px 28px}}
+    @media(prefers-reduced-motion:reduce){.mail-open,.mail-paper,.mail-flap,.mail-seal,.letters-card .letter-entry{transition:none!important}.mail-open.is-opening .mail-paper{transform:none}}
+  </style>
 </head>
 <body>
   <div class="cute-ambience" id="cuteAmbience" aria-hidden="true">
@@ -6896,6 +6930,10 @@
     closeFirstParagraph.addEventListener('click',closeFirstParagraphPage);
 
     function openTodayLetterPage(directRead = false){
+      if(!directRead && window.presentLoveLetter){
+        window.presentLoveLetter(3, () => openTodayLetterPage(true));
+        return;
+      }
       recordAppRoute('/notes/bus-yap');
       stopTodayTyping(false);
       todayLetterPage.classList.add('active');
@@ -8367,6 +8405,81 @@
   })();
   </script>
 
+  <script id="letter-stationery-controller">
+  (() => {
+    const designs = [
+      ['#f2ced5','#c891a1','#aa3657','58%','❀'],
+      ['#f0dfbd','#c6aa7a','#997135','42%','✦'],
+      ['#d9dfed','#a0abc7','#62658c','62%','☾'],
+      ['#d4e3d7','#9cb6a2','#507966','46%','♡'],
+      ['#e0d2e9','#b19cc5','#77518b','68%','☽']
+    ];
+    const entries = [...document.querySelectorAll('.letters-card .letter-entry')];
+    function theme(el, i){
+      const d = designs[i % designs.length];
+      ['--mail-paper','--mail-edge','--mail-seal','--mail-flap'].forEach((key,j) => el.style.setProperty(key,d[j]));
+      return d;
+    }
+    entries.forEach(theme);
+    const dialog = document.createElement('dialog');
+    dialog.className = 'mail-dialog';
+    dialog.setAttribute('aria-labelledby','mailTitle');
+    dialog.innerHTML = `<button class="mail-dismiss" type="button" aria-label="Back to letters">×</button>
+      <p class="mail-eyebrow">from omar · only for you</p><h2 class="mail-title" id="mailTitle"></h2>
+      <div class="mail-stage"><button class="mail-open" type="button" aria-label="Break the seal and open this letter">
+      <span class="mail-back" aria-hidden="true"></span><span class="mail-paper" aria-hidden="true">my karamella,<small>a little piece of my heart</small>♡</span>
+      <span class="mail-front" aria-hidden="true"></span><span class="mail-flap" aria-hidden="true"></span>
+      <span class="mail-address" aria-hidden="true">for my baby girl</span><span class="mail-stamp" aria-hidden="true"></span><span class="mail-seal" aria-hidden="true">♡</span>
+      </button></div><p class="mail-hint" aria-live="polite">tap the wax seal to open your letter</p>`;
+    document.body.appendChild(dialog);
+    const opener = dialog.querySelector('.mail-open');
+    let timer, reveal, source, previousOverflow, handingOff = false;
+    window.presentLoveLetter = (index, onRead) => {
+      if(dialog.open) return;
+      source = document.activeElement;
+      reveal = onRead;
+      const d = theme(dialog,index);
+      dialog.querySelector('.mail-stamp').textContent = d[4];
+      dialog.querySelector('.mail-title').textContent = entries[index].querySelector('strong').textContent;
+      dialog.querySelector('.mail-hint').textContent = 'tap the wax seal to open your letter';
+      opener.classList.remove('is-opening');
+      opener.disabled = false;
+      previousOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      dialog.showModal();
+      opener.focus();
+    };
+    dialog.addEventListener('close',() => {
+      clearTimeout(timer);
+      document.body.style.overflow = previousOverflow;
+      if(!handingOff && source?.isConnected) source.focus({preventScroll:true});
+    });
+    dialog.querySelector('.mail-dismiss').addEventListener('click',() => dialog.close());
+    opener.addEventListener('click',() => {
+      if(opener.disabled) return;
+      opener.disabled = true;
+      opener.classList.add('is-opening');
+      dialog.querySelector('.mail-hint').textContent = 'a little love, unfolding…';
+      timer = setTimeout(() => {
+        if(!dialog.open) return;
+        handingOff = true;
+        dialog.close();
+        reveal();
+        const page = document.querySelector('.the-night-page.active,.loving-paragraph-page.active,.rabena-note-page.active,.first-paragraph-page.active,.today-letter-page.active');
+        const heading = page?.querySelector('h1,h2,article');
+        if(heading){heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true});}
+        // The native close event is queued; restore focus handling after it fires.
+        setTimeout(() => {handingOff = false;},0);
+      },matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 1550);
+    });
+    const readers = [openLovingParagraphPage,openFirstParagraphPage,openRabenaNotePage,() => openTodayLetterPage(true),openTheNightPage];
+    entries.forEach((entry,index) => entry.addEventListener('click',event => {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      window.presentLoveLetter(index,readers[index]);
+    },true));
+  })();
+  </script>
 </body>
 </html>
 
