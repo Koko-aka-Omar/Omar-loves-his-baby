@@ -5194,6 +5194,147 @@
     body.home-mode .home-page{min-height:0!important;display:block!important}
     .notes-card,body.games-mode .simple-section-card,body.love-mode .simple-section-card,.flower-card{min-height:0!important;height:auto!important;display:block!important}
             .ingredient-note p{white-space:pre-line}
+  
+    /* 09.09.2026 — the first paragraph */
+    body.first-paragraph-open{overflow:hidden}
+    .first-paragraph-page{
+      position:fixed;
+      inset:0;
+      z-index:92;
+      display:none;
+      overflow-y:auto;
+      padding:22px 14px 48px;
+      background:
+        radial-gradient(circle at 9% 11%,rgba(236,92,143,.23),transparent 27%),
+        radial-gradient(circle at 90% 78%,rgba(246,145,181,.19),transparent 30%),
+        linear-gradient(145deg,#ffe9f2 0%,#fff7fb 48%,#ffdce8 100%);
+      overscroll-behavior:contain;
+    }
+    .first-paragraph-page.active{display:block}
+    .first-paragraph-sparkles{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      overflow:hidden;
+      z-index:0;
+    }
+    .first-paragraph-sparkles span{
+      position:absolute;
+      color:#d75d89;
+      opacity:.25;
+      animation:firstParagraphFloat 7s ease-in-out infinite;
+      user-select:none;
+    }
+    .first-paragraph-sparkles span:nth-child(1){left:5%;top:8%;font-size:23px}
+    .first-paragraph-sparkles span:nth-child(2){right:7%;top:12%;font-size:27px;animation-delay:-2s}
+    .first-paragraph-sparkles span:nth-child(3){left:3%;top:36%;font-size:24px;animation-delay:-4s}
+    .first-paragraph-sparkles span:nth-child(4){right:4%;top:42%;font-size:20px;animation-delay:-1s}
+    .first-paragraph-sparkles span:nth-child(5){left:7%;top:68%;font-size:26px;animation-delay:-3.3s}
+    .first-paragraph-sparkles span:nth-child(6){right:8%;top:72%;font-size:22px;animation-delay:-5s}
+    .first-paragraph-sparkles span:nth-child(7){left:18%;bottom:4%;font-size:20px;animation-delay:-1.6s}
+    .first-paragraph-sparkles span:nth-child(8){right:18%;bottom:5%;font-size:19px;animation-delay:-4.7s}
+    .first-paragraph-sparkles span:nth-child(9){left:45%;top:2%;font-size:17px;animation-delay:-2.7s}
+    .first-paragraph-sparkles span:nth-child(10){right:29%;top:27%;font-size:20px;animation-delay:-.8s}
+    .first-paragraph-sparkles span:nth-child(11){left:27%;top:54%;font-size:17px;animation-delay:-5.5s}
+    .first-paragraph-sparkles span:nth-child(12){right:38%;bottom:2%;font-size:19px;animation-delay:-3.9s}
+    @keyframes firstParagraphFloat{
+      50%{transform:translateY(-10px) rotate(7deg) scale(1.05)}
+    }
+
+    .first-paragraph-sheet{
+      position:relative;
+      z-index:1;
+      width:min(100%,780px);
+      margin:0 auto;
+      padding:27px 34px 38px;
+      border-radius:28px;
+      background:
+        linear-gradient(rgba(255,249,252,.92),rgba(255,249,252,.92)),
+        repeating-linear-gradient(0deg,#fff7fa 0 31px,#efc0d2 31px 32px);
+      border:1px solid #e9aac1;
+      box-shadow:0 20px 58px rgba(135,48,84,.17);
+      color:#65364b;
+    }
+    .first-paragraph-back{
+      display:block;
+      margin:0 0 19px;
+      padding:9px 12px!important;
+      border-radius:999px!important;
+      color:#a13e65!important;
+      background:#fff1f6!important;
+      border:1px solid #e9adc4!important;
+      box-shadow:none!important;
+      font-size:11px!important;
+    }
+    .first-paragraph-date{
+      width:max-content;
+      max-width:100%;
+      margin:0 auto 12px;
+      padding:7px 11px;
+      border-radius:999px;
+      background:#ffe5ef;
+      border:1px solid #ebb0c6;
+      color:#a54167;
+      font-size:10px;
+      font-weight:900;
+      letter-spacing:.08em;
+    }
+    .first-paragraph-kicker{
+      margin-bottom:5px;
+      color:#a54167;
+      font-size:10px;
+      font-weight:950;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+      text-align:center;
+    }
+    .first-paragraph-sheet h1{
+      margin:0;
+      text-align:center;
+      font-family:"DM Serif Display",Georgia,serif!important;
+      font-size:clamp(37px,8vw,54px)!important;
+      font-weight:400!important;
+      color:#643248!important;
+    }
+    .first-paragraph-divider,
+    .first-paragraph-ending{
+      margin:14px auto 20px;
+      text-align:center;
+      color:#d0648c;
+      font-size:15px;
+      letter-spacing:.11em;
+    }
+    .first-paragraph-text{
+      margin:0;
+      white-space:pre-wrap;
+      color:#60394b;
+      font-size:15px;
+      line-height:1.9;
+      font-weight:650;
+      text-align:left;
+    }
+    .first-paragraph-ending{margin:25px auto 0}
+
+    .first-paragraph-entry{
+      margin-top:9px;
+    }
+
+    @media(max-width:560px){
+      .first-paragraph-page{padding:10px 8px 30px}
+      .first-paragraph-sheet{
+        padding:20px 16px 28px;
+        border-radius:22px;
+      }
+      .first-paragraph-text{
+        font-size:14px;
+        line-height:1.82;
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      .first-paragraph-sparkles span{animation:none!important}
+    }
+
   </style>
 </head>
 <body>
@@ -5244,6 +5385,27 @@
       </form>
     </div>
   </div>
+
+  <section class="first-paragraph-page" id="firstParagraphPage" aria-hidden="true">
+    <div class="first-paragraph-sparkles" aria-hidden="true">
+      <span>✦</span><span>♡</span><span>💗</span><span>✧</span><span>♡</span><span>✨</span>
+      <span>💞</span><span>✦</span><span>♡</span><span>🌸</span><span>✧</span><span>💗</span>
+    </div>
+
+    <article class="first-paragraph-sheet">
+      <button class="first-paragraph-back" id="closeFirstParagraph" type="button">← notes</button>
+
+      <div class="first-paragraph-date">09.09.2026 · ✦ ♡ ✦</div>
+      <div class="first-paragraph-kicker">from omar’s notes</div>
+      <h1>the first paragraph</h1>
+
+      <div class="first-paragraph-divider" aria-hidden="true">♡ ✦ 💗 ✦ ♡</div>
+
+      <p class="first-paragraph-text">no one is gonna see this note and it shall stay a secret between me and me, buuuuut here comes my latest and best obsession i’ve ever had in my life, i have been obsessed with video games with movies gym and learning new stuff but the latest addition to my obsessions is a girl called karmel. it doesn’t matter what happens during the day she is always on my mind, weather i’m out with firas and abood or myself watching reels or studying i always look forward to to her texts, a lot of songs remind me of her and alot of things that happens during my day reminds me of her, i have this urge to tell her everything and anything without hiding or being fake because she loves me for being me and that’s the cutest thing anyone has ever done to me. she cares for me and gets worried for my safety and wellbeing and no matter how much i think about her or we talk and yap i still feel like i miss her and want her around me. my day starts when she wakes up and my night ends when she sleeps i adore her so much i adore the way she understands me and comforts me and makes me feel loved and cared for, the way she jokes the way she finds everything funny and light is something i could learn from her. she’s cute without even trying and her existence in my life is everything i ever needed or asked for. she disappears for 5 mins and i start whining like a baby that lost his mother i’ve never been this clingy before but she makes me feel comfortable being clingy and act like a loverboy without feeling awkward or weird. i love her smile her eyes her hair her forehead her height i love how she’s such a baby and she’s the cutest without being fake or trying. i love her personality so much she makes me feel better about everything and always has my back and is a shoulder that i know i can lean on, she became such an important person to me and to my heart without it feeling forced or unnatural she just popped in my life and day by day ive been loving her more and more i love when we annoy each other then work on fixing each others moods, i love when we both are laughing and dying and i love when we both work together against an argument. i love how emotionally smart she is and how intelligent she is i love how she notices when i’m sad or mad or not feeling fine. i can’t believe ive found such a person because no one compares to her, she is unique in her own ways and ive been telling her since the first day we ever talked. she makes sure im fine and that i ate and that im chilling and that kg mental health is perfect she doesn’t mind spending hours just to find out i was sad about something so stupid and small. it’s truly amazing how we’ve known each other for such a short period of time yet she became one of the closest people to me and my mind and heart. i feel at ease when i’m with her and im so lucky to get to call her mine and tell her how much i love her. talks never ends with her and every day is better than the day before it doesn’t matter if it’s jokes or serious it’s always fun to have her around. i know love isn’t easy and isn’t always sunshine and rainbows but im willing to put the effort to keep her around forever im genuinely so serious about her and hope she is as serious about me too, she started adopting to my clinginess and started to understand how much i love when she updates me about her day and now i get random updates without asking and that may be the cutest thing she does on a daily basis, some days feel slow and some go by so fast, and that’s the beauty of loving her. i didn’t expect to end the year with someone and here i am writing notes in the middle of the night about how amazing she is. she is truly the most beautiful and amazing person ever and no amount of words would do her fair. i love her baby personality and her caring personality and how she deals with stuff related to me and related to her life too. she’s all what i could ask for and i would no matter how many spend days and nights i spend writing about her ill never be able to list all the things that i love her for and that she is amazing at. ngl the lack of vocabulary in this note is embarrassing and i gotta learn more words because all ive got to say is “i love her” and ive already said that like 70 times, and just to be able to describe how much i love her. ive never wrote a note yet here i am thinking about her and it is so cute that she is always on my mind and in my heart, no one comes EVEN CLOSE to how beautiful my baby is, she’s beautiful in the soul and physically. i used to pray allah for wealth and health and success, now i pray for wealth and heath and success and karmel to stay in my life. no matter what hardships we go through i’ll always be beside her to take care of her and guide her and assist her if she needs me to, and tell her how much i love her and care about her and adore her and that she is worthy of everything nice in life. i’ve got so much more to say and i’ll probably complete this note later on and add more things to it as time goes by and as we get closer and closer and i get to see the real her and enjoy her company and she enjoys mine. im looking forward to buying her gifts to tell her how much i love her and its the least i could do to such a beautiful sweet person. anywho ill head to sleep and continue this note sometime soon skibidy dibidi doo</p>
+
+      <div class="first-paragraph-ending" aria-hidden="true">✦ &nbsp; ♡ &nbsp; 💗 &nbsp; ♡ &nbsp; ✦</div>
+    </article>
+  </section>
 
   <section class="today-letter-page" id="todayLetterPage" aria-hidden="true">
     <div class="today-floral-wall" aria-hidden="true">
@@ -5399,6 +5561,15 @@
         <span class="letter-entry-copy">
           <strong>bus yap</strong>
           <small>01.10.2026 · i had no data so obviously i wrote you a whole letter 😭</small>
+        </span>
+        <span class="letter-entry-arrow" aria-hidden="true">›</span>
+      </button>
+
+      <button class="letter-entry first-paragraph-entry" type="button" id="openFirstParagraph">
+        <span class="letter-entry-icon" aria-hidden="true">✨</span>
+        <span class="letter-entry-copy">
+          <strong>the first paragraph</strong>
+          <small>09.09.2026 · apparently this is where the obsession started 💗</small>
         </span>
         <span class="letter-entry-arrow" aria-hidden="true">›</span>
       </button>
@@ -5981,6 +6152,9 @@
 
     const passwordInput = document.getElementById('passwordInput');
     const passwordToggle = document.getElementById('passwordToggle');
+    const firstParagraphPage = document.getElementById('firstParagraphPage');
+    const openFirstParagraph = document.getElementById('openFirstParagraph');
+    const closeFirstParagraph = document.getElementById('closeFirstParagraph');
     const todayLetterPage = document.getElementById('todayLetterPage');
     const todayLetterIntro = document.getElementById('todayLetterIntro');
     const openTodayLetter = document.getElementById('openTodayLetter');
@@ -6068,6 +6242,24 @@
         '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'
       })[ch]);
     }
+
+    function openFirstParagraphPage(){
+      if(typeof recordAppRoute === 'function') recordAppRoute('/notes/the-first-paragraph');
+      firstParagraphPage.classList.add('active');
+      firstParagraphPage.setAttribute('aria-hidden','false');
+      document.body.classList.add('first-paragraph-open');
+      firstParagraphPage.scrollTo({top:0,behavior:'auto'});
+    }
+
+    function closeFirstParagraphPage(){
+      firstParagraphPage.classList.remove('active');
+      firstParagraphPage.setAttribute('aria-hidden','true');
+      document.body.classList.remove('first-paragraph-open');
+      showNotesImmediate();
+    }
+
+    openFirstParagraph.addEventListener('click',openFirstParagraphPage);
+    closeFirstParagraph.addEventListener('click',closeFirstParagraphPage);
 
     function openTodayLetterPage(directRead = false){
       recordAppRoute('/notes/bus-yap');
