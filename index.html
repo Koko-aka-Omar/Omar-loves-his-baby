@@ -6005,7 +6005,7 @@
       </section>
 
       <article class="today-letter-sheet" id="todayLetterSheet" aria-live="polite">
-        <div class="today-letter-kicker">a bus yap · typed with love · from omar</div>
+        <div class="today-letter-kicker">01.10.2026 · 5:10 PM · a bus yap from omar</div>
         <div class="today-letter-text" id="todayLetterText"></div>
         <div class="today-letter-controls">
           <button class="today-primary" id="finishTodayLetter" type="button">show the whole yap 💌</button>
@@ -8425,7 +8425,7 @@
     dialog.className = 'mail-dialog';
     dialog.setAttribute('aria-labelledby','mailTitle');
     dialog.innerHTML = `<button class="mail-dismiss" type="button" aria-label="Back to letters">×</button>
-      <p class="mail-eyebrow">from omar · only for you</p><h2 class="mail-title" id="mailTitle"></h2>
+      <p class="mail-eyebrow">from omar · only for you</p><h2 class="mail-title" id="mailTitle"></h2><p class="mail-hint mail-date"></p>
       <div class="mail-stage"><button class="mail-open" type="button" aria-label="Break the seal and open this letter">
       <span class="mail-back" aria-hidden="true"></span><span class="mail-paper" aria-hidden="true">my karamella,<small>a little piece of my heart</small>♡</span>
       <span class="mail-front" aria-hidden="true"></span><span class="mail-flap" aria-hidden="true"></span>
@@ -8441,6 +8441,8 @@
       const d = theme(dialog,index);
       dialog.querySelector('.mail-stamp').textContent = d[4];
       dialog.querySelector('.mail-title').textContent = entries[index].querySelector('strong').textContent;
+      const dateText = entries[index].querySelector('small').textContent;
+      dialog.querySelector('.mail-date').textContent = dateText.split(' · ').filter((part, i) => i === 0 || /^\d{1,2}:\d{2}\s*[AP]M$/i.test(part)).join(' · ');
       dialog.querySelector('.mail-hint').textContent = 'tap the wax seal to open your letter';
       opener.classList.remove('is-opening');
       opener.disabled = false;
