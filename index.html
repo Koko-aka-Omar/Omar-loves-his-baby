@@ -5870,6 +5870,19 @@
       .home-section-button,.game-tile,.letter-entry,.home-section-icon,.game-tile-icon,.letter-entry-icon{transition:none!important}
       .home-section-button:hover .home-section-icon,.game-tile:hover .game-tile-icon,.letters-card .letter-entry:hover{transform:none!important}
     }
+
+    /* A scrapbook corner for the diary, in the same warm reds and pinks. */
+    .letters-card{background:linear-gradient(100deg,#fff4ee 0%,#fff8f4 45%,#fff1ef 100%)!important;border-color:#dcadb7!important}
+    .letters-card .home-kicker{color:#aa3c58!important}
+    .letters-card h1{color:#8d2946!important;text-decoration:underline;text-decoration-color:#e9bbc2;text-decoration-thickness:5px;text-underline-offset:7px;text-decoration-skip-ink:none}
+    .letters-card .notes-icon{transform:rotate(-9deg);filter:drop-shadow(0 4px 3px #b5647820)}
+    .letters-diary-intro{max-width:390px!important;margin:16px auto 12px!important;color:#855060!important;font-size:13px!important;line-height:1.8!important;font-weight:500!important;text-wrap:pretty}
+    .letters-card .letter-entry{background:linear-gradient(115deg,#ffffffa6,transparent),var(--mail-paper)!important}
+    .letters-card .letter-entry-arrow{color:#a74760!important}
+    .letters-card .letter-keepsake{font-style:italic}
+    .home-section-button.note-trigger{border-color:#d494a9!important;background:linear-gradient(120deg,#fff8f2,#ffe8ec)!important}
+    .home-section-button.note-trigger .home-section-icon{background:#f8d8df!important}
+    @media(max-width:480px){.letters-diary-intro{font-size:12px!important}}
   </style>
 </head>
 <body>
@@ -6099,7 +6112,7 @@
       <span class="corner-doodle doodle-three" aria-hidden="true">✦</span>
       <div class="home-kicker">our little place</div>
       <h1 class="home-title">hi karamellety.</h1>
-      <p class="home-sub">70 little yaps because somehow i always have more to tell you 😂💗</p>
+      <p class="home-sub">a little diary, some silly games, and an unreasonable amount of love for you ♡</p>
 
       <nav class="home-section-nav" aria-label="Main sections">
         <button class="home-section-button games-trigger" id="gamesTrigger" type="button">
@@ -6113,8 +6126,8 @@
         <button class="home-section-button note-trigger" id="noteTrigger" type="button">
           <span class="home-section-icon" aria-hidden="true">💌</span>
           <span>
-            <strong>notes</strong>
-            <small>the big yaps</small>
+            <strong>our diary</strong>
+            <small>all my yaps, kept for you</small>
           </span>
         </button>
       </nav>
@@ -6180,9 +6193,10 @@
   <main class="notes-page" id="notesPage">
     <section class="notes-card letters-card">
       <div class="paper-grain" aria-hidden="true"></div>
-      <div class="home-kicker">notes</div>
-      <div class="notes-icon">💌</div>
+      <div class="home-kicker">our little diary</div>
+      <div class="notes-icon" aria-hidden="true">💌</div>
       <h1>the big yaps.</h1>
+      <p class="letters-diary-intro">the paragraphs, the late-night thoughts, the random bus yaps. little moments of loving you, kept right here ♡</p>
       <p class="letters-shelf-note">5 little pieces of my heart · newest first ♡</p>
 
       <button class="letter-entry bus-yap-entry" type="button" data-letter="bus-yap" onclick="openTodayLetterPage(false)">
@@ -8461,12 +8475,19 @@
     // Letter identities stay fixed even when the shelf is rearranged.
     const letters = {
       'loving-paragraph': {design:['#f2ced5','#c891a1','#aa3657','58%','❀'], read:openLovingParagraphPage, page:'lovingParagraphPage'},
-      'first-paragraph': {design:['#f0dfbd','#c6aa7a','#997135','42%','✦'], read:openFirstParagraphPage, page:'firstParagraphPage'},
-      'rabena-note': {design:['#d9dfed','#a0abc7','#62658c','62%','☾'], read:openRabenaNotePage, page:'rabenaNotePage'},
-      'bus-yap': {design:['#d4e3d7','#9cb6a2','#507966','46%','♡'], read:() => openTodayLetterPage(true), page:'todayLetterPage'},
-      'the-night': {design:['#e0d2e9','#b19cc5','#77518b','68%','☽'], read:openTheNightPage, page:'theNightPage'}
+      'first-paragraph': {design:['#f2ded0','#ccaa95','#a74f47','42%','✦'], read:openFirstParagraphPage, page:'firstParagraphPage'},
+      'rabena-note': {design:['#ebc5c8','#c09299','#9b4057','62%','☾'], read:openRabenaNotePage, page:'rabenaNotePage'},
+      'bus-yap': {design:['#f4d5c7','#d0a497','#b75c53','46%','♡'], read:() => openTodayLetterPage(true), page:'todayLetterPage'},
+      'the-night': {design:['#dec0c7','#b48491','#89324f','68%','☽'], read:openTheNightPage, page:'theNightPage'}
     };
     const entries = [...document.querySelectorAll('.letters-card .letter-entry')];
+    // Keep new paragraphs in date order without adding timeline markers.
+    entries.sort((a,b) => Date.parse(b.querySelector('time').dateTime) - Date.parse(a.querySelector('time').dateTime));
+    const shelf = document.querySelector('.letters-card');
+    const shelfFooter = shelf.querySelector('.letters-small-copy');
+    entries.forEach(entry => shelf.insertBefore(entry,shelfFooter));
+    document.querySelector('.letters-shelf-note').textContent = entries.length + ' little pieces of my heart · newest first ♡';
+
     const openedKey = 'loveLettersOpenedV1';
     let opened = [];
     try {
