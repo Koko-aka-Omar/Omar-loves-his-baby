@@ -15,6 +15,45 @@
     window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
   </script>
   <script defer src="/_vercel/speed-insights/script.js"></script>
+
+  <script>
+    // Private-site telemetry: route names and interaction labels only.
+    // Never send note text, passwords, messages, or other personal content.
+    window.KarmelAnalytics = window.KarmelAnalytics || {
+      lastRoute: null,
+      track(name, props) {
+        try {
+          if (typeof window.va !== 'function') return;
+          window.va('event', Object.assign({ name }, props || {}));
+        } catch (_) {}
+      },
+      route(path) {
+        if (!path || this.lastRoute === path) return;
+        this.lastRoute = path;
+        this.track('route_view', { path });
+      }
+    };
+    window.trackKarmel = (name, props) => window.KarmelAnalytics.track(name, props);
+    window.trackKarmelRoute = path => window.KarmelAnalytics.route(path);
+
+    document.addEventListener('click', event => {
+      const target = event.target.closest('button,[role="button"]');
+      if (!target) return;
+      if (target.matches('.find-card,.catch-target,.catch-battle-target')) return;
+
+      let control =
+        target.dataset.letter ||
+        target.dataset.recipe ||
+        target.dataset.treat ||
+        target.id ||
+        '';
+
+      if (!control && target.closest('#loginForm') && target.type === 'submit') {
+        control = 'login-submit';
+      }
+      if (control) window.trackKarmel('ui_click', { control });
+    }, { passive: true });
+  </script>
   <title>For Karmel 💗</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -7420,6 +7459,7 @@
       catchArena.classList.remove('running');
       catchStart.disabled = false;
       catchStart.textContent = 'play again 💗';
+      if(window.trackKarmel) window.trackKarmel('game_finish',{game:'catch-hearts',score:String(catchScoreValue)});
 
       const oldBest = refreshCatchBest();
       if(catchScoreValue > oldBest){
@@ -7443,6 +7483,7 @@
 
     function startCatchGame(){
       stopCatchGame(false);
+      if(window.trackKarmel) window.trackKarmel('game_start',{game:'catch-hearts'});
       catchScoreValue = 0;
       catchSeconds = 20;
       catchManStreak = 0;
@@ -7480,6 +7521,7 @@
       catchStart.textContent = 'play again 😭';
       catchMessage.classList.add('danger');
       catchMessage.textContent = 'FIVE MEN???? 😭';
+      if(window.trackKarmel) window.trackKarmel('game_finish',{game:'catch-hearts',result:'five-men-ban'});
       gameBanPopup.classList.add('show');
       gameBanPopup.setAttribute('aria-hidden','false');
       if(navigator.vibrate) navigator.vibrate([70,50,70]);
@@ -7504,6 +7546,7 @@
 
     function setupFindKaramella(){
       findGrid.innerHTML = '';
+      if(window.trackKarmel) window.trackKarmel('game_start',{game:'find-karamella'});
       findTriesLeft = 3;
       findRoundOver = false;
       findAttempt = 0;
@@ -7533,6 +7576,7 @@
             card.classList.add('found');
             findRoundOver = true;
             findRoundMsg.textContent = 'FOUND KARAMELLA 😭💗';
+            if(window.trackKarmel) window.trackKarmel('game_finish',{game:'find-karamella',result:'win'});
             findGrid.querySelectorAll('.find-card').forEach(btn => btn.disabled = true);
             burstHearts(['🎀','💗','🌸','🩷']);
             const navigationVersion = appNavigationVersion;
@@ -7549,6 +7593,7 @@
           if(findTriesLeft <= 0){
             findRoundOver = true;
             findRoundMsg.textContent = 'still lost 😭 try again baby';
+            if(window.trackKarmel) window.trackKarmel('game_finish',{game:'find-karamella',result:'loss'});
             findGrid.querySelectorAll('.find-card').forEach(btn => btn.disabled = true);
           } else {
             findRoundMsg.textContent = findTriesLeft === 1 ? 'LAST TRY 😭' : 'nopeeee 😂';
@@ -7699,6 +7744,15 @@
       scratchCanvas.style.transition = 'opacity .45s ease';
       scratchCanvas.style.opacity = '0';
       scratchHint.textContent = 'same reward for today baby 😂 come back tomorrow and try your luck again 💗';
+      if(window.trackKarmel){
+        const rewardKey = {
+          'you won 100 kisses':'100-kisses',
+          'free yap session':'free-yap',
+          'omar owes you food':'food',
+          'one unlimited hug coupon':'hug-coupon'
+        }[currentScratchReward] || 'unknown';
+        window.trackKarmel('reward_reveal',{reward:rewardKey});
+      }
       burstHearts(['💗','🎀','🩷','🌸','💌']);
     }
 
@@ -7842,6 +7896,7 @@
       catchBattleSpawnTimer = null;
       clearCatchBattleTargets();
       catchBattleStart.disabled = true;
+      if(window.trackKarmel) window.trackKarmel('game_finish',{game:'catch-battle',score:String(catchBattleKaramellaValue)});
 
       const base = Math.max(15,catchBattleOmarValue,catchBattleKaramellaValue + 4);
 
@@ -7879,6 +7934,7 @@
 
     function startCatchBattle(){
       stopCatchBattle(true);
+      if(window.trackKarmel) window.trackKarmel('game_start',{game:'catch-battle'});
       catchBattleRunning = true;
       catchBattleStart.disabled = true;
       catchBattleStart.textContent = 'catching... 💞';
@@ -7993,6 +8049,7 @@
         randomNote.textContent = homeNotes[next];
         lastHomeNote = next;
         markQuoteFound(next);
+        if(window.trackKarmel) window.trackKarmel('quote_view',{index:String(next + 1)});
         randomNote.classList.remove('swap');
       };
       if(animate && randomNote.textContent){
@@ -8264,6 +8321,7 @@
       if(submitButton.disabled) return;
 
       if(passwordInput.value.trim() !== '172006'){
+        if(window.trackKarmel) window.trackKarmel('login_result',{result:'wrong'});
         loginMessage.textContent = 'not this one, baby 👀 try the six numbers.';
         loginLock.classList.remove('wrong');
         void loginLock.offsetWidth;
@@ -8274,6 +8332,7 @@
       }
 
       submitButton.disabled = true;
+      if(window.trackKarmel) window.trackKarmel('login_result',{result:'success'});
       unlockSite();
     });
 
@@ -8330,6 +8389,7 @@
     }
 
     function finishQuiz(msg){
+      if(window.trackKarmel) window.trackKarmel('game_finish',{game:'quiz',result:'completed'});
       showAffirmation(msg || 'okay baby girl 💗', () => {
         current = 6;
         showQuestion(6);
@@ -8478,6 +8538,7 @@
       if(appRouteRestoring || sessionStorage.getItem('karmelUnlocked') !== 'yes') return;
       const url = appRouteUrl(path);
       if(location.pathname + location.search + location.hash !== url) history.pushState(null, '', url);
+      if(window.trackKarmelRoute) window.trackKarmelRoute(path);
     }
 
     function gameRoute(panel){
@@ -8505,6 +8566,7 @@
       }
       const routeUrl = appRouteUrl(path);
       if(location.pathname + location.search + location.hash !== routeUrl) history.replaceState(null, '', routeUrl);
+      if(window.trackKarmelRoute) window.trackKarmelRoute(path);
       appRouteRestoring = true;
       ++appNavigationVersion; // Invalidate any screen transition still waiting on an animation.
       try {
@@ -8780,6 +8842,7 @@
       source = document.activeElement;
       currentKey = key;
       reveal = onRead || letters[key].read;
+      if(window.trackKarmel) window.trackKarmel('note_select',{note:key});
       handingOff = false;
       const d = theme(dialog,key);
       dialog.querySelector('.mail-stamp').textContent = d[4];
@@ -8816,6 +8879,7 @@
     dialog.querySelector('.mail-dismiss').addEventListener('click',() => dialog.close());
     opener.addEventListener('click',() => {
       if(opener.disabled) return;
+      if(window.trackKarmel) window.trackKarmel('note_open',{note:currentKey});
       opener.disabled = true;
       opener.classList.add('is-opening');
       status.textContent = 'a little love, unfolding…';
@@ -8850,6 +8914,7 @@
       fallback.className = 'letter-link-fallback';
       fallback.setAttribute('aria-label','Link to ' + title);
       copy.addEventListener('click',async () => {
+        if(window.trackKarmel) window.trackKarmel('note_link_copy',{note:key});
         const url = letterShareUrl(key);
         try {
           if(!navigator.clipboard?.writeText) throw new Error('Use manual copy');
