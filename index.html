@@ -5883,6 +5883,16 @@
     .home-section-button.note-trigger{border-color:#d494a9!important;background:linear-gradient(120deg,#fff8f2,#ffe8ec)!important}
     .home-section-button.note-trigger .home-section-icon{background:#f8d8df!important}
     @media(max-width:480px){.letters-diary-intro{font-size:12px!important}}
+
+    .letter-with-link{margin:14px 0 18px}
+    .letters-card .letter-with-link .letter-entry{margin:0!important}
+    .letter-link-tools{display:flex;align-items:center;flex-wrap:wrap;gap:4px 10px;margin:7px 0 14px}
+    .letter-with-link .letter-link-tools{justify-content:flex-end;margin:3px 4px 0}
+    .letter-copy-link{min-height:44px;padding:8px 10px!important;border:0!important;border-radius:10px!important;background:transparent!important;box-shadow:none!important;color:#963c58!important;font:600 11px/1.4 'Nunito Sans',sans-serif!important;cursor:pointer;touch-action:manipulation}
+    .letter-copy-link:hover{background:#f7dce380!important;transform:none!important}
+    .letter-link-status{font-size:11px;color:#825668}
+    .letter-link-fallback{box-sizing:border-box;width:100%;min-width:0;border:1px solid #d9a7b6;border-radius:8px;padding:10px;background:#fffaf6;color:#713b51;font:12px/1.5 system-ui,sans-serif}
+    .letter-link-fallback[hidden]{display:none!important}
   </style>
 </head>
 <body>
@@ -8241,9 +8251,35 @@
     setProgress();
 
     // Meaningful screens share this document; tiny popups keep their parent's URL.
+    function letterRoutes(){
+      return {
+        '/notes/the-first-loving-paragraph':'loving-paragraph',
+        '/notes/the-first-paragraph':'first-paragraph',
+        '/notes/rabena-ye5aleke-leya':'rabena-note',
+        '/notes/bus-yap':'bus-yap',
+        '/notes/the-night':'the-night'
+      };
+    }
+
+    function letterShareUrl(key){
+      // Query links also work on GitHub Pages without a server rewrite.
+      const base = location.hostname.endsWith('.github.io') ? '/Omar-loves-his-baby/' : '/';
+      const url = new URL(base,location.origin);
+      url.searchParams.set('letter',key);
+      return url.href;
+    }
+
+    function appRouteUrl(path){
+      const key = letterRoutes()[path];
+      if(!key) return path;
+      const url = new URL(letterShareUrl(key));
+      return url.pathname + url.search;
+    }
+
     function recordAppRoute(path){
       if(appRouteRestoring || sessionStorage.getItem('karmelUnlocked') !== 'yes') return;
-      if(location.pathname !== path) history.pushState(null, '', path);
+      const url = appRouteUrl(path);
+      if(location.pathname + location.search + location.hash !== url) history.pushState(null, '', url);
     }
 
     function gameRoute(panel){
@@ -8256,25 +8292,32 @@
 
     function renderAppRoute(){
       if(sessionStorage.getItem('karmelUnlocked') !== 'yes') return;
-      const knownRoutes = ['/', '/games', '/notes', '/notes/bus-yap', '/quiz',
+      const noteRoutes = letterRoutes();
+      const knownRoutes = ['/', '/games', '/notes', ...Object.keys(noteRoutes), '/quiz',
         '/catch-hearts', '/find-karamella', '/catch-battle', '/scratcher',
         '/kitchen', '/sit-with-me', '/tiny-bakery'];
       let path = location.pathname.replace(/\/$/, '') || '/';
+      const noteKey = new URLSearchParams(location.search).get('letter');
+      path = Object.keys(noteRoutes).find(route => noteRoutes[route] === noteKey) || path;
       if(!knownRoutes.includes(path)) path = '/';
       // Deep links must not award a scratcher without an earned reward for today.
       if(path === '/scratcher' && (localStorage.getItem(DAILY_SCRATCH_DATE_KEY) !== scratchDayKey() ||
           !scratchRewards.includes(localStorage.getItem(DAILY_SCRATCH_REWARD_KEY)))){
         path = '/find-karamella';
       }
-      if(location.pathname !== path) history.replaceState(null, '', path);
+      const routeUrl = appRouteUrl(path);
+      if(location.pathname + location.search + location.hash !== routeUrl) history.replaceState(null, '', routeUrl);
       appRouteRestoring = true;
       ++appNavigationVersion; // Invalidate any screen transition still waiting on an animation.
       try {
         stopAllMiniGames();
         stopTodayTyping(false);
-        todayLetterPage.classList.remove('active');
-        todayLetterPage.setAttribute('aria-hidden','true');
-        document.body.classList.remove('today-letter-open','cozy-open');
+        [todayLetterPage,theNightPage,lovingParagraphPage,rabenaNotePage,firstParagraphPage].forEach(page => {
+          page.classList.remove('active');
+          page.setAttribute('aria-hidden','true');
+        });
+        document.body.classList.remove('today-letter-open','the-night-open','loving-paragraph-open','rabena-note-open','first-paragraph-open','cozy-open');
+        if(window.dismissLetterEnvelope) window.dismissLetterEnvelope();
         closeFlowerPuzzle();
         gameBanPopup.classList.remove('show');
         gameBanPopup.setAttribute('aria-hidden','true');
@@ -8283,9 +8326,9 @@
           .forEach(panel => panel.classList.remove('section-leaving','section-entering','game-panel-leaving','game-panel-entering'));
         if(path === '/') showHomeImmediate();
         else if(path === '/notes') showNotesImmediate();
-        else if(path === '/notes/bus-yap'){
+        else if(noteRoutes[path]){
           showNotesImmediate();
-          openTodayLetterPage(false);
+          window.presentLoveLetter(noteRoutes[path]);
         } else if(path === '/quiz') showQuizImmediate();
         else {
           showGamesImmediate();
@@ -8547,7 +8590,16 @@
       dialog.showModal();
       opener.focus();
     };
+    window.dismissLetterEnvelope = () => {
+      if(!dialog.open) return;
+      clearTimeout(timer);
+      handingOff = false;
+      document.body.style.overflow = previousOverflow;
+      dialog.close();
+    };
     dialog.addEventListener('close',() => {
+      // A history change can reopen this dialog before its old close event arrives.
+      if(dialog.open) return;
       clearTimeout(timer);
       document.body.style.overflow = previousOverflow;
       if(handingOff){
@@ -8576,6 +8628,53 @@
       event.stopImmediatePropagation();
       window.presentLoveLetter(entry.dataset.letter);
     },true));
+
+    function makeLetterLink(key,title){
+      const tools = document.createElement('div');
+      tools.className = 'letter-link-tools';
+      const copy = document.createElement('button');
+      copy.type = 'button';
+      copy.className = 'letter-copy-link';
+      copy.textContent = 'copy link ♡';
+      copy.setAttribute('aria-label','Copy link to ' + title);
+      const status = document.createElement('span');
+      status.className = 'letter-link-status';
+      status.setAttribute('role','status');
+      const fallback = document.createElement('input');
+      fallback.type = 'text';
+      fallback.readOnly = true;
+      fallback.hidden = true;
+      fallback.className = 'letter-link-fallback';
+      fallback.setAttribute('aria-label','Link to ' + title);
+      copy.addEventListener('click',async () => {
+        const url = letterShareUrl(key);
+        try {
+          if(!navigator.clipboard?.writeText) throw new Error('Use manual copy');
+          await navigator.clipboard.writeText(url);
+          fallback.hidden = true;
+          status.textContent = 'copied ♡';
+        } catch(e) {
+          fallback.value = url;
+          fallback.hidden = false;
+          status.textContent = 'select and copy this link ♡';
+          fallback.focus();
+          fallback.select();
+        }
+      });
+      tools.append(copy,status,fallback);
+      return tools;
+    }
+    entries.forEach(entry => {
+      const key = entry.dataset.letter;
+      const title = entry.querySelector('strong').textContent;
+      const wrap = document.createElement('div');
+      wrap.className = 'letter-with-link';
+      entry.before(wrap);
+      wrap.append(entry,makeLetterLink(key,title));
+      const page = document.getElementById(letters[key].page);
+      const header = page.querySelector('article > h1, .today-letter-kicker');
+      if(header) header.after(makeLetterLink(key,title));
+    });
   })();
   </script>
 </body>
