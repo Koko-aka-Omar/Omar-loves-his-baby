@@ -23,7 +23,7 @@ function cookies(req) {
   const parsed={};for (const pair of (req.headers.cookie||'').split(';')) {const index=pair.indexOf('=');if(index>0) parsed[pair.slice(0,index).trim()]=pair.slice(index+1).trim();}return parsed;
 }
 function createHandler(configProvider=environmentConfig) {
-  let config,cachedApp,cachedDiary,hashQueue=Promise.resolve();
+  let config,cachedApp,cachedDiary,cachedHints,hashQueue=Promise.resolve();
   const now=()=>config.now ? config.now() : Date.now();
   const name=scope=>(config.production?'__Host-':'')+'karmel-'+scope;
   const prefix=()=>'karmel:private:v1:'+fingerprint(config.key).slice(0,16)+':';
@@ -84,6 +84,14 @@ function createHandler(configProvider=environmentConfig) {
         return json(res,200,{[scope]:true,expiresAt:issued.record.expiresAt});
       }
       if(path==='/api/access') {const site=await session(req,'site');const diary=site?await session(req,'diary',site):null;return json(res,200,{site:!!site,diary:!!diary,siteExpiresAt:site?.expiresAt||0,diaryExpiresAt:diary?.expiresAt||0});}
+      if(path==='/api/diary-hints') {
+        const site=await session(req,'site');if(!site) return json(res,401,{error:'Entrance password required'});
+        if(!await session(req,'diary',site)) return json(res,403,{error:'Diary password required'});
+        cachedHints ||= JSON.parse(unseal(sealed.hints,config.key,'hints'));
+        const serverNow=now();
+        const hints=cachedHints.map(h=>({key:h.key,revealsAt:Date.parse(h.revealsAt),hint:serverNow>=Date.parse(h.revealsAt)?h.hint:null}));
+        return json(res,200,{serverNow,hints});
+      }
       if(path==='/api/diary') {
         const site=await session(req,'site');if(!site) return json(res,401,{error:'Entrance password required'});
         if(!await session(req,'diary',site)) return json(res,403,{error:'Diary password required'});

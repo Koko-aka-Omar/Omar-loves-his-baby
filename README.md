@@ -4,6 +4,8 @@ This local preview protects the entire website and separately protects the secre
 
 The diary keeps its food hint and three-key hunt. Progress is saved in the browser, while password access is checked by the server. The diary text is fetched separately after its password is accepted; it is absent from the website HTML.
 
+The three discovery hints are encrypted separately. The server releases them on 5, 8 and 7 October 2026, respectively, at 11:59 p.m. Dubai time. Before each release, the browser receives only a deadline and the server's time, which anchors its live countdown. Collecting keys and opening the diary remain possible before any hints arrive.
+
 The entrance session lasts six hours. The diary session lasts up to two hours and belongs to that entrance session. “Lock our little place” revokes access, including the diary, and clears the displayed page. Sessions use opaque HttpOnly cookies, with Secure cookies on the deployed HTTPS site. Eight password attempts are allowed in fifteen minutes. The entrance limit is shared across the site; the diary limit is per entrance session.
 
 ## Local preview
