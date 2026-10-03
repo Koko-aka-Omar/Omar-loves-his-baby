@@ -8933,15 +8933,38 @@
     ].map(id=>document.getElementById(id)).filter(Boolean);
 
     const noteScrollTimes = new WeakMap();
+
+    function spawnNoteHeartPair(x,y){
+      if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+        // Still show the pair, just with the reduced-motion fade.
+      }
+      const pair=[
+        {heart:'💗',dx:-12-Math.random()*8,dy:-48-Math.random()*30,rot:-18-Math.random()*18},
+        {heart:'♡',dx:12+Math.random()*8,dy:-42-Math.random()*32,rot:18+Math.random()*18}
+      ];
+      pair.forEach((item,index)=>{
+        const spark=document.createElement('span');
+        spark.className='polished-spark note-scroll-spark';
+        spark.textContent=item.heart;
+        spark.style.left=(x+(index===0?-4:4))+'px';
+        spark.style.top=(y+(index===0?1:-2))+'px';
+        spark.style.fontSize=(index===0 ? 15 : 17)+'px';
+        spark.style.setProperty('--sx',item.dx+'px');
+        spark.style.setProperty('--sy',item.dy+'px');
+        spark.style.setProperty('--rot',item.rot+'deg');
+        document.body.appendChild(spark);
+        setTimeout(()=>spark.remove(),2050);
+      });
+    }
+
     function noteScrollSpark(page,x,y){
       const now=performance.now();
       const last=noteScrollTimes.get(page)||0;
       if(now-last<220) return;
       noteScrollTimes.set(page,now);
-      spawnLoveSparks(
+      spawnNoteHeartPair(
         x ?? (28+Math.random()*Math.max(1,window.innerWidth-56)),
-        y ?? (window.innerHeight*(.42+Math.random()*.32)),
-        1,13,true
+        y ?? (window.innerHeight*(.42+Math.random()*.32))
       );
     }
 
