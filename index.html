@@ -6085,9 +6085,10 @@
     }
     .loving-paragraph-sheet{
       background:
-        linear-gradient(rgba(255,247,239,.94),rgba(255,247,239,.94)),
-        repeating-linear-gradient(0deg,#fff5eb 0 31px,#e8bcb0 31px 32px)!important;
-      border-color:#d99f99!important;
+        linear-gradient(rgba(255,234,223,.96),rgba(255,234,223,.96)),
+        repeating-linear-gradient(0deg,#ffe9dd 0 31px,#dfaa9f 31px 32px)!important;
+      border-color:#ca8784!important;
+      box-shadow:0 22px 62px rgba(131,66,67,.20)!important;
     }
 
     /* First secret yap — warm cream / vintage paper. */
@@ -6099,9 +6100,10 @@
     }
     .first-paragraph-sheet{
       background:
-        linear-gradient(rgba(255,250,231,.95),rgba(255,250,231,.95)),
-        repeating-linear-gradient(0deg,#fff8e6 0 31px,#e7cfaa 31px 32px)!important;
-      border-color:#d5b489!important;
+        linear-gradient(rgba(255,244,213,.97),rgba(255,244,213,.97)),
+        repeating-linear-gradient(0deg,#fff1cc 0 31px,#dabb83 31px 32px)!important;
+      border-color:#c99d61!important;
+      box-shadow:0 22px 62px rgba(132,91,42,.18)!important;
     }
 
     /* 26 Sep — warm brick red / dusty rose. */
@@ -6113,9 +6115,10 @@
     }
     .rabena-note-sheet{
       background:
-        linear-gradient(rgba(255,242,237,.95),rgba(255,242,237,.95)),
-        repeating-linear-gradient(0deg,#fff0ec 0 31px,#dfaaa4 31px 32px)!important;
-      border-color:#c98582!important;
+        linear-gradient(rgba(255,225,219,.96),rgba(255,225,219,.96)),
+        repeating-linear-gradient(0deg,#ffe2dd 0 31px,#cf8e88 31px 32px)!important;
+      border-color:#b86f6d!important;
+      box-shadow:0 22px 62px rgba(116,49,52,.22)!important;
     }
 
     /* 1 Oct bus yap — warm apricot / caramel paper. */
@@ -6130,11 +6133,12 @@
       border-color:#dcad8e!important;
     }
     .today-letter-sheet{
-      background-color:#fff2e5!important;
+      background-color:#ffe4c7!important;
       background-image:
-        linear-gradient(90deg,transparent 0 22px,rgba(187,95,78,.31) 22px 24px,transparent 24px 100%),
-        repeating-linear-gradient(0deg,rgba(255,247,237,.99) 0 30px,rgba(211,158,129,.38) 30px 31px)!important;
-      border-color:#d4a17f!important;
+        linear-gradient(90deg,transparent 0 22px,rgba(180,88,64,.34) 22px 24px,transparent 24px 100%),
+        repeating-linear-gradient(0deg,rgba(255,237,215,.99) 0 30px,rgba(203,140,102,.42) 30px 31px)!important;
+      border-color:#c78862!important;
+      box-shadow:0 22px 62px rgba(123,73,43,.20)!important;
     }
 
     /* Arabic yap — deep rose / warm berry. */
@@ -6146,9 +6150,10 @@
     }
     .arabic-yap-sheet{
       background:
-        linear-gradient(rgba(255,240,245,.95),rgba(255,240,245,.95)),
-        repeating-linear-gradient(0deg,#fff0f5 0 31px,#dda6b7 31px 32px)!important;
-      border-color:#c87591!important;
+        linear-gradient(rgba(250,218,229,.97),rgba(250,218,229,.97)),
+        repeating-linear-gradient(0deg,#f9d7e3 0 31px,#c77d98 31px 32px)!important;
+      border-color:#a95574!important;
+      box-shadow:0 22px 62px rgba(105,43,67,.23)!important;
     }
 
     /* THE night — warm plum / purple-red. */
@@ -6160,13 +6165,32 @@
     }
     .the-night-sheet{
       background:
-        linear-gradient(rgba(249,239,246,.96),rgba(249,239,246,.96)),
-        repeating-linear-gradient(0deg,#f9eef5 0 31px,#cfa9bd 31px 32px)!important;
-      border-color:#9f718d!important;
+        linear-gradient(rgba(230,207,224,.97),rgba(230,207,224,.97)),
+        repeating-linear-gradient(0deg,#e8d3e2 0 31px,#ae7899 31px 32px)!important;
+      border-color:#7f4f6f!important;
+      box-shadow:0 22px 62px rgba(72,37,61,.26)!important;
     }
 
     @media(prefers-reduced-motion:reduce){
-      .note-scroll-spark{display:none!important}
+      .note-scroll-spark{
+        display:block!important;
+        animation:noteScrollSparkReduced 1.35s ease-out forwards!important;
+      }
+      @keyframes noteScrollSparkReduced{
+        0%{opacity:.46;transform:scale(.84)}
+        100%{opacity:0;transform:scale(.96)}
+      }
+    }
+
+    .loving-paragraph-sheet h1,.loving-paragraph-kicker{color:#934b57!important}
+    .first-paragraph-sheet h1,.first-paragraph-kicker{color:#8b6430!important}
+    .rabena-note-sheet h1,.rabena-note-kicker{color:#8d3a42!important}
+    .today-letter-kicker,.today-letter-sheet{color:#76432f!important}
+    .arabic-yap-sheet h1,.arabic-yap-kicker{color:#7d2e50!important}
+    .the-night-sheet h1,.the-night-kicker{color:#5c3656!important}
+
+    @media(prefers-reduced-motion:reduce){
+      .polished-spark.note-scroll-spark{display:block!important}
     }
   </style>
 
@@ -8909,16 +8933,25 @@
     ].map(id=>document.getElementById(id)).filter(Boolean);
 
     const noteScrollTimes = new WeakMap();
+    function noteScrollSpark(page,x,y){
+      const now=performance.now();
+      const last=noteScrollTimes.get(page)||0;
+      if(now-last<220) return;
+      noteScrollTimes.set(page,now);
+      spawnLoveSparks(
+        x ?? (28+Math.random()*Math.max(1,window.innerWidth-56)),
+        y ?? (window.innerHeight*(.42+Math.random()*.32)),
+        1,13,true
+      );
+    }
+
     noteScrollPages.forEach(page=>{
-      page.addEventListener('scroll',()=>{
-        const now=performance.now();
-        const last=noteScrollTimes.get(page)||0;
-        if(now-last<240) return;
-        noteScrollTimes.set(page,now);
-        const x=28+Math.random()*Math.max(1,window.innerWidth-56);
-        const y=window.innerHeight*(.42+Math.random()*.32);
-        spawnLoveSparks(x,y,1,13,true);
+      page.addEventListener('scroll',()=>noteScrollSpark(page),{passive:true});
+      page.addEventListener('touchmove',e=>{
+        const t=e.touches&&e.touches[0];
+        noteScrollSpark(page,t?.clientX,t?.clientY);
       },{passive:true});
+      page.addEventListener('wheel',e=>noteScrollSpark(page,e.clientX,e.clientY),{passive:true});
     });
   })();
   </script>
