@@ -6063,6 +6063,113 @@
     @media(max-width:480px){.letters-diary-intro{font-size:12px!important}}
 
   </style>
+
+  <style id="individual-note-palettes">
+    /* Each diary entry gets its own warm stationery mood. */
+    .note-scroll-spark{
+      animation:noteScrollSpark 2s cubic-bezier(.18,.75,.24,1) forwards!important;
+      filter:saturate(.82);
+    }
+    @keyframes noteScrollSpark{
+      0%{opacity:.52;transform:translate(0,0) rotate(0) scale(.82)}
+      58%{opacity:.38}
+      100%{opacity:0;transform:translate(var(--sx),var(--sy,-62px)) rotate(var(--rot,28deg)) scale(.52)}
+    }
+
+    /* 18 Aug — soft peach / blush. */
+    .loving-paragraph-page{
+      background:
+        radial-gradient(circle at 10% 12%,rgba(202,72,99,.20),transparent 30%),
+        radial-gradient(circle at 90% 84%,rgba(232,151,116,.20),transparent 31%),
+        linear-gradient(145deg,#efb9b0,#f9d8c8 48%,#e9a9b0)!important;
+    }
+    .loving-paragraph-sheet{
+      background:
+        linear-gradient(rgba(255,247,239,.94),rgba(255,247,239,.94)),
+        repeating-linear-gradient(0deg,#fff5eb 0 31px,#e8bcb0 31px 32px)!important;
+      border-color:#d99f99!important;
+    }
+
+    /* First secret yap — warm cream / vintage paper. */
+    .first-paragraph-page{
+      background:
+        radial-gradient(circle at 12% 12%,rgba(198,127,73,.18),transparent 29%),
+        radial-gradient(circle at 88% 82%,rgba(180,95,102,.17),transparent 31%),
+        linear-gradient(145deg,#efd9b8,#faecd2 48%,#e8c5ae)!important;
+    }
+    .first-paragraph-sheet{
+      background:
+        linear-gradient(rgba(255,250,231,.95),rgba(255,250,231,.95)),
+        repeating-linear-gradient(0deg,#fff8e6 0 31px,#e7cfaa 31px 32px)!important;
+      border-color:#d5b489!important;
+    }
+
+    /* 26 Sep — warm brick red / dusty rose. */
+    .rabena-note-page{
+      background:
+        radial-gradient(circle at 10% 10%,rgba(143,49,58,.24),transparent 29%),
+        radial-gradient(circle at 88% 82%,rgba(208,111,104,.21),transparent 31%),
+        linear-gradient(145deg,#d99b96,#efc0b6 48%,#c77c80)!important;
+    }
+    .rabena-note-sheet{
+      background:
+        linear-gradient(rgba(255,242,237,.95),rgba(255,242,237,.95)),
+        repeating-linear-gradient(0deg,#fff0ec 0 31px,#dfaaa4 31px 32px)!important;
+      border-color:#c98582!important;
+    }
+
+    /* 1 Oct bus yap — warm apricot / caramel paper. */
+    .today-letter-page{
+      background:
+        radial-gradient(circle at 10% 14%,rgba(190,94,67,.20),transparent 29%),
+        radial-gradient(circle at 89% 80%,rgba(222,151,91,.22),transparent 31%),
+        linear-gradient(145deg,#e8b58f,#f6d8b4 48%,#dfa27f)!important;
+    }
+    .today-intro{
+      background:#fff5e8!important;
+      border-color:#dcad8e!important;
+    }
+    .today-letter-sheet{
+      background-color:#fff2e5!important;
+      background-image:
+        linear-gradient(90deg,transparent 0 22px,rgba(187,95,78,.31) 22px 24px,transparent 24px 100%),
+        repeating-linear-gradient(0deg,rgba(255,247,237,.99) 0 30px,rgba(211,158,129,.38) 30px 31px)!important;
+      border-color:#d4a17f!important;
+    }
+
+    /* Arabic yap — deep rose / warm berry. */
+    .arabic-yap-page{
+      background:
+        radial-gradient(circle at 12% 12%,rgba(120,33,68,.25),transparent 29%),
+        radial-gradient(circle at 88% 82%,rgba(202,74,111,.22),transparent 31%),
+        linear-gradient(145deg,#d7859c,#efb2bf 48%,#bc607e)!important;
+    }
+    .arabic-yap-sheet{
+      background:
+        linear-gradient(rgba(255,240,245,.95),rgba(255,240,245,.95)),
+        repeating-linear-gradient(0deg,#fff0f5 0 31px,#dda6b7 31px 32px)!important;
+      border-color:#c87591!important;
+    }
+
+    /* THE night — warm plum / purple-red. */
+    .the-night-page{
+      background:
+        radial-gradient(circle at 11% 12%,rgba(92,40,75,.27),transparent 29%),
+        radial-gradient(circle at 88% 82%,rgba(157,72,111,.24),transparent 31%),
+        linear-gradient(145deg,#b58aa7,#d9b4c6 48%,#8f627f)!important;
+    }
+    .the-night-sheet{
+      background:
+        linear-gradient(rgba(249,239,246,.96),rgba(249,239,246,.96)),
+        repeating-linear-gradient(0deg,#f9eef5 0 31px,#cfa9bd 31px 32px)!important;
+      border-color:#9f718d!important;
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      .note-scroll-spark{display:none!important}
+    }
+  </style>
+
 </head>
 <body>
   <div class="cute-ambience" id="cuteAmbience" aria-hidden="true">
@@ -8758,20 +8865,20 @@
     $('cookAgain').addEventListener('click',showMenu);
     // Hearts and sparkles follow every press, plus a soft trail while scrolling.
     const loveSparkThings = ['♡','💗','✦','🌸','🩷'];
-    function spawnLoveSparks(x,y,count=5,spread=30){
+    function spawnLoveSparks(x,y,count=5,spread=30,subtle=false){
       if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       for(let i=0;i<count;i++){
         const spark=document.createElement('span');
-        spark.className='polished-spark';
+        spark.className='polished-spark' + (subtle ? ' note-scroll-spark' : '');
         spark.textContent=loveSparkThings[Math.floor(Math.random()*loveSparkThings.length)];
         spark.style.left=x+'px';
         spark.style.top=y+'px';
-        spark.style.fontSize=(14+Math.random()*9)+'px';
+        spark.style.fontSize=(subtle ? (11+Math.random()*6) : (14+Math.random()*9))+'px';
         spark.style.setProperty('--sx',((Math.random()-.5)*spread*2)+'px');
-        spark.style.setProperty('--sy',(-55-Math.random()*70)+'px');
+        spark.style.setProperty('--sy',subtle ? (-38-Math.random()*42)+'px' : (-55-Math.random()*70)+'px');
         spark.style.setProperty('--rot',(-55+Math.random()*110)+'deg');
         document.body.appendChild(spark);
-        setTimeout(()=>spark.remove(),1750);
+        setTimeout(()=>spark.remove(),subtle ? 2050 : 1750);
       }
     }
 
@@ -8789,6 +8896,30 @@
       const y=window.innerHeight*(.35+Math.random()*.45);
       spawnLoveSparks(x,y,2,22);
     },{passive:true});
+
+    // Note pages scroll inside fixed full-screen containers, so give them
+    // their own much softer trail.
+    const noteScrollPages = [
+      'todayLetterPage',
+      'arabicYapPage',
+      'theNightPage',
+      'lovingParagraphPage',
+      'rabenaNotePage',
+      'firstParagraphPage'
+    ].map(id=>document.getElementById(id)).filter(Boolean);
+
+    const noteScrollTimes = new WeakMap();
+    noteScrollPages.forEach(page=>{
+      page.addEventListener('scroll',()=>{
+        const now=performance.now();
+        const last=noteScrollTimes.get(page)||0;
+        if(now-last<240) return;
+        noteScrollTimes.set(page,now);
+        const x=28+Math.random()*Math.max(1,window.innerWidth-56);
+        const y=window.innerHeight*(.42+Math.random()*.32);
+        spawnLoveSparks(x,y,1,13,true);
+      },{passive:true});
+    });
   })();
   </script>
 
