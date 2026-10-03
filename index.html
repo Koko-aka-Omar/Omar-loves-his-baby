@@ -6064,8 +6064,8 @@
 
   </style>
 
-  <style id="individual-note-palettes">
-    /* Each diary entry gets its own warm stationery mood. */
+  <style id="note-scroll-spark-styles">
+    /* Keep the note scroll-heart behavior, but no note-specific color overrides. */
     .note-scroll-spark{
       animation:noteScrollSpark 2s cubic-bezier(.18,.75,.24,1) forwards!important;
       filter:saturate(.82);
@@ -6075,104 +6075,8 @@
       58%{opacity:.38}
       100%{opacity:0;transform:translate(var(--sx),var(--sy,-62px)) rotate(var(--rot,28deg)) scale(.52)}
     }
-
-    /* 18 Aug — soft peach / blush. */
-    .loving-paragraph-page{
-      background:
-        radial-gradient(circle at 10% 12%,rgba(176,30,75,.30),transparent 30%),
-        radial-gradient(circle at 90% 84%,rgba(233,78,120,.27),transparent 31%),
-        linear-gradient(145deg,#dd6d8a,#f49ab0 48%,#c94f72)!important;
-    }
-    .loving-paragraph-sheet{
-      background:
-        linear-gradient(rgba(247,171,190,.94),rgba(247,171,190,.94)),
-        repeating-linear-gradient(0deg,#f6a6ba 0 31px,#c94d72 31px 32px)!important;
-      border-color:#b9335f!important;
-      box-shadow:0 22px 62px rgba(117,31,63,.27)!important;
-    }
-
-    /* First secret yap — warm cream / vintage paper. */
-    .first-paragraph-page{
-      background:
-        radial-gradient(circle at 12% 12%,rgba(164,99,42,.24),transparent 29%),
-        radial-gradient(circle at 88% 82%,rgba(192,122,64,.20),transparent 31%),
-        linear-gradient(145deg,#dfc28d,#f1d9a7 48%,#d0a96f)!important;
-    }
-    .first-paragraph-sheet{
-      background:
-        linear-gradient(rgba(249,225,174,.97),rgba(249,225,174,.97)),
-        repeating-linear-gradient(0deg,#f5dca8 0 31px,#c79c58 31px 32px)!important;
-      border-color:#b68138!important;
-      box-shadow:0 22px 62px rgba(116,77,30,.22)!important;
-    }
-
-    /* 26 Sep — warm brick red / dusty rose. */
-    .rabena-note-page{
-      background:
-        radial-gradient(circle at 10% 10%,rgba(126,25,42,.34),transparent 29%),
-        radial-gradient(circle at 88% 82%,rgba(207,55,69,.28),transparent 31%),
-        linear-gradient(145deg,#bd4d5c,#df747d 48%,#9d3348)!important;
-    }
-    .rabena-note-sheet{
-      background:
-        linear-gradient(rgba(228,111,119,.94),rgba(228,111,119,.94)),
-        repeating-linear-gradient(0deg,#dc6b75 0 31px,#a93649 31px 32px)!important;
-      border-color:#8f293d!important;
-      box-shadow:0 22px 62px rgba(95,24,39,.30)!important;
-    }
-
-    /* 1 Oct bus yap — warm apricot / caramel paper. */
-    .today-letter-page{
-      background:
-        radial-gradient(circle at 10% 14%,rgba(179,42,65,.32),transparent 29%),
-        radial-gradient(circle at 89% 80%,rgba(233,92,105,.27),transparent 31%),
-        linear-gradient(145deg,#dc6472,#f08e95 48%,#bd465d)!important;
-    }
-    .today-intro{
-      background:#f6b2b7!important;
-      border-color:#c84f61!important;
-    }
-    .today-letter-sheet{
-      background-color:#ef8b91!important;
-      background-image:
-        linear-gradient(90deg,transparent 0 22px,rgba(147,39,56,.42) 22px 24px,transparent 24px 100%),
-        repeating-linear-gradient(0deg,rgba(239,139,145,.98) 0 30px,rgba(173,56,72,.48) 30px 31px)!important;
-      border-color:#a9364c!important;
-      box-shadow:0 22px 62px rgba(94,27,42,.29)!important;
-    }
-
-    /* Arabic yap — deep rose / warm berry. */
-    .arabic-yap-page{
-      background:
-        radial-gradient(circle at 12% 12%,rgba(109,25,65,.34),transparent 29%),
-        radial-gradient(circle at 88% 82%,rgba(202,38,101,.31),transparent 31%),
-        linear-gradient(145deg,#c64c80,#e779a5 48%,#9d3567)!important;
-    }
-    .arabic-yap-sheet{
-      background:
-        linear-gradient(rgba(231,122,161,.95),rgba(231,122,161,.95)),
-        repeating-linear-gradient(0deg,#e77aa5 0 31px,#a9376b 31px 32px)!important;
-      border-color:#8f2a5d!important;
-      box-shadow:0 22px 62px rgba(76,25,54,.31)!important;
-    }
-
-    /* THE night — warm plum / purple-red. */
-    .the-night-page{
-      background:
-        radial-gradient(circle at 11% 12%,rgba(68,27,67,.36),transparent 29%),
-        radial-gradient(circle at 88% 82%,rgba(126,48,101,.31),transparent 31%),
-        linear-gradient(145deg,#86577f,#b37ca6 48%,#653c63)!important;
-    }
-    .the-night-sheet{
-      background:
-        linear-gradient(rgba(184,132,177,.96),rgba(184,132,177,.96)),
-        repeating-linear-gradient(0deg,#b989b9 0 31px,#77466f 31px 32px)!important;
-      border-color:#62385e!important;
-      box-shadow:0 22px 62px rgba(49,25,49,.33)!important;
-    }
-
     @media(prefers-reduced-motion:reduce){
-      .note-scroll-spark{
+      .polished-spark.note-scroll-spark{
         display:block!important;
         animation:noteScrollSparkReduced 1.35s ease-out forwards!important;
       }
@@ -6180,24 +6084,6 @@
         0%{opacity:.46;transform:scale(.84)}
         100%{opacity:0;transform:scale(.96)}
       }
-    }
-
-    .loving-paragraph-sheet h1,.loving-paragraph-kicker{color:#934b57!important}
-    .first-paragraph-sheet h1,.first-paragraph-kicker{color:#8b6430!important}
-    .rabena-note-sheet h1,.rabena-note-kicker{color:#8d3a42!important}
-    .today-letter-kicker,.today-letter-sheet{color:#76432f!important}
-    .arabic-yap-sheet h1,.arabic-yap-kicker{color:#7d2e50!important}
-    .the-night-sheet h1,.the-night-kicker{color:#5c3656!important}
-
-    .loving-paragraph-text{color:#572438!important}
-    .first-paragraph-text{color:#5f4826!important}
-    .rabena-note-text{color:#4f1720!important}
-    .today-letter-text{color:#4d1721!important}
-    .arabic-yap-text p{color:#4d1732!important}
-    .the-night-text p{color:#3c2039!important}
-
-    @media(prefers-reduced-motion:reduce){
-      .polished-spark.note-scroll-spark{display:block!important}
     }
   </style>
 
