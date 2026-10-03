@@ -5068,8 +5068,8 @@
     .kitchen-step{font-size:11px;font-weight:800;letter-spacing:.07em;color:#a12654;margin:14px 0 0}
     .kitchen-progress{height:5px;background:#ffc9dc;border-radius:99px;margin-top:12px;overflow:hidden}
     .kitchen-progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,#f14888,#b72366);transition:width .5s}
-    .polished-spark{position:fixed;z-index:130;pointer-events:none;color:#f32678;animation:polishedSpark 1.65s cubic-bezier(.16,.78,.22,1) forwards;will-change:transform,opacity}
-    @keyframes polishedSpark{0%{opacity:.98;transform:translate(0,0) rotate(0) scale(.92)}55%{opacity:.9}100%{opacity:0;transform:translate(var(--sx),var(--sy,-70px)) rotate(var(--rot,35deg)) scale(.55)}}
+    .polished-spark{position:fixed;z-index:130;pointer-events:none;color:#f32678;animation:polishedSpark .8s ease-out forwards}
+    @keyframes polishedSpark{to{opacity:0;transform:translate(var(--sx),-45px) rotate(35deg) scale(.5)}}
     @media(max-width:480px){.kitchen-heading{font-size:29px}.food-choice{padding:13px!important;gap:10px}.food-mini{width:66px}.ingredient-note{padding:17px}.burger-art{max-height:300px}}
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.cursor-spark,.ambient-heart,.polished-spark{display:none!important}}
 
@@ -5234,7 +5234,7 @@
     .notes-card,body.games-mode .simple-section-card,body.love-mode .simple-section-card,.flower-card{min-height:0!important;height:auto!important;display:block!important}
             .ingredient-note p{white-space:pre-line}
   
-    /* 05.09.2026 — the first secret yap 🤐💐 */
+    /* 05.09.2026 — the first paragraph */
     body.first-paragraph-open{overflow:hidden}
     .first-paragraph-page{
       position:fixed;
@@ -6062,6 +6062,15 @@
     .home-section-button.note-trigger .home-section-icon{background:#f8d8df!important}
     @media(max-width:480px){.letters-diary-intro{font-size:12px!important}}
 
+    .letter-with-link{margin:14px 0 18px}
+    .letters-card .letter-with-link .letter-entry{margin:0!important}
+    .letter-link-tools{display:flex;align-items:center;flex-wrap:wrap;gap:4px 10px;margin:7px 0 14px}
+    .letter-with-link .letter-link-tools{justify-content:flex-end;margin:3px 4px 0}
+    .letter-copy-link{min-height:44px;padding:8px 10px!important;border:0!important;border-radius:10px!important;background:transparent!important;box-shadow:none!important;color:#963c58!important;font:600 11px/1.4 'Nunito Sans',sans-serif!important;cursor:pointer;touch-action:manipulation}
+    .letter-copy-link:hover{background:#f7dce380!important;transform:none!important}
+    .letter-link-status{font-size:11px;color:#825668}
+    .letter-link-fallback{box-sizing:border-box;width:100%;min-width:0;border:1px solid #d9a7b6;border-radius:8px;padding:10px;background:#fffaf6;color:#713b51;font:12px/1.5 system-ui,sans-serif}
+    .letter-link-fallback[hidden]{display:none!important}
   </style>
 
   <style id="note-scroll-spark-styles">
