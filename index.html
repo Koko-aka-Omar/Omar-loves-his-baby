@@ -6201,6 +6201,58 @@
     }
   </style>
 
+
+  <style id="karamellety-greeting-animation">
+    .home-title.greeting-ready{
+      white-space:pre;
+    }
+    .home-title .greeting-char{
+      display:inline-block;
+      opacity:1;
+      transform:none;
+      filter:none;
+      will-change:transform,opacity,filter;
+    }
+    .home-title.greeting-playing .greeting-char{
+      opacity:0;
+      transform:translateY(9px) scale(.97);
+      filter:blur(4px);
+      animation:karamelletyBloom .52s cubic-bezier(.2,.75,.25,1) forwards;
+      animation-delay:calc(var(--char-index) * 48ms);
+    }
+    .home-title .greeting-char[data-space="true"]{
+      width:.28em;
+    }
+    @keyframes karamelletyBloom{
+      0%{
+        opacity:0;
+        transform:translateY(9px) scale(.97);
+        filter:blur(4px);
+      }
+      58%{
+        opacity:.92;
+        filter:blur(.5px);
+      }
+      100%{
+        opacity:1;
+        transform:translateY(0) scale(1);
+        filter:blur(0);
+      }
+    }
+    @media(prefers-reduced-motion:reduce){
+      .home-title.greeting-playing .greeting-char{
+        animation:karamelletyFade .28s ease forwards;
+        animation-delay:calc(var(--char-index) * 24ms);
+        transform:none;
+        filter:none;
+      }
+      @keyframes karamelletyFade{
+        from{opacity:0}
+        to{opacity:1}
+      }
+    }
+  </style>
+
 </head>
 <body>
   <div class="cute-ambience" id="cuteAmbience" aria-hidden="true">
@@ -6456,6 +6508,43 @@
       <span class="corner-doodle doodle-two" aria-hidden="true">🌷</span>
       <span class="corner-doodle doodle-three" aria-hidden="true">✦</span>
       <div class="home-kicker">our little place</div>
+  <script>
+    window.animateHomeGreeting = function(){
+      const title=document.querySelector('.home-title');
+      if(!title) return;
+
+      if(!title.dataset.greetingBuilt){
+        const text=title.textContent;
+        title.setAttribute('aria-label',text);
+        title.textContent='';
+        [...text].forEach((char,index)=>{
+          const span=document.createElement('span');
+          span.className='greeting-char';
+          span.setAttribute('aria-hidden','true');
+          span.style.setProperty('--char-index',String(index));
+          if(char===' '){
+            span.dataset.space='true';
+            span.textContent=' ';
+          }else{
+            span.textContent=char;
+          }
+          title.appendChild(span);
+        });
+        title.dataset.greetingBuilt='yes';
+        title.classList.add('greeting-ready');
+      }
+
+      title.classList.remove('greeting-playing');
+      void title.offsetWidth;
+      title.classList.add('greeting-playing');
+
+      clearTimeout(title._greetingTimer);
+      title._greetingTimer=setTimeout(()=>{
+        title.classList.remove('greeting-playing');
+      },1500);
+    };
+  </script>
+
       <h1 class="home-title">hi karamellety.</h1>
       <p class="home-sub">a little diary, some silly games, and an unreasonable amount of love for you ♡</p>
 
@@ -8206,6 +8295,7 @@
       document.body.classList.remove('flower-mode');
       setCuteSectionMode('');
       document.body.classList.add('home-mode');
+      if(window.animateHomeGreeting) window.animateHomeGreeting();
       if(randomNote) showRandomHomeNote(false);
       window.scrollTo({top:0,behavior:'smooth'});
     }
