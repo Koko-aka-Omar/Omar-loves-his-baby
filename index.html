@@ -5068,8 +5068,8 @@
     .kitchen-step{font-size:11px;font-weight:800;letter-spacing:.07em;color:#a12654;margin:14px 0 0}
     .kitchen-progress{height:5px;background:#ffc9dc;border-radius:99px;margin-top:12px;overflow:hidden}
     .kitchen-progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,#f14888,#b72366);transition:width .5s}
-    .polished-spark{position:fixed;z-index:130;pointer-events:none;color:#f32678;animation:polishedSpark .8s ease-out forwards}
-    @keyframes polishedSpark{to{opacity:0;transform:translate(var(--sx),-45px) rotate(35deg) scale(.5)}}
+    .polished-spark{position:fixed;z-index:130;pointer-events:none;color:#f32678;animation:polishedSpark 1.65s cubic-bezier(.16,.78,.22,1) forwards;will-change:transform,opacity}
+    @keyframes polishedSpark{0%{opacity:.98;transform:translate(0,0) rotate(0) scale(.92)}55%{opacity:.9}100%{opacity:0;transform:translate(var(--sx),var(--sy,-70px)) rotate(var(--rot,35deg)) scale(.55)}}
     @media(max-width:480px){.kitchen-heading{font-size:29px}.food-choice{padding:13px!important;gap:10px}.food-mini{width:66px}.ingredient-note{padding:17px}.burger-art{max-height:300px}}
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.cursor-spark,.ambient-heart,.polished-spark{display:none!important}}
 
@@ -5234,7 +5234,7 @@
     .notes-card,body.games-mode .simple-section-card,body.love-mode .simple-section-card,.flower-card{min-height:0!important;height:auto!important;display:block!important}
             .ingredient-note p{white-space:pre-line}
   
-    /* 05.09.2026 — the first paragraph */
+    /* 05.09.2026 — the first secret yap 🤐💐 */
     body.first-paragraph-open{overflow:hidden}
     .first-paragraph-page{
       position:fixed;
@@ -6062,15 +6062,6 @@
     .home-section-button.note-trigger .home-section-icon{background:#f8d8df!important}
     @media(max-width:480px){.letters-diary-intro{font-size:12px!important}}
 
-    .letter-with-link{margin:14px 0 18px}
-    .letters-card .letter-with-link .letter-entry{margin:0!important}
-    .letter-link-tools{display:flex;align-items:center;flex-wrap:wrap;gap:4px 10px;margin:7px 0 14px}
-    .letter-with-link .letter-link-tools{justify-content:flex-end;margin:3px 4px 0}
-    .letter-copy-link{min-height:44px;padding:8px 10px!important;border:0!important;border-radius:10px!important;background:transparent!important;box-shadow:none!important;color:#963c58!important;font:600 11px/1.4 'Nunito Sans',sans-serif!important;cursor:pointer;touch-action:manipulation}
-    .letter-copy-link:hover{background:#f7dce380!important;transform:none!important}
-    .letter-link-status{font-size:11px;color:#825668}
-    .letter-link-fallback{box-sizing:border-box;width:100%;min-width:0;border:1px solid #d9a7b6;border-radius:8px;padding:10px;background:#fffaf6;color:#713b51;font:12px/1.5 system-ui,sans-serif}
-    .letter-link-fallback[hidden]{display:none!important}
   </style>
 </head>
 <body>
@@ -6132,7 +6123,7 @@
       <button class="the-night-back" id="closeTheNight" type="button">← notes</button>
 
       <div class="the-night-date">06.09.2026 · 🌙</div>
-      <div class="the-night-kicker">from koko’s journal</div>
+      <div class="the-night-kicker">from your lover</div>
       <h1>THE night.</h1>
       <div class="the-night-divider" aria-hidden="true">♡ &nbsp; ✦ &nbsp; 💗 &nbsp; ✦ &nbsp; ♡</div>
 
@@ -6174,10 +6165,10 @@
     </div>
 
     <article class="arabic-yap-sheet">
-      <button class="arabic-yap-back" id="closeArabicYap" type="button">الملاحظات ←</button>
+      <button class="arabic-yap-back" id="closeArabicYap" type="button">الرجوع</button>
 
       <div class="arabic-yap-date">03.10.2026 · 3:37 AM · 🌸</div>
-      <div class="arabic-yap-kicker">من koko لكرملتي</div>
+      <div class="arabic-yap-kicker">from your lover</div>
       <h1>ايه ده، عربي؟؟ 🌸</h1>
       <div class="arabic-yap-divider" aria-hidden="true">♡ &nbsp; ✦ &nbsp; 💗 &nbsp; ✦ &nbsp; ♡</div>
 
@@ -6229,7 +6220,7 @@
       <button class="rabena-note-back" id="closeRabenaNote" type="button">← notes</button>
 
       <div class="rabena-note-date">26.09.2026 · morning yap ❤️</div>
-      <div class="rabena-note-kicker">from koko, while you were asleep</div>
+      <div class="rabena-note-kicker">from your lover</div>
       <h1>rabena ye5aleke leya</h1>
 
       <div class="rabena-note-divider" aria-hidden="true">♡ &nbsp; ✦ &nbsp; ❤️ &nbsp; ✦ &nbsp; ♡</div>
@@ -6254,7 +6245,7 @@
 
       <div class="first-paragraph-date">05.09.2026 · ✦ ♡ ✦</div>
       <div class="first-paragraph-kicker">from omar’s notes</div>
-      <h1>the first paragraph</h1>
+      <h1>the first secret yap 🤐💐</h1>
 
       <div class="first-paragraph-divider" aria-hidden="true">♡ ✦ 💗 ✦ ♡</div>
 
@@ -6454,7 +6445,7 @@
       <button class="letter-entry first-paragraph-entry" type="button" data-letter="first-paragraph" id="openFirstParagraph">
         <span class="letter-entry-icon" aria-hidden="true">✨</span>
         <span class="letter-entry-copy">
-          <strong>the first paragraph</strong>
+          <strong>the first secret yap 🤐💐</strong>
           <small><time datetime="2026-09-05">05.09.2026</time><span class="letter-entry-note">apparently this is where the obsession started 💗</span></small>
         </span>
         <span class="letter-entry-arrow" aria-hidden="true">›</span>
@@ -8765,11 +8756,39 @@
       else{$('addIngredient').hidden=true;$('cookAgain').hidden=false;art.classList.add('served');burstHearts(['♡','✦','♥']);}
     });
     $('cookAgain').addEventListener('click',showMenu);
-    // A small sparkle bouquet on a deliberate tap; no continuous particle loop.
-    document.addEventListener('click',e=>{
-      if(!e.target.closest('button')||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-      for(let i=0;i<4;i++){const spark=document.createElement('span');spark.className='polished-spark';spark.textContent=i%2?'✦':'♡';spark.style.left=e.clientX+'px';spark.style.top=e.clientY+'px';spark.style.setProperty('--sx',(i-1.5)*22+'px');document.body.appendChild(spark);setTimeout(()=>spark.remove(),850);}
-    });
+    // Hearts and sparkles follow every press, plus a soft trail while scrolling.
+    const loveSparkThings = ['♡','💗','✦','🌸','🩷'];
+    function spawnLoveSparks(x,y,count=5,spread=30){
+      if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      for(let i=0;i<count;i++){
+        const spark=document.createElement('span');
+        spark.className='polished-spark';
+        spark.textContent=loveSparkThings[Math.floor(Math.random()*loveSparkThings.length)];
+        spark.style.left=x+'px';
+        spark.style.top=y+'px';
+        spark.style.fontSize=(14+Math.random()*9)+'px';
+        spark.style.setProperty('--sx',((Math.random()-.5)*spread*2)+'px');
+        spark.style.setProperty('--sy',(-55-Math.random()*70)+'px');
+        spark.style.setProperty('--rot',(-55+Math.random()*110)+'deg');
+        document.body.appendChild(spark);
+        setTimeout(()=>spark.remove(),1750);
+      }
+    }
+
+    document.addEventListener('pointerdown',e=>{
+      if(e.pointerType==='mouse' && e.button!==0) return;
+      spawnLoveSparks(e.clientX,e.clientY,5,34);
+    },{passive:true});
+
+    let lastScrollSpark=0;
+    window.addEventListener('scroll',()=>{
+      const now=performance.now();
+      if(now-lastScrollSpark<115) return;
+      lastScrollSpark=now;
+      const x=20+Math.random()*Math.max(1,window.innerWidth-40);
+      const y=window.innerHeight*(.35+Math.random()*.45);
+      spawnLoveSparks(x,y,2,22);
+    },{passive:true});
   })();
   </script>
 
@@ -8896,53 +8915,7 @@
       window.presentLoveLetter(entry.dataset.letter);
     },true));
 
-    function makeLetterLink(key,title){
-      const tools = document.createElement('div');
-      tools.className = 'letter-link-tools';
-      const copy = document.createElement('button');
-      copy.type = 'button';
-      copy.className = 'letter-copy-link';
-      copy.textContent = 'copy link ♡';
-      copy.setAttribute('aria-label','Copy link to ' + title);
-      const status = document.createElement('span');
-      status.className = 'letter-link-status';
-      status.setAttribute('role','status');
-      const fallback = document.createElement('input');
-      fallback.type = 'text';
-      fallback.readOnly = true;
-      fallback.hidden = true;
-      fallback.className = 'letter-link-fallback';
-      fallback.setAttribute('aria-label','Link to ' + title);
-      copy.addEventListener('click',async () => {
-        if(window.trackKarmel) window.trackKarmel('note_link_copy',{note:key});
-        const url = letterShareUrl(key);
-        try {
-          if(!navigator.clipboard?.writeText) throw new Error('Use manual copy');
-          await navigator.clipboard.writeText(url);
-          fallback.hidden = true;
-          status.textContent = 'copied ♡';
-        } catch(e) {
-          fallback.value = url;
-          fallback.hidden = false;
-          status.textContent = 'select and copy this link ♡';
-          fallback.focus();
-          fallback.select();
-        }
-      });
-      tools.append(copy,status,fallback);
-      return tools;
-    }
-    entries.forEach(entry => {
-      const key = entry.dataset.letter;
-      const title = entry.querySelector('strong').textContent;
-      const wrap = document.createElement('div');
-      wrap.className = 'letter-with-link';
-      entry.before(wrap);
-      wrap.append(entry,makeLetterLink(key,title));
-      const page = document.getElementById(letters[key].page);
-      const header = page.querySelector('article > h1, .today-letter-kicker');
-      if(header) header.after(makeLetterLink(key,title));
-    });
+
   })();
   </script>
 </body>
